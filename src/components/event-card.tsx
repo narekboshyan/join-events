@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import EventImage from "@/public/dua.webp";
 import { AllEventType } from "@/types/event";
+import { useRouter } from "next/navigation";
 
 interface EventCardProps {
   event: AllEventType[number];
@@ -28,6 +29,7 @@ export function EventCard({
   currentUserId,
   userInvitationStatus,
 }: Readonly<EventCardProps>) {
+  const router = useRouter();
   const coverImage = event.event_attachments.find(
     (att) => att.attachment_type === "cover_image" || att.is_featured
   );
@@ -81,7 +83,7 @@ export function EventCard({
   const isCreator = currentUserId === event.created_by;
 
   return (
-    <Card className="flex flex-col h-full">
+    <Card className="flex flex-col h-full pt-0">
       {/* Event Image */}
       <div className="relative w-full h-40 overflow-hidden rounded-t-lg">
         <Image
@@ -205,7 +207,7 @@ export function EventCard({
       <CardFooter className="pt-4 flex justify-between">
         <Button
           variant="ghost"
-          onClick={() => onActionClick(event.id, "view")}
+          onClick={() => router.push(`events/${event.id}`)}
           size="sm"
         >
           View Details

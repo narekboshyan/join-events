@@ -14,8 +14,8 @@ export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const { data } = useQuery({
-    queryFn: EventService.getAllEvents,
-    queryKey: ["allEvents"],
+    queryFn: EventService.getCurrentUserEvents,
+    queryKey: ["all-user-events"],
     initialData: [],
   });
 

@@ -22,11 +22,6 @@ export class EventResolver {
           },
         },
         event_locations: true,
-        event_attachments: {
-          include: {
-            attachment: true,
-          },
-        },
         _count: {
           select: {
             event_invitations: {
@@ -36,11 +31,16 @@ export class EventResolver {
             },
           },
         },
+        event_attachments: {
+          include: {
+            attachment: true,
+          },
+        },
       },
-      where: {
-        status: "published",
-        is_public: true,
-      },
+      // where: {
+      //   status: "published",
+      //   is_public: true,
+      // },
       orderBy: {
         start_date: "asc",
       },
@@ -239,6 +239,11 @@ export class EventResolver {
         created_by: userId,
       },
       include: {
+        event_attachments: {
+          include: {
+            attachment: true,
+          },
+        },
         creator: {
           select: {
             id: true,

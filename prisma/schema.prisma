@@ -62,12 +62,155 @@ model users {
   invitations_sent     event_invitations[] @relation("EventInviter")
   invitations_received event_invitations[] @relation("EventInvitedUser")
 
+  // Connection relations
+  connections_initiated user_connections[] @relation("ConnectionInitiator")
+  connections_received  user_connections[] @relation("ConnectionReceiver")
+
+  // Visit tracking relations
+  profile_visits_made     user_profile_visits[] @relation("ProfileVisitor")
+  profile_visits_received user_profile_visits[] @relation("ProfileOwner")
+  event_visits_made       event_page_visits[]   @relation("EventVisitor")
+
   // Indexes for better performance
   @@index([email])
   @@index([username])
   @@index([country, city])
   @@index([created_at])
   @@map("users")
+}
+
+// User connections/friendships table
+model user_connections {
+  id String @id @default(cuid())
+
+  // Connection parties
+  user_id      String // User who initiated the connection
+  connected_id String // User who received the connection request
+
+  // Connection details
+  status          String  @default("pending") // "pending", "accepted", "declined", "blocked"
+  connection_type String? @default("friend") // "friend", "professional", "family", "colleague", etc.
+  notes           String? @db.Text // Personal notes about the connection
+
+  // Interaction tracking
+  last_interaction  DateTime?
+  interaction_count Int       @default(0)
+
+  // Privacy & Settings
+  is_favorite    Boolean @default(false)
+  is_hidden      Boolean @default(false) // Hide from connections list
+  can_see_events Boolean @default(true) // Can see each other's events
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  initiator users @relation("ConnectionInitiator", fields: [user_id], references: [id], onDelete: Cascade)
+  receiver  users @relation("ConnectionReceiver", fields: [connected_id], references: [id], onDelete: Cascade)
+
+  // Constraints
+  @@unique([user_id, connected_id]) // Prevent duplicate connections
+  @@index([user_id])
+  @@index([connected_id])
+  @@index([status])
+  @@index([connection_type])
+  @@map("user_connections")
+}
+
+// User profile visits/views tracking - STORES EVERY VISIT (ALLOWS DUPLICATES)
+model user_profile_visits {
+  id String @id @default(cuid())
+
+  // Visit parties
+  visitor_id      String? // User who viewed the profile (null for anonymous visitors)
+  profile_user_id String // User whose profile was viewed
+
+  // Visit metadata
+  visited_at   DateTime @default(now())
+  ip_address   String? // For anonymous tracking and analytics
+  user_agent   String?  @db.Text // Browser/device info
+  is_anonymous Boolean  @default(false) // True if visitor_id is null
+  referrer     String? // Where they came from
+  session_id   String? // For tracking anonymous sessions
+
+  // Visit context
+  page_section String? // Which part of profile was viewed ("profile", "events", "connections", etc.)
+  duration     Int? // Time spent on page in seconds
+  interactions Int     @default(0) // Number of clicks/interactions during visit
+
+  // Device/Location info
+  device_type String? // "mobile", "desktop", "tablet"
+  browser     String? // "chrome", "safari", "firefox"
+  os          String? // "windows", "ios", "android"
+  country     String? // Detected from IP
+  city        String? // Detected from IP
+
+  // Relationships
+  visitor      users? @relation("ProfileVisitor", fields: [visitor_id], references: [id], onDelete: SetNull)
+  profile_user users  @relation("ProfileOwner", fields: [profile_user_id], references: [id], onDelete: Cascade)
+
+  // Indexes for performance
+  @@index([visitor_id])
+  @@index([profile_user_id])
+  @@index([visited_at])
+  @@index([ip_address])
+  @@index([is_anonymous])
+  @@index([session_id])
+  @@index([profile_user_id, visitor_id, visited_at]) // Compound index for frequency queries
+  @@map("user_profile_visits")
+}
+
+// Event page visits/views tracking - STORES EVERY VISIT (ALLOWS DUPLICATES)
+model event_page_visits {
+  id String @id @default(cuid())
+
+  // Visit parties
+  visitor_id String? // User who viewed the event (null for anonymous visitors)
+  event_id   String // Event that was viewed
+
+  // Visit metadata
+  visited_at   DateTime @default(now())
+  ip_address   String? // For anonymous tracking and analytics
+  user_agent   String?  @db.Text // Browser/device info
+  is_anonymous Boolean  @default(false) // True if visitor_id is null
+  referrer     String? // Where they came from
+  session_id   String? // For tracking anonymous sessions
+
+  // Visit context
+  page_section String? // Which part of event was viewed ("details", "attendees", "locations", etc.)
+  duration     Int? // Time spent on page in seconds
+  interactions Int     @default(0) // Number of clicks/interactions during visit
+
+  // Event-specific tracking
+  rsvp_action   String? // "viewed_rsvp", "started_rsvp", "completed_rsvp", etc.
+  invitation_id String? // If they came through an invitation link
+  utm_source    String? // Marketing tracking
+  utm_campaign  String? // Marketing tracking
+  utm_medium    String? // Marketing tracking
+
+  // Device/Location info
+  device_type String? // "mobile", "desktop", "tablet"
+  browser     String? // "chrome", "safari", "firefox"
+  os          String? // "windows", "ios", "android"
+  country     String? // Detected from IP
+  city        String? // Detected from IP
+
+  // Relationships
+  visitor    users?             @relation("EventVisitor", fields: [visitor_id], references: [id], onDelete: SetNull)
+  event      events             @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  invitation event_invitations? @relation(fields: [invitation_id], references: [id], onDelete: SetNull)
+
+  // Indexes for performance
+  @@index([visitor_id])
+  @@index([event_id])
+  @@index([visited_at])
+  @@index([ip_address])
+  @@index([is_anonymous])
+  @@index([invitation_id])
+  @@index([session_id])
+  @@index([event_id, visitor_id, visited_at]) // Compound index for frequency queries
+  @@map("event_page_visits")
 }
 
 // Attachments table for scalable file management
@@ -314,6 +457,7 @@ model events {
   event_locations   event_locations[]
   event_attachments event_attachments[]
   event_invitations event_invitations[]
+  event_page_visits event_page_visits[] // Track who visits event pages
 
   // Indexes
   @@index([created_by])
@@ -485,6 +629,7 @@ model event_invitations {
   inviter              users               @relation("EventInviter", fields: [invited_by], references: [id], onDelete: Cascade)
   parent_invitation    event_invitations?  @relation("PlusOneInvitation", fields: [parent_invitation_id], references: [id])
   plus_one_invitations event_invitations[] @relation("PlusOneInvitation")
+  event_page_visits    event_page_visits[] // Track visits through invitation links
 
   // Constraints
   @@unique([event_id, invited_user_id]) // One invitation per user per event

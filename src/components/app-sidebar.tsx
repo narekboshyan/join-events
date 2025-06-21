@@ -1,4 +1,4 @@
-import { Home, Inbox } from "lucide-react";
+import { Home, Inbox, Users } from "lucide-react";
 
 import {
   Sidebar,
@@ -23,11 +23,16 @@ const items = [
     url: "/events",
     icon: Inbox,
   },
+  {
+    title: "users",
+    url: "/users",
+    icon: Users,
+  },
 ];
 
 export function AppSidebar() {
   return (
-    <Sidebar className="mt-20">
+    <Sidebar>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>

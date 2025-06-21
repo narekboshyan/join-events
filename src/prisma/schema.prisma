@@ -1,0 +1,522 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User table with complete profile information
+model users {
+  id String @id @default(cuid())
+
+  // Authentication & Basic Info
+  email             String    @unique
+  username          String    @unique
+  password_hash     String? // Optional for OAuth-only users
+  email_verified    Boolean   @default(false)
+  email_verified_at DateTime?
+
+  // Personal Information
+  first_name    String
+  last_name     String
+  date_of_birth DateTime?
+  phone         String?
+  age           Int? // Can be calculated from date_of_birth
+  bio           String?   @db.Text
+
+  // Address Information
+  country      String?
+  city         String?
+  state        String?
+  postal_code  String?
+  full_address String? @db.Text
+
+  // Current location for events
+  location String?
+
+  // Account Status & Metadata
+  is_active         Boolean @default(true)
+  is_verified       Boolean @default(false) // For verified accounts
+  profile_completed Boolean @default(false)
+  privacy_settings  Json? // Store privacy preferences as JSON
+
+  // Timestamps
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  last_login_at DateTime?
+
+  // Relations
+  oauth_accounts      oauth_accounts[]
+  attachments         attachments[]
+  user_hobbies        user_hobbies[]
+  user_activities     user_activities[]
+  user_entertainments user_entertainments[]
+
+  // Event relations
+  events_created       events[]
+  event_roles          event_roles[]
+  role_assignments     event_roles[]       @relation("RoleAssigner")
+  invitations_sent     event_invitations[] @relation("EventInviter")
+  invitations_received event_invitations[] @relation("EventInvitedUser")
+
+  // Indexes for better performance
+  @@index([email])
+  @@index([username])
+  @@index([country, city])
+  @@index([created_at])
+  @@map("users")
+}
+
+// Attachments table for scalable file management
+model attachments {
+  id String @id @default(cuid())
+
+  // File Information
+  filename      String
+  original_name String
+  file_path     String
+  file_url      String?
+  file_size     BigInt // Size in bytes
+  mime_type     String
+  file_type     String // "image", "video", "audio", "document", etc.
+
+  // Metadata
+  width       Int? // For images/videos
+  height      Int? // For images/videos
+  duration    Int? // For videos/audio in seconds
+  alt_text    String? // For accessibility
+  description String? @db.Text
+
+  // Relations & Context
+  user_id          String
+  entity_type      String // "user_avatar", "event_cover", "chat_message", etc.
+  entity_id        String? // ID of the related entity
+  attachment_order Int? // For ordering multiple attachments
+
+  // Status
+  is_processed Boolean @default(false) // For image/video processing
+  is_public    Boolean @default(false)
+  is_deleted   Boolean @default(false) // Soft delete
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  user              users               @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  event_attachments event_attachments[]
+
+  // Indexes
+  @@index([user_id])
+  @@index([entity_type, entity_id])
+  @@index([file_type])
+  @@index([created_at])
+  @@map("attachments")
+}
+
+// Master hobbies table
+model hobbies {
+  id String @id @default(cuid())
+
+  name          String  @unique
+  slug          String  @unique
+  description   String? @db.Text
+  category      String? // "sports", "arts", "technology", "outdoor", etc.
+  icon_url      String?
+  is_active     Boolean @default(true)
+  display_order Int?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  user_hobbies user_hobbies[]
+
+  @@index([category])
+  @@index([is_active])
+  @@map("hobbies")
+}
+
+// User hobbies junction table
+model user_hobbies {
+  id String @id @default(cuid())
+
+  user_id  String
+  hobby_id String
+
+  // Additional data
+  skill_level      String? // "beginner", "intermediate", "advanced", "expert"
+  years_experience Int?
+  is_favorite      Boolean @default(false)
+  interest_level   Int? // 1-10 scale
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  user  users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  hobby hobbies @relation(fields: [hobby_id], references: [id], onDelete: Cascade)
+
+  // Unique constraint
+  @@unique([user_id, hobby_id])
+  @@index([user_id])
+  @@index([hobby_id])
+  @@map("user_hobbies")
+}
+
+// Activities table (what users like to do)
+model activities {
+  id String @id @default(cuid())
+
+  name          String  @unique
+  slug          String  @unique
+  description   String? @db.Text
+  category      String? // "social", "solo", "group", "outdoor", "indoor", etc.
+  icon_url      String?
+  is_active     Boolean @default(true)
+  display_order Int?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  user_activities user_activities[]
+
+  @@index([category])
+  @@index([is_active])
+  @@map("activities")
+}
+
+// User activities junction table
+model user_activities {
+  id String @id @default(cuid())
+
+  user_id     String
+  activity_id String
+
+  // Additional data
+  frequency        String? // "daily", "weekly", "monthly", "occasionally"
+  preference_level Int? // 1-10 scale
+  is_favorite      Boolean @default(false)
+  notes            String? @db.Text
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  user     users      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  activity activities @relation(fields: [activity_id], references: [id], onDelete: Cascade)
+
+  // Unique constraint
+  @@unique([user_id, activity_id])
+  @@index([user_id])
+  @@index([activity_id])
+  @@map("user_activities")
+}
+
+// Entertainment preferences table
+model entertainments {
+  id String @id @default(cuid())
+
+  name          String  @unique
+  slug          String  @unique
+  description   String? @db.Text
+  category      String? // "music", "movies", "games", "books", "comedy", etc.
+  icon_url      String?
+  is_active     Boolean @default(true)
+  display_order Int?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relations
+  user_entertainments user_entertainments[]
+
+  @@index([category])
+  @@index([is_active])
+  @@map("entertainments")
+}
+
+// User entertainment preferences junction table
+model user_entertainments {
+  id String @id @default(cuid())
+
+  user_id          String
+  entertainment_id String
+
+  // Additional data
+  preference_level  Int? // 1-10 scale
+  is_favorite       Boolean  @default(false)
+  genre_preferences String[] // For specific genres within entertainment type
+  notes             String?  @db.Text
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  user          users          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  entertainment entertainments @relation(fields: [entertainment_id], references: [id], onDelete: Cascade)
+
+  // Unique constraint
+  @@unique([user_id, entertainment_id])
+  @@index([user_id])
+  @@index([entertainment_id])
+  @@map("user_entertainments")
+}
+
+// Events table - main event information
+model events {
+  id String @id @default(cuid())
+
+  // Basic Event Information
+  title       String
+  slug        String  @unique
+  description String? @db.Text
+  type        String // "online", "offline", "hybrid"
+  status      String  @default("draft") // "draft", "published", "cancelled", "completed"
+
+  // Event Timing
+  start_date DateTime
+  end_date   DateTime
+  timezone   String? // Store timezone for better handling
+
+  // Event Settings
+  is_public        Boolean  @default(true)
+  is_paid          Boolean  @default(false)
+  price            Decimal? @db.Decimal(10, 2)
+  currency         String?  @default("USD")
+  max_participants Int?
+  min_participants Int?
+  auto_approve     Boolean  @default(true) // Auto approve participation requests
+  allow_guests     Boolean  @default(false) // Allow participants to bring guests
+  require_approval Boolean  @default(false) // Require admin approval for participation
+
+  // Event Metadata
+  category        String? // "party", "birthday", "wedding", "proposal", "business", "social", etc.
+  tags            String[] // Array of tags for better searchability
+  age_restriction String? // "18+", "21+", "all_ages", etc.
+  dress_code      String?
+
+  // Event Admin/Creator
+  created_by  String
+  admin_notes String? @db.Text // Private notes for event admins
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  creator           users               @relation(fields: [created_by], references: [id], onDelete: Cascade)
+  event_roles       event_roles[]
+  event_locations   event_locations[]
+  event_attachments event_attachments[]
+  event_invitations event_invitations[]
+
+  // Indexes
+  @@index([created_by])
+  @@index([type])
+  @@index([status])
+  @@index([category])
+  @@index([start_date])
+  @@index([is_public])
+  @@map("events")
+}
+
+// Event roles - different roles users can have in an event
+model event_roles {
+  id String @id @default(cuid())
+
+  event_id String
+  user_id  String
+  role     String // "admin", "co_admin", "moderator", "organizer", "participant", "volunteer", etc.
+
+  // Role permissions
+  can_invite_users     Boolean @default(false)
+  can_edit_event       Boolean @default(false)
+  can_manage_locations Boolean @default(false)
+  can_view_analytics   Boolean @default(false)
+  can_send_messages    Boolean @default(false)
+
+  // Role metadata
+  assigned_by String? // User ID who assigned this role
+  role_notes  String? @db.Text
+  is_active   Boolean @default(true)
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  event            events @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  user             users  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  assigned_by_user users? @relation("RoleAssigner", fields: [assigned_by], references: [id])
+
+  // Constraints
+  @@unique([event_id, user_id]) // One role per user per event
+  @@index([event_id])
+  @@index([user_id])
+  @@index([role])
+  @@map("event_roles")
+}
+
+// Event locations - multiple venues/locations for an event
+model event_locations {
+  id String @id @default(cuid())
+
+  event_id String
+
+  // Location Information
+  name        String
+  venue_type  String? // "primary", "secondary", "meeting_point", "backup", etc.
+  address     String?  @db.Text
+  city        String?
+  state       String?
+  country     String?
+  postal_code String?
+  latitude    Decimal? @db.Decimal(10, 8)
+  longitude   Decimal? @db.Decimal(11, 8)
+
+  // Online location details (for online/hybrid events)
+  online_url      String? // Zoom, Meet, etc.
+  online_platform String? // "zoom", "meet", "teams", "discord", etc.
+  meeting_id      String?
+  access_code     String?
+
+  // Timing for this specific location
+  start_datetime DateTime
+  end_datetime   DateTime
+  setup_time     DateTime? // When setup starts
+  cleanup_time   DateTime? // When cleanup ends
+
+  // Location settings
+  capacity             Int?
+  is_accessible        Boolean @default(true) // ADA accessibility
+  parking_info         String? @db.Text
+  public_transport     String? @db.Text
+  special_instructions String? @db.Text
+
+  // Location order and status
+  display_order Int     @default(0)
+  is_active     Boolean @default(true)
+  notes         String? @db.Text
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  event events @relation(fields: [event_id], references: [id], onDelete: Cascade)
+
+  // Indexes
+  @@index([event_id])
+  @@index([start_datetime])
+  @@index([city, country])
+  @@map("event_locations")
+}
+
+// Event attachments - link attachments to events
+model event_attachments {
+  id String @id @default(cuid())
+
+  event_id        String
+  attachment_id   String
+  attachment_type String // "cover_image", "gallery", "document", "video", "banner", etc.
+  display_order   Int     @default(0)
+  is_featured     Boolean @default(false)
+
+  // Timestamps
+  created_at DateTime @default(now())
+
+  // Relationships
+  event      events      @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  attachment attachments @relation(fields: [attachment_id], references: [id], onDelete: Cascade)
+
+  // Constraints
+  @@unique([event_id, attachment_id])
+  @@index([event_id])
+  @@index([attachment_type])
+  @@map("event_attachments")
+}
+
+// Event invitations - track invitations and responses
+model event_invitations {
+  id String @id @default(cuid())
+
+  event_id        String
+  invited_user_id String? // Null if invitation is by email only
+  invited_email   String? // For non-registered users
+  invited_by      String // User who sent the invitation
+
+  // Invitation details
+  invitation_type  String  @default("participant") // "participant", "admin", "organizer", etc.
+  personal_message String? @db.Text
+  max_guests       Int     @default(0) // How many guests this person can bring
+
+  // Response tracking
+  status               String    @default("pending") // "pending", "accepted", "declined", "cancelled"
+  response_date        DateTime?
+  decline_reason       String?   @db.Text
+  guest_count          Int       @default(0) // How many guests they're bringing
+  dietary_restrictions String?   @db.Text
+  special_requests     String?   @db.Text
+
+  // RSVP details
+  will_attend_all_locations Boolean?
+  attending_locations       String[] // Array of location IDs they'll attend
+  arrival_time              DateTime?
+  departure_time            DateTime?
+
+  // Invitation metadata
+  is_plus_one          Boolean   @default(false) // Is this a plus-one invitation
+  parent_invitation_id String? // Reference to main invitation if this is a plus-one
+  reminder_sent_at     DateTime?
+  reminder_count       Int       @default(0)
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  event                events              @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  invited_user         users?              @relation("EventInvitedUser", fields: [invited_user_id], references: [id], onDelete: Cascade)
+  inviter              users               @relation("EventInviter", fields: [invited_by], references: [id], onDelete: Cascade)
+  parent_invitation    event_invitations?  @relation("PlusOneInvitation", fields: [parent_invitation_id], references: [id])
+  plus_one_invitations event_invitations[] @relation("PlusOneInvitation")
+
+  // Constraints
+  @@unique([event_id, invited_user_id]) // One invitation per user per event
+  @@index([event_id])
+  @@index([invited_user_id])
+  @@index([invited_by])
+  @@index([status])
+  @@index([invited_email])
+  @@map("event_invitations")
+}
+
+// OAuth accounts table for OAuth providers
+model oauth_accounts {
+  id                String    @id @default(cuid())
+  user_id           String
+  provider          String // "google", "facebook", "twitter", etc.
+  provider_id       String // The ID from the OAuth provider
+  provider_email    String?
+  provider_username String?
+  access_token      String? // Store encrypted in production
+  refresh_token     String? // Store encrypted in production
+  expires_at        DateTime?
+  token_type        String?
+  scope             String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([provider, provider_id])
+  @@index([user_id])
+  @@index([provider])
+  @@map("oauth_accounts")
+}

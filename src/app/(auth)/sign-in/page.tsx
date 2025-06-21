@@ -17,10 +17,11 @@ import { Button } from "@/components/ui/button";
 import { SignInInput, signInSchema } from "@/lib/validations/auth";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null); // Use a specific state for auth errors
 
   const {
     control,
@@ -29,7 +30,7 @@ export default function SignInPage() {
     formState: { errors, isSubmitting, isValid },
   } = useForm<SignInInput>({
     resolver: zodResolver(signInSchema),
-    mode: "onChange", // Enable real-time validation
+    mode: "onChange",
     defaultValues: {
       email: "",
       password: "",
@@ -40,26 +41,21 @@ export default function SignInPage() {
   const watchedFields = watch();
 
   const onSubmit = async (data: SignInInput) => {
-    setAuthError(null); // Clear previous auth errors
     try {
       const result = await signIn("credentials", {
-        redirect: false, // Prevent redirect on error, handle manually
+        redirect: false,
         email: data.email,
         password: data.password,
+        redirectTo: "/dashboard",
       });
 
       if (result?.error) {
-        setAuthError(result.error);
+        console.log(result.error);
       } else {
-        // Sign in successful, redirect or show success message
-        // For demonstration, we'll just log and redirect
-        console.log("Sign in successful!");
-        window.location.href = "/"; // Redirect to home page
+        router.push("/dashboard");
       }
     } catch (err) {
-      setAuthError(
-        err instanceof Error ? err.message : "An unexpected error occurred"
-      );
+      console.log(err);
     }
   };
 
@@ -83,24 +79,7 @@ export default function SignInPage() {
           </p>
         </div>
 
-        {/* Main Card */}
         <div className="bg-card text-card-foreground rounded-2xl shadow-xl border border-border p-8">
-          {/* Success Message (handled by NextAuth redirect, but keeping for potential custom success states) */}
-          {/* {isSuccess && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3">
-              <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-              <p className="text-green-800 text-sm">Sign in successful! Redirecting...</p>
-            </div>
-          )} */}
-
-          {/* Error Message */}
-          {authError && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
-              <p className="text-red-800 text-sm">{authError}</p>
-            </div>
-          )}
-
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Email Field */}
             <div className="space-y-2">
@@ -228,7 +207,7 @@ export default function SignInPage() {
                 bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform hover:scale-[1.02] active:scale-[0.98]
                 ${
                   !isValid || isSubmitting
-                    ? "opacity-50 cursor-not-allowed" // Tailwind's opacity for disabled state
+                    ? "opacity-50 cursor-not-allowed"
                     : ""
                 }
               `}

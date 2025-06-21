@@ -11,10 +11,10 @@ export default auth((req) => {
   );
 
   if (isProtectedRoute && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/auth/signin", nextUrl));
+    return NextResponse.redirect(new URL("/sign-in", nextUrl));
   }
 
-  if (isLoggedIn && nextUrl.pathname === "/auth/signin") {
+  if (isLoggedIn && nextUrl.pathname === "/sign-in") {
     return NextResponse.redirect(new URL("/dashboard", nextUrl));
   }
 
@@ -24,3 +24,5 @@ export default auth((req) => {
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
+
+export const runtime = "nodejs";

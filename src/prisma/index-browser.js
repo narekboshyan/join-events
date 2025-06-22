@@ -148,6 +148,67 @@ exports.Prisma.UsersScalarFieldEnum = {
   last_login_at: 'last_login_at'
 };
 
+exports.Prisma.User_connectionsScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  connected_id: 'connected_id',
+  status: 'status',
+  connection_type: 'connection_type',
+  notes: 'notes',
+  last_interaction: 'last_interaction',
+  interaction_count: 'interaction_count',
+  is_favorite: 'is_favorite',
+  is_hidden: 'is_hidden',
+  can_see_events: 'can_see_events',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.User_profile_visitsScalarFieldEnum = {
+  id: 'id',
+  visitor_id: 'visitor_id',
+  profile_user_id: 'profile_user_id',
+  visited_at: 'visited_at',
+  ip_address: 'ip_address',
+  user_agent: 'user_agent',
+  is_anonymous: 'is_anonymous',
+  referrer: 'referrer',
+  session_id: 'session_id',
+  page_section: 'page_section',
+  duration: 'duration',
+  interactions: 'interactions',
+  device_type: 'device_type',
+  browser: 'browser',
+  os: 'os',
+  country: 'country',
+  city: 'city'
+};
+
+exports.Prisma.Event_page_visitsScalarFieldEnum = {
+  id: 'id',
+  visitor_id: 'visitor_id',
+  event_id: 'event_id',
+  visited_at: 'visited_at',
+  ip_address: 'ip_address',
+  user_agent: 'user_agent',
+  is_anonymous: 'is_anonymous',
+  referrer: 'referrer',
+  session_id: 'session_id',
+  page_section: 'page_section',
+  duration: 'duration',
+  interactions: 'interactions',
+  rsvp_action: 'rsvp_action',
+  invitation_id: 'invitation_id',
+  utm_source: 'utm_source',
+  utm_campaign: 'utm_campaign',
+  utm_medium: 'utm_medium',
+  device_type: 'device_type',
+  browser: 'browser',
+  os: 'os',
+  country: 'country',
+  city: 'city'
+};
+
 exports.Prisma.AttachmentsScalarFieldEnum = {
   id: 'id',
   filename: 'filename',
@@ -408,6 +469,9 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   users: 'users',
+  user_connections: 'user_connections',
+  user_profile_visits: 'user_profile_visits',
+  event_page_visits: 'event_page_visits',
   attachments: 'attachments',
   hobbies: 'hobbies',
   user_hobbies: 'user_hobbies',

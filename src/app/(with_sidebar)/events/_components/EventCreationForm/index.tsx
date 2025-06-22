@@ -43,7 +43,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { EventService } from "@/api/services/event.service";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   EventCategory,
   EventCreationInput,
@@ -52,7 +52,8 @@ import {
 } from "@/lib/validations/event";
 import { eventTemplates } from "@/utils/event";
 
-export function EventCreationForm() {
+export function EventCreationForm({ onClose }: { onClose: () => void }) {
+  const queryClient = useQueryClient();
   const form = useForm<EventCreationInput>({
     resolver: zodResolver(eventCreationSchema),
     mode: "onChange",
@@ -99,10 +100,8 @@ export function EventCreationForm() {
     handleSubmit,
     watch,
     setValue,
-    formState: { errors, isSubmitting, isValid },
+    formState: { isSubmitting, isValid },
   } = form;
-
-  console.log({ errors });
 
   const category = watch("category");
   const eventType = watch("type");
@@ -119,6 +118,10 @@ export function EventCreationForm() {
 
   const { mutate } = useMutation({
     mutationFn: EventService.createEvent,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["all-user-events"] });
+      onClose();
+    },
   });
   // Apply template settings when template is selected
   const applyTemplate = (templateId: string) => {

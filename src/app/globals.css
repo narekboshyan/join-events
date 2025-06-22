@@ -4,8 +4,8 @@
 
 :root {
   /* Light mode: #fff6d8 background, #050605 text */
-  --background: 255 246 216; /* #fff6d8 in RGB */
-  --foreground: 5 6 5; /* #050605 in RGB */
+  --background: #ffffff;
+  --foreground: #171717;
 
   /* shadcn/ui color variables */
   --border: oklch(0.923 0.003 48.717);
@@ -43,8 +43,8 @@
 
 .dark {
   /* Dark mode: #050605 background, #fff6d8 text */
-  --background: 5 6 5; /* #050605 in RGB */
-  --foreground: 255 246 216; /* #fff6d8 in RGB */
+  --background: #171717;
+  --foreground: #ffffff;
 
   /* Dark mode shadcn/ui colors */
   --border: oklch(1 0 0 / 10%);

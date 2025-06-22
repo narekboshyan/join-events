@@ -19,6 +19,21 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 /**
+ * Model user_connections
+ * 
+ */
+export type user_connections = $Result.DefaultSelection<Prisma.$user_connectionsPayload>
+/**
+ * Model user_profile_visits
+ * 
+ */
+export type user_profile_visits = $Result.DefaultSelection<Prisma.$user_profile_visitsPayload>
+/**
+ * Model event_page_visits
+ * 
+ */
+export type event_page_visits = $Result.DefaultSelection<Prisma.$event_page_visitsPayload>
+/**
  * Model attachments
  * 
  */
@@ -218,6 +233,36 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_connections`: Exposes CRUD operations for the **user_connections** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_connections
+    * const user_connections = await prisma.user_connections.findMany()
+    * ```
+    */
+  get user_connections(): Prisma.user_connectionsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_profile_visits`: Exposes CRUD operations for the **user_profile_visits** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_profile_visits
+    * const user_profile_visits = await prisma.user_profile_visits.findMany()
+    * ```
+    */
+  get user_profile_visits(): Prisma.user_profile_visitsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_page_visits`: Exposes CRUD operations for the **event_page_visits** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_page_visits
+    * const event_page_visits = await prisma.event_page_visits.findMany()
+    * ```
+    */
+  get event_page_visits(): Prisma.event_page_visitsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.attachments`: Exposes CRUD operations for the **attachments** model.
@@ -789,6 +834,9 @@ export namespace Prisma {
 
   export const ModelName: {
     users: 'users',
+    user_connections: 'user_connections',
+    user_profile_visits: 'user_profile_visits',
+    event_page_visits: 'event_page_visits',
     attachments: 'attachments',
     hobbies: 'hobbies',
     user_hobbies: 'user_hobbies',
@@ -820,7 +868,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "attachments" | "hobbies" | "user_hobbies" | "activities" | "user_activities" | "entertainments" | "user_entertainments" | "events" | "event_roles" | "event_locations" | "event_attachments" | "event_invitations" | "oauth_accounts"
+      modelProps: "users" | "user_connections" | "user_profile_visits" | "event_page_visits" | "attachments" | "hobbies" | "user_hobbies" | "activities" | "user_activities" | "entertainments" | "user_entertainments" | "events" | "event_roles" | "event_locations" | "event_attachments" | "event_invitations" | "oauth_accounts"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -895,6 +943,228 @@ export namespace Prisma {
           count: {
             args: Prisma.usersCountArgs<ExtArgs>
             result: $Utils.Optional<UsersCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_connections: {
+        payload: Prisma.$user_connectionsPayload<ExtArgs>
+        fields: Prisma.user_connectionsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_connectionsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_connectionsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          findFirst: {
+            args: Prisma.user_connectionsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_connectionsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          findMany: {
+            args: Prisma.user_connectionsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>[]
+          }
+          create: {
+            args: Prisma.user_connectionsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          createMany: {
+            args: Prisma.user_connectionsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.user_connectionsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>[]
+          }
+          delete: {
+            args: Prisma.user_connectionsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          update: {
+            args: Prisma.user_connectionsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_connectionsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_connectionsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.user_connectionsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>[]
+          }
+          upsert: {
+            args: Prisma.user_connectionsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_connectionsPayload>
+          }
+          aggregate: {
+            args: Prisma.User_connectionsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_connections>
+          }
+          groupBy: {
+            args: Prisma.user_connectionsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_connectionsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_connectionsCountArgs<ExtArgs>
+            result: $Utils.Optional<User_connectionsCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_profile_visits: {
+        payload: Prisma.$user_profile_visitsPayload<ExtArgs>
+        fields: Prisma.user_profile_visitsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_profile_visitsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_profile_visitsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          findFirst: {
+            args: Prisma.user_profile_visitsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_profile_visitsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          findMany: {
+            args: Prisma.user_profile_visitsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>[]
+          }
+          create: {
+            args: Prisma.user_profile_visitsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          createMany: {
+            args: Prisma.user_profile_visitsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.user_profile_visitsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>[]
+          }
+          delete: {
+            args: Prisma.user_profile_visitsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          update: {
+            args: Prisma.user_profile_visitsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_profile_visitsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_profile_visitsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.user_profile_visitsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>[]
+          }
+          upsert: {
+            args: Prisma.user_profile_visitsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_profile_visitsPayload>
+          }
+          aggregate: {
+            args: Prisma.User_profile_visitsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_profile_visits>
+          }
+          groupBy: {
+            args: Prisma.user_profile_visitsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_profile_visitsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_profile_visitsCountArgs<ExtArgs>
+            result: $Utils.Optional<User_profile_visitsCountAggregateOutputType> | number
+          }
+        }
+      }
+      event_page_visits: {
+        payload: Prisma.$event_page_visitsPayload<ExtArgs>
+        fields: Prisma.event_page_visitsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.event_page_visitsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.event_page_visitsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          findFirst: {
+            args: Prisma.event_page_visitsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.event_page_visitsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          findMany: {
+            args: Prisma.event_page_visitsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>[]
+          }
+          create: {
+            args: Prisma.event_page_visitsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          createMany: {
+            args: Prisma.event_page_visitsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.event_page_visitsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>[]
+          }
+          delete: {
+            args: Prisma.event_page_visitsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          update: {
+            args: Prisma.event_page_visitsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          deleteMany: {
+            args: Prisma.event_page_visitsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.event_page_visitsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.event_page_visitsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>[]
+          }
+          upsert: {
+            args: Prisma.event_page_visitsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_page_visitsPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_page_visitsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_page_visits>
+          }
+          groupBy: {
+            args: Prisma.event_page_visitsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_page_visitsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.event_page_visitsCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_page_visitsCountAggregateOutputType> | number
           }
         }
       }
@@ -1945,6 +2215,9 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     users?: usersOmit
+    user_connections?: user_connectionsOmit
+    user_profile_visits?: user_profile_visitsOmit
+    event_page_visits?: event_page_visitsOmit
     attachments?: attachmentsOmit
     hobbies?: hobbiesOmit
     user_hobbies?: user_hobbiesOmit
@@ -2062,6 +2335,11 @@ export namespace Prisma {
     role_assignments: number
     invitations_sent: number
     invitations_received: number
+    connections_initiated: number
+    connections_received: number
+    profile_visits_made: number
+    profile_visits_received: number
+    event_visits_made: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2075,6 +2353,11 @@ export namespace Prisma {
     role_assignments?: boolean | UsersCountOutputTypeCountRole_assignmentsArgs
     invitations_sent?: boolean | UsersCountOutputTypeCountInvitations_sentArgs
     invitations_received?: boolean | UsersCountOutputTypeCountInvitations_receivedArgs
+    connections_initiated?: boolean | UsersCountOutputTypeCountConnections_initiatedArgs
+    connections_received?: boolean | UsersCountOutputTypeCountConnections_receivedArgs
+    profile_visits_made?: boolean | UsersCountOutputTypeCountProfile_visits_madeArgs
+    profile_visits_received?: boolean | UsersCountOutputTypeCountProfile_visits_receivedArgs
+    event_visits_made?: boolean | UsersCountOutputTypeCountEvent_visits_madeArgs
   }
 
   // Custom InputTypes
@@ -2156,6 +2439,41 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountInvitations_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: event_invitationsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountConnections_initiatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_connectionsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountConnections_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_connectionsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountProfile_visits_madeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_profile_visitsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountProfile_visits_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_profile_visitsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountEvent_visits_madeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_page_visitsWhereInput
   }
 
 
@@ -2292,6 +2610,7 @@ export namespace Prisma {
     event_locations: number
     event_attachments: number
     event_invitations: number
+    event_page_visits: number
   }
 
   export type EventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2299,6 +2618,7 @@ export namespace Prisma {
     event_locations?: boolean | EventsCountOutputTypeCountEvent_locationsArgs
     event_attachments?: boolean | EventsCountOutputTypeCountEvent_attachmentsArgs
     event_invitations?: boolean | EventsCountOutputTypeCountEvent_invitationsArgs
+    event_page_visits?: boolean | EventsCountOutputTypeCountEvent_page_visitsArgs
   }
 
   // Custom InputTypes
@@ -2340,6 +2660,13 @@ export namespace Prisma {
     where?: event_invitationsWhereInput
   }
 
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountEvent_page_visitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_page_visitsWhereInput
+  }
+
 
   /**
    * Count Type Event_invitationsCountOutputType
@@ -2347,10 +2674,12 @@ export namespace Prisma {
 
   export type Event_invitationsCountOutputType = {
     plus_one_invitations: number
+    event_page_visits: number
   }
 
   export type Event_invitationsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     plus_one_invitations?: boolean | Event_invitationsCountOutputTypeCountPlus_one_invitationsArgs
+    event_page_visits?: boolean | Event_invitationsCountOutputTypeCountEvent_page_visitsArgs
   }
 
   // Custom InputTypes
@@ -2369,6 +2698,13 @@ export namespace Prisma {
    */
   export type Event_invitationsCountOutputTypeCountPlus_one_invitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: event_invitationsWhereInput
+  }
+
+  /**
+   * Event_invitationsCountOutputType without action
+   */
+  export type Event_invitationsCountOutputTypeCountEvent_page_visitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_page_visitsWhereInput
   }
 
 
@@ -2740,6 +3076,11 @@ export namespace Prisma {
     role_assignments?: boolean | users$role_assignmentsArgs<ExtArgs>
     invitations_sent?: boolean | users$invitations_sentArgs<ExtArgs>
     invitations_received?: boolean | users$invitations_receivedArgs<ExtArgs>
+    connections_initiated?: boolean | users$connections_initiatedArgs<ExtArgs>
+    connections_received?: boolean | users$connections_receivedArgs<ExtArgs>
+    profile_visits_made?: boolean | users$profile_visits_madeArgs<ExtArgs>
+    profile_visits_received?: boolean | users$profile_visits_receivedArgs<ExtArgs>
+    event_visits_made?: boolean | users$event_visits_madeArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -2839,6 +3180,11 @@ export namespace Prisma {
     role_assignments?: boolean | users$role_assignmentsArgs<ExtArgs>
     invitations_sent?: boolean | users$invitations_sentArgs<ExtArgs>
     invitations_received?: boolean | users$invitations_receivedArgs<ExtArgs>
+    connections_initiated?: boolean | users$connections_initiatedArgs<ExtArgs>
+    connections_received?: boolean | users$connections_receivedArgs<ExtArgs>
+    profile_visits_made?: boolean | users$profile_visits_madeArgs<ExtArgs>
+    profile_visits_received?: boolean | users$profile_visits_receivedArgs<ExtArgs>
+    event_visits_made?: boolean | users$event_visits_madeArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2857,6 +3203,11 @@ export namespace Prisma {
       role_assignments: Prisma.$event_rolesPayload<ExtArgs>[]
       invitations_sent: Prisma.$event_invitationsPayload<ExtArgs>[]
       invitations_received: Prisma.$event_invitationsPayload<ExtArgs>[]
+      connections_initiated: Prisma.$user_connectionsPayload<ExtArgs>[]
+      connections_received: Prisma.$user_connectionsPayload<ExtArgs>[]
+      profile_visits_made: Prisma.$user_profile_visitsPayload<ExtArgs>[]
+      profile_visits_received: Prisma.$user_profile_visitsPayload<ExtArgs>[]
+      event_visits_made: Prisma.$event_page_visitsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3288,6 +3639,11 @@ export namespace Prisma {
     role_assignments<T extends users$role_assignmentsArgs<ExtArgs> = {}>(args?: Subset<T, users$role_assignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_rolesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitations_sent<T extends users$invitations_sentArgs<ExtArgs> = {}>(args?: Subset<T, users$invitations_sentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     invitations_received<T extends users$invitations_receivedArgs<ExtArgs> = {}>(args?: Subset<T, users$invitations_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    connections_initiated<T extends users$connections_initiatedArgs<ExtArgs> = {}>(args?: Subset<T, users$connections_initiatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    connections_received<T extends users$connections_receivedArgs<ExtArgs> = {}>(args?: Subset<T, users$connections_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profile_visits_made<T extends users$profile_visits_madeArgs<ExtArgs> = {}>(args?: Subset<T, users$profile_visits_madeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profile_visits_received<T extends users$profile_visits_receivedArgs<ExtArgs> = {}>(args?: Subset<T, users$profile_visits_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_visits_made<T extends users$event_visits_madeArgs<ExtArgs> = {}>(args?: Subset<T, users$event_visits_madeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3970,6 +4326,126 @@ export namespace Prisma {
   }
 
   /**
+   * users.connections_initiated
+   */
+  export type users$connections_initiatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    where?: user_connectionsWhereInput
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    cursor?: user_connectionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_connectionsScalarFieldEnum | User_connectionsScalarFieldEnum[]
+  }
+
+  /**
+   * users.connections_received
+   */
+  export type users$connections_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    where?: user_connectionsWhereInput
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    cursor?: user_connectionsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_connectionsScalarFieldEnum | User_connectionsScalarFieldEnum[]
+  }
+
+  /**
+   * users.profile_visits_made
+   */
+  export type users$profile_visits_madeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    where?: user_profile_visitsWhereInput
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    cursor?: user_profile_visitsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_profile_visitsScalarFieldEnum | User_profile_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * users.profile_visits_received
+   */
+  export type users$profile_visits_receivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    where?: user_profile_visitsWhereInput
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    cursor?: user_profile_visitsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_profile_visitsScalarFieldEnum | User_profile_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * users.event_visits_made
+   */
+  export type users$event_visits_madeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    where?: event_page_visitsWhereInput
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    cursor?: event_page_visitsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3985,6 +4461,3860 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: usersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_connections
+   */
+
+  export type AggregateUser_connections = {
+    _count: User_connectionsCountAggregateOutputType | null
+    _avg: User_connectionsAvgAggregateOutputType | null
+    _sum: User_connectionsSumAggregateOutputType | null
+    _min: User_connectionsMinAggregateOutputType | null
+    _max: User_connectionsMaxAggregateOutputType | null
+  }
+
+  export type User_connectionsAvgAggregateOutputType = {
+    interaction_count: number | null
+  }
+
+  export type User_connectionsSumAggregateOutputType = {
+    interaction_count: number | null
+  }
+
+  export type User_connectionsMinAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    connected_id: string | null
+    status: string | null
+    connection_type: string | null
+    notes: string | null
+    last_interaction: Date | null
+    interaction_count: number | null
+    is_favorite: boolean | null
+    is_hidden: boolean | null
+    can_see_events: boolean | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type User_connectionsMaxAggregateOutputType = {
+    id: string | null
+    user_id: string | null
+    connected_id: string | null
+    status: string | null
+    connection_type: string | null
+    notes: string | null
+    last_interaction: Date | null
+    interaction_count: number | null
+    is_favorite: boolean | null
+    is_hidden: boolean | null
+    can_see_events: boolean | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type User_connectionsCountAggregateOutputType = {
+    id: number
+    user_id: number
+    connected_id: number
+    status: number
+    connection_type: number
+    notes: number
+    last_interaction: number
+    interaction_count: number
+    is_favorite: number
+    is_hidden: number
+    can_see_events: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type User_connectionsAvgAggregateInputType = {
+    interaction_count?: true
+  }
+
+  export type User_connectionsSumAggregateInputType = {
+    interaction_count?: true
+  }
+
+  export type User_connectionsMinAggregateInputType = {
+    id?: true
+    user_id?: true
+    connected_id?: true
+    status?: true
+    connection_type?: true
+    notes?: true
+    last_interaction?: true
+    interaction_count?: true
+    is_favorite?: true
+    is_hidden?: true
+    can_see_events?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type User_connectionsMaxAggregateInputType = {
+    id?: true
+    user_id?: true
+    connected_id?: true
+    status?: true
+    connection_type?: true
+    notes?: true
+    last_interaction?: true
+    interaction_count?: true
+    is_favorite?: true
+    is_hidden?: true
+    can_see_events?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type User_connectionsCountAggregateInputType = {
+    id?: true
+    user_id?: true
+    connected_id?: true
+    status?: true
+    connection_type?: true
+    notes?: true
+    last_interaction?: true
+    interaction_count?: true
+    is_favorite?: true
+    is_hidden?: true
+    can_see_events?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type User_connectionsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_connections to aggregate.
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_connections to fetch.
+     */
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_connectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_connections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_connections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_connections
+    **/
+    _count?: true | User_connectionsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_connectionsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_connectionsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_connectionsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_connectionsMaxAggregateInputType
+  }
+
+  export type GetUser_connectionsAggregateType<T extends User_connectionsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_connections]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_connections[P]>
+      : GetScalarType<T[P], AggregateUser_connections[P]>
+  }
+
+
+
+
+  export type user_connectionsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_connectionsWhereInput
+    orderBy?: user_connectionsOrderByWithAggregationInput | user_connectionsOrderByWithAggregationInput[]
+    by: User_connectionsScalarFieldEnum[] | User_connectionsScalarFieldEnum
+    having?: user_connectionsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_connectionsCountAggregateInputType | true
+    _avg?: User_connectionsAvgAggregateInputType
+    _sum?: User_connectionsSumAggregateInputType
+    _min?: User_connectionsMinAggregateInputType
+    _max?: User_connectionsMaxAggregateInputType
+  }
+
+  export type User_connectionsGroupByOutputType = {
+    id: string
+    user_id: string
+    connected_id: string
+    status: string
+    connection_type: string | null
+    notes: string | null
+    last_interaction: Date | null
+    interaction_count: number
+    is_favorite: boolean
+    is_hidden: boolean
+    can_see_events: boolean
+    created_at: Date
+    updated_at: Date
+    _count: User_connectionsCountAggregateOutputType | null
+    _avg: User_connectionsAvgAggregateOutputType | null
+    _sum: User_connectionsSumAggregateOutputType | null
+    _min: User_connectionsMinAggregateOutputType | null
+    _max: User_connectionsMaxAggregateOutputType | null
+  }
+
+  type GetUser_connectionsGroupByPayload<T extends user_connectionsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_connectionsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_connectionsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_connectionsGroupByOutputType[P]>
+            : GetScalarType<T[P], User_connectionsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_connectionsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    connected_id?: boolean
+    status?: boolean
+    connection_type?: boolean
+    notes?: boolean
+    last_interaction?: boolean
+    interaction_count?: boolean
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_connections"]>
+
+  export type user_connectionsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    connected_id?: boolean
+    status?: boolean
+    connection_type?: boolean
+    notes?: boolean
+    last_interaction?: boolean
+    interaction_count?: boolean
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_connections"]>
+
+  export type user_connectionsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    user_id?: boolean
+    connected_id?: boolean
+    status?: boolean
+    connection_type?: boolean
+    notes?: boolean
+    last_interaction?: boolean
+    interaction_count?: boolean
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_connections"]>
+
+  export type user_connectionsSelectScalar = {
+    id?: boolean
+    user_id?: boolean
+    connected_id?: boolean
+    status?: boolean
+    connection_type?: boolean
+    notes?: boolean
+    last_interaction?: boolean
+    interaction_count?: boolean
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type user_connectionsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "connected_id" | "status" | "connection_type" | "notes" | "last_interaction" | "interaction_count" | "is_favorite" | "is_hidden" | "can_see_events" | "created_at" | "updated_at", ExtArgs["result"]["user_connections"]>
+  export type user_connectionsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type user_connectionsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type user_connectionsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    initiator?: boolean | usersDefaultArgs<ExtArgs>
+    receiver?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $user_connectionsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_connections"
+    objects: {
+      initiator: Prisma.$usersPayload<ExtArgs>
+      receiver: Prisma.$usersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      user_id: string
+      connected_id: string
+      status: string
+      connection_type: string | null
+      notes: string | null
+      last_interaction: Date | null
+      interaction_count: number
+      is_favorite: boolean
+      is_hidden: boolean
+      can_see_events: boolean
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["user_connections"]>
+    composites: {}
+  }
+
+  type user_connectionsGetPayload<S extends boolean | null | undefined | user_connectionsDefaultArgs> = $Result.GetResult<Prisma.$user_connectionsPayload, S>
+
+  type user_connectionsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_connectionsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: User_connectionsCountAggregateInputType | true
+    }
+
+  export interface user_connectionsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_connections'], meta: { name: 'user_connections' } }
+    /**
+     * Find zero or one User_connections that matches the filter.
+     * @param {user_connectionsFindUniqueArgs} args - Arguments to find a User_connections
+     * @example
+     * // Get one User_connections
+     * const user_connections = await prisma.user_connections.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_connectionsFindUniqueArgs>(args: SelectSubset<T, user_connectionsFindUniqueArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_connections that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_connectionsFindUniqueOrThrowArgs} args - Arguments to find a User_connections
+     * @example
+     * // Get one User_connections
+     * const user_connections = await prisma.user_connections.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_connectionsFindUniqueOrThrowArgs>(args: SelectSubset<T, user_connectionsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_connections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsFindFirstArgs} args - Arguments to find a User_connections
+     * @example
+     * // Get one User_connections
+     * const user_connections = await prisma.user_connections.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_connectionsFindFirstArgs>(args?: SelectSubset<T, user_connectionsFindFirstArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_connections that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsFindFirstOrThrowArgs} args - Arguments to find a User_connections
+     * @example
+     * // Get one User_connections
+     * const user_connections = await prisma.user_connections.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_connectionsFindFirstOrThrowArgs>(args?: SelectSubset<T, user_connectionsFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_connections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_connections
+     * const user_connections = await prisma.user_connections.findMany()
+     * 
+     * // Get first 10 User_connections
+     * const user_connections = await prisma.user_connections.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_connectionsWithIdOnly = await prisma.user_connections.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_connectionsFindManyArgs>(args?: SelectSubset<T, user_connectionsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_connections.
+     * @param {user_connectionsCreateArgs} args - Arguments to create a User_connections.
+     * @example
+     * // Create one User_connections
+     * const User_connections = await prisma.user_connections.create({
+     *   data: {
+     *     // ... data to create a User_connections
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_connectionsCreateArgs>(args: SelectSubset<T, user_connectionsCreateArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_connections.
+     * @param {user_connectionsCreateManyArgs} args - Arguments to create many User_connections.
+     * @example
+     * // Create many User_connections
+     * const user_connections = await prisma.user_connections.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_connectionsCreateManyArgs>(args?: SelectSubset<T, user_connectionsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_connections and returns the data saved in the database.
+     * @param {user_connectionsCreateManyAndReturnArgs} args - Arguments to create many User_connections.
+     * @example
+     * // Create many User_connections
+     * const user_connections = await prisma.user_connections.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_connections and only return the `id`
+     * const user_connectionsWithIdOnly = await prisma.user_connections.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends user_connectionsCreateManyAndReturnArgs>(args?: SelectSubset<T, user_connectionsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User_connections.
+     * @param {user_connectionsDeleteArgs} args - Arguments to delete one User_connections.
+     * @example
+     * // Delete one User_connections
+     * const User_connections = await prisma.user_connections.delete({
+     *   where: {
+     *     // ... filter to delete one User_connections
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_connectionsDeleteArgs>(args: SelectSubset<T, user_connectionsDeleteArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_connections.
+     * @param {user_connectionsUpdateArgs} args - Arguments to update one User_connections.
+     * @example
+     * // Update one User_connections
+     * const user_connections = await prisma.user_connections.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_connectionsUpdateArgs>(args: SelectSubset<T, user_connectionsUpdateArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_connections.
+     * @param {user_connectionsDeleteManyArgs} args - Arguments to filter User_connections to delete.
+     * @example
+     * // Delete a few User_connections
+     * const { count } = await prisma.user_connections.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_connectionsDeleteManyArgs>(args?: SelectSubset<T, user_connectionsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_connections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_connections
+     * const user_connections = await prisma.user_connections.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_connectionsUpdateManyArgs>(args: SelectSubset<T, user_connectionsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_connections and returns the data updated in the database.
+     * @param {user_connectionsUpdateManyAndReturnArgs} args - Arguments to update many User_connections.
+     * @example
+     * // Update many User_connections
+     * const user_connections = await prisma.user_connections.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more User_connections and only return the `id`
+     * const user_connectionsWithIdOnly = await prisma.user_connections.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends user_connectionsUpdateManyAndReturnArgs>(args: SelectSubset<T, user_connectionsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User_connections.
+     * @param {user_connectionsUpsertArgs} args - Arguments to update or create a User_connections.
+     * @example
+     * // Update or create a User_connections
+     * const user_connections = await prisma.user_connections.upsert({
+     *   create: {
+     *     // ... data to create a User_connections
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_connections we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_connectionsUpsertArgs>(args: SelectSubset<T, user_connectionsUpsertArgs<ExtArgs>>): Prisma__user_connectionsClient<$Result.GetResult<Prisma.$user_connectionsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_connections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsCountArgs} args - Arguments to filter User_connections to count.
+     * @example
+     * // Count the number of User_connections
+     * const count = await prisma.user_connections.count({
+     *   where: {
+     *     // ... the filter for the User_connections we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_connectionsCountArgs>(
+      args?: Subset<T, user_connectionsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_connectionsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_connections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_connectionsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_connectionsAggregateArgs>(args: Subset<T, User_connectionsAggregateArgs>): Prisma.PrismaPromise<GetUser_connectionsAggregateType<T>>
+
+    /**
+     * Group by User_connections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_connectionsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_connectionsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_connectionsGroupByArgs['orderBy'] }
+        : { orderBy?: user_connectionsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_connectionsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_connectionsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_connections model
+   */
+  readonly fields: user_connectionsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_connections.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_connectionsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    initiator<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    receiver<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_connections model
+   */
+  interface user_connectionsFieldRefs {
+    readonly id: FieldRef<"user_connections", 'String'>
+    readonly user_id: FieldRef<"user_connections", 'String'>
+    readonly connected_id: FieldRef<"user_connections", 'String'>
+    readonly status: FieldRef<"user_connections", 'String'>
+    readonly connection_type: FieldRef<"user_connections", 'String'>
+    readonly notes: FieldRef<"user_connections", 'String'>
+    readonly last_interaction: FieldRef<"user_connections", 'DateTime'>
+    readonly interaction_count: FieldRef<"user_connections", 'Int'>
+    readonly is_favorite: FieldRef<"user_connections", 'Boolean'>
+    readonly is_hidden: FieldRef<"user_connections", 'Boolean'>
+    readonly can_see_events: FieldRef<"user_connections", 'Boolean'>
+    readonly created_at: FieldRef<"user_connections", 'DateTime'>
+    readonly updated_at: FieldRef<"user_connections", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_connections findUnique
+   */
+  export type user_connectionsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_connections to fetch.
+     */
+    where: user_connectionsWhereUniqueInput
+  }
+
+  /**
+   * user_connections findUniqueOrThrow
+   */
+  export type user_connectionsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_connections to fetch.
+     */
+    where: user_connectionsWhereUniqueInput
+  }
+
+  /**
+   * user_connections findFirst
+   */
+  export type user_connectionsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_connections to fetch.
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_connections to fetch.
+     */
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_connections.
+     */
+    cursor?: user_connectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_connections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_connections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_connections.
+     */
+    distinct?: User_connectionsScalarFieldEnum | User_connectionsScalarFieldEnum[]
+  }
+
+  /**
+   * user_connections findFirstOrThrow
+   */
+  export type user_connectionsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_connections to fetch.
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_connections to fetch.
+     */
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_connections.
+     */
+    cursor?: user_connectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_connections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_connections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_connections.
+     */
+    distinct?: User_connectionsScalarFieldEnum | User_connectionsScalarFieldEnum[]
+  }
+
+  /**
+   * user_connections findMany
+   */
+  export type user_connectionsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_connections to fetch.
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_connections to fetch.
+     */
+    orderBy?: user_connectionsOrderByWithRelationInput | user_connectionsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_connections.
+     */
+    cursor?: user_connectionsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_connections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_connections.
+     */
+    skip?: number
+    distinct?: User_connectionsScalarFieldEnum | User_connectionsScalarFieldEnum[]
+  }
+
+  /**
+   * user_connections create
+   */
+  export type user_connectionsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a user_connections.
+     */
+    data: XOR<user_connectionsCreateInput, user_connectionsUncheckedCreateInput>
+  }
+
+  /**
+   * user_connections createMany
+   */
+  export type user_connectionsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_connections.
+     */
+    data: user_connectionsCreateManyInput | user_connectionsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_connections createManyAndReturn
+   */
+  export type user_connectionsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * The data used to create many user_connections.
+     */
+    data: user_connectionsCreateManyInput | user_connectionsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_connections update
+   */
+  export type user_connectionsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a user_connections.
+     */
+    data: XOR<user_connectionsUpdateInput, user_connectionsUncheckedUpdateInput>
+    /**
+     * Choose, which user_connections to update.
+     */
+    where: user_connectionsWhereUniqueInput
+  }
+
+  /**
+   * user_connections updateMany
+   */
+  export type user_connectionsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_connections.
+     */
+    data: XOR<user_connectionsUpdateManyMutationInput, user_connectionsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_connections to update
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * Limit how many user_connections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_connections updateManyAndReturn
+   */
+  export type user_connectionsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * The data used to update user_connections.
+     */
+    data: XOR<user_connectionsUpdateManyMutationInput, user_connectionsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_connections to update
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * Limit how many user_connections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_connections upsert
+   */
+  export type user_connectionsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the user_connections to update in case it exists.
+     */
+    where: user_connectionsWhereUniqueInput
+    /**
+     * In case the user_connections found by the `where` argument doesn't exist, create a new user_connections with this data.
+     */
+    create: XOR<user_connectionsCreateInput, user_connectionsUncheckedCreateInput>
+    /**
+     * In case the user_connections was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_connectionsUpdateInput, user_connectionsUncheckedUpdateInput>
+  }
+
+  /**
+   * user_connections delete
+   */
+  export type user_connectionsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+    /**
+     * Filter which user_connections to delete.
+     */
+    where: user_connectionsWhereUniqueInput
+  }
+
+  /**
+   * user_connections deleteMany
+   */
+  export type user_connectionsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_connections to delete
+     */
+    where?: user_connectionsWhereInput
+    /**
+     * Limit how many user_connections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_connections without action
+   */
+  export type user_connectionsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_connections
+     */
+    select?: user_connectionsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_connections
+     */
+    omit?: user_connectionsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_connectionsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_profile_visits
+   */
+
+  export type AggregateUser_profile_visits = {
+    _count: User_profile_visitsCountAggregateOutputType | null
+    _avg: User_profile_visitsAvgAggregateOutputType | null
+    _sum: User_profile_visitsSumAggregateOutputType | null
+    _min: User_profile_visitsMinAggregateOutputType | null
+    _max: User_profile_visitsMaxAggregateOutputType | null
+  }
+
+  export type User_profile_visitsAvgAggregateOutputType = {
+    duration: number | null
+    interactions: number | null
+  }
+
+  export type User_profile_visitsSumAggregateOutputType = {
+    duration: number | null
+    interactions: number | null
+  }
+
+  export type User_profile_visitsMinAggregateOutputType = {
+    id: string | null
+    visitor_id: string | null
+    profile_user_id: string | null
+    visited_at: Date | null
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean | null
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number | null
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+  }
+
+  export type User_profile_visitsMaxAggregateOutputType = {
+    id: string | null
+    visitor_id: string | null
+    profile_user_id: string | null
+    visited_at: Date | null
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean | null
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number | null
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+  }
+
+  export type User_profile_visitsCountAggregateOutputType = {
+    id: number
+    visitor_id: number
+    profile_user_id: number
+    visited_at: number
+    ip_address: number
+    user_agent: number
+    is_anonymous: number
+    referrer: number
+    session_id: number
+    page_section: number
+    duration: number
+    interactions: number
+    device_type: number
+    browser: number
+    os: number
+    country: number
+    city: number
+    _all: number
+  }
+
+
+  export type User_profile_visitsAvgAggregateInputType = {
+    duration?: true
+    interactions?: true
+  }
+
+  export type User_profile_visitsSumAggregateInputType = {
+    duration?: true
+    interactions?: true
+  }
+
+  export type User_profile_visitsMinAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    profile_user_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+  }
+
+  export type User_profile_visitsMaxAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    profile_user_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+  }
+
+  export type User_profile_visitsCountAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    profile_user_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+    _all?: true
+  }
+
+  export type User_profile_visitsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_profile_visits to aggregate.
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_profile_visits to fetch.
+     */
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_profile_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_profile_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_profile_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_profile_visits
+    **/
+    _count?: true | User_profile_visitsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_profile_visitsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_profile_visitsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_profile_visitsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_profile_visitsMaxAggregateInputType
+  }
+
+  export type GetUser_profile_visitsAggregateType<T extends User_profile_visitsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_profile_visits]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_profile_visits[P]>
+      : GetScalarType<T[P], AggregateUser_profile_visits[P]>
+  }
+
+
+
+
+  export type user_profile_visitsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_profile_visitsWhereInput
+    orderBy?: user_profile_visitsOrderByWithAggregationInput | user_profile_visitsOrderByWithAggregationInput[]
+    by: User_profile_visitsScalarFieldEnum[] | User_profile_visitsScalarFieldEnum
+    having?: user_profile_visitsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_profile_visitsCountAggregateInputType | true
+    _avg?: User_profile_visitsAvgAggregateInputType
+    _sum?: User_profile_visitsSumAggregateInputType
+    _min?: User_profile_visitsMinAggregateInputType
+    _max?: User_profile_visitsMaxAggregateInputType
+  }
+
+  export type User_profile_visitsGroupByOutputType = {
+    id: string
+    visitor_id: string | null
+    profile_user_id: string
+    visited_at: Date
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+    _count: User_profile_visitsCountAggregateOutputType | null
+    _avg: User_profile_visitsAvgAggregateOutputType | null
+    _sum: User_profile_visitsSumAggregateOutputType | null
+    _min: User_profile_visitsMinAggregateOutputType | null
+    _max: User_profile_visitsMaxAggregateOutputType | null
+  }
+
+  type GetUser_profile_visitsGroupByPayload<T extends user_profile_visitsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_profile_visitsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_profile_visitsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_profile_visitsGroupByOutputType[P]>
+            : GetScalarType<T[P], User_profile_visitsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_profile_visitsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    profile_user_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_profile_visits"]>
+
+  export type user_profile_visitsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    profile_user_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_profile_visits"]>
+
+  export type user_profile_visitsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    profile_user_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_profile_visits"]>
+
+  export type user_profile_visitsSelectScalar = {
+    id?: boolean
+    visitor_id?: boolean
+    profile_user_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+  }
+
+  export type user_profile_visitsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "visitor_id" | "profile_user_id" | "visited_at" | "ip_address" | "user_agent" | "is_anonymous" | "referrer" | "session_id" | "page_section" | "duration" | "interactions" | "device_type" | "browser" | "os" | "country" | "city", ExtArgs["result"]["user_profile_visits"]>
+  export type user_profile_visitsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type user_profile_visitsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+  export type user_profile_visitsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | user_profile_visits$visitorArgs<ExtArgs>
+    profile_user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $user_profile_visitsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_profile_visits"
+    objects: {
+      visitor: Prisma.$usersPayload<ExtArgs> | null
+      profile_user: Prisma.$usersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      visitor_id: string | null
+      profile_user_id: string
+      visited_at: Date
+      ip_address: string | null
+      user_agent: string | null
+      is_anonymous: boolean
+      referrer: string | null
+      session_id: string | null
+      page_section: string | null
+      duration: number | null
+      interactions: number
+      device_type: string | null
+      browser: string | null
+      os: string | null
+      country: string | null
+      city: string | null
+    }, ExtArgs["result"]["user_profile_visits"]>
+    composites: {}
+  }
+
+  type user_profile_visitsGetPayload<S extends boolean | null | undefined | user_profile_visitsDefaultArgs> = $Result.GetResult<Prisma.$user_profile_visitsPayload, S>
+
+  type user_profile_visitsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_profile_visitsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: User_profile_visitsCountAggregateInputType | true
+    }
+
+  export interface user_profile_visitsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_profile_visits'], meta: { name: 'user_profile_visits' } }
+    /**
+     * Find zero or one User_profile_visits that matches the filter.
+     * @param {user_profile_visitsFindUniqueArgs} args - Arguments to find a User_profile_visits
+     * @example
+     * // Get one User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_profile_visitsFindUniqueArgs>(args: SelectSubset<T, user_profile_visitsFindUniqueArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_profile_visits that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_profile_visitsFindUniqueOrThrowArgs} args - Arguments to find a User_profile_visits
+     * @example
+     * // Get one User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_profile_visitsFindUniqueOrThrowArgs>(args: SelectSubset<T, user_profile_visitsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_profile_visits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsFindFirstArgs} args - Arguments to find a User_profile_visits
+     * @example
+     * // Get one User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_profile_visitsFindFirstArgs>(args?: SelectSubset<T, user_profile_visitsFindFirstArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_profile_visits that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsFindFirstOrThrowArgs} args - Arguments to find a User_profile_visits
+     * @example
+     * // Get one User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_profile_visitsFindFirstOrThrowArgs>(args?: SelectSubset<T, user_profile_visitsFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_profile_visits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findMany()
+     * 
+     * // Get first 10 User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_profile_visitsWithIdOnly = await prisma.user_profile_visits.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_profile_visitsFindManyArgs>(args?: SelectSubset<T, user_profile_visitsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_profile_visits.
+     * @param {user_profile_visitsCreateArgs} args - Arguments to create a User_profile_visits.
+     * @example
+     * // Create one User_profile_visits
+     * const User_profile_visits = await prisma.user_profile_visits.create({
+     *   data: {
+     *     // ... data to create a User_profile_visits
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_profile_visitsCreateArgs>(args: SelectSubset<T, user_profile_visitsCreateArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_profile_visits.
+     * @param {user_profile_visitsCreateManyArgs} args - Arguments to create many User_profile_visits.
+     * @example
+     * // Create many User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_profile_visitsCreateManyArgs>(args?: SelectSubset<T, user_profile_visitsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_profile_visits and returns the data saved in the database.
+     * @param {user_profile_visitsCreateManyAndReturnArgs} args - Arguments to create many User_profile_visits.
+     * @example
+     * // Create many User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_profile_visits and only return the `id`
+     * const user_profile_visitsWithIdOnly = await prisma.user_profile_visits.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends user_profile_visitsCreateManyAndReturnArgs>(args?: SelectSubset<T, user_profile_visitsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User_profile_visits.
+     * @param {user_profile_visitsDeleteArgs} args - Arguments to delete one User_profile_visits.
+     * @example
+     * // Delete one User_profile_visits
+     * const User_profile_visits = await prisma.user_profile_visits.delete({
+     *   where: {
+     *     // ... filter to delete one User_profile_visits
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_profile_visitsDeleteArgs>(args: SelectSubset<T, user_profile_visitsDeleteArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_profile_visits.
+     * @param {user_profile_visitsUpdateArgs} args - Arguments to update one User_profile_visits.
+     * @example
+     * // Update one User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_profile_visitsUpdateArgs>(args: SelectSubset<T, user_profile_visitsUpdateArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_profile_visits.
+     * @param {user_profile_visitsDeleteManyArgs} args - Arguments to filter User_profile_visits to delete.
+     * @example
+     * // Delete a few User_profile_visits
+     * const { count } = await prisma.user_profile_visits.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_profile_visitsDeleteManyArgs>(args?: SelectSubset<T, user_profile_visitsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_profile_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_profile_visitsUpdateManyArgs>(args: SelectSubset<T, user_profile_visitsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_profile_visits and returns the data updated in the database.
+     * @param {user_profile_visitsUpdateManyAndReturnArgs} args - Arguments to update many User_profile_visits.
+     * @example
+     * // Update many User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more User_profile_visits and only return the `id`
+     * const user_profile_visitsWithIdOnly = await prisma.user_profile_visits.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends user_profile_visitsUpdateManyAndReturnArgs>(args: SelectSubset<T, user_profile_visitsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User_profile_visits.
+     * @param {user_profile_visitsUpsertArgs} args - Arguments to update or create a User_profile_visits.
+     * @example
+     * // Update or create a User_profile_visits
+     * const user_profile_visits = await prisma.user_profile_visits.upsert({
+     *   create: {
+     *     // ... data to create a User_profile_visits
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_profile_visits we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_profile_visitsUpsertArgs>(args: SelectSubset<T, user_profile_visitsUpsertArgs<ExtArgs>>): Prisma__user_profile_visitsClient<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_profile_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsCountArgs} args - Arguments to filter User_profile_visits to count.
+     * @example
+     * // Count the number of User_profile_visits
+     * const count = await prisma.user_profile_visits.count({
+     *   where: {
+     *     // ... the filter for the User_profile_visits we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_profile_visitsCountArgs>(
+      args?: Subset<T, user_profile_visitsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_profile_visitsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_profile_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_profile_visitsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_profile_visitsAggregateArgs>(args: Subset<T, User_profile_visitsAggregateArgs>): Prisma.PrismaPromise<GetUser_profile_visitsAggregateType<T>>
+
+    /**
+     * Group by User_profile_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_profile_visitsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_profile_visitsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_profile_visitsGroupByArgs['orderBy'] }
+        : { orderBy?: user_profile_visitsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_profile_visitsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_profile_visitsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_profile_visits model
+   */
+  readonly fields: user_profile_visitsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_profile_visits.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_profile_visitsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    visitor<T extends user_profile_visits$visitorArgs<ExtArgs> = {}>(args?: Subset<T, user_profile_visits$visitorArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    profile_user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_profile_visits model
+   */
+  interface user_profile_visitsFieldRefs {
+    readonly id: FieldRef<"user_profile_visits", 'String'>
+    readonly visitor_id: FieldRef<"user_profile_visits", 'String'>
+    readonly profile_user_id: FieldRef<"user_profile_visits", 'String'>
+    readonly visited_at: FieldRef<"user_profile_visits", 'DateTime'>
+    readonly ip_address: FieldRef<"user_profile_visits", 'String'>
+    readonly user_agent: FieldRef<"user_profile_visits", 'String'>
+    readonly is_anonymous: FieldRef<"user_profile_visits", 'Boolean'>
+    readonly referrer: FieldRef<"user_profile_visits", 'String'>
+    readonly session_id: FieldRef<"user_profile_visits", 'String'>
+    readonly page_section: FieldRef<"user_profile_visits", 'String'>
+    readonly duration: FieldRef<"user_profile_visits", 'Int'>
+    readonly interactions: FieldRef<"user_profile_visits", 'Int'>
+    readonly device_type: FieldRef<"user_profile_visits", 'String'>
+    readonly browser: FieldRef<"user_profile_visits", 'String'>
+    readonly os: FieldRef<"user_profile_visits", 'String'>
+    readonly country: FieldRef<"user_profile_visits", 'String'>
+    readonly city: FieldRef<"user_profile_visits", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_profile_visits findUnique
+   */
+  export type user_profile_visitsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_profile_visits to fetch.
+     */
+    where: user_profile_visitsWhereUniqueInput
+  }
+
+  /**
+   * user_profile_visits findUniqueOrThrow
+   */
+  export type user_profile_visitsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_profile_visits to fetch.
+     */
+    where: user_profile_visitsWhereUniqueInput
+  }
+
+  /**
+   * user_profile_visits findFirst
+   */
+  export type user_profile_visitsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_profile_visits to fetch.
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_profile_visits to fetch.
+     */
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_profile_visits.
+     */
+    cursor?: user_profile_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_profile_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_profile_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_profile_visits.
+     */
+    distinct?: User_profile_visitsScalarFieldEnum | User_profile_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * user_profile_visits findFirstOrThrow
+   */
+  export type user_profile_visitsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_profile_visits to fetch.
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_profile_visits to fetch.
+     */
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_profile_visits.
+     */
+    cursor?: user_profile_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_profile_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_profile_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_profile_visits.
+     */
+    distinct?: User_profile_visitsScalarFieldEnum | User_profile_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * user_profile_visits findMany
+   */
+  export type user_profile_visitsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which user_profile_visits to fetch.
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_profile_visits to fetch.
+     */
+    orderBy?: user_profile_visitsOrderByWithRelationInput | user_profile_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_profile_visits.
+     */
+    cursor?: user_profile_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_profile_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_profile_visits.
+     */
+    skip?: number
+    distinct?: User_profile_visitsScalarFieldEnum | User_profile_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * user_profile_visits create
+   */
+  export type user_profile_visitsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a user_profile_visits.
+     */
+    data: XOR<user_profile_visitsCreateInput, user_profile_visitsUncheckedCreateInput>
+  }
+
+  /**
+   * user_profile_visits createMany
+   */
+  export type user_profile_visitsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_profile_visits.
+     */
+    data: user_profile_visitsCreateManyInput | user_profile_visitsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_profile_visits createManyAndReturn
+   */
+  export type user_profile_visitsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * The data used to create many user_profile_visits.
+     */
+    data: user_profile_visitsCreateManyInput | user_profile_visitsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_profile_visits update
+   */
+  export type user_profile_visitsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a user_profile_visits.
+     */
+    data: XOR<user_profile_visitsUpdateInput, user_profile_visitsUncheckedUpdateInput>
+    /**
+     * Choose, which user_profile_visits to update.
+     */
+    where: user_profile_visitsWhereUniqueInput
+  }
+
+  /**
+   * user_profile_visits updateMany
+   */
+  export type user_profile_visitsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_profile_visits.
+     */
+    data: XOR<user_profile_visitsUpdateManyMutationInput, user_profile_visitsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_profile_visits to update
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * Limit how many user_profile_visits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_profile_visits updateManyAndReturn
+   */
+  export type user_profile_visitsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * The data used to update user_profile_visits.
+     */
+    data: XOR<user_profile_visitsUpdateManyMutationInput, user_profile_visitsUncheckedUpdateManyInput>
+    /**
+     * Filter which user_profile_visits to update
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * Limit how many user_profile_visits to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_profile_visits upsert
+   */
+  export type user_profile_visitsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the user_profile_visits to update in case it exists.
+     */
+    where: user_profile_visitsWhereUniqueInput
+    /**
+     * In case the user_profile_visits found by the `where` argument doesn't exist, create a new user_profile_visits with this data.
+     */
+    create: XOR<user_profile_visitsCreateInput, user_profile_visitsUncheckedCreateInput>
+    /**
+     * In case the user_profile_visits was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_profile_visitsUpdateInput, user_profile_visitsUncheckedUpdateInput>
+  }
+
+  /**
+   * user_profile_visits delete
+   */
+  export type user_profile_visitsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+    /**
+     * Filter which user_profile_visits to delete.
+     */
+    where: user_profile_visitsWhereUniqueInput
+  }
+
+  /**
+   * user_profile_visits deleteMany
+   */
+  export type user_profile_visitsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_profile_visits to delete
+     */
+    where?: user_profile_visitsWhereInput
+    /**
+     * Limit how many user_profile_visits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_profile_visits.visitor
+   */
+  export type user_profile_visits$visitorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * user_profile_visits without action
+   */
+  export type user_profile_visitsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_profile_visits
+     */
+    select?: user_profile_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_profile_visits
+     */
+    omit?: user_profile_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_profile_visitsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model event_page_visits
+   */
+
+  export type AggregateEvent_page_visits = {
+    _count: Event_page_visitsCountAggregateOutputType | null
+    _avg: Event_page_visitsAvgAggregateOutputType | null
+    _sum: Event_page_visitsSumAggregateOutputType | null
+    _min: Event_page_visitsMinAggregateOutputType | null
+    _max: Event_page_visitsMaxAggregateOutputType | null
+  }
+
+  export type Event_page_visitsAvgAggregateOutputType = {
+    duration: number | null
+    interactions: number | null
+  }
+
+  export type Event_page_visitsSumAggregateOutputType = {
+    duration: number | null
+    interactions: number | null
+  }
+
+  export type Event_page_visitsMinAggregateOutputType = {
+    id: string | null
+    visitor_id: string | null
+    event_id: string | null
+    visited_at: Date | null
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean | null
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number | null
+    rsvp_action: string | null
+    invitation_id: string | null
+    utm_source: string | null
+    utm_campaign: string | null
+    utm_medium: string | null
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+  }
+
+  export type Event_page_visitsMaxAggregateOutputType = {
+    id: string | null
+    visitor_id: string | null
+    event_id: string | null
+    visited_at: Date | null
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean | null
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number | null
+    rsvp_action: string | null
+    invitation_id: string | null
+    utm_source: string | null
+    utm_campaign: string | null
+    utm_medium: string | null
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+  }
+
+  export type Event_page_visitsCountAggregateOutputType = {
+    id: number
+    visitor_id: number
+    event_id: number
+    visited_at: number
+    ip_address: number
+    user_agent: number
+    is_anonymous: number
+    referrer: number
+    session_id: number
+    page_section: number
+    duration: number
+    interactions: number
+    rsvp_action: number
+    invitation_id: number
+    utm_source: number
+    utm_campaign: number
+    utm_medium: number
+    device_type: number
+    browser: number
+    os: number
+    country: number
+    city: number
+    _all: number
+  }
+
+
+  export type Event_page_visitsAvgAggregateInputType = {
+    duration?: true
+    interactions?: true
+  }
+
+  export type Event_page_visitsSumAggregateInputType = {
+    duration?: true
+    interactions?: true
+  }
+
+  export type Event_page_visitsMinAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    event_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    rsvp_action?: true
+    invitation_id?: true
+    utm_source?: true
+    utm_campaign?: true
+    utm_medium?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+  }
+
+  export type Event_page_visitsMaxAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    event_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    rsvp_action?: true
+    invitation_id?: true
+    utm_source?: true
+    utm_campaign?: true
+    utm_medium?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+  }
+
+  export type Event_page_visitsCountAggregateInputType = {
+    id?: true
+    visitor_id?: true
+    event_id?: true
+    visited_at?: true
+    ip_address?: true
+    user_agent?: true
+    is_anonymous?: true
+    referrer?: true
+    session_id?: true
+    page_section?: true
+    duration?: true
+    interactions?: true
+    rsvp_action?: true
+    invitation_id?: true
+    utm_source?: true
+    utm_campaign?: true
+    utm_medium?: true
+    device_type?: true
+    browser?: true
+    os?: true
+    country?: true
+    city?: true
+    _all?: true
+  }
+
+  export type Event_page_visitsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_page_visits to aggregate.
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_page_visits to fetch.
+     */
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: event_page_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_page_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_page_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned event_page_visits
+    **/
+    _count?: true | Event_page_visitsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Event_page_visitsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Event_page_visitsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_page_visitsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_page_visitsMaxAggregateInputType
+  }
+
+  export type GetEvent_page_visitsAggregateType<T extends Event_page_visitsAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_page_visits]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_page_visits[P]>
+      : GetScalarType<T[P], AggregateEvent_page_visits[P]>
+  }
+
+
+
+
+  export type event_page_visitsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_page_visitsWhereInput
+    orderBy?: event_page_visitsOrderByWithAggregationInput | event_page_visitsOrderByWithAggregationInput[]
+    by: Event_page_visitsScalarFieldEnum[] | Event_page_visitsScalarFieldEnum
+    having?: event_page_visitsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_page_visitsCountAggregateInputType | true
+    _avg?: Event_page_visitsAvgAggregateInputType
+    _sum?: Event_page_visitsSumAggregateInputType
+    _min?: Event_page_visitsMinAggregateInputType
+    _max?: Event_page_visitsMaxAggregateInputType
+  }
+
+  export type Event_page_visitsGroupByOutputType = {
+    id: string
+    visitor_id: string | null
+    event_id: string
+    visited_at: Date
+    ip_address: string | null
+    user_agent: string | null
+    is_anonymous: boolean
+    referrer: string | null
+    session_id: string | null
+    page_section: string | null
+    duration: number | null
+    interactions: number
+    rsvp_action: string | null
+    invitation_id: string | null
+    utm_source: string | null
+    utm_campaign: string | null
+    utm_medium: string | null
+    device_type: string | null
+    browser: string | null
+    os: string | null
+    country: string | null
+    city: string | null
+    _count: Event_page_visitsCountAggregateOutputType | null
+    _avg: Event_page_visitsAvgAggregateOutputType | null
+    _sum: Event_page_visitsSumAggregateOutputType | null
+    _min: Event_page_visitsMinAggregateOutputType | null
+    _max: Event_page_visitsMaxAggregateOutputType | null
+  }
+
+  type GetEvent_page_visitsGroupByPayload<T extends event_page_visitsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_page_visitsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_page_visitsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_page_visitsGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_page_visitsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type event_page_visitsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    event_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    rsvp_action?: boolean
+    invitation_id?: boolean
+    utm_source?: boolean
+    utm_campaign?: boolean
+    utm_medium?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }, ExtArgs["result"]["event_page_visits"]>
+
+  export type event_page_visitsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    event_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    rsvp_action?: boolean
+    invitation_id?: boolean
+    utm_source?: boolean
+    utm_campaign?: boolean
+    utm_medium?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }, ExtArgs["result"]["event_page_visits"]>
+
+  export type event_page_visitsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    visitor_id?: boolean
+    event_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    rsvp_action?: boolean
+    invitation_id?: boolean
+    utm_source?: boolean
+    utm_campaign?: boolean
+    utm_medium?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }, ExtArgs["result"]["event_page_visits"]>
+
+  export type event_page_visitsSelectScalar = {
+    id?: boolean
+    visitor_id?: boolean
+    event_id?: boolean
+    visited_at?: boolean
+    ip_address?: boolean
+    user_agent?: boolean
+    is_anonymous?: boolean
+    referrer?: boolean
+    session_id?: boolean
+    page_section?: boolean
+    duration?: boolean
+    interactions?: boolean
+    rsvp_action?: boolean
+    invitation_id?: boolean
+    utm_source?: boolean
+    utm_campaign?: boolean
+    utm_medium?: boolean
+    device_type?: boolean
+    browser?: boolean
+    os?: boolean
+    country?: boolean
+    city?: boolean
+  }
+
+  export type event_page_visitsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "visitor_id" | "event_id" | "visited_at" | "ip_address" | "user_agent" | "is_anonymous" | "referrer" | "session_id" | "page_section" | "duration" | "interactions" | "rsvp_action" | "invitation_id" | "utm_source" | "utm_campaign" | "utm_medium" | "device_type" | "browser" | "os" | "country" | "city", ExtArgs["result"]["event_page_visits"]>
+  export type event_page_visitsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }
+  export type event_page_visitsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }
+  export type event_page_visitsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    visitor?: boolean | event_page_visits$visitorArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_page_visits$invitationArgs<ExtArgs>
+  }
+
+  export type $event_page_visitsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "event_page_visits"
+    objects: {
+      visitor: Prisma.$usersPayload<ExtArgs> | null
+      event: Prisma.$eventsPayload<ExtArgs>
+      invitation: Prisma.$event_invitationsPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      visitor_id: string | null
+      event_id: string
+      visited_at: Date
+      ip_address: string | null
+      user_agent: string | null
+      is_anonymous: boolean
+      referrer: string | null
+      session_id: string | null
+      page_section: string | null
+      duration: number | null
+      interactions: number
+      rsvp_action: string | null
+      invitation_id: string | null
+      utm_source: string | null
+      utm_campaign: string | null
+      utm_medium: string | null
+      device_type: string | null
+      browser: string | null
+      os: string | null
+      country: string | null
+      city: string | null
+    }, ExtArgs["result"]["event_page_visits"]>
+    composites: {}
+  }
+
+  type event_page_visitsGetPayload<S extends boolean | null | undefined | event_page_visitsDefaultArgs> = $Result.GetResult<Prisma.$event_page_visitsPayload, S>
+
+  type event_page_visitsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<event_page_visitsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_page_visitsCountAggregateInputType | true
+    }
+
+  export interface event_page_visitsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['event_page_visits'], meta: { name: 'event_page_visits' } }
+    /**
+     * Find zero or one Event_page_visits that matches the filter.
+     * @param {event_page_visitsFindUniqueArgs} args - Arguments to find a Event_page_visits
+     * @example
+     * // Get one Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends event_page_visitsFindUniqueArgs>(args: SelectSubset<T, event_page_visitsFindUniqueArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_page_visits that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {event_page_visitsFindUniqueOrThrowArgs} args - Arguments to find a Event_page_visits
+     * @example
+     * // Get one Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends event_page_visitsFindUniqueOrThrowArgs>(args: SelectSubset<T, event_page_visitsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_page_visits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsFindFirstArgs} args - Arguments to find a Event_page_visits
+     * @example
+     * // Get one Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends event_page_visitsFindFirstArgs>(args?: SelectSubset<T, event_page_visitsFindFirstArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_page_visits that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsFindFirstOrThrowArgs} args - Arguments to find a Event_page_visits
+     * @example
+     * // Get one Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends event_page_visitsFindFirstOrThrowArgs>(args?: SelectSubset<T, event_page_visitsFindFirstOrThrowArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_page_visits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findMany()
+     * 
+     * // Get first 10 Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_page_visitsWithIdOnly = await prisma.event_page_visits.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends event_page_visitsFindManyArgs>(args?: SelectSubset<T, event_page_visitsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_page_visits.
+     * @param {event_page_visitsCreateArgs} args - Arguments to create a Event_page_visits.
+     * @example
+     * // Create one Event_page_visits
+     * const Event_page_visits = await prisma.event_page_visits.create({
+     *   data: {
+     *     // ... data to create a Event_page_visits
+     *   }
+     * })
+     * 
+     */
+    create<T extends event_page_visitsCreateArgs>(args: SelectSubset<T, event_page_visitsCreateArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_page_visits.
+     * @param {event_page_visitsCreateManyArgs} args - Arguments to create many Event_page_visits.
+     * @example
+     * // Create many Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends event_page_visitsCreateManyArgs>(args?: SelectSubset<T, event_page_visitsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_page_visits and returns the data saved in the database.
+     * @param {event_page_visitsCreateManyAndReturnArgs} args - Arguments to create many Event_page_visits.
+     * @example
+     * // Create many Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_page_visits and only return the `id`
+     * const event_page_visitsWithIdOnly = await prisma.event_page_visits.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends event_page_visitsCreateManyAndReturnArgs>(args?: SelectSubset<T, event_page_visitsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_page_visits.
+     * @param {event_page_visitsDeleteArgs} args - Arguments to delete one Event_page_visits.
+     * @example
+     * // Delete one Event_page_visits
+     * const Event_page_visits = await prisma.event_page_visits.delete({
+     *   where: {
+     *     // ... filter to delete one Event_page_visits
+     *   }
+     * })
+     * 
+     */
+    delete<T extends event_page_visitsDeleteArgs>(args: SelectSubset<T, event_page_visitsDeleteArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_page_visits.
+     * @param {event_page_visitsUpdateArgs} args - Arguments to update one Event_page_visits.
+     * @example
+     * // Update one Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends event_page_visitsUpdateArgs>(args: SelectSubset<T, event_page_visitsUpdateArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_page_visits.
+     * @param {event_page_visitsDeleteManyArgs} args - Arguments to filter Event_page_visits to delete.
+     * @example
+     * // Delete a few Event_page_visits
+     * const { count } = await prisma.event_page_visits.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends event_page_visitsDeleteManyArgs>(args?: SelectSubset<T, event_page_visitsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_page_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends event_page_visitsUpdateManyArgs>(args: SelectSubset<T, event_page_visitsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_page_visits and returns the data updated in the database.
+     * @param {event_page_visitsUpdateManyAndReturnArgs} args - Arguments to update many Event_page_visits.
+     * @example
+     * // Update many Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_page_visits and only return the `id`
+     * const event_page_visitsWithIdOnly = await prisma.event_page_visits.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends event_page_visitsUpdateManyAndReturnArgs>(args: SelectSubset<T, event_page_visitsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_page_visits.
+     * @param {event_page_visitsUpsertArgs} args - Arguments to update or create a Event_page_visits.
+     * @example
+     * // Update or create a Event_page_visits
+     * const event_page_visits = await prisma.event_page_visits.upsert({
+     *   create: {
+     *     // ... data to create a Event_page_visits
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_page_visits we want to update
+     *   }
+     * })
+     */
+    upsert<T extends event_page_visitsUpsertArgs>(args: SelectSubset<T, event_page_visitsUpsertArgs<ExtArgs>>): Prisma__event_page_visitsClient<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_page_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsCountArgs} args - Arguments to filter Event_page_visits to count.
+     * @example
+     * // Count the number of Event_page_visits
+     * const count = await prisma.event_page_visits.count({
+     *   where: {
+     *     // ... the filter for the Event_page_visits we want to count
+     *   }
+     * })
+    **/
+    count<T extends event_page_visitsCountArgs>(
+      args?: Subset<T, event_page_visitsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_page_visitsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_page_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_page_visitsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_page_visitsAggregateArgs>(args: Subset<T, Event_page_visitsAggregateArgs>): Prisma.PrismaPromise<GetEvent_page_visitsAggregateType<T>>
+
+    /**
+     * Group by Event_page_visits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_page_visitsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends event_page_visitsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: event_page_visitsGroupByArgs['orderBy'] }
+        : { orderBy?: event_page_visitsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, event_page_visitsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_page_visitsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the event_page_visits model
+   */
+  readonly fields: event_page_visitsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for event_page_visits.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__event_page_visitsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    visitor<T extends event_page_visits$visitorArgs<ExtArgs> = {}>(args?: Subset<T, event_page_visits$visitorArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    event<T extends eventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, eventsDefaultArgs<ExtArgs>>): Prisma__eventsClient<$Result.GetResult<Prisma.$eventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    invitation<T extends event_page_visits$invitationArgs<ExtArgs> = {}>(args?: Subset<T, event_page_visits$invitationArgs<ExtArgs>>): Prisma__event_invitationsClient<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the event_page_visits model
+   */
+  interface event_page_visitsFieldRefs {
+    readonly id: FieldRef<"event_page_visits", 'String'>
+    readonly visitor_id: FieldRef<"event_page_visits", 'String'>
+    readonly event_id: FieldRef<"event_page_visits", 'String'>
+    readonly visited_at: FieldRef<"event_page_visits", 'DateTime'>
+    readonly ip_address: FieldRef<"event_page_visits", 'String'>
+    readonly user_agent: FieldRef<"event_page_visits", 'String'>
+    readonly is_anonymous: FieldRef<"event_page_visits", 'Boolean'>
+    readonly referrer: FieldRef<"event_page_visits", 'String'>
+    readonly session_id: FieldRef<"event_page_visits", 'String'>
+    readonly page_section: FieldRef<"event_page_visits", 'String'>
+    readonly duration: FieldRef<"event_page_visits", 'Int'>
+    readonly interactions: FieldRef<"event_page_visits", 'Int'>
+    readonly rsvp_action: FieldRef<"event_page_visits", 'String'>
+    readonly invitation_id: FieldRef<"event_page_visits", 'String'>
+    readonly utm_source: FieldRef<"event_page_visits", 'String'>
+    readonly utm_campaign: FieldRef<"event_page_visits", 'String'>
+    readonly utm_medium: FieldRef<"event_page_visits", 'String'>
+    readonly device_type: FieldRef<"event_page_visits", 'String'>
+    readonly browser: FieldRef<"event_page_visits", 'String'>
+    readonly os: FieldRef<"event_page_visits", 'String'>
+    readonly country: FieldRef<"event_page_visits", 'String'>
+    readonly city: FieldRef<"event_page_visits", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * event_page_visits findUnique
+   */
+  export type event_page_visitsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_page_visits to fetch.
+     */
+    where: event_page_visitsWhereUniqueInput
+  }
+
+  /**
+   * event_page_visits findUniqueOrThrow
+   */
+  export type event_page_visitsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_page_visits to fetch.
+     */
+    where: event_page_visitsWhereUniqueInput
+  }
+
+  /**
+   * event_page_visits findFirst
+   */
+  export type event_page_visitsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_page_visits to fetch.
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_page_visits to fetch.
+     */
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_page_visits.
+     */
+    cursor?: event_page_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_page_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_page_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_page_visits.
+     */
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * event_page_visits findFirstOrThrow
+   */
+  export type event_page_visitsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_page_visits to fetch.
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_page_visits to fetch.
+     */
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_page_visits.
+     */
+    cursor?: event_page_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_page_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_page_visits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_page_visits.
+     */
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * event_page_visits findMany
+   */
+  export type event_page_visitsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_page_visits to fetch.
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_page_visits to fetch.
+     */
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing event_page_visits.
+     */
+    cursor?: event_page_visitsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_page_visits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_page_visits.
+     */
+    skip?: number
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * event_page_visits create
+   */
+  export type event_page_visitsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a event_page_visits.
+     */
+    data: XOR<event_page_visitsCreateInput, event_page_visitsUncheckedCreateInput>
+  }
+
+  /**
+   * event_page_visits createMany
+   */
+  export type event_page_visitsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many event_page_visits.
+     */
+    data: event_page_visitsCreateManyInput | event_page_visitsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * event_page_visits createManyAndReturn
+   */
+  export type event_page_visitsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * The data used to create many event_page_visits.
+     */
+    data: event_page_visitsCreateManyInput | event_page_visitsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_page_visits update
+   */
+  export type event_page_visitsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a event_page_visits.
+     */
+    data: XOR<event_page_visitsUpdateInput, event_page_visitsUncheckedUpdateInput>
+    /**
+     * Choose, which event_page_visits to update.
+     */
+    where: event_page_visitsWhereUniqueInput
+  }
+
+  /**
+   * event_page_visits updateMany
+   */
+  export type event_page_visitsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update event_page_visits.
+     */
+    data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyInput>
+    /**
+     * Filter which event_page_visits to update
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * Limit how many event_page_visits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_page_visits updateManyAndReturn
+   */
+  export type event_page_visitsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * The data used to update event_page_visits.
+     */
+    data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyInput>
+    /**
+     * Filter which event_page_visits to update
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * Limit how many event_page_visits to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_page_visits upsert
+   */
+  export type event_page_visitsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the event_page_visits to update in case it exists.
+     */
+    where: event_page_visitsWhereUniqueInput
+    /**
+     * In case the event_page_visits found by the `where` argument doesn't exist, create a new event_page_visits with this data.
+     */
+    create: XOR<event_page_visitsCreateInput, event_page_visitsUncheckedCreateInput>
+    /**
+     * In case the event_page_visits was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<event_page_visitsUpdateInput, event_page_visitsUncheckedUpdateInput>
+  }
+
+  /**
+   * event_page_visits delete
+   */
+  export type event_page_visitsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    /**
+     * Filter which event_page_visits to delete.
+     */
+    where: event_page_visitsWhereUniqueInput
+  }
+
+  /**
+   * event_page_visits deleteMany
+   */
+  export type event_page_visitsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_page_visits to delete
+     */
+    where?: event_page_visitsWhereInput
+    /**
+     * Limit how many event_page_visits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_page_visits.visitor
+   */
+  export type event_page_visits$visitorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * event_page_visits.invitation
+   */
+  export type event_page_visits$invitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_invitations
+     */
+    select?: event_invitationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_invitations
+     */
+    omit?: event_invitationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_invitationsInclude<ExtArgs> | null
+    where?: event_invitationsWhereInput
+  }
+
+  /**
+   * event_page_visits without action
+   */
+  export type event_page_visitsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
   }
 
 
@@ -12685,6 +17015,7 @@ export namespace Prisma {
     event_locations?: boolean | events$event_locationsArgs<ExtArgs>
     event_attachments?: boolean | events$event_attachmentsArgs<ExtArgs>
     event_invitations?: boolean | events$event_invitationsArgs<ExtArgs>
+    event_page_visits?: boolean | events$event_page_visitsArgs<ExtArgs>
     _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["events"]>
 
@@ -12784,6 +17115,7 @@ export namespace Prisma {
     event_locations?: boolean | events$event_locationsArgs<ExtArgs>
     event_attachments?: boolean | events$event_attachmentsArgs<ExtArgs>
     event_invitations?: boolean | events$event_invitationsArgs<ExtArgs>
+    event_page_visits?: boolean | events$event_page_visitsArgs<ExtArgs>
     _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type eventsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12801,6 +17133,7 @@ export namespace Prisma {
       event_locations: Prisma.$event_locationsPayload<ExtArgs>[]
       event_attachments: Prisma.$event_attachmentsPayload<ExtArgs>[]
       event_invitations: Prisma.$event_invitationsPayload<ExtArgs>[]
+      event_page_visits: Prisma.$event_page_visitsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13228,6 +17561,7 @@ export namespace Prisma {
     event_locations<T extends events$event_locationsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_locationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_locationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_attachments<T extends events$event_attachmentsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_attachmentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_invitations<T extends events$event_invitationsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_page_visits<T extends events$event_page_visitsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_page_visitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13772,6 +18106,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Event_invitationsScalarFieldEnum | Event_invitationsScalarFieldEnum[]
+  }
+
+  /**
+   * events.event_page_visits
+   */
+  export type events$event_page_visitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    where?: event_page_visitsWhereInput
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    cursor?: event_page_visitsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
   }
 
   /**
@@ -17904,6 +22262,7 @@ export namespace Prisma {
     inviter?: boolean | usersDefaultArgs<ExtArgs>
     parent_invitation?: boolean | event_invitations$parent_invitationArgs<ExtArgs>
     plus_one_invitations?: boolean | event_invitations$plus_one_invitationsArgs<ExtArgs>
+    event_page_visits?: boolean | event_invitations$event_page_visitsArgs<ExtArgs>
     _count?: boolean | Event_invitationsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_invitations"]>
 
@@ -18003,6 +22362,7 @@ export namespace Prisma {
     inviter?: boolean | usersDefaultArgs<ExtArgs>
     parent_invitation?: boolean | event_invitations$parent_invitationArgs<ExtArgs>
     plus_one_invitations?: boolean | event_invitations$plus_one_invitationsArgs<ExtArgs>
+    event_page_visits?: boolean | event_invitations$event_page_visitsArgs<ExtArgs>
     _count?: boolean | Event_invitationsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type event_invitationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18026,6 +22386,7 @@ export namespace Prisma {
       inviter: Prisma.$usersPayload<ExtArgs>
       parent_invitation: Prisma.$event_invitationsPayload<ExtArgs> | null
       plus_one_invitations: Prisma.$event_invitationsPayload<ExtArgs>[]
+      event_page_visits: Prisma.$event_page_visitsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -18451,6 +22812,7 @@ export namespace Prisma {
     inviter<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     parent_invitation<T extends event_invitations$parent_invitationArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$parent_invitationArgs<ExtArgs>>): Prisma__event_invitationsClient<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     plus_one_invitations<T extends event_invitations$plus_one_invitationsArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$plus_one_invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_page_visits<T extends event_invitations$event_page_visitsArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$event_page_visitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18959,6 +23321,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Event_invitationsScalarFieldEnum | Event_invitationsScalarFieldEnum[]
+  }
+
+  /**
+   * event_invitations.event_page_visits
+   */
+  export type event_invitations$event_page_visitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_page_visits
+     */
+    select?: event_page_visitsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_page_visits
+     */
+    omit?: event_page_visitsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_page_visitsInclude<ExtArgs> | null
+    where?: event_page_visitsWhereInput
+    orderBy?: event_page_visitsOrderByWithRelationInput | event_page_visitsOrderByWithRelationInput[]
+    cursor?: event_page_visitsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
   }
 
   /**
@@ -20187,6 +24573,76 @@ export namespace Prisma {
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+  export const User_connectionsScalarFieldEnum: {
+    id: 'id',
+    user_id: 'user_id',
+    connected_id: 'connected_id',
+    status: 'status',
+    connection_type: 'connection_type',
+    notes: 'notes',
+    last_interaction: 'last_interaction',
+    interaction_count: 'interaction_count',
+    is_favorite: 'is_favorite',
+    is_hidden: 'is_hidden',
+    can_see_events: 'can_see_events',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type User_connectionsScalarFieldEnum = (typeof User_connectionsScalarFieldEnum)[keyof typeof User_connectionsScalarFieldEnum]
+
+
+  export const User_profile_visitsScalarFieldEnum: {
+    id: 'id',
+    visitor_id: 'visitor_id',
+    profile_user_id: 'profile_user_id',
+    visited_at: 'visited_at',
+    ip_address: 'ip_address',
+    user_agent: 'user_agent',
+    is_anonymous: 'is_anonymous',
+    referrer: 'referrer',
+    session_id: 'session_id',
+    page_section: 'page_section',
+    duration: 'duration',
+    interactions: 'interactions',
+    device_type: 'device_type',
+    browser: 'browser',
+    os: 'os',
+    country: 'country',
+    city: 'city'
+  };
+
+  export type User_profile_visitsScalarFieldEnum = (typeof User_profile_visitsScalarFieldEnum)[keyof typeof User_profile_visitsScalarFieldEnum]
+
+
+  export const Event_page_visitsScalarFieldEnum: {
+    id: 'id',
+    visitor_id: 'visitor_id',
+    event_id: 'event_id',
+    visited_at: 'visited_at',
+    ip_address: 'ip_address',
+    user_agent: 'user_agent',
+    is_anonymous: 'is_anonymous',
+    referrer: 'referrer',
+    session_id: 'session_id',
+    page_section: 'page_section',
+    duration: 'duration',
+    interactions: 'interactions',
+    rsvp_action: 'rsvp_action',
+    invitation_id: 'invitation_id',
+    utm_source: 'utm_source',
+    utm_campaign: 'utm_campaign',
+    utm_medium: 'utm_medium',
+    device_type: 'device_type',
+    browser: 'browser',
+    os: 'os',
+    country: 'country',
+    city: 'city'
+  };
+
+  export type Event_page_visitsScalarFieldEnum = (typeof Event_page_visitsScalarFieldEnum)[keyof typeof Event_page_visitsScalarFieldEnum]
+
+
   export const AttachmentsScalarFieldEnum: {
     id: 'id',
     filename: 'filename',
@@ -20650,6 +25106,11 @@ export namespace Prisma {
     role_assignments?: Event_rolesListRelationFilter
     invitations_sent?: Event_invitationsListRelationFilter
     invitations_received?: Event_invitationsListRelationFilter
+    connections_initiated?: User_connectionsListRelationFilter
+    connections_received?: User_connectionsListRelationFilter
+    profile_visits_made?: User_profile_visitsListRelationFilter
+    profile_visits_received?: User_profile_visitsListRelationFilter
+    event_visits_made?: Event_page_visitsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -20688,6 +25149,11 @@ export namespace Prisma {
     role_assignments?: event_rolesOrderByRelationAggregateInput
     invitations_sent?: event_invitationsOrderByRelationAggregateInput
     invitations_received?: event_invitationsOrderByRelationAggregateInput
+    connections_initiated?: user_connectionsOrderByRelationAggregateInput
+    connections_received?: user_connectionsOrderByRelationAggregateInput
+    profile_visits_made?: user_profile_visitsOrderByRelationAggregateInput
+    profile_visits_received?: user_profile_visitsOrderByRelationAggregateInput
+    event_visits_made?: event_page_visitsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -20729,6 +25195,11 @@ export namespace Prisma {
     role_assignments?: Event_rolesListRelationFilter
     invitations_sent?: Event_invitationsListRelationFilter
     invitations_received?: Event_invitationsListRelationFilter
+    connections_initiated?: User_connectionsListRelationFilter
+    connections_received?: User_connectionsListRelationFilter
+    profile_visits_made?: User_profile_visitsListRelationFilter
+    profile_visits_received?: User_profile_visitsListRelationFilter
+    event_visits_made?: Event_page_visitsListRelationFilter
   }, "id" | "email" | "username">
 
   export type usersOrderByWithAggregationInput = {
@@ -20793,6 +25264,375 @@ export namespace Prisma {
     created_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"users"> | Date | string
     last_login_at?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+  }
+
+  export type user_connectionsWhereInput = {
+    AND?: user_connectionsWhereInput | user_connectionsWhereInput[]
+    OR?: user_connectionsWhereInput[]
+    NOT?: user_connectionsWhereInput | user_connectionsWhereInput[]
+    id?: StringFilter<"user_connections"> | string
+    user_id?: StringFilter<"user_connections"> | string
+    connected_id?: StringFilter<"user_connections"> | string
+    status?: StringFilter<"user_connections"> | string
+    connection_type?: StringNullableFilter<"user_connections"> | string | null
+    notes?: StringNullableFilter<"user_connections"> | string | null
+    last_interaction?: DateTimeNullableFilter<"user_connections"> | Date | string | null
+    interaction_count?: IntFilter<"user_connections"> | number
+    is_favorite?: BoolFilter<"user_connections"> | boolean
+    is_hidden?: BoolFilter<"user_connections"> | boolean
+    can_see_events?: BoolFilter<"user_connections"> | boolean
+    created_at?: DateTimeFilter<"user_connections"> | Date | string
+    updated_at?: DateTimeFilter<"user_connections"> | Date | string
+    initiator?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    receiver?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }
+
+  export type user_connectionsOrderByWithRelationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    connected_id?: SortOrder
+    status?: SortOrder
+    connection_type?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    last_interaction?: SortOrderInput | SortOrder
+    interaction_count?: SortOrder
+    is_favorite?: SortOrder
+    is_hidden?: SortOrder
+    can_see_events?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    initiator?: usersOrderByWithRelationInput
+    receiver?: usersOrderByWithRelationInput
+  }
+
+  export type user_connectionsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    user_id_connected_id?: user_connectionsUser_idConnected_idCompoundUniqueInput
+    AND?: user_connectionsWhereInput | user_connectionsWhereInput[]
+    OR?: user_connectionsWhereInput[]
+    NOT?: user_connectionsWhereInput | user_connectionsWhereInput[]
+    user_id?: StringFilter<"user_connections"> | string
+    connected_id?: StringFilter<"user_connections"> | string
+    status?: StringFilter<"user_connections"> | string
+    connection_type?: StringNullableFilter<"user_connections"> | string | null
+    notes?: StringNullableFilter<"user_connections"> | string | null
+    last_interaction?: DateTimeNullableFilter<"user_connections"> | Date | string | null
+    interaction_count?: IntFilter<"user_connections"> | number
+    is_favorite?: BoolFilter<"user_connections"> | boolean
+    is_hidden?: BoolFilter<"user_connections"> | boolean
+    can_see_events?: BoolFilter<"user_connections"> | boolean
+    created_at?: DateTimeFilter<"user_connections"> | Date | string
+    updated_at?: DateTimeFilter<"user_connections"> | Date | string
+    initiator?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    receiver?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }, "id" | "user_id_connected_id">
+
+  export type user_connectionsOrderByWithAggregationInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    connected_id?: SortOrder
+    status?: SortOrder
+    connection_type?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    last_interaction?: SortOrderInput | SortOrder
+    interaction_count?: SortOrder
+    is_favorite?: SortOrder
+    is_hidden?: SortOrder
+    can_see_events?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: user_connectionsCountOrderByAggregateInput
+    _avg?: user_connectionsAvgOrderByAggregateInput
+    _max?: user_connectionsMaxOrderByAggregateInput
+    _min?: user_connectionsMinOrderByAggregateInput
+    _sum?: user_connectionsSumOrderByAggregateInput
+  }
+
+  export type user_connectionsScalarWhereWithAggregatesInput = {
+    AND?: user_connectionsScalarWhereWithAggregatesInput | user_connectionsScalarWhereWithAggregatesInput[]
+    OR?: user_connectionsScalarWhereWithAggregatesInput[]
+    NOT?: user_connectionsScalarWhereWithAggregatesInput | user_connectionsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"user_connections"> | string
+    user_id?: StringWithAggregatesFilter<"user_connections"> | string
+    connected_id?: StringWithAggregatesFilter<"user_connections"> | string
+    status?: StringWithAggregatesFilter<"user_connections"> | string
+    connection_type?: StringNullableWithAggregatesFilter<"user_connections"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"user_connections"> | string | null
+    last_interaction?: DateTimeNullableWithAggregatesFilter<"user_connections"> | Date | string | null
+    interaction_count?: IntWithAggregatesFilter<"user_connections"> | number
+    is_favorite?: BoolWithAggregatesFilter<"user_connections"> | boolean
+    is_hidden?: BoolWithAggregatesFilter<"user_connections"> | boolean
+    can_see_events?: BoolWithAggregatesFilter<"user_connections"> | boolean
+    created_at?: DateTimeWithAggregatesFilter<"user_connections"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"user_connections"> | Date | string
+  }
+
+  export type user_profile_visitsWhereInput = {
+    AND?: user_profile_visitsWhereInput | user_profile_visitsWhereInput[]
+    OR?: user_profile_visitsWhereInput[]
+    NOT?: user_profile_visitsWhereInput | user_profile_visitsWhereInput[]
+    id?: StringFilter<"user_profile_visits"> | string
+    visitor_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    profile_user_id?: StringFilter<"user_profile_visits"> | string
+    visited_at?: DateTimeFilter<"user_profile_visits"> | Date | string
+    ip_address?: StringNullableFilter<"user_profile_visits"> | string | null
+    user_agent?: StringNullableFilter<"user_profile_visits"> | string | null
+    is_anonymous?: BoolFilter<"user_profile_visits"> | boolean
+    referrer?: StringNullableFilter<"user_profile_visits"> | string | null
+    session_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    page_section?: StringNullableFilter<"user_profile_visits"> | string | null
+    duration?: IntNullableFilter<"user_profile_visits"> | number | null
+    interactions?: IntFilter<"user_profile_visits"> | number
+    device_type?: StringNullableFilter<"user_profile_visits"> | string | null
+    browser?: StringNullableFilter<"user_profile_visits"> | string | null
+    os?: StringNullableFilter<"user_profile_visits"> | string | null
+    country?: StringNullableFilter<"user_profile_visits"> | string | null
+    city?: StringNullableFilter<"user_profile_visits"> | string | null
+    visitor?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    profile_user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }
+
+  export type user_profile_visitsOrderByWithRelationInput = {
+    id?: SortOrder
+    visitor_id?: SortOrderInput | SortOrder
+    profile_user_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrderInput | SortOrder
+    session_id?: SortOrderInput | SortOrder
+    page_section?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    interactions?: SortOrder
+    device_type?: SortOrderInput | SortOrder
+    browser?: SortOrderInput | SortOrder
+    os?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    visitor?: usersOrderByWithRelationInput
+    profile_user?: usersOrderByWithRelationInput
+  }
+
+  export type user_profile_visitsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: user_profile_visitsWhereInput | user_profile_visitsWhereInput[]
+    OR?: user_profile_visitsWhereInput[]
+    NOT?: user_profile_visitsWhereInput | user_profile_visitsWhereInput[]
+    visitor_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    profile_user_id?: StringFilter<"user_profile_visits"> | string
+    visited_at?: DateTimeFilter<"user_profile_visits"> | Date | string
+    ip_address?: StringNullableFilter<"user_profile_visits"> | string | null
+    user_agent?: StringNullableFilter<"user_profile_visits"> | string | null
+    is_anonymous?: BoolFilter<"user_profile_visits"> | boolean
+    referrer?: StringNullableFilter<"user_profile_visits"> | string | null
+    session_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    page_section?: StringNullableFilter<"user_profile_visits"> | string | null
+    duration?: IntNullableFilter<"user_profile_visits"> | number | null
+    interactions?: IntFilter<"user_profile_visits"> | number
+    device_type?: StringNullableFilter<"user_profile_visits"> | string | null
+    browser?: StringNullableFilter<"user_profile_visits"> | string | null
+    os?: StringNullableFilter<"user_profile_visits"> | string | null
+    country?: StringNullableFilter<"user_profile_visits"> | string | null
+    city?: StringNullableFilter<"user_profile_visits"> | string | null
+    visitor?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    profile_user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }, "id">
+
+  export type user_profile_visitsOrderByWithAggregationInput = {
+    id?: SortOrder
+    visitor_id?: SortOrderInput | SortOrder
+    profile_user_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrderInput | SortOrder
+    session_id?: SortOrderInput | SortOrder
+    page_section?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    interactions?: SortOrder
+    device_type?: SortOrderInput | SortOrder
+    browser?: SortOrderInput | SortOrder
+    os?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    _count?: user_profile_visitsCountOrderByAggregateInput
+    _avg?: user_profile_visitsAvgOrderByAggregateInput
+    _max?: user_profile_visitsMaxOrderByAggregateInput
+    _min?: user_profile_visitsMinOrderByAggregateInput
+    _sum?: user_profile_visitsSumOrderByAggregateInput
+  }
+
+  export type user_profile_visitsScalarWhereWithAggregatesInput = {
+    AND?: user_profile_visitsScalarWhereWithAggregatesInput | user_profile_visitsScalarWhereWithAggregatesInput[]
+    OR?: user_profile_visitsScalarWhereWithAggregatesInput[]
+    NOT?: user_profile_visitsScalarWhereWithAggregatesInput | user_profile_visitsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"user_profile_visits"> | string
+    visitor_id?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    profile_user_id?: StringWithAggregatesFilter<"user_profile_visits"> | string
+    visited_at?: DateTimeWithAggregatesFilter<"user_profile_visits"> | Date | string
+    ip_address?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    user_agent?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    is_anonymous?: BoolWithAggregatesFilter<"user_profile_visits"> | boolean
+    referrer?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    session_id?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    page_section?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    duration?: IntNullableWithAggregatesFilter<"user_profile_visits"> | number | null
+    interactions?: IntWithAggregatesFilter<"user_profile_visits"> | number
+    device_type?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    browser?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    os?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    country?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+    city?: StringNullableWithAggregatesFilter<"user_profile_visits"> | string | null
+  }
+
+  export type event_page_visitsWhereInput = {
+    AND?: event_page_visitsWhereInput | event_page_visitsWhereInput[]
+    OR?: event_page_visitsWhereInput[]
+    NOT?: event_page_visitsWhereInput | event_page_visitsWhereInput[]
+    id?: StringFilter<"event_page_visits"> | string
+    visitor_id?: StringNullableFilter<"event_page_visits"> | string | null
+    event_id?: StringFilter<"event_page_visits"> | string
+    visited_at?: DateTimeFilter<"event_page_visits"> | Date | string
+    ip_address?: StringNullableFilter<"event_page_visits"> | string | null
+    user_agent?: StringNullableFilter<"event_page_visits"> | string | null
+    is_anonymous?: BoolFilter<"event_page_visits"> | boolean
+    referrer?: StringNullableFilter<"event_page_visits"> | string | null
+    session_id?: StringNullableFilter<"event_page_visits"> | string | null
+    page_section?: StringNullableFilter<"event_page_visits"> | string | null
+    duration?: IntNullableFilter<"event_page_visits"> | number | null
+    interactions?: IntFilter<"event_page_visits"> | number
+    rsvp_action?: StringNullableFilter<"event_page_visits"> | string | null
+    invitation_id?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_source?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_campaign?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_medium?: StringNullableFilter<"event_page_visits"> | string | null
+    device_type?: StringNullableFilter<"event_page_visits"> | string | null
+    browser?: StringNullableFilter<"event_page_visits"> | string | null
+    os?: StringNullableFilter<"event_page_visits"> | string | null
+    country?: StringNullableFilter<"event_page_visits"> | string | null
+    city?: StringNullableFilter<"event_page_visits"> | string | null
+    visitor?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
+  }
+
+  export type event_page_visitsOrderByWithRelationInput = {
+    id?: SortOrder
+    visitor_id?: SortOrderInput | SortOrder
+    event_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrderInput | SortOrder
+    session_id?: SortOrderInput | SortOrder
+    page_section?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    interactions?: SortOrder
+    rsvp_action?: SortOrderInput | SortOrder
+    invitation_id?: SortOrderInput | SortOrder
+    utm_source?: SortOrderInput | SortOrder
+    utm_campaign?: SortOrderInput | SortOrder
+    utm_medium?: SortOrderInput | SortOrder
+    device_type?: SortOrderInput | SortOrder
+    browser?: SortOrderInput | SortOrder
+    os?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    visitor?: usersOrderByWithRelationInput
+    event?: eventsOrderByWithRelationInput
+    invitation?: event_invitationsOrderByWithRelationInput
+  }
+
+  export type event_page_visitsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: event_page_visitsWhereInput | event_page_visitsWhereInput[]
+    OR?: event_page_visitsWhereInput[]
+    NOT?: event_page_visitsWhereInput | event_page_visitsWhereInput[]
+    visitor_id?: StringNullableFilter<"event_page_visits"> | string | null
+    event_id?: StringFilter<"event_page_visits"> | string
+    visited_at?: DateTimeFilter<"event_page_visits"> | Date | string
+    ip_address?: StringNullableFilter<"event_page_visits"> | string | null
+    user_agent?: StringNullableFilter<"event_page_visits"> | string | null
+    is_anonymous?: BoolFilter<"event_page_visits"> | boolean
+    referrer?: StringNullableFilter<"event_page_visits"> | string | null
+    session_id?: StringNullableFilter<"event_page_visits"> | string | null
+    page_section?: StringNullableFilter<"event_page_visits"> | string | null
+    duration?: IntNullableFilter<"event_page_visits"> | number | null
+    interactions?: IntFilter<"event_page_visits"> | number
+    rsvp_action?: StringNullableFilter<"event_page_visits"> | string | null
+    invitation_id?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_source?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_campaign?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_medium?: StringNullableFilter<"event_page_visits"> | string | null
+    device_type?: StringNullableFilter<"event_page_visits"> | string | null
+    browser?: StringNullableFilter<"event_page_visits"> | string | null
+    os?: StringNullableFilter<"event_page_visits"> | string | null
+    country?: StringNullableFilter<"event_page_visits"> | string | null
+    city?: StringNullableFilter<"event_page_visits"> | string | null
+    visitor?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
+  }, "id">
+
+  export type event_page_visitsOrderByWithAggregationInput = {
+    id?: SortOrder
+    visitor_id?: SortOrderInput | SortOrder
+    event_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrderInput | SortOrder
+    user_agent?: SortOrderInput | SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrderInput | SortOrder
+    session_id?: SortOrderInput | SortOrder
+    page_section?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    interactions?: SortOrder
+    rsvp_action?: SortOrderInput | SortOrder
+    invitation_id?: SortOrderInput | SortOrder
+    utm_source?: SortOrderInput | SortOrder
+    utm_campaign?: SortOrderInput | SortOrder
+    utm_medium?: SortOrderInput | SortOrder
+    device_type?: SortOrderInput | SortOrder
+    browser?: SortOrderInput | SortOrder
+    os?: SortOrderInput | SortOrder
+    country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    _count?: event_page_visitsCountOrderByAggregateInput
+    _avg?: event_page_visitsAvgOrderByAggregateInput
+    _max?: event_page_visitsMaxOrderByAggregateInput
+    _min?: event_page_visitsMinOrderByAggregateInput
+    _sum?: event_page_visitsSumOrderByAggregateInput
+  }
+
+  export type event_page_visitsScalarWhereWithAggregatesInput = {
+    AND?: event_page_visitsScalarWhereWithAggregatesInput | event_page_visitsScalarWhereWithAggregatesInput[]
+    OR?: event_page_visitsScalarWhereWithAggregatesInput[]
+    NOT?: event_page_visitsScalarWhereWithAggregatesInput | event_page_visitsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"event_page_visits"> | string
+    visitor_id?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    event_id?: StringWithAggregatesFilter<"event_page_visits"> | string
+    visited_at?: DateTimeWithAggregatesFilter<"event_page_visits"> | Date | string
+    ip_address?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    user_agent?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    is_anonymous?: BoolWithAggregatesFilter<"event_page_visits"> | boolean
+    referrer?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    session_id?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    page_section?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    duration?: IntNullableWithAggregatesFilter<"event_page_visits"> | number | null
+    interactions?: IntWithAggregatesFilter<"event_page_visits"> | number
+    rsvp_action?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    invitation_id?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    utm_source?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    utm_campaign?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    utm_medium?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    device_type?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    browser?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    os?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    country?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
+    city?: StringNullableWithAggregatesFilter<"event_page_visits"> | string | null
   }
 
   export type attachmentsWhereInput = {
@@ -21464,6 +26304,7 @@ export namespace Prisma {
     event_locations?: Event_locationsListRelationFilter
     event_attachments?: Event_attachmentsListRelationFilter
     event_invitations?: Event_invitationsListRelationFilter
+    event_page_visits?: Event_page_visitsListRelationFilter
   }
 
   export type eventsOrderByWithRelationInput = {
@@ -21498,6 +26339,7 @@ export namespace Prisma {
     event_locations?: event_locationsOrderByRelationAggregateInput
     event_attachments?: event_attachmentsOrderByRelationAggregateInput
     event_invitations?: event_invitationsOrderByRelationAggregateInput
+    event_page_visits?: event_page_visitsOrderByRelationAggregateInput
   }
 
   export type eventsWhereUniqueInput = Prisma.AtLeast<{
@@ -21535,6 +26377,7 @@ export namespace Prisma {
     event_locations?: Event_locationsListRelationFilter
     event_attachments?: Event_attachmentsListRelationFilter
     event_invitations?: Event_invitationsListRelationFilter
+    event_page_visits?: Event_page_visitsListRelationFilter
   }, "id" | "slug">
 
   export type eventsOrderByWithAggregationInput = {
@@ -21991,6 +26834,7 @@ export namespace Prisma {
     inviter?: XOR<UsersScalarRelationFilter, usersWhereInput>
     parent_invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
     plus_one_invitations?: Event_invitationsListRelationFilter
+    event_page_visits?: Event_page_visitsListRelationFilter
   }
 
   export type event_invitationsOrderByWithRelationInput = {
@@ -22023,6 +26867,7 @@ export namespace Prisma {
     inviter?: usersOrderByWithRelationInput
     parent_invitation?: event_invitationsOrderByWithRelationInput
     plus_one_invitations?: event_invitationsOrderByRelationAggregateInput
+    event_page_visits?: event_page_visitsOrderByRelationAggregateInput
   }
 
   export type event_invitationsWhereUniqueInput = Prisma.AtLeast<{
@@ -22059,6 +26904,7 @@ export namespace Prisma {
     inviter?: XOR<UsersScalarRelationFilter, usersWhereInput>
     parent_invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
     plus_one_invitations?: Event_invitationsListRelationFilter
+    event_page_visits?: Event_page_visitsListRelationFilter
   }, "id" | "event_id_invited_user_id">
 
   export type event_invitationsOrderByWithAggregationInput = {
@@ -22255,6 +27101,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -22293,6 +27144,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUpdateInput = {
@@ -22331,6 +27187,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -22369,6 +27230,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -22453,6 +27319,426 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type user_connectionsCreateInput = {
+    id?: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    initiator: usersCreateNestedOneWithoutConnections_initiatedInput
+    receiver: usersCreateNestedOneWithoutConnections_receivedInput
+  }
+
+  export type user_connectionsUncheckedCreateInput = {
+    id?: string
+    user_id: string
+    connected_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_connectionsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    initiator?: usersUpdateOneRequiredWithoutConnections_initiatedNestedInput
+    receiver?: usersUpdateOneRequiredWithoutConnections_receivedNestedInput
+  }
+
+  export type user_connectionsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    connected_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsCreateManyInput = {
+    id?: string
+    user_id: string
+    connected_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_connectionsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    connected_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_profile_visitsCreateInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    visitor?: usersCreateNestedOneWithoutProfile_visits_madeInput
+    profile_user: usersCreateNestedOneWithoutProfile_visits_receivedInput
+  }
+
+  export type user_profile_visitsUncheckedCreateInput = {
+    id?: string
+    visitor_id?: string | null
+    profile_user_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type user_profile_visitsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    visitor?: usersUpdateOneWithoutProfile_visits_madeNestedInput
+    profile_user?: usersUpdateOneRequiredWithoutProfile_visits_receivedNestedInput
+  }
+
+  export type user_profile_visitsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    profile_user_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_profile_visitsCreateManyInput = {
+    id?: string
+    visitor_id?: string | null
+    profile_user_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type user_profile_visitsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_profile_visitsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    profile_user_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsCreateInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    visitor?: usersCreateNestedOneWithoutEvent_visits_madeInput
+    event: eventsCreateNestedOneWithoutEvent_page_visitsInput
+    invitation?: event_invitationsCreateNestedOneWithoutEvent_page_visitsInput
+  }
+
+  export type event_page_visitsUncheckedCreateInput = {
+    id?: string
+    visitor_id?: string | null
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    visitor?: usersUpdateOneWithoutEvent_visits_madeNestedInput
+    event?: eventsUpdateOneRequiredWithoutEvent_page_visitsNestedInput
+    invitation?: event_invitationsUpdateOneWithoutEvent_page_visitsNestedInput
+  }
+
+  export type event_page_visitsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsCreateManyInput = {
+    id?: string
+    visitor_id?: string | null
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type attachmentsCreateInput = {
@@ -23195,6 +28481,7 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateInput = {
@@ -23228,6 +28515,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsUpdateInput = {
@@ -23261,6 +28549,7 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateInput = {
@@ -23294,6 +28583,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsCreateManyInput = {
@@ -23815,6 +29105,7 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateInput = {
@@ -23843,6 +29134,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUpdateInput = {
@@ -23871,6 +29163,7 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateInput = {
@@ -23899,6 +29192,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsCreateManyInput = {
@@ -24228,6 +29522,24 @@ export namespace Prisma {
     none?: event_invitationsWhereInput
   }
 
+  export type User_connectionsListRelationFilter = {
+    every?: user_connectionsWhereInput
+    some?: user_connectionsWhereInput
+    none?: user_connectionsWhereInput
+  }
+
+  export type User_profile_visitsListRelationFilter = {
+    every?: user_profile_visitsWhereInput
+    some?: user_profile_visitsWhereInput
+    none?: user_profile_visitsWhereInput
+  }
+
+  export type Event_page_visitsListRelationFilter = {
+    every?: event_page_visitsWhereInput
+    some?: event_page_visitsWhereInput
+    none?: event_page_visitsWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -24262,6 +29574,18 @@ export namespace Prisma {
   }
 
   export type event_invitationsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type user_connectionsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type user_profile_visitsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type event_page_visitsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -24469,6 +29793,269 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type UsersScalarRelationFilter = {
+    is?: usersWhereInput
+    isNot?: usersWhereInput
+  }
+
+  export type user_connectionsUser_idConnected_idCompoundUniqueInput = {
+    user_id: string
+    connected_id: string
+  }
+
+  export type user_connectionsCountOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    connected_id?: SortOrder
+    status?: SortOrder
+    connection_type?: SortOrder
+    notes?: SortOrder
+    last_interaction?: SortOrder
+    interaction_count?: SortOrder
+    is_favorite?: SortOrder
+    is_hidden?: SortOrder
+    can_see_events?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type user_connectionsAvgOrderByAggregateInput = {
+    interaction_count?: SortOrder
+  }
+
+  export type user_connectionsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    connected_id?: SortOrder
+    status?: SortOrder
+    connection_type?: SortOrder
+    notes?: SortOrder
+    last_interaction?: SortOrder
+    interaction_count?: SortOrder
+    is_favorite?: SortOrder
+    is_hidden?: SortOrder
+    can_see_events?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type user_connectionsMinOrderByAggregateInput = {
+    id?: SortOrder
+    user_id?: SortOrder
+    connected_id?: SortOrder
+    status?: SortOrder
+    connection_type?: SortOrder
+    notes?: SortOrder
+    last_interaction?: SortOrder
+    interaction_count?: SortOrder
+    is_favorite?: SortOrder
+    is_hidden?: SortOrder
+    can_see_events?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type user_connectionsSumOrderByAggregateInput = {
+    interaction_count?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type UsersNullableScalarRelationFilter = {
+    is?: usersWhereInput | null
+    isNot?: usersWhereInput | null
+  }
+
+  export type user_profile_visitsCountOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    profile_user_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type user_profile_visitsAvgOrderByAggregateInput = {
+    duration?: SortOrder
+    interactions?: SortOrder
+  }
+
+  export type user_profile_visitsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    profile_user_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type user_profile_visitsMinOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    profile_user_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type user_profile_visitsSumOrderByAggregateInput = {
+    duration?: SortOrder
+    interactions?: SortOrder
+  }
+
+  export type EventsScalarRelationFilter = {
+    is?: eventsWhereInput
+    isNot?: eventsWhereInput
+  }
+
+  export type Event_invitationsNullableScalarRelationFilter = {
+    is?: event_invitationsWhereInput | null
+    isNot?: event_invitationsWhereInput | null
+  }
+
+  export type event_page_visitsCountOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    event_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    rsvp_action?: SortOrder
+    invitation_id?: SortOrder
+    utm_source?: SortOrder
+    utm_campaign?: SortOrder
+    utm_medium?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type event_page_visitsAvgOrderByAggregateInput = {
+    duration?: SortOrder
+    interactions?: SortOrder
+  }
+
+  export type event_page_visitsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    event_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    rsvp_action?: SortOrder
+    invitation_id?: SortOrder
+    utm_source?: SortOrder
+    utm_campaign?: SortOrder
+    utm_medium?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type event_page_visitsMinOrderByAggregateInput = {
+    id?: SortOrder
+    visitor_id?: SortOrder
+    event_id?: SortOrder
+    visited_at?: SortOrder
+    ip_address?: SortOrder
+    user_agent?: SortOrder
+    is_anonymous?: SortOrder
+    referrer?: SortOrder
+    session_id?: SortOrder
+    page_section?: SortOrder
+    duration?: SortOrder
+    interactions?: SortOrder
+    rsvp_action?: SortOrder
+    invitation_id?: SortOrder
+    utm_source?: SortOrder
+    utm_campaign?: SortOrder
+    utm_medium?: SortOrder
+    device_type?: SortOrder
+    browser?: SortOrder
+    os?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+  }
+
+  export type event_page_visitsSumOrderByAggregateInput = {
+    duration?: SortOrder
+    interactions?: SortOrder
+  }
+
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -24478,11 +30065,6 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type UsersScalarRelationFilter = {
-    is?: usersWhereInput
-    isNot?: usersWhereInput
   }
 
   export type Event_attachmentsListRelationFilter = {
@@ -25047,16 +30629,6 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type EventsScalarRelationFilter = {
-    is?: eventsWhereInput
-    isNot?: eventsWhereInput
-  }
-
-  export type UsersNullableScalarRelationFilter = {
-    is?: usersWhereInput | null
-    isNot?: usersWhereInput | null
-  }
-
   export type event_rolesEvent_idUser_idCompoundUniqueInput = {
     event_id: string
     user_id: string
@@ -25111,17 +30683,6 @@ export namespace Prisma {
     is_active?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type event_locationsCountOrderByAggregateInput = {
@@ -25234,22 +30795,6 @@ export namespace Prisma {
     display_order?: SortOrder
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type AttachmentsScalarRelationFilter = {
     is?: attachmentsWhereInput
     isNot?: attachmentsWhereInput
@@ -25301,11 +30846,6 @@ export namespace Prisma {
   export type BoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-  }
-
-  export type Event_invitationsNullableScalarRelationFilter = {
-    is?: event_invitationsWhereInput | null
-    isNot?: event_invitationsWhereInput | null
   }
 
   export type event_invitationsEvent_idInvited_user_idCompoundUniqueInput = {
@@ -25535,6 +31075,41 @@ export namespace Prisma {
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
   }
 
+  export type user_connectionsCreateNestedManyWithoutInitiatorInput = {
+    create?: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput> | user_connectionsCreateWithoutInitiatorInput[] | user_connectionsUncheckedCreateWithoutInitiatorInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutInitiatorInput | user_connectionsCreateOrConnectWithoutInitiatorInput[]
+    createMany?: user_connectionsCreateManyInitiatorInputEnvelope
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+  }
+
+  export type user_connectionsCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput> | user_connectionsCreateWithoutReceiverInput[] | user_connectionsUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutReceiverInput | user_connectionsCreateOrConnectWithoutReceiverInput[]
+    createMany?: user_connectionsCreateManyReceiverInputEnvelope
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+  }
+
+  export type user_profile_visitsCreateNestedManyWithoutVisitorInput = {
+    create?: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput> | user_profile_visitsCreateWithoutVisitorInput[] | user_profile_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutVisitorInput | user_profile_visitsCreateOrConnectWithoutVisitorInput[]
+    createMany?: user_profile_visitsCreateManyVisitorInputEnvelope
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+  }
+
+  export type user_profile_visitsCreateNestedManyWithoutProfile_userInput = {
+    create?: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput> | user_profile_visitsCreateWithoutProfile_userInput[] | user_profile_visitsUncheckedCreateWithoutProfile_userInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutProfile_userInput | user_profile_visitsCreateOrConnectWithoutProfile_userInput[]
+    createMany?: user_profile_visitsCreateManyProfile_userInputEnvelope
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+  }
+
+  export type event_page_visitsCreateNestedManyWithoutVisitorInput = {
+    create?: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput> | event_page_visitsCreateWithoutVisitorInput[] | event_page_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutVisitorInput | event_page_visitsCreateOrConnectWithoutVisitorInput[]
+    createMany?: event_page_visitsCreateManyVisitorInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
   export type oauth_accountsUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<oauth_accountsCreateWithoutUserInput, oauth_accountsUncheckedCreateWithoutUserInput> | oauth_accountsCreateWithoutUserInput[] | oauth_accountsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: oauth_accountsCreateOrConnectWithoutUserInput | oauth_accountsCreateOrConnectWithoutUserInput[]
@@ -25603,6 +31178,41 @@ export namespace Prisma {
     connectOrCreate?: event_invitationsCreateOrConnectWithoutInvited_userInput | event_invitationsCreateOrConnectWithoutInvited_userInput[]
     createMany?: event_invitationsCreateManyInvited_userInputEnvelope
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
+  }
+
+  export type user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput = {
+    create?: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput> | user_connectionsCreateWithoutInitiatorInput[] | user_connectionsUncheckedCreateWithoutInitiatorInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutInitiatorInput | user_connectionsCreateOrConnectWithoutInitiatorInput[]
+    createMany?: user_connectionsCreateManyInitiatorInputEnvelope
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+  }
+
+  export type user_connectionsUncheckedCreateNestedManyWithoutReceiverInput = {
+    create?: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput> | user_connectionsCreateWithoutReceiverInput[] | user_connectionsUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutReceiverInput | user_connectionsCreateOrConnectWithoutReceiverInput[]
+    createMany?: user_connectionsCreateManyReceiverInputEnvelope
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+  }
+
+  export type user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput = {
+    create?: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput> | user_profile_visitsCreateWithoutVisitorInput[] | user_profile_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutVisitorInput | user_profile_visitsCreateOrConnectWithoutVisitorInput[]
+    createMany?: user_profile_visitsCreateManyVisitorInputEnvelope
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+  }
+
+  export type user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput = {
+    create?: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput> | user_profile_visitsCreateWithoutProfile_userInput[] | user_profile_visitsUncheckedCreateWithoutProfile_userInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutProfile_userInput | user_profile_visitsCreateOrConnectWithoutProfile_userInput[]
+    createMany?: user_profile_visitsCreateManyProfile_userInputEnvelope
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+  }
+
+  export type event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput = {
+    create?: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput> | event_page_visitsCreateWithoutVisitorInput[] | event_page_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutVisitorInput | event_page_visitsCreateOrConnectWithoutVisitorInput[]
+    createMany?: event_page_visitsCreateManyVisitorInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -25773,6 +31383,76 @@ export namespace Prisma {
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
   }
 
+  export type user_connectionsUpdateManyWithoutInitiatorNestedInput = {
+    create?: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput> | user_connectionsCreateWithoutInitiatorInput[] | user_connectionsUncheckedCreateWithoutInitiatorInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutInitiatorInput | user_connectionsCreateOrConnectWithoutInitiatorInput[]
+    upsert?: user_connectionsUpsertWithWhereUniqueWithoutInitiatorInput | user_connectionsUpsertWithWhereUniqueWithoutInitiatorInput[]
+    createMany?: user_connectionsCreateManyInitiatorInputEnvelope
+    set?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    disconnect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    delete?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    update?: user_connectionsUpdateWithWhereUniqueWithoutInitiatorInput | user_connectionsUpdateWithWhereUniqueWithoutInitiatorInput[]
+    updateMany?: user_connectionsUpdateManyWithWhereWithoutInitiatorInput | user_connectionsUpdateManyWithWhereWithoutInitiatorInput[]
+    deleteMany?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+  }
+
+  export type user_connectionsUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput> | user_connectionsCreateWithoutReceiverInput[] | user_connectionsUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutReceiverInput | user_connectionsCreateOrConnectWithoutReceiverInput[]
+    upsert?: user_connectionsUpsertWithWhereUniqueWithoutReceiverInput | user_connectionsUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: user_connectionsCreateManyReceiverInputEnvelope
+    set?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    disconnect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    delete?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    update?: user_connectionsUpdateWithWhereUniqueWithoutReceiverInput | user_connectionsUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: user_connectionsUpdateManyWithWhereWithoutReceiverInput | user_connectionsUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+  }
+
+  export type user_profile_visitsUpdateManyWithoutVisitorNestedInput = {
+    create?: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput> | user_profile_visitsCreateWithoutVisitorInput[] | user_profile_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutVisitorInput | user_profile_visitsCreateOrConnectWithoutVisitorInput[]
+    upsert?: user_profile_visitsUpsertWithWhereUniqueWithoutVisitorInput | user_profile_visitsUpsertWithWhereUniqueWithoutVisitorInput[]
+    createMany?: user_profile_visitsCreateManyVisitorInputEnvelope
+    set?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    disconnect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    delete?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    update?: user_profile_visitsUpdateWithWhereUniqueWithoutVisitorInput | user_profile_visitsUpdateWithWhereUniqueWithoutVisitorInput[]
+    updateMany?: user_profile_visitsUpdateManyWithWhereWithoutVisitorInput | user_profile_visitsUpdateManyWithWhereWithoutVisitorInput[]
+    deleteMany?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+  }
+
+  export type user_profile_visitsUpdateManyWithoutProfile_userNestedInput = {
+    create?: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput> | user_profile_visitsCreateWithoutProfile_userInput[] | user_profile_visitsUncheckedCreateWithoutProfile_userInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutProfile_userInput | user_profile_visitsCreateOrConnectWithoutProfile_userInput[]
+    upsert?: user_profile_visitsUpsertWithWhereUniqueWithoutProfile_userInput | user_profile_visitsUpsertWithWhereUniqueWithoutProfile_userInput[]
+    createMany?: user_profile_visitsCreateManyProfile_userInputEnvelope
+    set?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    disconnect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    delete?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    update?: user_profile_visitsUpdateWithWhereUniqueWithoutProfile_userInput | user_profile_visitsUpdateWithWhereUniqueWithoutProfile_userInput[]
+    updateMany?: user_profile_visitsUpdateManyWithWhereWithoutProfile_userInput | user_profile_visitsUpdateManyWithWhereWithoutProfile_userInput[]
+    deleteMany?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+  }
+
+  export type event_page_visitsUpdateManyWithoutVisitorNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput> | event_page_visitsCreateWithoutVisitorInput[] | event_page_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutVisitorInput | event_page_visitsCreateOrConnectWithoutVisitorInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutVisitorInput | event_page_visitsUpsertWithWhereUniqueWithoutVisitorInput[]
+    createMany?: event_page_visitsCreateManyVisitorInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput | event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutVisitorInput | event_page_visitsUpdateManyWithWhereWithoutVisitorInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
   export type oauth_accountsUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<oauth_accountsCreateWithoutUserInput, oauth_accountsUncheckedCreateWithoutUserInput> | oauth_accountsCreateWithoutUserInput[] | oauth_accountsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: oauth_accountsCreateOrConnectWithoutUserInput | oauth_accountsCreateOrConnectWithoutUserInput[]
@@ -25911,6 +31591,188 @@ export namespace Prisma {
     update?: event_invitationsUpdateWithWhereUniqueWithoutInvited_userInput | event_invitationsUpdateWithWhereUniqueWithoutInvited_userInput[]
     updateMany?: event_invitationsUpdateManyWithWhereWithoutInvited_userInput | event_invitationsUpdateManyWithWhereWithoutInvited_userInput[]
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
+  }
+
+  export type user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput = {
+    create?: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput> | user_connectionsCreateWithoutInitiatorInput[] | user_connectionsUncheckedCreateWithoutInitiatorInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutInitiatorInput | user_connectionsCreateOrConnectWithoutInitiatorInput[]
+    upsert?: user_connectionsUpsertWithWhereUniqueWithoutInitiatorInput | user_connectionsUpsertWithWhereUniqueWithoutInitiatorInput[]
+    createMany?: user_connectionsCreateManyInitiatorInputEnvelope
+    set?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    disconnect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    delete?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    update?: user_connectionsUpdateWithWhereUniqueWithoutInitiatorInput | user_connectionsUpdateWithWhereUniqueWithoutInitiatorInput[]
+    updateMany?: user_connectionsUpdateManyWithWhereWithoutInitiatorInput | user_connectionsUpdateManyWithWhereWithoutInitiatorInput[]
+    deleteMany?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+  }
+
+  export type user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput = {
+    create?: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput> | user_connectionsCreateWithoutReceiverInput[] | user_connectionsUncheckedCreateWithoutReceiverInput[]
+    connectOrCreate?: user_connectionsCreateOrConnectWithoutReceiverInput | user_connectionsCreateOrConnectWithoutReceiverInput[]
+    upsert?: user_connectionsUpsertWithWhereUniqueWithoutReceiverInput | user_connectionsUpsertWithWhereUniqueWithoutReceiverInput[]
+    createMany?: user_connectionsCreateManyReceiverInputEnvelope
+    set?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    disconnect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    delete?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    connect?: user_connectionsWhereUniqueInput | user_connectionsWhereUniqueInput[]
+    update?: user_connectionsUpdateWithWhereUniqueWithoutReceiverInput | user_connectionsUpdateWithWhereUniqueWithoutReceiverInput[]
+    updateMany?: user_connectionsUpdateManyWithWhereWithoutReceiverInput | user_connectionsUpdateManyWithWhereWithoutReceiverInput[]
+    deleteMany?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+  }
+
+  export type user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput = {
+    create?: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput> | user_profile_visitsCreateWithoutVisitorInput[] | user_profile_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutVisitorInput | user_profile_visitsCreateOrConnectWithoutVisitorInput[]
+    upsert?: user_profile_visitsUpsertWithWhereUniqueWithoutVisitorInput | user_profile_visitsUpsertWithWhereUniqueWithoutVisitorInput[]
+    createMany?: user_profile_visitsCreateManyVisitorInputEnvelope
+    set?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    disconnect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    delete?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    update?: user_profile_visitsUpdateWithWhereUniqueWithoutVisitorInput | user_profile_visitsUpdateWithWhereUniqueWithoutVisitorInput[]
+    updateMany?: user_profile_visitsUpdateManyWithWhereWithoutVisitorInput | user_profile_visitsUpdateManyWithWhereWithoutVisitorInput[]
+    deleteMany?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+  }
+
+  export type user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput = {
+    create?: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput> | user_profile_visitsCreateWithoutProfile_userInput[] | user_profile_visitsUncheckedCreateWithoutProfile_userInput[]
+    connectOrCreate?: user_profile_visitsCreateOrConnectWithoutProfile_userInput | user_profile_visitsCreateOrConnectWithoutProfile_userInput[]
+    upsert?: user_profile_visitsUpsertWithWhereUniqueWithoutProfile_userInput | user_profile_visitsUpsertWithWhereUniqueWithoutProfile_userInput[]
+    createMany?: user_profile_visitsCreateManyProfile_userInputEnvelope
+    set?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    disconnect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    delete?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    connect?: user_profile_visitsWhereUniqueInput | user_profile_visitsWhereUniqueInput[]
+    update?: user_profile_visitsUpdateWithWhereUniqueWithoutProfile_userInput | user_profile_visitsUpdateWithWhereUniqueWithoutProfile_userInput[]
+    updateMany?: user_profile_visitsUpdateManyWithWhereWithoutProfile_userInput | user_profile_visitsUpdateManyWithWhereWithoutProfile_userInput[]
+    deleteMany?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+  }
+
+  export type event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput> | event_page_visitsCreateWithoutVisitorInput[] | event_page_visitsUncheckedCreateWithoutVisitorInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutVisitorInput | event_page_visitsCreateOrConnectWithoutVisitorInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutVisitorInput | event_page_visitsUpsertWithWhereUniqueWithoutVisitorInput[]
+    createMany?: event_page_visitsCreateManyVisitorInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput | event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutVisitorInput | event_page_visitsUpdateManyWithWhereWithoutVisitorInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
+  export type usersCreateNestedOneWithoutConnections_initiatedInput = {
+    create?: XOR<usersCreateWithoutConnections_initiatedInput, usersUncheckedCreateWithoutConnections_initiatedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutConnections_initiatedInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutConnections_receivedInput = {
+    create?: XOR<usersCreateWithoutConnections_receivedInput, usersUncheckedCreateWithoutConnections_receivedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutConnections_receivedInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type usersUpdateOneRequiredWithoutConnections_initiatedNestedInput = {
+    create?: XOR<usersCreateWithoutConnections_initiatedInput, usersUncheckedCreateWithoutConnections_initiatedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutConnections_initiatedInput
+    upsert?: usersUpsertWithoutConnections_initiatedInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutConnections_initiatedInput, usersUpdateWithoutConnections_initiatedInput>, usersUncheckedUpdateWithoutConnections_initiatedInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutConnections_receivedNestedInput = {
+    create?: XOR<usersCreateWithoutConnections_receivedInput, usersUncheckedCreateWithoutConnections_receivedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutConnections_receivedInput
+    upsert?: usersUpsertWithoutConnections_receivedInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutConnections_receivedInput, usersUpdateWithoutConnections_receivedInput>, usersUncheckedUpdateWithoutConnections_receivedInput>
+  }
+
+  export type usersCreateNestedOneWithoutProfile_visits_madeInput = {
+    create?: XOR<usersCreateWithoutProfile_visits_madeInput, usersUncheckedCreateWithoutProfile_visits_madeInput>
+    connectOrCreate?: usersCreateOrConnectWithoutProfile_visits_madeInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutProfile_visits_receivedInput = {
+    create?: XOR<usersCreateWithoutProfile_visits_receivedInput, usersUncheckedCreateWithoutProfile_visits_receivedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutProfile_visits_receivedInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersUpdateOneWithoutProfile_visits_madeNestedInput = {
+    create?: XOR<usersCreateWithoutProfile_visits_madeInput, usersUncheckedCreateWithoutProfile_visits_madeInput>
+    connectOrCreate?: usersCreateOrConnectWithoutProfile_visits_madeInput
+    upsert?: usersUpsertWithoutProfile_visits_madeInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutProfile_visits_madeInput, usersUpdateWithoutProfile_visits_madeInput>, usersUncheckedUpdateWithoutProfile_visits_madeInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutProfile_visits_receivedNestedInput = {
+    create?: XOR<usersCreateWithoutProfile_visits_receivedInput, usersUncheckedCreateWithoutProfile_visits_receivedInput>
+    connectOrCreate?: usersCreateOrConnectWithoutProfile_visits_receivedInput
+    upsert?: usersUpsertWithoutProfile_visits_receivedInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutProfile_visits_receivedInput, usersUpdateWithoutProfile_visits_receivedInput>, usersUncheckedUpdateWithoutProfile_visits_receivedInput>
+  }
+
+  export type usersCreateNestedOneWithoutEvent_visits_madeInput = {
+    create?: XOR<usersCreateWithoutEvent_visits_madeInput, usersUncheckedCreateWithoutEvent_visits_madeInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_visits_madeInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type eventsCreateNestedOneWithoutEvent_page_visitsInput = {
+    create?: XOR<eventsCreateWithoutEvent_page_visitsInput, eventsUncheckedCreateWithoutEvent_page_visitsInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_page_visitsInput
+    connect?: eventsWhereUniqueInput
+  }
+
+  export type event_invitationsCreateNestedOneWithoutEvent_page_visitsInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_page_visitsInput, event_invitationsUncheckedCreateWithoutEvent_page_visitsInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_page_visitsInput
+    connect?: event_invitationsWhereUniqueInput
+  }
+
+  export type usersUpdateOneWithoutEvent_visits_madeNestedInput = {
+    create?: XOR<usersCreateWithoutEvent_visits_madeInput, usersUncheckedCreateWithoutEvent_visits_madeInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_visits_madeInput
+    upsert?: usersUpsertWithoutEvent_visits_madeInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutEvent_visits_madeInput, usersUpdateWithoutEvent_visits_madeInput>, usersUncheckedUpdateWithoutEvent_visits_madeInput>
+  }
+
+  export type eventsUpdateOneRequiredWithoutEvent_page_visitsNestedInput = {
+    create?: XOR<eventsCreateWithoutEvent_page_visitsInput, eventsUncheckedCreateWithoutEvent_page_visitsInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_page_visitsInput
+    upsert?: eventsUpsertWithoutEvent_page_visitsInput
+    connect?: eventsWhereUniqueInput
+    update?: XOR<XOR<eventsUpdateToOneWithWhereWithoutEvent_page_visitsInput, eventsUpdateWithoutEvent_page_visitsInput>, eventsUncheckedUpdateWithoutEvent_page_visitsInput>
+  }
+
+  export type event_invitationsUpdateOneWithoutEvent_page_visitsNestedInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_page_visitsInput, event_invitationsUncheckedCreateWithoutEvent_page_visitsInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_page_visitsInput
+    upsert?: event_invitationsUpsertWithoutEvent_page_visitsInput
+    disconnect?: event_invitationsWhereInput | boolean
+    delete?: event_invitationsWhereInput | boolean
+    connect?: event_invitationsWhereUniqueInput
+    update?: XOR<XOR<event_invitationsUpdateToOneWithWhereWithoutEvent_page_visitsInput, event_invitationsUpdateWithoutEvent_page_visitsInput>, event_invitationsUncheckedUpdateWithoutEvent_page_visitsInput>
   }
 
   export type usersCreateNestedOneWithoutAttachmentsInput = {
@@ -26234,6 +32096,13 @@ export namespace Prisma {
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
   }
 
+  export type event_page_visitsCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput> | event_page_visitsCreateWithoutEventInput[] | event_page_visitsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutEventInput | event_page_visitsCreateOrConnectWithoutEventInput[]
+    createMany?: event_page_visitsCreateManyEventInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
   export type event_rolesUncheckedCreateNestedManyWithoutEventInput = {
     create?: XOR<event_rolesCreateWithoutEventInput, event_rolesUncheckedCreateWithoutEventInput> | event_rolesCreateWithoutEventInput[] | event_rolesUncheckedCreateWithoutEventInput[]
     connectOrCreate?: event_rolesCreateOrConnectWithoutEventInput | event_rolesCreateOrConnectWithoutEventInput[]
@@ -26260,6 +32129,13 @@ export namespace Prisma {
     connectOrCreate?: event_invitationsCreateOrConnectWithoutEventInput | event_invitationsCreateOrConnectWithoutEventInput[]
     createMany?: event_invitationsCreateManyEventInputEnvelope
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
+  }
+
+  export type event_page_visitsUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput> | event_page_visitsCreateWithoutEventInput[] | event_page_visitsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutEventInput | event_page_visitsCreateOrConnectWithoutEventInput[]
+    createMany?: event_page_visitsCreateManyEventInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -26339,6 +32215,20 @@ export namespace Prisma {
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
   }
 
+  export type event_page_visitsUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput> | event_page_visitsCreateWithoutEventInput[] | event_page_visitsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutEventInput | event_page_visitsCreateOrConnectWithoutEventInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutEventInput | event_page_visitsUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_page_visitsCreateManyEventInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutEventInput | event_page_visitsUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutEventInput | event_page_visitsUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
   export type event_rolesUncheckedUpdateManyWithoutEventNestedInput = {
     create?: XOR<event_rolesCreateWithoutEventInput, event_rolesUncheckedCreateWithoutEventInput> | event_rolesCreateWithoutEventInput[] | event_rolesUncheckedCreateWithoutEventInput[]
     connectOrCreate?: event_rolesCreateOrConnectWithoutEventInput | event_rolesCreateOrConnectWithoutEventInput[]
@@ -26395,6 +32285,20 @@ export namespace Prisma {
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
   }
 
+  export type event_page_visitsUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput> | event_page_visitsCreateWithoutEventInput[] | event_page_visitsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutEventInput | event_page_visitsCreateOrConnectWithoutEventInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutEventInput | event_page_visitsUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_page_visitsCreateManyEventInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutEventInput | event_page_visitsUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutEventInput | event_page_visitsUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
   export type eventsCreateNestedOneWithoutEvent_rolesInput = {
     create?: XOR<eventsCreateWithoutEvent_rolesInput, eventsUncheckedCreateWithoutEvent_rolesInput>
     connectOrCreate?: eventsCreateOrConnectWithoutEvent_rolesInput
@@ -26443,14 +32347,6 @@ export namespace Prisma {
     create?: XOR<eventsCreateWithoutEvent_locationsInput, eventsUncheckedCreateWithoutEvent_locationsInput>
     connectOrCreate?: eventsCreateOrConnectWithoutEvent_locationsInput
     connect?: eventsWhereUniqueInput
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type eventsUpdateOneRequiredWithoutEvent_locationsNestedInput = {
@@ -26524,11 +32420,25 @@ export namespace Prisma {
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
   }
 
+  export type event_page_visitsCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput> | event_page_visitsCreateWithoutInvitationInput[] | event_page_visitsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutInvitationInput | event_page_visitsCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_page_visitsCreateManyInvitationInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
   export type event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput = {
     create?: XOR<event_invitationsCreateWithoutParent_invitationInput, event_invitationsUncheckedCreateWithoutParent_invitationInput> | event_invitationsCreateWithoutParent_invitationInput[] | event_invitationsUncheckedCreateWithoutParent_invitationInput[]
     connectOrCreate?: event_invitationsCreateOrConnectWithoutParent_invitationInput | event_invitationsCreateOrConnectWithoutParent_invitationInput[]
     createMany?: event_invitationsCreateManyParent_invitationInputEnvelope
     connect?: event_invitationsWhereUniqueInput | event_invitationsWhereUniqueInput[]
+  }
+
+  export type event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput> | event_page_visitsCreateWithoutInvitationInput[] | event_page_visitsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutInvitationInput | event_page_visitsCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_page_visitsCreateManyInvitationInputEnvelope
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
@@ -26590,6 +32500,20 @@ export namespace Prisma {
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
   }
 
+  export type event_page_visitsUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput> | event_page_visitsCreateWithoutInvitationInput[] | event_page_visitsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutInvitationInput | event_page_visitsCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutInvitationInput | event_page_visitsUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_page_visitsCreateManyInvitationInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput | event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutInvitationInput | event_page_visitsUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
   export type event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput = {
     create?: XOR<event_invitationsCreateWithoutParent_invitationInput, event_invitationsUncheckedCreateWithoutParent_invitationInput> | event_invitationsCreateWithoutParent_invitationInput[] | event_invitationsUncheckedCreateWithoutParent_invitationInput[]
     connectOrCreate?: event_invitationsCreateOrConnectWithoutParent_invitationInput | event_invitationsCreateOrConnectWithoutParent_invitationInput[]
@@ -26602,6 +32526,20 @@ export namespace Prisma {
     update?: event_invitationsUpdateWithWhereUniqueWithoutParent_invitationInput | event_invitationsUpdateWithWhereUniqueWithoutParent_invitationInput[]
     updateMany?: event_invitationsUpdateManyWithWhereWithoutParent_invitationInput | event_invitationsUpdateManyWithWhereWithoutParent_invitationInput[]
     deleteMany?: event_invitationsScalarWhereInput | event_invitationsScalarWhereInput[]
+  }
+
+  export type event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput> | event_page_visitsCreateWithoutInvitationInput[] | event_page_visitsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_page_visitsCreateOrConnectWithoutInvitationInput | event_page_visitsCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_page_visitsUpsertWithWhereUniqueWithoutInvitationInput | event_page_visitsUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_page_visitsCreateManyInvitationInputEnvelope
+    set?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    disconnect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    delete?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+    update?: event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput | event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_page_visitsUpdateManyWithWhereWithoutInvitationInput | event_page_visitsUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
   }
 
   export type usersCreateNestedOneWithoutOauth_accountsInput = {
@@ -26815,6 +32753,33 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedBigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -26842,17 +32807,6 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedDecimalNullableFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
@@ -26878,22 +32832,6 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
@@ -27135,6 +33073,7 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutCreatorInput = {
@@ -27167,6 +33106,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutCreatorInput = {
@@ -27288,6 +33228,7 @@ export namespace Prisma {
     invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutInviterInput = {
@@ -27315,6 +33256,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutInviterInput = {
@@ -27352,6 +33294,7 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutInvited_userInput = {
@@ -27379,6 +33322,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutInvited_userInput = {
@@ -27388,6 +33332,240 @@ export namespace Prisma {
 
   export type event_invitationsCreateManyInvited_userInputEnvelope = {
     data: event_invitationsCreateManyInvited_userInput | event_invitationsCreateManyInvited_userInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_connectionsCreateWithoutInitiatorInput = {
+    id?: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    receiver: usersCreateNestedOneWithoutConnections_receivedInput
+  }
+
+  export type user_connectionsUncheckedCreateWithoutInitiatorInput = {
+    id?: string
+    connected_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_connectionsCreateOrConnectWithoutInitiatorInput = {
+    where: user_connectionsWhereUniqueInput
+    create: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput>
+  }
+
+  export type user_connectionsCreateManyInitiatorInputEnvelope = {
+    data: user_connectionsCreateManyInitiatorInput | user_connectionsCreateManyInitiatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_connectionsCreateWithoutReceiverInput = {
+    id?: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+    initiator: usersCreateNestedOneWithoutConnections_initiatedInput
+  }
+
+  export type user_connectionsUncheckedCreateWithoutReceiverInput = {
+    id?: string
+    user_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_connectionsCreateOrConnectWithoutReceiverInput = {
+    where: user_connectionsWhereUniqueInput
+    create: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput>
+  }
+
+  export type user_connectionsCreateManyReceiverInputEnvelope = {
+    data: user_connectionsCreateManyReceiverInput | user_connectionsCreateManyReceiverInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_profile_visitsCreateWithoutVisitorInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    profile_user: usersCreateNestedOneWithoutProfile_visits_receivedInput
+  }
+
+  export type user_profile_visitsUncheckedCreateWithoutVisitorInput = {
+    id?: string
+    profile_user_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type user_profile_visitsCreateOrConnectWithoutVisitorInput = {
+    where: user_profile_visitsWhereUniqueInput
+    create: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput>
+  }
+
+  export type user_profile_visitsCreateManyVisitorInputEnvelope = {
+    data: user_profile_visitsCreateManyVisitorInput | user_profile_visitsCreateManyVisitorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_profile_visitsCreateWithoutProfile_userInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    visitor?: usersCreateNestedOneWithoutProfile_visits_madeInput
+  }
+
+  export type user_profile_visitsUncheckedCreateWithoutProfile_userInput = {
+    id?: string
+    visitor_id?: string | null
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type user_profile_visitsCreateOrConnectWithoutProfile_userInput = {
+    where: user_profile_visitsWhereUniqueInput
+    create: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput>
+  }
+
+  export type user_profile_visitsCreateManyProfile_userInputEnvelope = {
+    data: user_profile_visitsCreateManyProfile_userInput | user_profile_visitsCreateManyProfile_userInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_page_visitsCreateWithoutVisitorInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    event: eventsCreateNestedOneWithoutEvent_page_visitsInput
+    invitation?: event_invitationsCreateNestedOneWithoutEvent_page_visitsInput
+  }
+
+  export type event_page_visitsUncheckedCreateWithoutVisitorInput = {
+    id?: string
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsCreateOrConnectWithoutVisitorInput = {
+    where: event_page_visitsWhereUniqueInput
+    create: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput>
+  }
+
+  export type event_page_visitsCreateManyVisitorInputEnvelope = {
+    data: event_page_visitsCreateManyVisitorInput | event_page_visitsCreateManyVisitorInput[]
     skipDuplicates?: boolean
   }
 
@@ -27725,6 +33903,1352 @@ export namespace Prisma {
     data: XOR<event_invitationsUpdateManyMutationInput, event_invitationsUncheckedUpdateManyWithoutInvited_userInput>
   }
 
+  export type user_connectionsUpsertWithWhereUniqueWithoutInitiatorInput = {
+    where: user_connectionsWhereUniqueInput
+    update: XOR<user_connectionsUpdateWithoutInitiatorInput, user_connectionsUncheckedUpdateWithoutInitiatorInput>
+    create: XOR<user_connectionsCreateWithoutInitiatorInput, user_connectionsUncheckedCreateWithoutInitiatorInput>
+  }
+
+  export type user_connectionsUpdateWithWhereUniqueWithoutInitiatorInput = {
+    where: user_connectionsWhereUniqueInput
+    data: XOR<user_connectionsUpdateWithoutInitiatorInput, user_connectionsUncheckedUpdateWithoutInitiatorInput>
+  }
+
+  export type user_connectionsUpdateManyWithWhereWithoutInitiatorInput = {
+    where: user_connectionsScalarWhereInput
+    data: XOR<user_connectionsUpdateManyMutationInput, user_connectionsUncheckedUpdateManyWithoutInitiatorInput>
+  }
+
+  export type user_connectionsScalarWhereInput = {
+    AND?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+    OR?: user_connectionsScalarWhereInput[]
+    NOT?: user_connectionsScalarWhereInput | user_connectionsScalarWhereInput[]
+    id?: StringFilter<"user_connections"> | string
+    user_id?: StringFilter<"user_connections"> | string
+    connected_id?: StringFilter<"user_connections"> | string
+    status?: StringFilter<"user_connections"> | string
+    connection_type?: StringNullableFilter<"user_connections"> | string | null
+    notes?: StringNullableFilter<"user_connections"> | string | null
+    last_interaction?: DateTimeNullableFilter<"user_connections"> | Date | string | null
+    interaction_count?: IntFilter<"user_connections"> | number
+    is_favorite?: BoolFilter<"user_connections"> | boolean
+    is_hidden?: BoolFilter<"user_connections"> | boolean
+    can_see_events?: BoolFilter<"user_connections"> | boolean
+    created_at?: DateTimeFilter<"user_connections"> | Date | string
+    updated_at?: DateTimeFilter<"user_connections"> | Date | string
+  }
+
+  export type user_connectionsUpsertWithWhereUniqueWithoutReceiverInput = {
+    where: user_connectionsWhereUniqueInput
+    update: XOR<user_connectionsUpdateWithoutReceiverInput, user_connectionsUncheckedUpdateWithoutReceiverInput>
+    create: XOR<user_connectionsCreateWithoutReceiverInput, user_connectionsUncheckedCreateWithoutReceiverInput>
+  }
+
+  export type user_connectionsUpdateWithWhereUniqueWithoutReceiverInput = {
+    where: user_connectionsWhereUniqueInput
+    data: XOR<user_connectionsUpdateWithoutReceiverInput, user_connectionsUncheckedUpdateWithoutReceiverInput>
+  }
+
+  export type user_connectionsUpdateManyWithWhereWithoutReceiverInput = {
+    where: user_connectionsScalarWhereInput
+    data: XOR<user_connectionsUpdateManyMutationInput, user_connectionsUncheckedUpdateManyWithoutReceiverInput>
+  }
+
+  export type user_profile_visitsUpsertWithWhereUniqueWithoutVisitorInput = {
+    where: user_profile_visitsWhereUniqueInput
+    update: XOR<user_profile_visitsUpdateWithoutVisitorInput, user_profile_visitsUncheckedUpdateWithoutVisitorInput>
+    create: XOR<user_profile_visitsCreateWithoutVisitorInput, user_profile_visitsUncheckedCreateWithoutVisitorInput>
+  }
+
+  export type user_profile_visitsUpdateWithWhereUniqueWithoutVisitorInput = {
+    where: user_profile_visitsWhereUniqueInput
+    data: XOR<user_profile_visitsUpdateWithoutVisitorInput, user_profile_visitsUncheckedUpdateWithoutVisitorInput>
+  }
+
+  export type user_profile_visitsUpdateManyWithWhereWithoutVisitorInput = {
+    where: user_profile_visitsScalarWhereInput
+    data: XOR<user_profile_visitsUpdateManyMutationInput, user_profile_visitsUncheckedUpdateManyWithoutVisitorInput>
+  }
+
+  export type user_profile_visitsScalarWhereInput = {
+    AND?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+    OR?: user_profile_visitsScalarWhereInput[]
+    NOT?: user_profile_visitsScalarWhereInput | user_profile_visitsScalarWhereInput[]
+    id?: StringFilter<"user_profile_visits"> | string
+    visitor_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    profile_user_id?: StringFilter<"user_profile_visits"> | string
+    visited_at?: DateTimeFilter<"user_profile_visits"> | Date | string
+    ip_address?: StringNullableFilter<"user_profile_visits"> | string | null
+    user_agent?: StringNullableFilter<"user_profile_visits"> | string | null
+    is_anonymous?: BoolFilter<"user_profile_visits"> | boolean
+    referrer?: StringNullableFilter<"user_profile_visits"> | string | null
+    session_id?: StringNullableFilter<"user_profile_visits"> | string | null
+    page_section?: StringNullableFilter<"user_profile_visits"> | string | null
+    duration?: IntNullableFilter<"user_profile_visits"> | number | null
+    interactions?: IntFilter<"user_profile_visits"> | number
+    device_type?: StringNullableFilter<"user_profile_visits"> | string | null
+    browser?: StringNullableFilter<"user_profile_visits"> | string | null
+    os?: StringNullableFilter<"user_profile_visits"> | string | null
+    country?: StringNullableFilter<"user_profile_visits"> | string | null
+    city?: StringNullableFilter<"user_profile_visits"> | string | null
+  }
+
+  export type user_profile_visitsUpsertWithWhereUniqueWithoutProfile_userInput = {
+    where: user_profile_visitsWhereUniqueInput
+    update: XOR<user_profile_visitsUpdateWithoutProfile_userInput, user_profile_visitsUncheckedUpdateWithoutProfile_userInput>
+    create: XOR<user_profile_visitsCreateWithoutProfile_userInput, user_profile_visitsUncheckedCreateWithoutProfile_userInput>
+  }
+
+  export type user_profile_visitsUpdateWithWhereUniqueWithoutProfile_userInput = {
+    where: user_profile_visitsWhereUniqueInput
+    data: XOR<user_profile_visitsUpdateWithoutProfile_userInput, user_profile_visitsUncheckedUpdateWithoutProfile_userInput>
+  }
+
+  export type user_profile_visitsUpdateManyWithWhereWithoutProfile_userInput = {
+    where: user_profile_visitsScalarWhereInput
+    data: XOR<user_profile_visitsUpdateManyMutationInput, user_profile_visitsUncheckedUpdateManyWithoutProfile_userInput>
+  }
+
+  export type event_page_visitsUpsertWithWhereUniqueWithoutVisitorInput = {
+    where: event_page_visitsWhereUniqueInput
+    update: XOR<event_page_visitsUpdateWithoutVisitorInput, event_page_visitsUncheckedUpdateWithoutVisitorInput>
+    create: XOR<event_page_visitsCreateWithoutVisitorInput, event_page_visitsUncheckedCreateWithoutVisitorInput>
+  }
+
+  export type event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput = {
+    where: event_page_visitsWhereUniqueInput
+    data: XOR<event_page_visitsUpdateWithoutVisitorInput, event_page_visitsUncheckedUpdateWithoutVisitorInput>
+  }
+
+  export type event_page_visitsUpdateManyWithWhereWithoutVisitorInput = {
+    where: event_page_visitsScalarWhereInput
+    data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyWithoutVisitorInput>
+  }
+
+  export type event_page_visitsScalarWhereInput = {
+    AND?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+    OR?: event_page_visitsScalarWhereInput[]
+    NOT?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+    id?: StringFilter<"event_page_visits"> | string
+    visitor_id?: StringNullableFilter<"event_page_visits"> | string | null
+    event_id?: StringFilter<"event_page_visits"> | string
+    visited_at?: DateTimeFilter<"event_page_visits"> | Date | string
+    ip_address?: StringNullableFilter<"event_page_visits"> | string | null
+    user_agent?: StringNullableFilter<"event_page_visits"> | string | null
+    is_anonymous?: BoolFilter<"event_page_visits"> | boolean
+    referrer?: StringNullableFilter<"event_page_visits"> | string | null
+    session_id?: StringNullableFilter<"event_page_visits"> | string | null
+    page_section?: StringNullableFilter<"event_page_visits"> | string | null
+    duration?: IntNullableFilter<"event_page_visits"> | number | null
+    interactions?: IntFilter<"event_page_visits"> | number
+    rsvp_action?: StringNullableFilter<"event_page_visits"> | string | null
+    invitation_id?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_source?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_campaign?: StringNullableFilter<"event_page_visits"> | string | null
+    utm_medium?: StringNullableFilter<"event_page_visits"> | string | null
+    device_type?: StringNullableFilter<"event_page_visits"> | string | null
+    browser?: StringNullableFilter<"event_page_visits"> | string | null
+    os?: StringNullableFilter<"event_page_visits"> | string | null
+    country?: StringNullableFilter<"event_page_visits"> | string | null
+    city?: StringNullableFilter<"event_page_visits"> | string | null
+  }
+
+  export type usersCreateWithoutConnections_initiatedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersUncheckedCreateWithoutConnections_initiatedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersCreateOrConnectWithoutConnections_initiatedInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutConnections_initiatedInput, usersUncheckedCreateWithoutConnections_initiatedInput>
+  }
+
+  export type usersCreateWithoutConnections_receivedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersUncheckedCreateWithoutConnections_receivedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersCreateOrConnectWithoutConnections_receivedInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutConnections_receivedInput, usersUncheckedCreateWithoutConnections_receivedInput>
+  }
+
+  export type usersUpsertWithoutConnections_initiatedInput = {
+    update: XOR<usersUpdateWithoutConnections_initiatedInput, usersUncheckedUpdateWithoutConnections_initiatedInput>
+    create: XOR<usersCreateWithoutConnections_initiatedInput, usersUncheckedCreateWithoutConnections_initiatedInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutConnections_initiatedInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutConnections_initiatedInput, usersUncheckedUpdateWithoutConnections_initiatedInput>
+  }
+
+  export type usersUpdateWithoutConnections_initiatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutConnections_initiatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUpsertWithoutConnections_receivedInput = {
+    update: XOR<usersUpdateWithoutConnections_receivedInput, usersUncheckedUpdateWithoutConnections_receivedInput>
+    create: XOR<usersCreateWithoutConnections_receivedInput, usersUncheckedCreateWithoutConnections_receivedInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutConnections_receivedInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutConnections_receivedInput, usersUncheckedUpdateWithoutConnections_receivedInput>
+  }
+
+  export type usersUpdateWithoutConnections_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutConnections_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersCreateWithoutProfile_visits_madeInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersUncheckedCreateWithoutProfile_visits_madeInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersCreateOrConnectWithoutProfile_visits_madeInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutProfile_visits_madeInput, usersUncheckedCreateWithoutProfile_visits_madeInput>
+  }
+
+  export type usersCreateWithoutProfile_visits_receivedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersUncheckedCreateWithoutProfile_visits_receivedInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+  }
+
+  export type usersCreateOrConnectWithoutProfile_visits_receivedInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutProfile_visits_receivedInput, usersUncheckedCreateWithoutProfile_visits_receivedInput>
+  }
+
+  export type usersUpsertWithoutProfile_visits_madeInput = {
+    update: XOR<usersUpdateWithoutProfile_visits_madeInput, usersUncheckedUpdateWithoutProfile_visits_madeInput>
+    create: XOR<usersCreateWithoutProfile_visits_madeInput, usersUncheckedCreateWithoutProfile_visits_madeInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutProfile_visits_madeInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutProfile_visits_madeInput, usersUncheckedUpdateWithoutProfile_visits_madeInput>
+  }
+
+  export type usersUpdateWithoutProfile_visits_madeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutProfile_visits_madeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUpsertWithoutProfile_visits_receivedInput = {
+    update: XOR<usersUpdateWithoutProfile_visits_receivedInput, usersUncheckedUpdateWithoutProfile_visits_receivedInput>
+    create: XOR<usersCreateWithoutProfile_visits_receivedInput, usersUncheckedCreateWithoutProfile_visits_receivedInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutProfile_visits_receivedInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutProfile_visits_receivedInput, usersUncheckedUpdateWithoutProfile_visits_receivedInput>
+  }
+
+  export type usersUpdateWithoutProfile_visits_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutProfile_visits_receivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+  }
+
+  export type usersCreateWithoutEvent_visits_madeInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+  }
+
+  export type usersUncheckedCreateWithoutEvent_visits_madeInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+  }
+
+  export type usersCreateOrConnectWithoutEvent_visits_madeInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutEvent_visits_madeInput, usersUncheckedCreateWithoutEvent_visits_madeInput>
+  }
+
+  export type eventsCreateWithoutEvent_page_visitsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    creator: usersCreateNestedOneWithoutEvents_createdInput
+    event_roles?: event_rolesCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsUncheckedCreateWithoutEvent_page_visitsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    created_by: string
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsCreateOrConnectWithoutEvent_page_visitsInput = {
+    where: eventsWhereUniqueInput
+    create: XOR<eventsCreateWithoutEvent_page_visitsInput, eventsUncheckedCreateWithoutEvent_page_visitsInput>
+  }
+
+  export type event_invitationsCreateWithoutEvent_page_visitsInput = {
+    id?: string
+    invited_email?: string | null
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_invitationsInput
+    invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
+    inviter: usersCreateNestedOneWithoutInvitations_sentInput
+    parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
+    plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+  }
+
+  export type event_invitationsUncheckedCreateWithoutEvent_page_visitsInput = {
+    id?: string
+    event_id: string
+    invited_user_id?: string | null
+    invited_email?: string | null
+    invited_by: string
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    parent_invitation_id?: string | null
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+  }
+
+  export type event_invitationsCreateOrConnectWithoutEvent_page_visitsInput = {
+    where: event_invitationsWhereUniqueInput
+    create: XOR<event_invitationsCreateWithoutEvent_page_visitsInput, event_invitationsUncheckedCreateWithoutEvent_page_visitsInput>
+  }
+
+  export type usersUpsertWithoutEvent_visits_madeInput = {
+    update: XOR<usersUpdateWithoutEvent_visits_madeInput, usersUncheckedUpdateWithoutEvent_visits_madeInput>
+    create: XOR<usersCreateWithoutEvent_visits_madeInput, usersUncheckedCreateWithoutEvent_visits_madeInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutEvent_visits_madeInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutEvent_visits_madeInput, usersUncheckedUpdateWithoutEvent_visits_madeInput>
+  }
+
+  export type usersUpdateWithoutEvent_visits_madeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutEvent_visits_madeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+  }
+
+  export type eventsUpsertWithoutEvent_page_visitsInput = {
+    update: XOR<eventsUpdateWithoutEvent_page_visitsInput, eventsUncheckedUpdateWithoutEvent_page_visitsInput>
+    create: XOR<eventsCreateWithoutEvent_page_visitsInput, eventsUncheckedCreateWithoutEvent_page_visitsInput>
+    where?: eventsWhereInput
+  }
+
+  export type eventsUpdateToOneWithWhereWithoutEvent_page_visitsInput = {
+    where?: eventsWhereInput
+    data: XOR<eventsUpdateWithoutEvent_page_visitsInput, eventsUncheckedUpdateWithoutEvent_page_visitsInput>
+  }
+
+  export type eventsUpdateWithoutEvent_page_visitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: usersUpdateOneRequiredWithoutEvents_createdNestedInput
+    event_roles?: event_rolesUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+  }
+
+  export type eventsUncheckedUpdateWithoutEvent_page_visitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+  }
+
+  export type event_invitationsUpsertWithoutEvent_page_visitsInput = {
+    update: XOR<event_invitationsUpdateWithoutEvent_page_visitsInput, event_invitationsUncheckedUpdateWithoutEvent_page_visitsInput>
+    create: XOR<event_invitationsCreateWithoutEvent_page_visitsInput, event_invitationsUncheckedCreateWithoutEvent_page_visitsInput>
+    where?: event_invitationsWhereInput
+  }
+
+  export type event_invitationsUpdateToOneWithWhereWithoutEvent_page_visitsInput = {
+    where?: event_invitationsWhereInput
+    data: XOR<event_invitationsUpdateWithoutEvent_page_visitsInput, event_invitationsUncheckedUpdateWithoutEvent_page_visitsInput>
+  }
+
+  export type event_invitationsUpdateWithoutEvent_page_visitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_invitationsNestedInput
+    invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
+    inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
+    parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
+    plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+  }
+
+  export type event_invitationsUncheckedUpdateWithoutEvent_page_visitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invited_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_by?: StringFieldUpdateOperationsInput | string
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    parent_invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+  }
+
   export type usersCreateWithoutAttachmentsInput = {
     id?: string
     email: string
@@ -27760,6 +35284,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutAttachmentsInput = {
@@ -27797,6 +35326,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutAttachmentsInput = {
@@ -27878,6 +35412,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutAttachmentsInput = {
@@ -27915,6 +35454,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type event_attachmentsUpsertWithWhereUniqueWithoutAttachmentInput = {
@@ -28029,6 +35573,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutUser_hobbiesInput = {
@@ -28066,6 +35615,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutUser_hobbiesInput = {
@@ -28150,6 +35704,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_hobbiesInput = {
@@ -28187,6 +35746,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type hobbiesUpsertWithoutUser_hobbiesInput = {
@@ -28309,6 +35873,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutUser_activitiesInput = {
@@ -28346,6 +35915,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutUser_activitiesInput = {
@@ -28430,6 +36004,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_activitiesInput = {
@@ -28467,6 +36046,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type activitiesUpsertWithoutUser_activitiesInput = {
@@ -28589,6 +36173,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutUser_entertainmentsInput = {
@@ -28626,6 +36215,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutUser_entertainmentsInput = {
@@ -28710,6 +36304,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_entertainmentsInput = {
@@ -28747,6 +36346,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type entertainmentsUpsertWithoutUser_entertainmentsInput = {
@@ -28821,6 +36425,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutEvents_createdInput = {
@@ -28858,6 +36467,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutEvents_createdInput = {
@@ -29032,6 +36646,7 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutEventInput = {
@@ -29059,6 +36674,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutEventInput = {
@@ -29068,6 +36684,64 @@ export namespace Prisma {
 
   export type event_invitationsCreateManyEventInputEnvelope = {
     data: event_invitationsCreateManyEventInput | event_invitationsCreateManyEventInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_page_visitsCreateWithoutEventInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    visitor?: usersCreateNestedOneWithoutEvent_visits_madeInput
+    invitation?: event_invitationsCreateNestedOneWithoutEvent_page_visitsInput
+  }
+
+  export type event_page_visitsUncheckedCreateWithoutEventInput = {
+    id?: string
+    visitor_id?: string | null
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsCreateOrConnectWithoutEventInput = {
+    where: event_page_visitsWhereUniqueInput
+    create: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_page_visitsCreateManyEventInputEnvelope = {
+    data: event_page_visitsCreateManyEventInput | event_page_visitsCreateManyEventInput[]
     skipDuplicates?: boolean
   }
 
@@ -29117,6 +36791,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutEvents_createdInput = {
@@ -29154,6 +36833,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type event_rolesUpsertWithWhereUniqueWithoutEventInput = {
@@ -29255,6 +36939,22 @@ export namespace Prisma {
     data: XOR<event_invitationsUpdateManyMutationInput, event_invitationsUncheckedUpdateManyWithoutEventInput>
   }
 
+  export type event_page_visitsUpsertWithWhereUniqueWithoutEventInput = {
+    where: event_page_visitsWhereUniqueInput
+    update: XOR<event_page_visitsUpdateWithoutEventInput, event_page_visitsUncheckedUpdateWithoutEventInput>
+    create: XOR<event_page_visitsCreateWithoutEventInput, event_page_visitsUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_page_visitsUpdateWithWhereUniqueWithoutEventInput = {
+    where: event_page_visitsWhereUniqueInput
+    data: XOR<event_page_visitsUpdateWithoutEventInput, event_page_visitsUncheckedUpdateWithoutEventInput>
+  }
+
+  export type event_page_visitsUpdateManyWithWhereWithoutEventInput = {
+    where: event_page_visitsScalarWhereInput
+    data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyWithoutEventInput>
+  }
+
   export type eventsCreateWithoutEvent_rolesInput = {
     id?: string
     title: string
@@ -29285,6 +36985,7 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_rolesInput = {
@@ -29317,6 +37018,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_rolesInput = {
@@ -29359,6 +37061,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutEvent_rolesInput = {
@@ -29396,6 +37103,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutEvent_rolesInput = {
@@ -29438,6 +37150,11 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutUserInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutRole_assignmentsInput = {
@@ -29475,6 +37192,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutRole_assignmentsInput = {
@@ -29523,6 +37245,7 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_rolesInput = {
@@ -29555,6 +37278,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type usersUpsertWithoutEvent_rolesInput = {
@@ -29603,6 +37327,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutEvent_rolesInput = {
@@ -29640,6 +37369,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUpsertWithoutRole_assignmentsInput = {
@@ -29688,6 +37422,11 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutUserNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutRole_assignmentsInput = {
@@ -29725,6 +37464,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type eventsCreateWithoutEvent_locationsInput = {
@@ -29757,6 +37501,7 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_locationsInput = {
@@ -29789,6 +37534,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_locationsInput = {
@@ -29837,6 +37583,7 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_locationsInput = {
@@ -29869,6 +37616,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsCreateWithoutEvent_attachmentsInput = {
@@ -29901,6 +37649,7 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutEventInput
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_attachmentsInput = {
@@ -29933,6 +37682,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_attachmentsInput = {
@@ -30036,6 +37786,7 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutEventNestedInput
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_attachmentsInput = {
@@ -30068,6 +37819,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type attachmentsUpsertWithoutEvent_attachmentsInput = {
@@ -30161,6 +37913,7 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutEventInput
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_invitationsInput = {
@@ -30193,6 +37946,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_invitationsInput = {
@@ -30235,6 +37989,11 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutUserInput
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutInvitations_receivedInput = {
@@ -30272,6 +38031,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutInvitations_receivedInput = {
@@ -30314,6 +38078,11 @@ export namespace Prisma {
     event_roles?: event_rolesCreateNestedManyWithoutUserInput
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutInvitations_sentInput = {
@@ -30351,6 +38120,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutInvitations_sentInput = {
@@ -30383,6 +38157,7 @@ export namespace Prisma {
     invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutPlus_one_invitationsInput = {
@@ -30410,6 +38185,7 @@ export namespace Prisma {
     reminder_count?: number
     created_at?: Date | string
     updated_at?: Date | string
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutPlus_one_invitationsInput = {
@@ -30442,6 +38218,7 @@ export namespace Prisma {
     invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutParent_invitationInput = {
@@ -30469,6 +38246,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutParent_invitationInput = {
@@ -30478,6 +38256,64 @@ export namespace Prisma {
 
   export type event_invitationsCreateManyParent_invitationInputEnvelope = {
     data: event_invitationsCreateManyParent_invitationInput | event_invitationsCreateManyParent_invitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_page_visitsCreateWithoutInvitationInput = {
+    id?: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+    visitor?: usersCreateNestedOneWithoutEvent_visits_madeInput
+    event: eventsCreateNestedOneWithoutEvent_page_visitsInput
+  }
+
+  export type event_page_visitsUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    visitor_id?: string | null
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsCreateOrConnectWithoutInvitationInput = {
+    where: event_page_visitsWhereUniqueInput
+    create: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_page_visitsCreateManyInvitationInputEnvelope = {
+    data: event_page_visitsCreateManyInvitationInput | event_page_visitsCreateManyInvitationInput[]
     skipDuplicates?: boolean
   }
 
@@ -30522,6 +38358,7 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutEventNestedInput
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_invitationsInput = {
@@ -30554,6 +38391,7 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type usersUpsertWithoutInvitations_receivedInput = {
@@ -30602,6 +38440,11 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutUserNestedInput
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutInvitations_receivedInput = {
@@ -30639,6 +38482,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUpsertWithoutInvitations_sentInput = {
@@ -30687,6 +38535,11 @@ export namespace Prisma {
     event_roles?: event_rolesUpdateManyWithoutUserNestedInput
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutInvitations_sentInput = {
@@ -30724,6 +38577,11 @@ export namespace Prisma {
     event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type event_invitationsUpsertWithoutPlus_one_invitationsInput = {
@@ -30762,6 +38620,7 @@ export namespace Prisma {
     invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutPlus_one_invitationsInput = {
@@ -30789,6 +38648,7 @@ export namespace Prisma {
     reminder_count?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUpsertWithWhereUniqueWithoutParent_invitationInput = {
@@ -30805,6 +38665,22 @@ export namespace Prisma {
   export type event_invitationsUpdateManyWithWhereWithoutParent_invitationInput = {
     where: event_invitationsScalarWhereInput
     data: XOR<event_invitationsUpdateManyMutationInput, event_invitationsUncheckedUpdateManyWithoutParent_invitationInput>
+  }
+
+  export type event_page_visitsUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: event_page_visitsWhereUniqueInput
+    update: XOR<event_page_visitsUpdateWithoutInvitationInput, event_page_visitsUncheckedUpdateWithoutInvitationInput>
+    create: XOR<event_page_visitsCreateWithoutInvitationInput, event_page_visitsUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: event_page_visitsWhereUniqueInput
+    data: XOR<event_page_visitsUpdateWithoutInvitationInput, event_page_visitsUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type event_page_visitsUpdateManyWithWhereWithoutInvitationInput = {
+    where: event_page_visitsScalarWhereInput
+    data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyWithoutInvitationInput>
   }
 
   export type usersCreateWithoutOauth_accountsInput = {
@@ -30842,6 +38718,11 @@ export namespace Prisma {
     role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
   }
 
   export type usersUncheckedCreateWithoutOauth_accountsInput = {
@@ -30879,6 +38760,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
     invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
     invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
   }
 
   export type usersCreateOrConnectWithoutOauth_accountsInput = {
@@ -30932,6 +38818,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
   }
 
   export type usersUncheckedUpdateWithoutOauth_accountsInput = {
@@ -30969,6 +38860,11 @@ export namespace Prisma {
     role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
     invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
     invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
   }
 
   export type oauth_accountsCreateManyUserInput = {
@@ -31153,6 +39049,98 @@ export namespace Prisma {
     reminder_count?: number
     created_at?: Date | string
     updated_at?: Date | string
+  }
+
+  export type user_connectionsCreateManyInitiatorInput = {
+    id?: string
+    connected_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_connectionsCreateManyReceiverInput = {
+    id?: string
+    user_id: string
+    status?: string
+    connection_type?: string | null
+    notes?: string | null
+    last_interaction?: Date | string | null
+    interaction_count?: number
+    is_favorite?: boolean
+    is_hidden?: boolean
+    can_see_events?: boolean
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type user_profile_visitsCreateManyVisitorInput = {
+    id?: string
+    profile_user_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type user_profile_visitsCreateManyProfile_userInput = {
+    id?: string
+    visitor_id?: string | null
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
+  export type event_page_visitsCreateManyVisitorInput = {
+    id?: string
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
   }
 
   export type oauth_accountsUpdateWithoutUserInput = {
@@ -31403,6 +39391,7 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutCreatorInput = {
@@ -31435,6 +39424,7 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateManyWithoutCreatorInput = {
@@ -31586,6 +39576,7 @@ export namespace Prisma {
     invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutInviterInput = {
@@ -31613,6 +39604,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutInviterInput = {
@@ -31666,6 +39658,7 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutInvited_userInput = {
@@ -31693,6 +39686,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutInvited_userInput = {
@@ -31719,6 +39713,282 @@ export namespace Prisma {
     reminder_count?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsUpdateWithoutInitiatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    receiver?: usersUpdateOneRequiredWithoutConnections_receivedNestedInput
+  }
+
+  export type user_connectionsUncheckedUpdateWithoutInitiatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connected_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsUncheckedUpdateManyWithoutInitiatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    connected_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsUpdateWithoutReceiverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    initiator?: usersUpdateOneRequiredWithoutConnections_initiatedNestedInput
+  }
+
+  export type user_connectionsUncheckedUpdateWithoutReceiverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_connectionsUncheckedUpdateManyWithoutReceiverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    connection_type?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    last_interaction?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    interaction_count?: IntFieldUpdateOperationsInput | number
+    is_favorite?: BoolFieldUpdateOperationsInput | boolean
+    is_hidden?: BoolFieldUpdateOperationsInput | boolean
+    can_see_events?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_profile_visitsUpdateWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    profile_user?: usersUpdateOneRequiredWithoutProfile_visits_receivedNestedInput
+  }
+
+  export type user_profile_visitsUncheckedUpdateWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    profile_user_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_profile_visitsUncheckedUpdateManyWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    profile_user_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_profile_visitsUpdateWithoutProfile_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    visitor?: usersUpdateOneWithoutProfile_visits_madeNestedInput
+  }
+
+  export type user_profile_visitsUncheckedUpdateWithoutProfile_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type user_profile_visitsUncheckedUpdateManyWithoutProfile_userInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsUpdateWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    event?: eventsUpdateOneRequiredWithoutEvent_page_visitsNestedInput
+    invitation?: event_invitationsUpdateOneWithoutEvent_page_visitsNestedInput
+  }
+
+  export type event_page_visitsUncheckedUpdateWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsUncheckedUpdateManyWithoutVisitorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type event_attachmentsCreateManyAttachmentInput = {
@@ -31971,6 +40241,30 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
+  export type event_page_visitsCreateManyEventInput = {
+    id?: string
+    visitor_id?: string | null
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    invitation_id?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
+  }
+
   export type event_rolesUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
@@ -32164,6 +40458,7 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutEventInput = {
@@ -32191,6 +40486,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutEventInput = {
@@ -32219,6 +40515,78 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type event_page_visitsUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    visitor?: usersUpdateOneWithoutEvent_visits_madeNestedInput
+    invitation?: event_invitationsUpdateOneWithoutEvent_page_visitsNestedInput
+  }
+
+  export type event_page_visitsUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type event_invitationsCreateManyParent_invitationInput = {
     id?: string
     event_id: string
@@ -32243,6 +40611,30 @@ export namespace Prisma {
     reminder_count?: number
     created_at?: Date | string
     updated_at?: Date | string
+  }
+
+  export type event_page_visitsCreateManyInvitationInput = {
+    id?: string
+    visitor_id?: string | null
+    event_id: string
+    visited_at?: Date | string
+    ip_address?: string | null
+    user_agent?: string | null
+    is_anonymous?: boolean
+    referrer?: string | null
+    session_id?: string | null
+    page_section?: string | null
+    duration?: number | null
+    interactions?: number
+    rsvp_action?: string | null
+    utm_source?: string | null
+    utm_campaign?: string | null
+    utm_medium?: string | null
+    device_type?: string | null
+    browser?: string | null
+    os?: string | null
+    country?: string | null
+    city?: string | null
   }
 
   export type event_invitationsUpdateWithoutParent_invitationInput = {
@@ -32270,6 +40662,7 @@ export namespace Prisma {
     invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutParent_invitationInput = {
@@ -32297,6 +40690,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutParent_invitationInput = {
@@ -32323,6 +40717,78 @@ export namespace Prisma {
     reminder_count?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_page_visitsUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    visitor?: usersUpdateOneWithoutEvent_visits_madeNestedInput
+    event?: eventsUpdateOneRequiredWithoutEvent_page_visitsNestedInput
+  }
+
+  export type event_page_visitsUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_page_visitsUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitor_id?: NullableStringFieldUpdateOperationsInput | string | null
+    event_id?: StringFieldUpdateOperationsInput | string
+    visited_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    ip_address?: NullableStringFieldUpdateOperationsInput | string | null
+    user_agent?: NullableStringFieldUpdateOperationsInput | string | null
+    is_anonymous?: BoolFieldUpdateOperationsInput | boolean
+    referrer?: NullableStringFieldUpdateOperationsInput | string | null
+    session_id?: NullableStringFieldUpdateOperationsInput | string | null
+    page_section?: NullableStringFieldUpdateOperationsInput | string | null
+    duration?: NullableIntFieldUpdateOperationsInput | number | null
+    interactions?: IntFieldUpdateOperationsInput | number
+    rsvp_action?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    device_type?: NullableStringFieldUpdateOperationsInput | string | null
+    browser?: NullableStringFieldUpdateOperationsInput | string | null
+    os?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

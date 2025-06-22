@@ -4,7 +4,7 @@ import { PlusCircle, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { EventCard } from "@/components/event-card";
+import { EventCard } from "@/components/EventCard";
 import { EventCreationForm } from "./_components/EventCreationForm";
 import { useQuery } from "@tanstack/react-query";
 import { EventService } from "@/api/services/event.service";
@@ -30,7 +30,7 @@ export default function EventsPage() {
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-6xl overflow-y-auto max-h-[90vh] p-0 border-none">
-            <EventCreationForm />
+            <EventCreationForm onClose={() => setIsModalOpen(false)} />
           </DialogContent>
         </Dialog>
       </div>

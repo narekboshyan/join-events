@@ -1,28 +1,28 @@
 "use client";
 
-import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  CalendarIcon,
-  Sparkles,
-  Cake,
-  Heart,
-  PlusCircle,
-  MinusCircle,
-  Loader2,
-  PartyPopper,
   Briefcase,
-  Users,
-  Globe,
-  Monitor,
-  MapIcon,
+  Cake,
+  CalendarIcon,
   DollarSign,
+  Globe,
+  Heart,
+  Loader2,
+  MapIcon,
+  MinusCircle,
+  Monitor,
+  PartyPopper,
+  PlusCircle,
+  Sparkles,
+  Users,
 } from "lucide-react";
-
-import { Input } from "@/components/ui/input";
+import Image from "next/image";
+import { useFieldArray, useForm } from "react-hook-form";
+import { EventService } from "@/api/services/event.service";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -31,6 +31,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -38,12 +41,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
-import { EventService } from "@/api/services/event.service";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Textarea } from "@/components/ui/textarea";
 import {
   EventCategory,
   EventCreationInput,

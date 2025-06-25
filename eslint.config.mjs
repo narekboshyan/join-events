@@ -1,11 +1,11 @@
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-plugin-prettier";
 import unusedImports from "eslint-plugin-unused-imports";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,7 +15,7 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-export default [
+const config = [
   ...compat.extends("eslint:recommended", "next"),
   {
     plugins: {
@@ -34,7 +34,7 @@ export default [
       "@typescript-eslint/no-unused-vars": "off",
       "react/no-unescaped-entities": "off",
       "@typescript-eslint/no-shadow": "off",
-      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-imports": "warn",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
       "no-unused-vars": [
@@ -96,3 +96,5 @@ export default [
     },
   },
 ];
+
+export default config;

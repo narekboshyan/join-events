@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { z } from "zod";
 
 // Event categories enum

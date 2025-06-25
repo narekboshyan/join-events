@@ -1,23 +1,23 @@
 "use client";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
-  User,
   AlertCircle,
   CheckCircle2,
+  Eye,
+  EyeOff,
   Loader2,
+  Lock,
+  Mail,
+  User,
 } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { SignupInput, signupSchema } from "@/lib/validations/auth";
-import { AuthenticationService } from "@/api/services/auth.service";
 import { useRouter } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
+import { AuthenticationService } from "@/api/services/auth.service";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { SignupInput, signupSchema } from "@/lib/validations/auth";
 
 export default function SignUpPage() {
   const router = useRouter();

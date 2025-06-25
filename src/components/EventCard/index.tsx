@@ -1,7 +1,10 @@
 "use client";
 
+import { Calendar, Clock, Globe, Lock, MapPin, Tag, Users } from "lucide-react";
 import Image from "next/image";
-import { Calendar, MapPin, Users, Tag, Clock, Globe, Lock } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,15 +13,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import EventImage from "@/public/dua.webp";
 import { AllEventType } from "@/types/event";
-import { useRouter } from "next/navigation";
 
 interface EventCardProps {
   event: AllEventType[number];
-  onActionClick: (eventId: string, action: "view" | "join" | "leave") => void;
+  onActionClick: (_eventId: string, _action: "view" | "join" | "leave") => void;
   currentUserId?: string; // To determine if user can join/leave
   userInvitationStatus?: "pending" | "accepted" | "declined" | null;
 }
@@ -31,7 +31,7 @@ export function EventCard({
 }: Readonly<EventCardProps>) {
   const router = useRouter();
   const coverImage = event.event_attachments.find(
-    (att) => att.attachment_type === "cover_image" || att.is_featured
+    (att: any) => att.attachment_type === "cover_image" || att.is_featured
   );
 
   // Format date and time
@@ -57,7 +57,7 @@ export function EventCard({
 
   // Get primary location
   const primaryLocation =
-    event.event_locations.find((loc) => loc.venue_type === "primary") ||
+    event.event_locations.find((loc: any) => loc.venue_type === "primary") ||
     event.event_locations[0];
 
   // Format location display
@@ -190,7 +190,7 @@ export function EventCard({
         {/* Tags */}
         {event.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-2">
-            {event.tags.slice(0, 2).map((tag, index) => (
+            {event.tags.slice(0, 2).map((tag: any, index: number) => (
               <Badge key={index} variant="outline" className="text-xs">
                 #{tag}
               </Badge>

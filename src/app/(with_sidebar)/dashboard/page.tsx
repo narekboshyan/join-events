@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { Search } from "lucide-react";
 import { EventService } from "@/api/services/event.service";
 import { EventCard } from "@/components/EventCard";
+import { Input } from "@/components/ui/input";
 
 export default function EventsPage() {
   const [searchTerm, setSearchTerm] = useState("");

@@ -1,7 +1,7 @@
+import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { EventResolver } from "@/lib/resolvers/event.resolver";
 import { eventCreationSchema } from "@/lib/validations/event";
-import { NextResponse } from "next/server";
 
 // Ensure this runs in Node.js runtime for Prisma
 

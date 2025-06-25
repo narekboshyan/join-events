@@ -1,28 +1,28 @@
 "use client";
-import React, { useState, useRef, KeyboardEvent } from "react";
-import { useForm, Controller } from "react-hook-form";
+import React, { KeyboardEvent, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import {
-  UserPlus,
-  Mail,
-  Users,
+  AlertCircle,
+  Check,
+  ChevronDown,
   Crown,
+  Loader2,
+  Mail,
+  MessageSquare,
+  Plus,
+  Search,
+  Send,
   Shield,
   User,
-  Search,
+  UserPlus,
+  Users,
   X,
-  Send,
-  Plus,
-  ChevronDown,
-  Check,
-  AlertCircle,
-  MessageSquare,
-  Loader2,
 } from "lucide-react";
-import { InviteFormData, inviteFormSchema } from "@/lib/validations/event";
-import { useMutation } from "@tanstack/react-query";
-import { EventService } from "@/api/services/event.service";
 import { useParams } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
+import { EventService } from "@/api/services/event.service";
+import { InviteFormData, inviteFormSchema } from "@/lib/validations/event";
 
 interface InviteUsersModalProps {
   eventId: string;

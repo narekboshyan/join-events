@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import fs from "fs";
 import * as nodemailer from "nodemailer";
 import path from "path";
-import { templates } from "./template";
 import { EventInvitationPayload } from "./interfaces/send-mail-template-payload.interface";
+import { templates } from "./template";
 
 class EmailService {
   private _transporter: nodemailer.Transporter;

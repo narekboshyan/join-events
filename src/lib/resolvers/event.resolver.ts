@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { User } from "next-auth";
 import prisma from "../db";
-import { EventCreationInput, InviteFormData } from "../validations/event";
-import { mailService } from "../services/email/mailer.service";
 import { EventInvitationPayload } from "../services/email/interfaces/send-mail-template-payload.interface";
+import { mailService } from "../services/email/mailer.service";
+import { EventCreationInput, InviteFormData } from "../validations/event";
 
 export interface CreateEventInput
   extends Omit<EventCreationInput, "locations"> {

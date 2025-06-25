@@ -1,26 +1,27 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  Search,
+  Calendar,
+  Eye,
   Filter,
-  Users,
-  UserPlus,
-  UserCheck,
-  UserX,
-  MapPin,
   Heart,
+  Loader2,
+  MapPin,
   MessageCircle,
   MoreVertical,
-  Calendar,
+  Search,
   Star,
-  Eye,
-  Loader2,
+  UserCheck,
+  UserPlus,
+  Users,
+  UserX,
 } from "lucide-react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import { UserService } from "@/api/services/user.service";
 import { AllUserConnectionsType, AllUsersType } from "@/types/user";
-import { useSession } from "next-auth/react";
 
 const UsersPage = () => {
   const session = useSession();
@@ -96,7 +97,7 @@ const UsersPage = () => {
   const filteredConnections = useMemo(() => {
     if (!searchQuery) return connections;
 
-    return connections.filter((connection) => {
+    return connections.filter((connection: any) => {
       const otherUser =
         connection.user_id === currentUser?.id
           ? connection.receiver
@@ -110,14 +111,6 @@ const UsersPage = () => {
       );
     });
   }, [connections, searchQuery, currentUser?.id]);
-
-  const handleConnect = async (userId: string) => {
-    try {
-    } catch (error) {
-      console.error("Error connecting:", error);
-      alert("Failed to send connection request");
-    }
-  };
 
   const handleConnectionAction = async (
     connectionId: string,
@@ -198,14 +191,16 @@ const UsersPage = () => {
         {user.user_hobbies.length > 0 && (
           <div className="mb-4">
             <div className="flex flex-wrap gap-1">
-              {user.user_hobbies.slice(0, 3).map((userHobby, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-1 bg-accent/20 text-primary text-xs rounded-full"
-                >
-                  {userHobby.hobby.name}
-                </span>
-              ))}
+              {user.user_hobbies
+                .slice(0, 3)
+                .map((userHobby: any, index: number) => (
+                  <span
+                    key={index}
+                    className="px-2 py-1 bg-accent/20 text-primary text-xs rounded-full"
+                  >
+                    {userHobby.hobby.name}
+                  </span>
+                ))}
               {user.user_hobbies.length > 3 && (
                 <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                   +{user.user_hobbies.length - 3} more

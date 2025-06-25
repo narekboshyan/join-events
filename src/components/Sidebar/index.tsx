@@ -1,5 +1,5 @@
 import { Home, Inbox, Users } from "lucide-react";
-
+import Link from "next/link";
 import {
   Sidebar,
   SidebarContent,
@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
 
 const items = [
   {

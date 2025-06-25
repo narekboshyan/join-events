@@ -1,6 +1,6 @@
+import bcrypt from "bcryptjs";
 import prisma from "../db";
 import { SignupInput } from "../validations/auth";
-import bcrypt from "bcryptjs";
 
 export class AuthResolver {
   static async signup(input: SignupInput) {

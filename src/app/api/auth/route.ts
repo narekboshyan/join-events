@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import { AuthResolver } from "@/lib/resolvers/auth.resolver";
 import { SignupInput, signupSchema } from "@/lib/validations/auth";
-import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const { input }: { input: SignupInput } = await request.json();

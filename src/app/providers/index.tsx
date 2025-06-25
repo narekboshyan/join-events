@@ -1,7 +1,5 @@
 "use client";
 import React, { PropsWithChildren } from "react";
-import { SessionProvider } from "./SessionProviders";
-import { ThemeProvider } from "./ThemeProvider";
 import {
   MutationCache,
   QueryCache,
@@ -9,6 +7,8 @@ import {
   QueryClientConfig,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { SessionProvider } from "./SessionProviders";
+import { ThemeProvider } from "./ThemeProvider";
 
 const Providers = ({ children }: PropsWithChildren) => {
   const config = {

@@ -1,5 +1,5 @@
-import { signOut } from "@/lib/auth";
 import axios, { AxiosError } from "axios";
+import { signOut } from "@/lib/auth";
 
 const $apiClient = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_URL}/api`,

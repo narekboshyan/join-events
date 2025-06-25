@@ -1,6 +1,6 @@
+import { EventCreationInput, InviteFormData } from "@/lib/validations/event";
 import { AllEventType, AllUserEventsType, EventType } from "@/types/event";
 import $apiClient from "./axios";
-import { EventCreationInput, InviteFormData } from "@/lib/validations/event";
 
 export class EventService {
   static getAllEvents() {

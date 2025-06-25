@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import { PlusCircle, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { EventCard } from "@/components/EventCard";
-import { EventCreationForm } from "./_components/EventCreationForm";
 import { useQuery } from "@tanstack/react-query";
+import { PlusCircle, Search } from "lucide-react";
 import { EventService } from "@/api/services/event.service";
+import { EventCard } from "@/components/EventCard";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { EventCreationForm } from "./_components/EventCreationForm";
 
 export default function EventsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);

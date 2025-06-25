@@ -1,23 +1,23 @@
 "use client";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Eye,
-  EyeOff,
-  Mail,
-  Lock,
   AlertCircle,
   CheckCircle2,
+  Eye,
+  EyeOff,
   Loader2,
+  Lock,
+  Mail,
 } from "lucide-react";
-import { signIn } from "next-auth/react"; // Import signIn from next-auth/react
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { SignInInput, signInSchema } from "@/lib/validations/auth";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { Controller, useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { SignInInput, signInSchema } from "@/lib/validations/auth";
 
 export default function SignInPage() {
   const router = useRouter();

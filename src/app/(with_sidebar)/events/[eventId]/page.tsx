@@ -2,25 +2,25 @@ import React from "react";
 import {
   Calendar,
   Clock,
-  MapPin,
-  Users,
-  Heart,
-  Share2,
-  Star,
   Crown,
-  PartyPopper,
-  Globe,
-  Lock,
-  UserPlus,
-  MoreHorizontal,
   DollarSign,
-  Tag,
+  Globe,
+  Heart,
+  Lock,
+  MapPin,
+  MoreHorizontal,
+  PartyPopper,
+  Share2,
   Shield,
+  Star,
+  Tag,
   User,
+  UserPlus,
+  Users,
 } from "lucide-react";
-import { EventResolver } from "@/lib/resolvers/event.resolver";
 import InviteUsersModal from "@/components/InviteUsersModal";
 import { auth } from "@/lib/auth";
+import { EventResolver } from "@/lib/resolvers/event.resolver";
 
 const SingleEventPage = async ({
   params,

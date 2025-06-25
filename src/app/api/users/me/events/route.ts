@@ -1,6 +1,6 @@
+import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { EventResolver } from "@/lib/resolvers/event.resolver";
-import { NextResponse } from "next/server";
 
 export async function GET() {
   try {

@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { inviteFormSchema } from "@/lib/validations/event";
 import { z } from "zod";
-import { EventResolver } from "@/lib/resolvers/event.resolver";
 import { auth } from "@/lib/auth";
+import { EventResolver } from "@/lib/resolvers/event.resolver";
+import { inviteFormSchema } from "@/lib/validations/event";
 
 export async function POST(
   request: NextRequest,

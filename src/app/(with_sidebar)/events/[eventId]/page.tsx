@@ -22,8 +22,12 @@ import { EventResolver } from "@/lib/resolvers/event.resolver";
 import InviteUsersModal from "@/components/InviteUsersModal";
 import { auth } from "@/lib/auth";
 
-const SingleEventPage = async ({ params }: { params: { eventId: string } }) => {
-  const event = await EventResolver.getEventById(params.eventId);
+const SingleEventPage = async ({
+  params,
+}: {
+  params: Promise<{ eventId: string }>;
+}) => {
+  const event = await EventResolver.getEventById((await params).eventId);
   const session = await auth();
 
   const currentUserId = session?.user.id; // Replace with actual current user ID

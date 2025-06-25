@@ -1,6 +1,6 @@
 import { AllEventType, AllUserEventsType, EventType } from "@/types/event";
 import $apiClient from "./axios";
-import { EventCreationInput } from "@/lib/validations/event";
+import { EventCreationInput, InviteFormData } from "@/lib/validations/event";
 
 export class EventService {
   static getAllEvents() {
@@ -20,5 +20,9 @@ export class EventService {
 
   static updateEvent(id: string, eventData: Partial<EventCreationInput>) {
     return $apiClient.put(`/events/${id}`, eventData);
+  }
+
+  static sendBulkEventInvitations(eventId: string, input: InviteFormData) {
+    return $apiClient.post(`/events/${eventId}/invitations`, input);
   }
 }

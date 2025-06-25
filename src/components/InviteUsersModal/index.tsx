@@ -1,6 +1,7 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { useState, useRef, KeyboardEvent } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   UserPlus,
   Mail,
@@ -18,6 +19,10 @@ import {
   MessageSquare,
   Loader2,
 } from "lucide-react";
+import { InviteFormData, inviteFormSchema } from "@/lib/validations/event";
+import { useMutation } from "@tanstack/react-query";
+import { EventService } from "@/api/services/event.service";
+import { useParams } from "next/navigation";
 
 interface InviteUsersModalProps {
   eventId: string;
@@ -25,13 +30,6 @@ interface InviteUsersModalProps {
   canInviteUsers: boolean;
   currentUserId: string;
   triggerButton: React.ReactNode;
-}
-
-interface InviteFormData {
-  emails: string[];
-  role: string;
-  personalMessage: string;
-  maxGuests: number;
 }
 
 interface User {
@@ -42,6 +40,8 @@ interface User {
   username: string;
 }
 
+// Zod validation schema
+
 const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
   eventId,
   isCreator,
@@ -49,21 +49,53 @@ const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
   currentUserId,
   triggerButton,
 }) => {
+  const params = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"email" | "search">("email");
-  const [inviteForm, setInviteForm] = useState<InviteFormData>({
-    emails: [],
-    role: "participant",
-    personalMessage: "",
-    maxGuests: 0,
-  });
-  const [currentEmail, setCurrentEmail] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showRoleSelector, setShowRoleSelector] = useState(false);
   const [searchResults, setSearchResults] = useState<User[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+
+  const emailInputRef = useRef<HTMLInputElement>(null);
+
+  // React Hook Form setup
+  const {
+    control,
+    handleSubmit,
+    watch,
+    setValue,
+    reset,
+    clearErrors,
+    setError,
+    formState: { errors },
+  } = useForm<InviteFormData>({
+    resolver: zodResolver(inviteFormSchema),
+    defaultValues: {
+      emails: [],
+      selectedUsers: [],
+      role: "participant",
+      personalMessage: "",
+      maxGuests: 0,
+      currentEmail: "",
+    },
+    mode: "onChange",
+  });
+
+  console.log({ errors });
+
+  const watchedEmails = watch("emails");
+  const watchedSelectedUsers = watch("selectedUsers") || [];
+  const watchedCurrentEmail = watch("currentEmail");
+  const watchedRole = watch("role");
+
+  const { mutate: inviteUsers } = useMutation({
+    mutationFn: EventService.sendBulkEventInvitations.bind(
+      null,
+      params.eventId as string
+    ),
+  });
 
   // Available roles based on user permissions
   const getAvailableRoles = () => {
@@ -108,36 +140,48 @@ const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
 
   const roles = getAvailableRoles();
 
-  // Validate email format
-  const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
   // Add email to list
   const addEmailToList = () => {
-    if (
-      currentEmail &&
-      isValidEmail(currentEmail) &&
-      !inviteForm.emails.includes(currentEmail)
-    ) {
-      setInviteForm((prev) => ({
-        ...prev,
-        emails: [...prev.emails, currentEmail],
-      }));
-      setCurrentEmail("");
+    const currentEmail = watchedCurrentEmail?.trim();
+    if (!currentEmail) return;
+
+    if (watchedEmails.includes(currentEmail)) {
+      setError("currentEmail", {
+        type: "manual",
+        message: "This email is already in the list",
+      });
+      return;
     }
+
+    // Add email to the list
+    setValue("emails", [...watchedEmails, currentEmail]);
+    setValue("currentEmail", "");
+    clearErrors("currentEmail");
+
+    // Clear any previous emails validation errors
+    clearErrors("emails");
+
+    // Focus back to the input
+    setTimeout(() => {
+      emailInputRef.current?.focus();
+    }, 50);
   };
 
   // Remove email from list
   const removeEmail = (emailToRemove: string) => {
-    setInviteForm((prev) => ({
-      ...prev,
-      emails: prev.emails.filter((email) => email !== emailToRemove),
-    }));
+    const updatedEmails = watchedEmails.filter(
+      (email) => email !== emailToRemove
+    );
+    setValue("emails", updatedEmails);
+
+    // Clear errors if list becomes empty
+    if (updatedEmails.length === 0) {
+      clearErrors("emails");
+    }
   };
 
   // Handle Enter key for email input
-  const handleEmailKeyPress = (e: React.KeyboardEvent) => {
+  const handleEmailKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
       addEmailToList();
@@ -216,65 +260,46 @@ const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
 
   // Toggle user selection
   const toggleUserSelection = (user: User) => {
-    const isSelected = selectedUsers.find((u) => u.id === user.id);
+    const isSelected = watchedSelectedUsers.find((u) => u.id === user.id);
     if (isSelected) {
-      setSelectedUsers(selectedUsers.filter((u) => u.id !== user.id));
+      setValue(
+        "selectedUsers",
+        watchedSelectedUsers.filter((u) => u.id !== user.id)
+      );
     } else {
-      setSelectedUsers([...selectedUsers, user]);
+      setValue("selectedUsers", [...watchedSelectedUsers, user]);
     }
+    clearErrors("selectedUsers");
   };
 
-  // Send invitations
-  const sendInvitations = async () => {
+  // Form submission handler
+  const onSubmit = (data: InviteFormData) => {
     if (!canInviteUsers) return;
 
-    setIsLoading(true);
     try {
       const inviteData = {
         eventId,
         emails:
           activeTab === "email"
-            ? inviteForm.emails
-            : selectedUsers.map((u) => u.email),
-        users: activeTab === "search" ? selectedUsers : undefined,
-        role: inviteForm.role,
-        personalMessage: inviteForm.personalMessage,
-        maxGuests: inviteForm.maxGuests,
+            ? data.emails
+            : data.selectedUsers?.map((u) => u.email) || [],
+        users: activeTab === "search" ? data.selectedUsers : undefined,
+        role: data.role,
+        personalMessage: data.personalMessage || "",
+        maxGuests: data.maxGuests,
         invitedBy: currentUserId,
         invitationType: isCreator ? "admin" : "participant",
       };
 
-      // TODO: Replace with actual API call
-      // const response = await fetch('/api/events/invitations', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(inviteData)
-      // });
+      inviteUsers(inviteData);
 
-      console.log("Sending invitations:", inviteData);
+      handleClose();
 
-      // Mock API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Reset form and close modal
-      setInviteForm({
-        emails: [],
-        role: "participant",
-        personalMessage: "",
-        maxGuests: 0,
-      });
-      setSelectedUsers([]);
-      setCurrentEmail("");
-      setSearchQuery("");
-      setSearchResults([]);
-      setIsOpen(false);
-
-      // TODO: Show success toast and refresh event data
       alert(
         `Successfully sent ${
           activeTab === "email"
-            ? inviteForm.emails.length
-            : selectedUsers.length
+            ? data.emails.length
+            : data.selectedUsers?.length || 0
         } invitation(s)!`
       );
     } catch (error) {
@@ -285,29 +310,29 @@ const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
     }
   };
 
-  // Check if form is valid
+  // Check if form is valid for current tab
   const isFormValid = () => {
     if (activeTab === "email") {
-      return inviteForm.emails.length > 0;
+      return watchedEmails.length > 0 && !errors.emails;
     } else {
-      return selectedUsers.length > 0;
+      return watchedSelectedUsers.length > 0 && !errors.selectedUsers;
     }
   };
 
   // Reset form when modal closes
   const handleClose = () => {
     setIsOpen(false);
-    setInviteForm({
-      emails: [],
-      role: "participant",
-      personalMessage: "",
-      maxGuests: 0,
-    });
-    setSelectedUsers([]);
-    setCurrentEmail("");
+    reset();
     setSearchQuery("");
     setSearchResults([]);
     setShowRoleSelector(false);
+  };
+
+  // Handle tab change
+  const handleTabChange = (tab: "email" | "search") => {
+    setActiveTab(tab);
+    // Clear errors for the current validation
+    clearErrors();
   };
 
   if (!canInviteUsers) {
@@ -346,344 +371,388 @@ const InviteUsersModal: React.FC<InviteUsersModalProps> = ({
             </div>
 
             {/* Content */}
-            <div className="p-6 max-h-[calc(90vh-200px)] overflow-y-auto">
-              {/* Tab Navigation */}
-              <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
-                <button
-                  onClick={() => setActiveTab("email")}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
-                    activeTab === "email"
-                      ? "bg-white text-brand-purple shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <Mail className="w-4 h-4" />
-                  By Email
-                </button>
-                <button
-                  onClick={() => setActiveTab("search")}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
-                    activeTab === "search"
-                      ? "bg-white text-brand-purple shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  <Search className="w-4 h-4" />
-                  Search Users
-                </button>
-              </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="p-6 max-h-[calc(90vh-200px)] overflow-y-auto">
+                {/* Tab Navigation */}
+                <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
+                  <button
+                    type="button"
+                    onClick={() => handleTabChange("email")}
+                    className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
+                      activeTab === "email"
+                        ? "bg-white text-brand-purple shadow-sm"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    <Mail className="w-4 h-4" />
+                    By Email
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleTabChange("search")}
+                    className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
+                      activeTab === "search"
+                        ? "bg-white text-brand-purple shadow-sm"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    <Search className="w-4 h-4" />
+                    Search Users
+                  </button>
+                </div>
 
-              {/* Email Tab */}
-              {activeTab === "email" && (
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Email Addresses
-                    </label>
-                    <div className="flex gap-2">
-                      <input
-                        type="email"
-                        value={currentEmail}
-                        onChange={(e) => setCurrentEmail(e.target.value)}
-                        onKeyPress={handleEmailKeyPress}
-                        placeholder="Enter email address"
-                        className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
-                      />
-                      <button
-                        onClick={addEmailToList}
-                        disabled={!currentEmail || !isValidEmail(currentEmail)}
-                        className="px-4 py-2 bg-brand-purple text-white rounded-lg hover:bg-brand-purple/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                      >
-                        <Plus className="w-4 h-4" />
-                      </button>
+                {/* Email Tab */}
+                {activeTab === "email" && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Email Addresses *
+                      </label>
+                      <div className="flex gap-2">
+                        <Controller
+                          name="currentEmail"
+                          control={control}
+                          render={({ field }) => (
+                            <input
+                              {...field}
+                              ref={emailInputRef}
+                              type="email"
+                              onKeyPress={handleEmailKeyPress}
+                              placeholder="Enter email address and press Enter"
+                              className={`flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent ${
+                                errors.currentEmail ? "border-red-500" : ""
+                              }`}
+                            />
+                          )}
+                        />
+                        <button
+                          type="button"
+                          onClick={addEmailToList}
+                          disabled={!watchedCurrentEmail?.trim()}
+                          className="px-4 py-2 bg-brand-purple text-white rounded-lg hover:bg-brand-purple/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {/* Email validation feedback */}
+                      {errors.currentEmail && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="w-4 h-4" />
+                          {errors.currentEmail.message}
+                        </p>
+                      )}
+
+                      {/* Email List */}
+                      {watchedEmails.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          <p className="text-sm font-medium">
+                            Email List ({watchedEmails.length})
+                          </p>
+                          <div className="max-h-32 overflow-y-auto space-y-2">
+                            {watchedEmails.map((email, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center justify-between bg-gray-50 px-3 py-2 rounded-lg"
+                              >
+                                <span className="text-sm">{email}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => removeEmail(email)}
+                                  className="text-red-500 hover:text-red-700 p-1"
+                                >
+                                  <X className="w-4 h-4" />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Emails validation error */}
+                      {errors.emails && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="w-4 h-4" />
+                          {errors.emails.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Search Tab */}
+                {activeTab === "search" && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Search Users *
+                      </label>
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                        <input
+                          type="text"
+                          value={searchQuery}
+                          onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                            searchUsers(e.target.value);
+                          }}
+                          placeholder="Search by name, email, or username"
+                          className="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
+                        />
+                        {isSearching && (
+                          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                            <Loader2 className="w-4 h-4 animate-spin text-brand-purple" />
+                          </div>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Email validation feedback */}
-                    {currentEmail && !isValidEmail(currentEmail) && (
-                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                        <AlertCircle className="w-4 h-4" />
-                        Please enter a valid email address
-                      </p>
+                    {/* Search Results */}
+                    {searchQuery && (
+                      <div className="space-y-2 max-h-48 overflow-y-auto">
+                        {searchResults.length > 0
+                          ? searchResults.map((user) => {
+                              const isSelected = watchedSelectedUsers.find(
+                                (u) => u.id === user.id
+                              );
+                              return (
+                                <div
+                                  key={user.id}
+                                  onClick={() => toggleUserSelection(user)}
+                                  className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
+                                    isSelected
+                                      ? "bg-brand-purple/10 border border-brand-purple"
+                                      : "bg-gray-50 hover:bg-gray-100"
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 bg-brand-purple rounded-full flex items-center justify-center text-white text-sm font-medium">
+                                      {user.first_name[0]}
+                                      {user.last_name[0]}
+                                    </div>
+                                    <div>
+                                      <p className="text-sm font-medium">
+                                        {user.first_name} {user.last_name}
+                                      </p>
+                                      <p className="text-xs text-muted-foreground">
+                                        @{user.username} • {user.email}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  {isSelected && (
+                                    <Check className="w-4 h-4 text-brand-purple" />
+                                  )}
+                                </div>
+                              );
+                            })
+                          : !isSearching && (
+                              <div className="text-center py-4 text-muted-foreground">
+                                <Users className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                                <p className="text-sm">No users found</p>
+                              </div>
+                            )}
+                      </div>
                     )}
 
-                    {/* Email List */}
-                    {inviteForm.emails.length > 0 && (
-                      <div className="mt-3 space-y-2">
-                        <p className="text-sm font-medium">
-                          Email List ({inviteForm.emails.length})
-                        </p>
-                        <div className="max-h-32 overflow-y-auto space-y-2">
-                          {inviteForm.emails.map((email, index) => (
+                    {/* Selected Users */}
+                    {watchedSelectedUsers.length > 0 && (
+                      <div className="mt-4">
+                        <label className="block text-sm font-medium mb-2">
+                          Selected Users ({watchedSelectedUsers.length})
+                        </label>
+                        <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto">
+                          {watchedSelectedUsers.map((user) => (
                             <div
-                              key={index}
-                              className="flex items-center justify-between bg-gray-50 px-3 py-2 rounded-lg"
+                              key={user.id}
+                              className="flex items-center gap-2 bg-brand-purple/10 px-3 py-1 rounded-full"
                             >
-                              <span className="text-sm">{email}</span>
+                              <span className="text-sm">
+                                {user.first_name} {user.last_name}
+                              </span>
                               <button
-                                onClick={() => removeEmail(email)}
-                                className="text-red-500 hover:text-red-700 p-1"
+                                type="button"
+                                onClick={() => toggleUserSelection(user)}
+                                className="text-brand-purple hover:text-brand-purple/70"
                               >
-                                <X className="w-4 h-4" />
+                                <X className="w-3 h-3" />
                               </button>
                             </div>
                           ))}
                         </div>
                       </div>
                     )}
-                  </div>
-                </div>
-              )}
 
-              {/* Search Tab */}
-              {activeTab === "search" && (
-                <div className="space-y-4">
-                  <div>
+                    {/* Selected users validation error */}
+                    {errors.selectedUsers && (
+                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-4 h-4" />
+                        At least one user must be selected
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Role Selection (Only for creators) */}
+                {isCreator && (
+                  <div className="mt-6">
                     <label className="block text-sm font-medium mb-2">
-                      Search Users
+                      Assign Role *
                     </label>
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                      <input
-                        type="text"
-                        value={searchQuery}
-                        onChange={(e) => {
-                          setSearchQuery(e.target.value);
-                          searchUsers(e.target.value);
-                        }}
-                        placeholder="Search by name, email, or username"
-                        className="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
-                      />
-                      {isSearching && (
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                          <Loader2 className="w-4 h-4 animate-spin text-brand-purple" />
+                      <button
+                        type="button"
+                        onClick={() => setShowRoleSelector(!showRoleSelector)}
+                        className="w-full flex items-center justify-between px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple hover:border-brand-purple transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          {React.createElement(
+                            roles.find((r) => r.value === watchedRole)?.icon ||
+                              User,
+                            { className: "w-4 h-4 text-brand-purple" }
+                          )}
+                          <span>
+                            {roles.find((r) => r.value === watchedRole)?.label}
+                          </span>
+                        </div>
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            showRoleSelector ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {showRoleSelector && (
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded-lg shadow-lg z-10">
+                          {roles.map((role) => (
+                            <button
+                              key={role.value}
+                              type="button"
+                              onClick={() => {
+                                setValue("role", role.value);
+                                setShowRoleSelector(false);
+                                clearErrors("role");
+                              }}
+                              className="w-full flex items-start gap-3 px-3 py-3 hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg text-left"
+                            >
+                              <role.icon className="w-4 h-4 mt-0.5 text-brand-purple" />
+                              <div>
+                                <p className="text-sm font-medium">
+                                  {role.label}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  {role.description}
+                                </p>
+                              </div>
+                            </button>
+                          ))}
                         </div>
                       )}
                     </div>
-                  </div>
-
-                  {/* Search Results */}
-                  {searchQuery && (
-                    <div className="space-y-2 max-h-48 overflow-y-auto">
-                      {searchResults.length > 0
-                        ? searchResults.map((user) => {
-                            const isSelected = selectedUsers.find(
-                              (u) => u.id === user.id
-                            );
-                            return (
-                              <div
-                                key={user.id}
-                                onClick={() => toggleUserSelection(user)}
-                                className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                                  isSelected
-                                    ? "bg-brand-purple/10 border border-brand-purple"
-                                    : "bg-gray-50 hover:bg-gray-100"
-                                }`}
-                              >
-                                <div className="flex items-center gap-3">
-                                  <div className="w-8 h-8 bg-brand-purple rounded-full flex items-center justify-center text-white text-sm font-medium">
-                                    {user.first_name[0]}
-                                    {user.last_name[0]}
-                                  </div>
-                                  <div>
-                                    <p className="text-sm font-medium">
-                                      {user.first_name} {user.last_name}
-                                    </p>
-                                    <p className="text-xs text-muted-foreground">
-                                      @{user.username} • {user.email}
-                                    </p>
-                                  </div>
-                                </div>
-                                {isSelected && (
-                                  <Check className="w-4 h-4 text-brand-purple" />
-                                )}
-                              </div>
-                            );
-                          })
-                        : !isSearching && (
-                            <div className="text-center py-4 text-muted-foreground">
-                              <Users className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                              <p className="text-sm">No users found</p>
-                            </div>
-                          )}
-                    </div>
-                  )}
-
-                  {/* Selected Users */}
-                  {selectedUsers.length > 0 && (
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium mb-2">
-                        Selected Users ({selectedUsers.length})
-                      </label>
-                      <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto">
-                        {selectedUsers.map((user) => (
-                          <div
-                            key={user.id}
-                            className="flex items-center gap-2 bg-brand-purple/10 px-3 py-1 rounded-full"
-                          >
-                            <span className="text-sm">
-                              {user.first_name} {user.last_name}
-                            </span>
-                            <button
-                              onClick={() => toggleUserSelection(user)}
-                              className="text-brand-purple hover:text-brand-purple/70"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Role Selection (Only for creators) */}
-              {isCreator && (
-                <div className="mt-6">
-                  <label className="block text-sm font-medium mb-2">
-                    Assign Role
-                  </label>
-                  <div className="relative">
-                    <button
-                      onClick={() => setShowRoleSelector(!showRoleSelector)}
-                      className="w-full flex items-center justify-between px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple hover:border-brand-purple transition-colors"
-                    >
-                      <div className="flex items-center gap-2">
-                        {React.createElement(
-                          roles.find((r) => r.value === inviteForm.role)
-                            ?.icon || User,
-                          { className: "w-4 h-4 text-brand-purple" }
-                        )}
-                        <span>
-                          {
-                            roles.find((r) => r.value === inviteForm.role)
-                              ?.label
-                          }
-                        </span>
-                      </div>
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform ${
-                          showRoleSelector ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {showRoleSelector && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded-lg shadow-lg z-10">
-                        {roles.map((role) => (
-                          <button
-                            key={role.value}
-                            onClick={() => {
-                              setInviteForm((prev) => ({
-                                ...prev,
-                                role: role.value,
-                              }));
-                              setShowRoleSelector(false);
-                            }}
-                            className="w-full flex items-start gap-3 px-3 py-3 hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg text-left"
-                          >
-                            <role.icon className="w-4 h-4 mt-0.5 text-brand-purple" />
-                            <div>
-                              <p className="text-sm font-medium">
-                                {role.label}
-                              </p>
-                              <p className="text-xs text-muted-foreground">
-                                {role.description}
-                              </p>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
+                    {errors.role && (
+                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-4 h-4" />
+                        {errors.role.message}
+                      </p>
                     )}
                   </div>
+                )}
+
+                {/* Personal Message */}
+                <div className="mt-6">
+                  <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                    <MessageSquare className="w-4 h-4" />
+                    Personal Message (Optional)
+                  </label>
+                  <Controller
+                    name="personalMessage"
+                    control={control}
+                    render={({ field }) => (
+                      <textarea
+                        {...field}
+                        placeholder="Add a personal note to your invitation..."
+                        rows={3}
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent resize-none"
+                      />
+                    )}
+                  />
                 </div>
-              )}
 
-              {/* Personal Message */}
-              <div className="mt-6">
-                <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4" />
-                  Personal Message (Optional)
-                </label>
-                <textarea
-                  value={inviteForm.personalMessage}
-                  onChange={(e) =>
-                    setInviteForm((prev) => ({
-                      ...prev,
-                      personalMessage: e.target.value,
-                    }))
-                  }
-                  placeholder="Add a personal note to your invitation..."
-                  rows={3}
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent resize-none"
-                />
-              </div>
-
-              {/* Guest Allowance */}
-              <div className="mt-6">
-                <label className="block text-sm font-medium mb-2">
-                  Guests Allowed per Invitation
-                </label>
-                <select
-                  value={inviteForm.maxGuests}
-                  onChange={(e) =>
-                    setInviteForm((prev) => ({
-                      ...prev,
-                      maxGuests: parseInt(e.target.value),
-                    }))
-                  }
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
-                >
-                  <option value={0}>No guests allowed</option>
-                  <option value={1}>+1 guest</option>
-                  <option value={2}>+2 guests</option>
-                  <option value={3}>+3 guests</option>
-                  <option value={5}>+5 guests</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="p-6 border-t bg-gray-50 flex items-center justify-between">
-              <div className="text-sm text-muted-foreground">
-                {activeTab === "email"
-                  ? `${inviteForm.emails.length} email${
-                      inviteForm.emails.length !== 1 ? "s" : ""
-                    } to invite`
-                  : `${selectedUsers.length} user${
-                      selectedUsers.length !== 1 ? "s" : ""
-                    } selected`}
-                {isCreator &&
-                  ` as ${roles
-                    .find((r) => r.value === inviteForm.role)
-                    ?.label.toLowerCase()}`}
-              </div>
-              <div className="flex gap-3">
-                <button
-                  onClick={handleClose}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={sendInvitations}
-                  disabled={!isFormValid() || isLoading}
-                  className="px-6 py-2 bg-brand-purple text-white rounded-lg hover:bg-brand-purple/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Invitations
-                    </>
+                {/* Guest Allowance */}
+                <div className="mt-6">
+                  <label className="block text-sm font-medium mb-2">
+                    Guests Allowed per Invitation
+                  </label>
+                  <Controller
+                    name="maxGuests"
+                    control={control}
+                    render={({ field }) => (
+                      <select
+                        {...field}
+                        onChange={(e) =>
+                          field.onChange(parseInt(e.target.value))
+                        }
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent"
+                      >
+                        <option value={0}>No guests allowed</option>
+                        <option value={1}>+1 guest</option>
+                        <option value={2}>+2 guests</option>
+                        <option value={3}>+3 guests</option>
+                        <option value={5}>+5 guests</option>
+                      </select>
+                    )}
+                  />
+                  {errors.maxGuests && (
+                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.maxGuests.message}
+                    </p>
                   )}
-                </button>
+                </div>
               </div>
-            </div>
+
+              {/* Footer */}
+              <div className="p-6 border-t bg-gray-50 flex items-center justify-between">
+                <div className="text-sm text-muted-foreground">
+                  {activeTab === "email"
+                    ? `${watchedEmails.length} email${
+                        watchedEmails.length !== 1 ? "s" : ""
+                      } to invite`
+                    : `${watchedSelectedUsers.length} user${
+                        watchedSelectedUsers.length !== 1 ? "s" : ""
+                      } selected`}
+                  {isCreator &&
+                    ` as ${roles
+                      .find((r) => r.value === watchedRole)
+                      ?.label.toLowerCase()}`}
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!isFormValid() || isLoading}
+                    className="px-6 py-2 bg-brand-purple text-white rounded-lg hover:bg-brand-purple/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Invitations
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       )}

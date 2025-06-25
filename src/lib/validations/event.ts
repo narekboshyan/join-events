@@ -260,3 +260,30 @@ export const ERROR_MESSAGES = {
   INVALID_LOCATION_COUNT: "At least one location is required",
   PRIMARY_LOCATION_REQUIRED: "At least one primary location is required",
 } as const;
+
+export const inviteFormSchema = z.object({
+  emails: z
+    .array(z.string().email("Invalid email address"))
+    .min(1, "At least one email is required")
+    .refine(
+      (emails) => new Set(emails).size === emails.length,
+      "Duplicate emails are not allowed"
+    ),
+  selectedUsers: z
+    .array(
+      z.object({
+        id: z.string(),
+        first_name: z.string(),
+        last_name: z.string(),
+        email: z.string().email(),
+        username: z.string(),
+      })
+    )
+    .optional(),
+  role: z.string().min(1, "Role is required"),
+  personalMessage: z.string().optional(),
+  maxGuests: z.number().min(0).max(10),
+  currentEmail: z.string().optional(), // For the email input field
+});
+
+export type InviteFormData = z.infer<typeof inviteFormSchema>;

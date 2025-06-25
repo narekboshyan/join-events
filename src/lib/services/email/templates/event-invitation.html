@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Invitation - {{eventTitle}}</title>
+  </head>
+  <body
+    style="
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    "
+  >
+    <div
+      style="
+        max-width: 650px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      "
+    >
+      <!-- Header -->
+      <div
+        style="
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          text-align: center;
+        "
+      >
+        <h1 style="margin: 0; font-size: 28px; font-weight: 300">
+          🎉 You're Invited!
+        </h1>
+        <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px">
+          {{eventTitle}}
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div style="padding: 30px">
+        <div style="font-size: 18px; color: #333; margin-bottom: 20px">
+          Hello <strong>{{invitedUserName}}</strong>,
+        </div>
+
+        <p>{{inviterName}} has invited you to join an exciting event!</p>
+
+        <div
+          style="
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+          "
+        >
+          Invited as: {{invitationRole}}
+        </div>
+
+        <!-- Event Details -->
+        <div
+          style="
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #667eea;
+          "
+        >
+          <h3 style="margin-top: 0; color: #333; font-size: 20px">
+            📅 Event Details
+          </h3>
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🎯
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Event:
+            </div>
+            <div style="color: #333; flex: 1">
+              <strong>{{eventTitle}}</strong>
+            </div>
+          </div>
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              📝
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Type:
+            </div>
+            <div style="color: #333; flex: 1">
+              {{eventType}} • {{eventCategory}}
+            </div>
+          </div>
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🕒
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Date & Time:
+            </div>
+            <div style="color: #333; flex: 1">
+              {{eventStartDate}} - {{eventEndDate}}
+            </div>
+          </div>
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              👥
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Participants:
+            </div>
+            <div style="color: #333; flex: 1">
+              {{currentParticipants}}/{{maxParticipants}} confirmed
+            </div>
+          </div>
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🎟️
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Your Guests:
+            </div>
+            <div style="color: #333; flex: 1">
+              You can bring up to
+              <strong style="color: #667eea; font-weight: 600">
+                {{maxGuests}}
+              </strong>
+              guest(s)
+            </div>
+          </div>
+
+          {{#if isPaid}}
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              💰
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Price:
+            </div>
+            <div style="color: #333; flex: 1">
+              {{price}} {{currency}} per person
+            </div>
+          </div>
+          {{/if}} {{#if ageRestriction}}
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🔞
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Age Limit:
+            </div>
+            <div style="color: #333; flex: 1">{{ageRestriction}}</div>
+          </div>
+          {{/if}} {{#if dressCode}}
+          <div style="display: flex; align-items: flex-start">
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              👔
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Dress Code:
+            </div>
+            <div style="color: #333; flex: 1">{{dressCode}}</div>
+          </div>
+          {{/if}}
+        </div>
+
+        <!-- Event Description -->
+        {{#if eventDescription}}
+        <div style="margin: 25px 0">
+          <h3 style="color: #333; margin-bottom: 15px">📖 About This Event</h3>
+          <p
+            style="
+              color: #555;
+              background-color: #f8f9fa;
+              padding: 20px;
+              border-radius: 8px;
+              margin: 0;
+            "
+          >
+            {{eventDescription}}
+          </p>
+        </div>
+        {{/if}}
+
+        <!-- Locations -->
+        <h3 style="color: #333; margin: 30px 0 20px 0">📍 Event Location(s)</h3>
+        {{#each locations}}
+        <div
+          style="
+            background-color: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+          "
+        >
+          <div
+            style="
+              font-weight: 600;
+              color: #667eea;
+              margin-bottom: 15px;
+              font-size: 16px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                background-color: #667eea;
+                color: white;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: bold;
+                margin-right: 10px;
+              "
+            >
+              {{@index}}
+            </div>
+            {{name}} {{#if venueType}}({{venueType}}){{/if}}
+          </div>
+
+          {{#if address}}
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🏠
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Address:
+            </div>
+            <div style="color: #333; flex: 1">{{address}}</div>
+          </div>
+          {{/if}}
+
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              ⏰
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Time:
+            </div>
+            <div style="color: #333; flex: 1">
+              {{startDatetime}} - {{endDatetime}}
+            </div>
+          </div>
+
+          {{#if capacity}}
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              👥
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Capacity:
+            </div>
+            <div style="color: #333; flex: 1">{{capacity}} people</div>
+          </div>
+          {{/if}} {{#if onlineUrl}}
+          <div
+            style="display: flex; align-items: flex-start; margin-bottom: 15px"
+          >
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              🌐
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Online Link:
+            </div>
+            <div style="color: #333; flex: 1">
+              <a
+                href="{{onlineUrl}}"
+                style="color: #667eea; text-decoration: none"
+              >
+                Join Online
+              </a>
+            </div>
+          </div>
+          {{/if}} {{#if specialInstructions}}
+          <div style="display: flex; align-items: flex-start">
+            <div
+              style="
+                width: 20px;
+                margin-right: 12px;
+                color: #667eea;
+                font-weight: bold;
+                flex-shrink: 0;
+                margin-top: 2px;
+              "
+            >
+              ℹ️
+            </div>
+            <div
+              style="
+                font-weight: 600;
+                color: #555;
+                min-width: 120px;
+                margin-right: 10px;
+              "
+            >
+              Notes:
+            </div>
+            <div style="color: #333; flex: 1">{{specialInstructions}}</div>
+          </div>
+          {{/if}}
+        </div>
+        {{/each}}
+
+        <!-- Personal Message -->
+        {{#if personalMessage}}
+        <div
+          style="
+            background-color: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+          "
+        >
+          <div style="font-weight: 600; color: #17a2b8; margin-bottom: 10px">
+            💌 Personal Message from {{inviterName}}
+          </div>
+          <p style="margin: 0; color: #555; font-style: italic">
+            "{{personalMessage}}"
+          </p>
+        </div>
+        {{/if}}
+
+        <!-- Action Buttons -->
+        <div style="text-align: center; margin: 30px 0">
+          <a
+            href="{{acceptUrl}}"
+            style="
+              display: inline-block;
+              padding: 12px 30px;
+              text-decoration: none;
+              border-radius: 6px;
+              font-weight: 600;
+              margin: 0 10px;
+              transition: all 0.3s ease;
+              background-color: #28a745;
+              color: white;
+            "
+          >
+            ✅ Accept Invitation
+          </a>
+          <a
+            href="{{declineUrl}}"
+            style="
+              display: inline-block;
+              padding: 12px 30px;
+              text-decoration: none;
+              border-radius: 6px;
+              font-weight: 600;
+              margin: 0 10px;
+              transition: all 0.3s ease;
+              background-color: #6c757d;
+              color: white;
+            "
+          >
+            ❌ Decline
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div
+          style="height: 1px; background-color: #e9ecef; margin: 20px 0"
+        ></div>
+
+        <p style="color: #666; font-size: 14px; text-align: center">
+          You can also view the full event details and manage your RSVP by
+          visiting:<br />
+          <a href="{{eventUrl}}" style="color: #667eea; text-decoration: none">
+            {{eventUrl}}
+          </a>
+        </p>
+
+        {{#if requiresApproval}}
+        <p
+          style="
+            color: #856404;
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ffeaa7;
+            font-size: 14px;
+          "
+        >
+          <strong>⚠️ Note:</strong> This event requires approval from the
+          organizer. Your participation will be confirmed after review.
+        </p>
+        {{/if}}
+      </div>
+
+      <!-- Footer -->
+      <div
+        style="
+          background-color: #f8f9fa;
+          padding: 20px 30px;
+          text-align: center;
+          color: #6c757d;
+          font-size: 14px;
+          border-top: 1px solid #e9ecef;
+        "
+      >
+        <p>
+          This invitation was sent through <strong>Join Events</strong><br />
+          If you have any questions, please contact
+          <a
+            href="mailto:{{inviterEmail}}"
+            style="color: #667eea; text-decoration: none"
+          >
+            {{inviterEmail}}
+          </a>
+        </p>
+        <p style="margin-top: 15px; font-size: 12px; color: #999">
+          If you didn't expect this invitation or believe it was sent in error,
+          please ignore this email.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

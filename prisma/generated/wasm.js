@@ -424,6 +424,32 @@ exports.Prisma.Event_invitationsScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.Event_qr_codesScalarFieldEnum = {
+  id: 'id',
+  invitation_id: 'invitation_id',
+  event_id: 'event_id',
+  user_id: 'user_id',
+  qr_data: 'qr_data',
+  is_active: 'is_active',
+  expires_at: 'expires_at',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Event_checkinsScalarFieldEnum = {
+  id: 'id',
+  event_id: 'event_id',
+  invitation_id: 'invitation_id',
+  user_id: 'user_id',
+  checked_in_at: 'checked_in_at',
+  guest_count: 'guest_count',
+  check_in_method: 'check_in_method',
+  location_id: 'location_id',
+  notes: 'notes',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.Oauth_accountsScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -484,6 +510,8 @@ exports.Prisma.ModelName = {
   event_locations: 'event_locations',
   event_attachments: 'event_attachments',
   event_invitations: 'event_invitations',
+  event_qr_codes: 'event_qr_codes',
+  event_checkins: 'event_checkins',
   oauth_accounts: 'oauth_accounts'
 };
 

@@ -1,5 +1,4 @@
 export interface EventInvitationPayload {
-  // Basic invitation info
   to: string;
   invitedUserName: string;
   inviterName: string;
@@ -10,15 +9,15 @@ export interface EventInvitationPayload {
   // Event details
   eventTitle: string;
   eventDescription?: string;
-  eventType: string; // "online", "offline", "hybrid"
-  eventCategory: string; // "party", "birthday", "wedding", etc.
+  eventType: string;
+  eventCategory: string;
   eventStartDate: string;
   eventEndDate: string;
 
   // Event settings
   isPaid: boolean;
   price?: string;
-  currency?: string;
+  currency: string;
   maxParticipants?: number;
   currentParticipants: number;
   maxGuests: number;
@@ -26,7 +25,7 @@ export interface EventInvitationPayload {
   dressCode?: string;
   requiresApproval: boolean;
 
-  // Locations array
+  // Locations
   locations: Array<{
     name: string;
     venueType?: string;
@@ -43,8 +42,11 @@ export interface EventInvitationPayload {
     publicTransport?: string;
   }>;
 
-  // Action URLs
-  acceptUrl: string;
-  declineUrl: string;
+  // QR Code and Auth URLs - ADD THESE FIELDS
+  qrCodeUrl?: string; // Base64 data URL for embedding in email
+  qrCodeData: string; // The actual QR code data as string
+  authUrl: string;
   eventUrl: string;
+  hasAccount: boolean;
+  invitationToken: string;
 }

@@ -14,638 +14,995 @@
       line-height: 1.6;
     "
   >
-    <div
-      style="
-        max-width: 650px;
-        margin: 0 auto;
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      "
+    <table
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      width="100%"
+      style="background-color: #f8f9fa"
     >
-      <!-- Header -->
-      <div
-        style="
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          padding: 30px;
-          text-align: center;
-        "
-      >
-        <h1 style="margin: 0; font-size: 28px; font-weight: 300">
-          🎉 You're Invited!
-        </h1>
-        <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px">
-          {{eventTitle}}
-        </p>
-      </div>
-
-      <!-- Content -->
-      <div style="padding: 30px">
-        <div style="font-size: 18px; color: #333; margin-bottom: 20px">
-          Hello <strong>{{invitedUserName}}</strong>,
-        </div>
-
-        <p>{{inviterName}} has invited you to join an exciting event!</p>
-
-        <div
-          style="
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 25px;
-          "
-        >
-          Invited as: {{invitationRole}}
-        </div>
-
-        <!-- Event Details -->
-        <div
-          style="
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 25px 0;
-            border-left: 4px solid #667eea;
-          "
-        >
-          <h3 style="margin-top: 0; color: #333; font-size: 20px">
-            📅 Event Details
-          </h3>
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🎯
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Event:
-            </div>
-            <div style="color: #333; flex: 1">
-              <strong>{{eventTitle}}</strong>
-            </div>
-          </div>
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              📝
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Type:
-            </div>
-            <div style="color: #333; flex: 1">
-              {{eventType}} • {{eventCategory}}
-            </div>
-          </div>
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🕒
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Date & Time:
-            </div>
-            <div style="color: #333; flex: 1">
-              {{eventStartDate}} - {{eventEndDate}}
-            </div>
-          </div>
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              👥
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Participants:
-            </div>
-            <div style="color: #333; flex: 1">
-              {{currentParticipants}}/{{maxParticipants}} confirmed
-            </div>
-          </div>
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🎟️
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Your Guests:
-            </div>
-            <div style="color: #333; flex: 1">
-              You can bring up to
-              <strong style="color: #667eea; font-weight: 600">
-                {{maxGuests}}
-              </strong>
-              guest(s)
-            </div>
-          </div>
-
-          {{#if isPaid}}
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              💰
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Price:
-            </div>
-            <div style="color: #333; flex: 1">
-              {{price}} {{currency}} per person
-            </div>
-          </div>
-          {{/if}} {{#if ageRestriction}}
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🔞
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Age Limit:
-            </div>
-            <div style="color: #333; flex: 1">{{ageRestriction}}</div>
-          </div>
-          {{/if}} {{#if dressCode}}
-          <div style="display: flex; align-items: flex-start">
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              👔
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Dress Code:
-            </div>
-            <div style="color: #333; flex: 1">{{dressCode}}</div>
-          </div>
-          {{/if}}
-        </div>
-
-        <!-- Event Description -->
-        {{#if eventDescription}}
-        <div style="margin: 25px 0">
-          <h3 style="color: #333; margin-bottom: 15px">📖 About This Event</h3>
-          <p
+      <tr>
+        <td align="center">
+          <table
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
             style="
-              color: #555;
-              background-color: #f8f9fa;
-              padding: 20px;
-              border-radius: 8px;
-              margin: 0;
+              max-width: 650px;
+              width: 100%;
+              margin: 0 auto;
+              background-color: #ffffff;
+              border-radius: 12px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              overflow: hidden;
             "
           >
-            {{eventDescription}}
-          </p>
-        </div>
-        {{/if}}
-
-        <!-- Locations -->
-        <h3 style="color: #333; margin: 30px 0 20px 0">📍 Event Location(s)</h3>
-        {{#each locations}}
-        <div
-          style="
-            background-color: #fff;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-          "
-        >
-          <div
-            style="
-              font-weight: 600;
-              color: #667eea;
-              margin-bottom: 15px;
-              font-size: 16px;
-              display: flex;
-              align-items: center;
-            "
-          >
-            <div
-              style="
-                background-color: #667eea;
-                color: white;
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 12px;
-                font-weight: bold;
-                margin-right: 10px;
-              "
-            >
-              {{@index}}
-            </div>
-            {{name}} {{#if venueType}}({{venueType}}){{/if}}
-          </div>
-
-          {{#if address}}
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🏠
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Address:
-            </div>
-            <div style="color: #333; flex: 1">{{address}}</div>
-          </div>
-          {{/if}}
-
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              ⏰
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Time:
-            </div>
-            <div style="color: #333; flex: 1">
-              {{startDatetime}} - {{endDatetime}}
-            </div>
-          </div>
-
-          {{#if capacity}}
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              👥
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Capacity:
-            </div>
-            <div style="color: #333; flex: 1">{{capacity}} people</div>
-          </div>
-          {{/if}} {{#if onlineUrl}}
-          <div
-            style="display: flex; align-items: flex-start; margin-bottom: 15px"
-          >
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              🌐
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Online Link:
-            </div>
-            <div style="color: #333; flex: 1">
-              <a
-                href="{{onlineUrl}}"
-                style="color: #667eea; text-decoration: none"
+            <!-- Header -->
+            <tr>
+              <td
+                style="
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  color: white;
+                  padding: 30px;
+                  text-align: center;
+                "
               >
-                Join Online
-              </a>
-            </div>
-          </div>
-          {{/if}} {{#if specialInstructions}}
-          <div style="display: flex; align-items: flex-start">
-            <div
-              style="
-                width: 20px;
-                margin-right: 12px;
-                color: #667eea;
-                font-weight: bold;
-                flex-shrink: 0;
-                margin-top: 2px;
-              "
-            >
-              ℹ️
-            </div>
-            <div
-              style="
-                font-weight: 600;
-                color: #555;
-                min-width: 120px;
-                margin-right: 10px;
-              "
-            >
-              Notes:
-            </div>
-            <div style="color: #333; flex: 1">{{specialInstructions}}</div>
-          </div>
-          {{/if}}
-        </div>
-        {{/each}}
+                <h1
+                  style="
+                    margin: 0;
+                    font-size: 28px;
+                    font-weight: 300;
+                    color: white;
+                  "
+                >
+                  🎉 You're Invited!
+                </h1>
+                <p
+                  style="
+                    margin: 10px 0 0 0;
+                    opacity: 0.9;
+                    font-size: 16px;
+                    color: white;
+                  "
+                >
+                  {{eventTitle}}
+                </p>
+              </td>
+            </tr>
 
-        <!-- Personal Message -->
-        {{#if personalMessage}}
-        <div
-          style="
-            background-color: #e8f4f8;
-            border-left: 4px solid #17a2b8;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-          "
-        >
-          <div style="font-weight: 600; color: #17a2b8; margin-bottom: 10px">
-            💌 Personal Message from {{inviterName}}
-          </div>
-          <p style="margin: 0; color: #555; font-style: italic">
-            "{{personalMessage}}"
-          </p>
-        </div>
-        {{/if}}
+            <!-- Content -->
+            <tr>
+              <td style="padding: 30px">
+                <div style="font-size: 18px; color: #333; margin-bottom: 20px">
+                  Hello <strong>{{invitedUserName}}</strong>,
+                </div>
 
-        <!-- Action Buttons -->
-        <div style="text-align: center; margin: 30px 0">
-          <a
-            href="{{acceptUrl}}"
-            style="
-              display: inline-block;
-              padding: 12px 30px;
-              text-decoration: none;
-              border-radius: 6px;
-              font-weight: 600;
-              margin: 0 10px;
-              transition: all 0.3s ease;
-              background-color: #28a745;
-              color: white;
-            "
-          >
-            ✅ Accept Invitation
-          </a>
-          <a
-            href="{{declineUrl}}"
-            style="
-              display: inline-block;
-              padding: 12px 30px;
-              text-decoration: none;
-              border-radius: 6px;
-              font-weight: 600;
-              margin: 0 10px;
-              transition: all 0.3s ease;
-              background-color: #6c757d;
-              color: white;
-            "
-          >
-            ❌ Decline
-          </a>
-        </div>
+                <p style="color: #333; margin-bottom: 20px">
+                  {{inviterName}} has invited you to join an exciting event!
+                </p>
 
-        <!-- Divider -->
-        <div
-          style="height: 1px; background-color: #e9ecef; margin: 20px 0"
-        ></div>
+                <div
+                  style="
+                    display: inline-block;
+                    background: linear-gradient(
+                      135deg,
+                      #667eea 0%,
+                      #764ba2 100%
+                    );
+                    color: white;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    margin-bottom: 25px;
+                  "
+                >
+                  Invited as: {{invitationRole}}
+                </div>
 
-        <p style="color: #666; font-size: 14px; text-align: center">
-          You can also view the full event details and manage your RSVP by
-          visiting:<br />
-          <a href="{{eventUrl}}" style="color: #667eea; text-decoration: none">
-            {{eventUrl}}
-          </a>
-        </p>
+                <!-- QR Code Section -->
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  width="100%"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #667eea 0%,
+                      #764ba2 100%
+                    );
+                    color: white;
+                    padding: 25px;
+                    margin: 25px 0;
+                    border-radius: 12px;
+                  "
+                >
+                  <tr>
+                    <td style="text-align: center">
+                      <h3
+                        style="
+                          margin: 0 0 15px 0;
+                          font-size: 20px;
+                          color: white;
+                        "
+                      >
+                        🎫 Your Event Access Code
+                      </h3>
+                      <p
+                        style="
+                          margin: 0 0 20px 0;
+                          opacity: 0.9;
+                          font-size: 14px;
+                          color: white;
+                        "
+                      >
+                        Save this information - you'll need it for event access!
+                      </p>
 
-        {{#if requiresApproval}}
-        <p
-          style="
-            color: #856404;
-            background-color: #fff3cd;
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid #ffeaa7;
-            font-size: 14px;
-          "
-        >
-          <strong>⚠️ Note:</strong> This event requires approval from the
-          organizer. Your participation will be confirmed after review.
-        </p>
-        {{/if}}
-      </div>
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        style="
+                          background: white;
+                          padding: 20px;
+                          border-radius: 8px;
+                          margin: 10px auto 20px auto;
+                          color: #333;
+                        "
+                      >
+                        <tr>
+                          <td style="text-align: center">
+                            <!-- QR Code Image (if available) or Placeholder -->
+                            {{#if qrCodeUrl}}
+                            <div
+                              style="text-align: center; margin-bottom: 15px"
+                            >
+                              <img
+                                src="{{qrCodeUrl}}"
+                                alt="Event QR Code"
+                                style="
+                                  width: 180px;
+                                  height: 180px;
+                                  border: 2px solid #667eea;
+                                  border-radius: 8px;
+                                  display: block;
+                                  margin: 0 auto;
+                                "
+                              />
+                            </div>
+                            {{else}}
+                            <div
+                              style="
+                                width: 180px;
+                                height: 180px;
+                                border: 2px dashed #667eea;
+                                margin: 0 auto 15px auto;
+                                border-radius: 8px;
+                                background: #f8f9fa;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-align: center;
+                              "
+                            >
+                              <div style="color: #667eea">
+                                <div
+                                  style="font-size: 48px; margin-bottom: 10px"
+                                >
+                                  📱
+                                </div>
+                                <div style="font-size: 12px; font-weight: 600">
+                                  QR CODE
+                                </div>
+                                <div style="font-size: 10px; opacity: 0.7">
+                                  Scan at Event
+                                </div>
+                              </div>
+                            </div>
+                            {{/if}}
 
-      <!-- Footer -->
-      <div
-        style="
-          background-color: #f8f9fa;
-          padding: 20px 30px;
-          text-align: center;
-          color: #6c757d;
-          font-size: 14px;
-          border-top: 1px solid #e9ecef;
-        "
-      >
-        <p>
-          This invitation was sent through <strong>Join Events</strong><br />
-          If you have any questions, please contact
-          <a
-            href="mailto:{{inviterEmail}}"
-            style="color: #667eea; text-decoration: none"
-          >
-            {{inviterEmail}}
-          </a>
-        </p>
-        <p style="margin-top: 15px; font-size: 12px; color: #999">
-          If you didn't expect this invitation or believe it was sent in error,
-          please ignore this email.
-        </p>
-      </div>
-    </div>
+                            <!-- QR Code Data as Text -->
+                            <div
+                              style="
+                                background: #f8f9fa;
+                                padding: 15px;
+                                border-radius: 6px;
+                                margin-top: 15px;
+                                text-align: left;
+                              "
+                            >
+                              <div
+                                style="
+                                  font-size: 12px;
+                                  color: #666;
+                                  margin-bottom: 8px;
+                                  font-weight: 600;
+                                "
+                              >
+                                Event Access Code:
+                              </div>
+                              <div
+                                style="
+                                  font-family: 'Courier New', monospace;
+                                  font-size: 11px;
+                                  background: white;
+                                  padding: 10px;
+                                  border-radius: 4px;
+                                  border: 1px solid #ddd;
+                                  word-break: break-all;
+                                  line-height: 1.4;
+                                  color: #333;
+                                "
+                              >
+                                {{qrCodeData}}
+                              </div>
+                            </div>
+
+                            <!-- Invitation Token -->
+                            <div
+                              style="
+                                background: #e8f4f8;
+                                padding: 12px;
+                                border-radius: 6px;
+                                margin-top: 10px;
+                                text-align: left;
+                              "
+                            >
+                              <div
+                                style="
+                                  font-size: 12px;
+                                  color: #17a2b8;
+                                  margin-bottom: 5px;
+                                  font-weight: 600;
+                                "
+                              >
+                                Quick Access Token:
+                              </div>
+                              <div
+                                style="
+                                  font-family: 'Courier New', monospace;
+                                  font-size: 13px;
+                                  color: #17a2b8;
+                                  font-weight: bold;
+                                  letter-spacing: 1px;
+                                "
+                              >
+                                {{invitationToken}}
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p
+                        style="
+                          margin: 15px 0 0 0;
+                          font-size: 12px;
+                          opacity: 0.8;
+                          color: white;
+                        "
+                      >
+                        Show this code at the event for quick check-in
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Event Details -->
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  width="100%"
+                  style="
+                    background-color: #f8f9fa;
+                    border-radius: 8px;
+                    padding: 25px;
+                    margin: 25px 0;
+                    border-left: 4px solid #667eea;
+                  "
+                >
+                  <tr>
+                    <td>
+                      <h3
+                        style="
+                          margin-top: 0;
+                          color: #333;
+                          font-size: 20px;
+                          margin-bottom: 20px;
+                        "
+                      >
+                        📅 Event Details
+                      </h3>
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🎯
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Event:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            <strong>{{eventTitle}}</strong>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            📝
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Type:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{eventType}} • {{eventCategory}}
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🕒
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Date & Time:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{eventStartDate}}<br />to {{eventEndDate}}
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            👥
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Participants:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{currentParticipants}}/{{maxParticipants}}
+                            confirmed
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🎟️
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Your Guests:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            You can bring up to
+                            <strong style="color: #667eea; font-weight: 600"
+                              >{{maxGuests}}</strong
+                            >
+                            guest(s)
+                          </td>
+                        </tr>
+                      </table>
+
+                      {{#if isPaid}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            💰
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Price:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{price}} {{currency}} per person
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}} {{#if ageRestriction}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🔞
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Age Limit:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{ageRestriction}}
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}} {{#if dressCode}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            👔
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Dress Code:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{dressCode}}
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}}
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Event Description -->
+                {{#if eventDescription}}
+                <div style="margin: 25px 0">
+                  <h3 style="color: #333; margin-bottom: 15px">
+                    📖 About This Event
+                  </h3>
+                  <p
+                    style="
+                      color: #555;
+                      background-color: #f8f9fa;
+                      padding: 20px;
+                      border-radius: 8px;
+                      margin: 0;
+                    "
+                  >
+                    {{eventDescription}}
+                  </p>
+                </div>
+                {{/if}}
+
+                <!-- Locations -->
+                <h3 style="color: #333; margin: 30px 0 20px 0">
+                  📍 Event Location(s)
+                </h3>
+                {{#each locations}}
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  width="100%"
+                  style="
+                    background-color: #fff;
+                    border: 1px solid #e9ecef;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin: 20px 0;
+                  "
+                >
+                  <tr>
+                    <td>
+                      <div
+                        style="
+                          font-weight: 600;
+                          color: #667eea;
+                          margin-bottom: 15px;
+                          font-size: 16px;
+                        "
+                      >
+                        <span
+                          style="
+                            background-color: #667eea;
+                            color: white;
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 50%;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 12px;
+                            font-weight: bold;
+                            margin-right: 10px;
+                            vertical-align: middle;
+                            text-align: center;
+                            line-height: 24px;
+                          "
+                          >{{@index}}</span
+                        >
+                        {{name}} {{#if venueType}}({{venueType}}){{/if}}
+                      </div>
+
+                      {{#if address}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🏠
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Address:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{address}}
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}}
+
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            ⏰
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Time:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{startDatetime}} - {{endDatetime}}
+                          </td>
+                        </tr>
+                      </table>
+
+                      {{#if onlineUrl}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            🌐
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Online Link:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            <a
+                              href="{{onlineUrl}}"
+                              style="color: #667eea; text-decoration: none"
+                              >Join Online</a
+                            >
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}} {{#if specialInstructions}}
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        width="100%"
+                        style="margin-bottom: 15px"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              width: 32px;
+                              color: #667eea;
+                              font-weight: bold;
+                              vertical-align: top;
+                              padding-top: 2px;
+                            "
+                          >
+                            ℹ️
+                          </td>
+                          <td
+                            style="
+                              width: 120px;
+                              font-weight: 600;
+                              color: #555;
+                              vertical-align: top;
+                              padding-right: 10px;
+                            "
+                          >
+                            Notes:
+                          </td>
+                          <td style="color: #333; vertical-align: top">
+                            {{specialInstructions}}
+                          </td>
+                        </tr>
+                      </table>
+                      {{/if}}
+                    </td>
+                  </tr>
+                </table>
+                {{/each}}
+
+                <!-- Personal Message -->
+                {{#if personalMessage}}
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  width="100%"
+                  style="
+                    background-color: #e8f4f8;
+                    border-left: 4px solid #17a2b8;
+                    padding: 20px;
+                    margin: 25px 0;
+                    border-radius: 0 8px 8px 0;
+                  "
+                >
+                  <tr>
+                    <td>
+                      <div
+                        style="
+                          font-weight: 600;
+                          color: #17a2b8;
+                          margin-bottom: 10px;
+                        "
+                      >
+                        💌 Personal Message from {{inviterName}}
+                      </div>
+                      <p style="margin: 0; color: #555; font-style: italic">
+                        "{{personalMessage}}"
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+                {{/if}}
+
+                <!-- Call to Action -->
+                <table
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  width="100%"
+                  style="text-align: center; margin: 30px 0"
+                >
+                  <tr>
+                    <td>
+                      <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        style="
+                          background-color: #f8f9fa;
+                          padding: 25px;
+                          border-radius: 8px;
+                          margin: 0 auto 20px auto;
+                        "
+                      >
+                        <tr>
+                          <td style="text-align: center">
+                            <h3 style="margin: 0 0 15px 0; color: #333">
+                              Ready to Join?
+                            </h3>
+                            <p style="margin: 0 0 20px 0; color: #666">
+                              {{#if hasAccount}} Sign in to view event details
+                              and manage your attendance {{else}} Create your
+                              account to view event details and join the fun
+                              {{/if}}
+                            </p>
+                            <a
+                              href="{{authUrl}}"
+                              style="
+                                display: inline-block;
+                                padding: 15px 40px;
+                                text-decoration: none;
+                                border-radius: 8px;
+                                font-weight: 600;
+                                font-size: 16px;
+                                background: linear-gradient(
+                                  135deg,
+                                  #667eea 0%,
+                                  #764ba2 100%
+                                );
+                                color: white;
+                              "
+                            >
+                              {{#if hasAccount}} 🔑 Sign In & View Event
+                              {{else}} ✨ Create Account & Join Event {{/if}}
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Direct Event Link -->
+                <div style="text-align: center; margin: 20px 0">
+                  <p style="color: #666; font-size: 14px; margin-bottom: 10px">
+                    Or view the event directly:
+                  </p>
+                  <a
+                    href="{{eventUrl}}"
+                    style="
+                      color: #667eea;
+                      text-decoration: none;
+                      font-weight: 500;
+                    "
+                  >
+                    {{eventUrl}}
+                  </a>
+                </div>
+
+                {{#if requiresApproval}}
+                <p
+                  style="
+                    color: #856404;
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 6px;
+                    border: 1px solid #ffeaa7;
+                    font-size: 14px;
+                  "
+                >
+                  <strong>⚠️ Note:</strong> This event requires approval from
+                  the organizer. Your participation will be confirmed after
+                  review.
+                </p>
+                {{/if}}
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                style="
+                  background-color: #f8f9fa;
+                  padding: 20px 30px;
+                  text-align: center;
+                  color: #6c757d;
+                  font-size: 14px;
+                  border-top: 1px solid #e9ecef;
+                "
+              >
+                <p style="margin: 0 0 15px 0">
+                  This invitation was sent through <strong>Join Events</strong
+                  ><br />
+                  If you have any questions, please contact
+                  <a
+                    href="mailto:{{inviterEmail}}"
+                    style="color: #667eea; text-decoration: none"
+                    >{{inviterEmail}}</a
+                  >
+                </p>
+                <p style="margin: 0; font-size: 12px; color: #999">
+                  If you didn't expect this invitation or believe it was sent in
+                  error, please ignore this email.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

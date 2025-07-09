@@ -94,6 +94,16 @@ export type event_attachments = $Result.DefaultSelection<Prisma.$event_attachmen
  */
 export type event_invitations = $Result.DefaultSelection<Prisma.$event_invitationsPayload>
 /**
+ * Model event_qr_codes
+ * 
+ */
+export type event_qr_codes = $Result.DefaultSelection<Prisma.$event_qr_codesPayload>
+/**
+ * Model event_checkins
+ * 
+ */
+export type event_checkins = $Result.DefaultSelection<Prisma.$event_checkinsPayload>
+/**
  * Model oauth_accounts
  * 
  */
@@ -383,6 +393,26 @@ export class PrismaClient<
     * ```
     */
   get event_invitations(): Prisma.event_invitationsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_qr_codes`: Exposes CRUD operations for the **event_qr_codes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_qr_codes
+    * const event_qr_codes = await prisma.event_qr_codes.findMany()
+    * ```
+    */
+  get event_qr_codes(): Prisma.event_qr_codesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.event_checkins`: Exposes CRUD operations for the **event_checkins** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Event_checkins
+    * const event_checkins = await prisma.event_checkins.findMany()
+    * ```
+    */
+  get event_checkins(): Prisma.event_checkinsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.oauth_accounts`: Exposes CRUD operations for the **oauth_accounts** model.
@@ -849,6 +879,8 @@ export namespace Prisma {
     event_locations: 'event_locations',
     event_attachments: 'event_attachments',
     event_invitations: 'event_invitations',
+    event_qr_codes: 'event_qr_codes',
+    event_checkins: 'event_checkins',
     oauth_accounts: 'oauth_accounts'
   };
 
@@ -868,7 +900,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "user_connections" | "user_profile_visits" | "event_page_visits" | "attachments" | "hobbies" | "user_hobbies" | "activities" | "user_activities" | "entertainments" | "user_entertainments" | "events" | "event_roles" | "event_locations" | "event_attachments" | "event_invitations" | "oauth_accounts"
+      modelProps: "users" | "user_connections" | "user_profile_visits" | "event_page_visits" | "attachments" | "hobbies" | "user_hobbies" | "activities" | "user_activities" | "entertainments" | "user_entertainments" | "events" | "event_roles" | "event_locations" | "event_attachments" | "event_invitations" | "event_qr_codes" | "event_checkins" | "oauth_accounts"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2056,6 +2088,154 @@ export namespace Prisma {
           }
         }
       }
+      event_qr_codes: {
+        payload: Prisma.$event_qr_codesPayload<ExtArgs>
+        fields: Prisma.event_qr_codesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.event_qr_codesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.event_qr_codesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          findFirst: {
+            args: Prisma.event_qr_codesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.event_qr_codesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          findMany: {
+            args: Prisma.event_qr_codesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>[]
+          }
+          create: {
+            args: Prisma.event_qr_codesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          createMany: {
+            args: Prisma.event_qr_codesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.event_qr_codesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>[]
+          }
+          delete: {
+            args: Prisma.event_qr_codesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          update: {
+            args: Prisma.event_qr_codesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          deleteMany: {
+            args: Prisma.event_qr_codesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.event_qr_codesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.event_qr_codesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>[]
+          }
+          upsert: {
+            args: Prisma.event_qr_codesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_qr_codesPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_qr_codesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_qr_codes>
+          }
+          groupBy: {
+            args: Prisma.event_qr_codesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_qr_codesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.event_qr_codesCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_qr_codesCountAggregateOutputType> | number
+          }
+        }
+      }
+      event_checkins: {
+        payload: Prisma.$event_checkinsPayload<ExtArgs>
+        fields: Prisma.event_checkinsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.event_checkinsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.event_checkinsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          findFirst: {
+            args: Prisma.event_checkinsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.event_checkinsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          findMany: {
+            args: Prisma.event_checkinsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>[]
+          }
+          create: {
+            args: Prisma.event_checkinsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          createMany: {
+            args: Prisma.event_checkinsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.event_checkinsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>[]
+          }
+          delete: {
+            args: Prisma.event_checkinsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          update: {
+            args: Prisma.event_checkinsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          deleteMany: {
+            args: Prisma.event_checkinsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.event_checkinsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.event_checkinsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>[]
+          }
+          upsert: {
+            args: Prisma.event_checkinsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$event_checkinsPayload>
+          }
+          aggregate: {
+            args: Prisma.Event_checkinsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEvent_checkins>
+          }
+          groupBy: {
+            args: Prisma.event_checkinsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Event_checkinsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.event_checkinsCountArgs<ExtArgs>
+            result: $Utils.Optional<Event_checkinsCountAggregateOutputType> | number
+          }
+        }
+      }
       oauth_accounts: {
         payload: Prisma.$oauth_accountsPayload<ExtArgs>
         fields: Prisma.oauth_accountsFieldRefs
@@ -2230,6 +2410,8 @@ export namespace Prisma {
     event_locations?: event_locationsOmit
     event_attachments?: event_attachmentsOmit
     event_invitations?: event_invitationsOmit
+    event_qr_codes?: event_qr_codesOmit
+    event_checkins?: event_checkinsOmit
     oauth_accounts?: oauth_accountsOmit
   }
 
@@ -2340,6 +2522,8 @@ export namespace Prisma {
     profile_visits_made: number
     profile_visits_received: number
     event_visits_made: number
+    event_qr_codes: number
+    event_checkins: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2358,6 +2542,8 @@ export namespace Prisma {
     profile_visits_made?: boolean | UsersCountOutputTypeCountProfile_visits_madeArgs
     profile_visits_received?: boolean | UsersCountOutputTypeCountProfile_visits_receivedArgs
     event_visits_made?: boolean | UsersCountOutputTypeCountEvent_visits_madeArgs
+    event_qr_codes?: boolean | UsersCountOutputTypeCountEvent_qr_codesArgs
+    event_checkins?: boolean | UsersCountOutputTypeCountEvent_checkinsArgs
   }
 
   // Custom InputTypes
@@ -2474,6 +2660,20 @@ export namespace Prisma {
    */
   export type UsersCountOutputTypeCountEvent_visits_madeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: event_page_visitsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountEvent_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_qr_codesWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountEvent_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_checkinsWhereInput
   }
 
 
@@ -2611,6 +2811,8 @@ export namespace Prisma {
     event_attachments: number
     event_invitations: number
     event_page_visits: number
+    event_qr_codes: number
+    event_checkins: number
   }
 
   export type EventsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2619,6 +2821,8 @@ export namespace Prisma {
     event_attachments?: boolean | EventsCountOutputTypeCountEvent_attachmentsArgs
     event_invitations?: boolean | EventsCountOutputTypeCountEvent_invitationsArgs
     event_page_visits?: boolean | EventsCountOutputTypeCountEvent_page_visitsArgs
+    event_qr_codes?: boolean | EventsCountOutputTypeCountEvent_qr_codesArgs
+    event_checkins?: boolean | EventsCountOutputTypeCountEvent_checkinsArgs
   }
 
   // Custom InputTypes
@@ -2667,6 +2871,20 @@ export namespace Prisma {
     where?: event_page_visitsWhereInput
   }
 
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountEvent_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_qr_codesWhereInput
+  }
+
+  /**
+   * EventsCountOutputType without action
+   */
+  export type EventsCountOutputTypeCountEvent_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_checkinsWhereInput
+  }
+
 
   /**
    * Count Type Event_invitationsCountOutputType
@@ -2675,11 +2893,15 @@ export namespace Prisma {
   export type Event_invitationsCountOutputType = {
     plus_one_invitations: number
     event_page_visits: number
+    event_qr_codes: number
+    event_checkins: number
   }
 
   export type Event_invitationsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     plus_one_invitations?: boolean | Event_invitationsCountOutputTypeCountPlus_one_invitationsArgs
     event_page_visits?: boolean | Event_invitationsCountOutputTypeCountEvent_page_visitsArgs
+    event_qr_codes?: boolean | Event_invitationsCountOutputTypeCountEvent_qr_codesArgs
+    event_checkins?: boolean | Event_invitationsCountOutputTypeCountEvent_checkinsArgs
   }
 
   // Custom InputTypes
@@ -2705,6 +2927,20 @@ export namespace Prisma {
    */
   export type Event_invitationsCountOutputTypeCountEvent_page_visitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: event_page_visitsWhereInput
+  }
+
+  /**
+   * Event_invitationsCountOutputType without action
+   */
+  export type Event_invitationsCountOutputTypeCountEvent_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_qr_codesWhereInput
+  }
+
+  /**
+   * Event_invitationsCountOutputType without action
+   */
+  export type Event_invitationsCountOutputTypeCountEvent_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_checkinsWhereInput
   }
 
 
@@ -3081,6 +3317,8 @@ export namespace Prisma {
     profile_visits_made?: boolean | users$profile_visits_madeArgs<ExtArgs>
     profile_visits_received?: boolean | users$profile_visits_receivedArgs<ExtArgs>
     event_visits_made?: boolean | users$event_visits_madeArgs<ExtArgs>
+    event_qr_codes?: boolean | users$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | users$event_checkinsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -3185,6 +3423,8 @@ export namespace Prisma {
     profile_visits_made?: boolean | users$profile_visits_madeArgs<ExtArgs>
     profile_visits_received?: boolean | users$profile_visits_receivedArgs<ExtArgs>
     event_visits_made?: boolean | users$event_visits_madeArgs<ExtArgs>
+    event_qr_codes?: boolean | users$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | users$event_checkinsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type usersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3208,6 +3448,8 @@ export namespace Prisma {
       profile_visits_made: Prisma.$user_profile_visitsPayload<ExtArgs>[]
       profile_visits_received: Prisma.$user_profile_visitsPayload<ExtArgs>[]
       event_visits_made: Prisma.$event_page_visitsPayload<ExtArgs>[]
+      event_qr_codes: Prisma.$event_qr_codesPayload<ExtArgs>[]
+      event_checkins: Prisma.$event_checkinsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3644,6 +3886,8 @@ export namespace Prisma {
     profile_visits_made<T extends users$profile_visits_madeArgs<ExtArgs> = {}>(args?: Subset<T, users$profile_visits_madeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     profile_visits_received<T extends users$profile_visits_receivedArgs<ExtArgs> = {}>(args?: Subset<T, users$profile_visits_receivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_profile_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_visits_made<T extends users$event_visits_madeArgs<ExtArgs> = {}>(args?: Subset<T, users$event_visits_madeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_qr_codes<T extends users$event_qr_codesArgs<ExtArgs> = {}>(args?: Subset<T, users$event_qr_codesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_checkins<T extends users$event_checkinsArgs<ExtArgs> = {}>(args?: Subset<T, users$event_checkinsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4443,6 +4687,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * users.event_qr_codes
+   */
+  export type users$event_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    where?: event_qr_codesWhereInput
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    cursor?: event_qr_codesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * users.event_checkins
+   */
+  export type users$event_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    where?: event_checkinsWhereInput
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    cursor?: event_checkinsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
   }
 
   /**
@@ -17016,6 +17308,8 @@ export namespace Prisma {
     event_attachments?: boolean | events$event_attachmentsArgs<ExtArgs>
     event_invitations?: boolean | events$event_invitationsArgs<ExtArgs>
     event_page_visits?: boolean | events$event_page_visitsArgs<ExtArgs>
+    event_qr_codes?: boolean | events$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | events$event_checkinsArgs<ExtArgs>
     _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["events"]>
 
@@ -17116,6 +17410,8 @@ export namespace Prisma {
     event_attachments?: boolean | events$event_attachmentsArgs<ExtArgs>
     event_invitations?: boolean | events$event_invitationsArgs<ExtArgs>
     event_page_visits?: boolean | events$event_page_visitsArgs<ExtArgs>
+    event_qr_codes?: boolean | events$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | events$event_checkinsArgs<ExtArgs>
     _count?: boolean | EventsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type eventsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17134,6 +17430,8 @@ export namespace Prisma {
       event_attachments: Prisma.$event_attachmentsPayload<ExtArgs>[]
       event_invitations: Prisma.$event_invitationsPayload<ExtArgs>[]
       event_page_visits: Prisma.$event_page_visitsPayload<ExtArgs>[]
+      event_qr_codes: Prisma.$event_qr_codesPayload<ExtArgs>[]
+      event_checkins: Prisma.$event_checkinsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -17562,6 +17860,8 @@ export namespace Prisma {
     event_attachments<T extends events$event_attachmentsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_attachmentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_invitations<T extends events$event_invitationsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_page_visits<T extends events$event_page_visitsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_page_visitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_qr_codes<T extends events$event_qr_codesArgs<ExtArgs> = {}>(args?: Subset<T, events$event_qr_codesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_checkins<T extends events$event_checkinsArgs<ExtArgs> = {}>(args?: Subset<T, events$event_checkinsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18130,6 +18430,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Event_page_visitsScalarFieldEnum | Event_page_visitsScalarFieldEnum[]
+  }
+
+  /**
+   * events.event_qr_codes
+   */
+  export type events$event_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    where?: event_qr_codesWhereInput
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    cursor?: event_qr_codesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * events.event_checkins
+   */
+  export type events$event_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    where?: event_checkinsWhereInput
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    cursor?: event_checkinsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
   }
 
   /**
@@ -22263,6 +22611,8 @@ export namespace Prisma {
     parent_invitation?: boolean | event_invitations$parent_invitationArgs<ExtArgs>
     plus_one_invitations?: boolean | event_invitations$plus_one_invitationsArgs<ExtArgs>
     event_page_visits?: boolean | event_invitations$event_page_visitsArgs<ExtArgs>
+    event_qr_codes?: boolean | event_invitations$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | event_invitations$event_checkinsArgs<ExtArgs>
     _count?: boolean | Event_invitationsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event_invitations"]>
 
@@ -22363,6 +22713,8 @@ export namespace Prisma {
     parent_invitation?: boolean | event_invitations$parent_invitationArgs<ExtArgs>
     plus_one_invitations?: boolean | event_invitations$plus_one_invitationsArgs<ExtArgs>
     event_page_visits?: boolean | event_invitations$event_page_visitsArgs<ExtArgs>
+    event_qr_codes?: boolean | event_invitations$event_qr_codesArgs<ExtArgs>
+    event_checkins?: boolean | event_invitations$event_checkinsArgs<ExtArgs>
     _count?: boolean | Event_invitationsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type event_invitationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -22387,6 +22739,8 @@ export namespace Prisma {
       parent_invitation: Prisma.$event_invitationsPayload<ExtArgs> | null
       plus_one_invitations: Prisma.$event_invitationsPayload<ExtArgs>[]
       event_page_visits: Prisma.$event_page_visitsPayload<ExtArgs>[]
+      event_qr_codes: Prisma.$event_qr_codesPayload<ExtArgs>[]
+      event_checkins: Prisma.$event_checkinsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -22813,6 +23167,8 @@ export namespace Prisma {
     parent_invitation<T extends event_invitations$parent_invitationArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$parent_invitationArgs<ExtArgs>>): Prisma__event_invitationsClient<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     plus_one_invitations<T extends event_invitations$plus_one_invitationsArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$plus_one_invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     event_page_visits<T extends event_invitations$event_page_visitsArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$event_page_visitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_page_visitsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_qr_codes<T extends event_invitations$event_qr_codesArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$event_qr_codesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    event_checkins<T extends event_invitations$event_checkinsArgs<ExtArgs> = {}>(args?: Subset<T, event_invitations$event_checkinsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23348,6 +23704,54 @@ export namespace Prisma {
   }
 
   /**
+   * event_invitations.event_qr_codes
+   */
+  export type event_invitations$event_qr_codesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    where?: event_qr_codesWhereInput
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    cursor?: event_qr_codesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * event_invitations.event_checkins
+   */
+  export type event_invitations$event_checkinsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    where?: event_checkinsWhereInput
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    cursor?: event_checkinsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
+  }
+
+  /**
    * event_invitations without action
    */
   export type event_invitationsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -23363,6 +23767,2356 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: event_invitationsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model event_qr_codes
+   */
+
+  export type AggregateEvent_qr_codes = {
+    _count: Event_qr_codesCountAggregateOutputType | null
+    _min: Event_qr_codesMinAggregateOutputType | null
+    _max: Event_qr_codesMaxAggregateOutputType | null
+  }
+
+  export type Event_qr_codesMinAggregateOutputType = {
+    id: string | null
+    invitation_id: string | null
+    event_id: string | null
+    user_id: string | null
+    qr_data: string | null
+    is_active: boolean | null
+    expires_at: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Event_qr_codesMaxAggregateOutputType = {
+    id: string | null
+    invitation_id: string | null
+    event_id: string | null
+    user_id: string | null
+    qr_data: string | null
+    is_active: boolean | null
+    expires_at: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Event_qr_codesCountAggregateOutputType = {
+    id: number
+    invitation_id: number
+    event_id: number
+    user_id: number
+    qr_data: number
+    is_active: number
+    expires_at: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Event_qr_codesMinAggregateInputType = {
+    id?: true
+    invitation_id?: true
+    event_id?: true
+    user_id?: true
+    qr_data?: true
+    is_active?: true
+    expires_at?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Event_qr_codesMaxAggregateInputType = {
+    id?: true
+    invitation_id?: true
+    event_id?: true
+    user_id?: true
+    qr_data?: true
+    is_active?: true
+    expires_at?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Event_qr_codesCountAggregateInputType = {
+    id?: true
+    invitation_id?: true
+    event_id?: true
+    user_id?: true
+    qr_data?: true
+    is_active?: true
+    expires_at?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Event_qr_codesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_qr_codes to aggregate.
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_qr_codes to fetch.
+     */
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: event_qr_codesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_qr_codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_qr_codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned event_qr_codes
+    **/
+    _count?: true | Event_qr_codesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_qr_codesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_qr_codesMaxAggregateInputType
+  }
+
+  export type GetEvent_qr_codesAggregateType<T extends Event_qr_codesAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_qr_codes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_qr_codes[P]>
+      : GetScalarType<T[P], AggregateEvent_qr_codes[P]>
+  }
+
+
+
+
+  export type event_qr_codesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_qr_codesWhereInput
+    orderBy?: event_qr_codesOrderByWithAggregationInput | event_qr_codesOrderByWithAggregationInput[]
+    by: Event_qr_codesScalarFieldEnum[] | Event_qr_codesScalarFieldEnum
+    having?: event_qr_codesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_qr_codesCountAggregateInputType | true
+    _min?: Event_qr_codesMinAggregateInputType
+    _max?: Event_qr_codesMaxAggregateInputType
+  }
+
+  export type Event_qr_codesGroupByOutputType = {
+    id: string
+    invitation_id: string
+    event_id: string
+    user_id: string | null
+    qr_data: string
+    is_active: boolean
+    expires_at: Date
+    created_at: Date
+    updated_at: Date
+    _count: Event_qr_codesCountAggregateOutputType | null
+    _min: Event_qr_codesMinAggregateOutputType | null
+    _max: Event_qr_codesMaxAggregateOutputType | null
+  }
+
+  type GetEvent_qr_codesGroupByPayload<T extends event_qr_codesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_qr_codesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_qr_codesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_qr_codesGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_qr_codesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type event_qr_codesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitation_id?: boolean
+    event_id?: boolean
+    user_id?: boolean
+    qr_data?: boolean
+    is_active?: boolean
+    expires_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_qr_codes"]>
+
+  export type event_qr_codesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitation_id?: boolean
+    event_id?: boolean
+    user_id?: boolean
+    qr_data?: boolean
+    is_active?: boolean
+    expires_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_qr_codes"]>
+
+  export type event_qr_codesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitation_id?: boolean
+    event_id?: boolean
+    user_id?: boolean
+    qr_data?: boolean
+    is_active?: boolean
+    expires_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_qr_codes"]>
+
+  export type event_qr_codesSelectScalar = {
+    id?: boolean
+    invitation_id?: boolean
+    event_id?: boolean
+    user_id?: boolean
+    qr_data?: boolean
+    is_active?: boolean
+    expires_at?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type event_qr_codesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "invitation_id" | "event_id" | "user_id" | "qr_data" | "is_active" | "expires_at" | "created_at" | "updated_at", ExtArgs["result"]["event_qr_codes"]>
+  export type event_qr_codesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }
+  export type event_qr_codesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }
+  export type event_qr_codesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    user?: boolean | event_qr_codes$userArgs<ExtArgs>
+  }
+
+  export type $event_qr_codesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "event_qr_codes"
+    objects: {
+      invitation: Prisma.$event_invitationsPayload<ExtArgs>
+      event: Prisma.$eventsPayload<ExtArgs>
+      user: Prisma.$usersPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      invitation_id: string
+      event_id: string
+      user_id: string | null
+      qr_data: string
+      is_active: boolean
+      expires_at: Date
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["event_qr_codes"]>
+    composites: {}
+  }
+
+  type event_qr_codesGetPayload<S extends boolean | null | undefined | event_qr_codesDefaultArgs> = $Result.GetResult<Prisma.$event_qr_codesPayload, S>
+
+  type event_qr_codesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<event_qr_codesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_qr_codesCountAggregateInputType | true
+    }
+
+  export interface event_qr_codesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['event_qr_codes'], meta: { name: 'event_qr_codes' } }
+    /**
+     * Find zero or one Event_qr_codes that matches the filter.
+     * @param {event_qr_codesFindUniqueArgs} args - Arguments to find a Event_qr_codes
+     * @example
+     * // Get one Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends event_qr_codesFindUniqueArgs>(args: SelectSubset<T, event_qr_codesFindUniqueArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_qr_codes that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {event_qr_codesFindUniqueOrThrowArgs} args - Arguments to find a Event_qr_codes
+     * @example
+     * // Get one Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends event_qr_codesFindUniqueOrThrowArgs>(args: SelectSubset<T, event_qr_codesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_qr_codes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesFindFirstArgs} args - Arguments to find a Event_qr_codes
+     * @example
+     * // Get one Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends event_qr_codesFindFirstArgs>(args?: SelectSubset<T, event_qr_codesFindFirstArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_qr_codes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesFindFirstOrThrowArgs} args - Arguments to find a Event_qr_codes
+     * @example
+     * // Get one Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends event_qr_codesFindFirstOrThrowArgs>(args?: SelectSubset<T, event_qr_codesFindFirstOrThrowArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_qr_codes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findMany()
+     * 
+     * // Get first 10 Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_qr_codesWithIdOnly = await prisma.event_qr_codes.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends event_qr_codesFindManyArgs>(args?: SelectSubset<T, event_qr_codesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_qr_codes.
+     * @param {event_qr_codesCreateArgs} args - Arguments to create a Event_qr_codes.
+     * @example
+     * // Create one Event_qr_codes
+     * const Event_qr_codes = await prisma.event_qr_codes.create({
+     *   data: {
+     *     // ... data to create a Event_qr_codes
+     *   }
+     * })
+     * 
+     */
+    create<T extends event_qr_codesCreateArgs>(args: SelectSubset<T, event_qr_codesCreateArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_qr_codes.
+     * @param {event_qr_codesCreateManyArgs} args - Arguments to create many Event_qr_codes.
+     * @example
+     * // Create many Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends event_qr_codesCreateManyArgs>(args?: SelectSubset<T, event_qr_codesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_qr_codes and returns the data saved in the database.
+     * @param {event_qr_codesCreateManyAndReturnArgs} args - Arguments to create many Event_qr_codes.
+     * @example
+     * // Create many Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_qr_codes and only return the `id`
+     * const event_qr_codesWithIdOnly = await prisma.event_qr_codes.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends event_qr_codesCreateManyAndReturnArgs>(args?: SelectSubset<T, event_qr_codesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_qr_codes.
+     * @param {event_qr_codesDeleteArgs} args - Arguments to delete one Event_qr_codes.
+     * @example
+     * // Delete one Event_qr_codes
+     * const Event_qr_codes = await prisma.event_qr_codes.delete({
+     *   where: {
+     *     // ... filter to delete one Event_qr_codes
+     *   }
+     * })
+     * 
+     */
+    delete<T extends event_qr_codesDeleteArgs>(args: SelectSubset<T, event_qr_codesDeleteArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_qr_codes.
+     * @param {event_qr_codesUpdateArgs} args - Arguments to update one Event_qr_codes.
+     * @example
+     * // Update one Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends event_qr_codesUpdateArgs>(args: SelectSubset<T, event_qr_codesUpdateArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_qr_codes.
+     * @param {event_qr_codesDeleteManyArgs} args - Arguments to filter Event_qr_codes to delete.
+     * @example
+     * // Delete a few Event_qr_codes
+     * const { count } = await prisma.event_qr_codes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends event_qr_codesDeleteManyArgs>(args?: SelectSubset<T, event_qr_codesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_qr_codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends event_qr_codesUpdateManyArgs>(args: SelectSubset<T, event_qr_codesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_qr_codes and returns the data updated in the database.
+     * @param {event_qr_codesUpdateManyAndReturnArgs} args - Arguments to update many Event_qr_codes.
+     * @example
+     * // Update many Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_qr_codes and only return the `id`
+     * const event_qr_codesWithIdOnly = await prisma.event_qr_codes.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends event_qr_codesUpdateManyAndReturnArgs>(args: SelectSubset<T, event_qr_codesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_qr_codes.
+     * @param {event_qr_codesUpsertArgs} args - Arguments to update or create a Event_qr_codes.
+     * @example
+     * // Update or create a Event_qr_codes
+     * const event_qr_codes = await prisma.event_qr_codes.upsert({
+     *   create: {
+     *     // ... data to create a Event_qr_codes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_qr_codes we want to update
+     *   }
+     * })
+     */
+    upsert<T extends event_qr_codesUpsertArgs>(args: SelectSubset<T, event_qr_codesUpsertArgs<ExtArgs>>): Prisma__event_qr_codesClient<$Result.GetResult<Prisma.$event_qr_codesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_qr_codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesCountArgs} args - Arguments to filter Event_qr_codes to count.
+     * @example
+     * // Count the number of Event_qr_codes
+     * const count = await prisma.event_qr_codes.count({
+     *   where: {
+     *     // ... the filter for the Event_qr_codes we want to count
+     *   }
+     * })
+    **/
+    count<T extends event_qr_codesCountArgs>(
+      args?: Subset<T, event_qr_codesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_qr_codesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_qr_codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_qr_codesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_qr_codesAggregateArgs>(args: Subset<T, Event_qr_codesAggregateArgs>): Prisma.PrismaPromise<GetEvent_qr_codesAggregateType<T>>
+
+    /**
+     * Group by Event_qr_codes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_qr_codesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends event_qr_codesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: event_qr_codesGroupByArgs['orderBy'] }
+        : { orderBy?: event_qr_codesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, event_qr_codesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_qr_codesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the event_qr_codes model
+   */
+  readonly fields: event_qr_codesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for event_qr_codes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__event_qr_codesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invitation<T extends event_invitationsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, event_invitationsDefaultArgs<ExtArgs>>): Prisma__event_invitationsClient<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    event<T extends eventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, eventsDefaultArgs<ExtArgs>>): Prisma__eventsClient<$Result.GetResult<Prisma.$eventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends event_qr_codes$userArgs<ExtArgs> = {}>(args?: Subset<T, event_qr_codes$userArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the event_qr_codes model
+   */
+  interface event_qr_codesFieldRefs {
+    readonly id: FieldRef<"event_qr_codes", 'String'>
+    readonly invitation_id: FieldRef<"event_qr_codes", 'String'>
+    readonly event_id: FieldRef<"event_qr_codes", 'String'>
+    readonly user_id: FieldRef<"event_qr_codes", 'String'>
+    readonly qr_data: FieldRef<"event_qr_codes", 'String'>
+    readonly is_active: FieldRef<"event_qr_codes", 'Boolean'>
+    readonly expires_at: FieldRef<"event_qr_codes", 'DateTime'>
+    readonly created_at: FieldRef<"event_qr_codes", 'DateTime'>
+    readonly updated_at: FieldRef<"event_qr_codes", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * event_qr_codes findUnique
+   */
+  export type event_qr_codesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter, which event_qr_codes to fetch.
+     */
+    where: event_qr_codesWhereUniqueInput
+  }
+
+  /**
+   * event_qr_codes findUniqueOrThrow
+   */
+  export type event_qr_codesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter, which event_qr_codes to fetch.
+     */
+    where: event_qr_codesWhereUniqueInput
+  }
+
+  /**
+   * event_qr_codes findFirst
+   */
+  export type event_qr_codesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter, which event_qr_codes to fetch.
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_qr_codes to fetch.
+     */
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_qr_codes.
+     */
+    cursor?: event_qr_codesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_qr_codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_qr_codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_qr_codes.
+     */
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * event_qr_codes findFirstOrThrow
+   */
+  export type event_qr_codesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter, which event_qr_codes to fetch.
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_qr_codes to fetch.
+     */
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_qr_codes.
+     */
+    cursor?: event_qr_codesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_qr_codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_qr_codes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_qr_codes.
+     */
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * event_qr_codes findMany
+   */
+  export type event_qr_codesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter, which event_qr_codes to fetch.
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_qr_codes to fetch.
+     */
+    orderBy?: event_qr_codesOrderByWithRelationInput | event_qr_codesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing event_qr_codes.
+     */
+    cursor?: event_qr_codesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_qr_codes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_qr_codes.
+     */
+    skip?: number
+    distinct?: Event_qr_codesScalarFieldEnum | Event_qr_codesScalarFieldEnum[]
+  }
+
+  /**
+   * event_qr_codes create
+   */
+  export type event_qr_codesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a event_qr_codes.
+     */
+    data: XOR<event_qr_codesCreateInput, event_qr_codesUncheckedCreateInput>
+  }
+
+  /**
+   * event_qr_codes createMany
+   */
+  export type event_qr_codesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many event_qr_codes.
+     */
+    data: event_qr_codesCreateManyInput | event_qr_codesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * event_qr_codes createManyAndReturn
+   */
+  export type event_qr_codesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * The data used to create many event_qr_codes.
+     */
+    data: event_qr_codesCreateManyInput | event_qr_codesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_qr_codes update
+   */
+  export type event_qr_codesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a event_qr_codes.
+     */
+    data: XOR<event_qr_codesUpdateInput, event_qr_codesUncheckedUpdateInput>
+    /**
+     * Choose, which event_qr_codes to update.
+     */
+    where: event_qr_codesWhereUniqueInput
+  }
+
+  /**
+   * event_qr_codes updateMany
+   */
+  export type event_qr_codesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update event_qr_codes.
+     */
+    data: XOR<event_qr_codesUpdateManyMutationInput, event_qr_codesUncheckedUpdateManyInput>
+    /**
+     * Filter which event_qr_codes to update
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * Limit how many event_qr_codes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_qr_codes updateManyAndReturn
+   */
+  export type event_qr_codesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * The data used to update event_qr_codes.
+     */
+    data: XOR<event_qr_codesUpdateManyMutationInput, event_qr_codesUncheckedUpdateManyInput>
+    /**
+     * Filter which event_qr_codes to update
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * Limit how many event_qr_codes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_qr_codes upsert
+   */
+  export type event_qr_codesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the event_qr_codes to update in case it exists.
+     */
+    where: event_qr_codesWhereUniqueInput
+    /**
+     * In case the event_qr_codes found by the `where` argument doesn't exist, create a new event_qr_codes with this data.
+     */
+    create: XOR<event_qr_codesCreateInput, event_qr_codesUncheckedCreateInput>
+    /**
+     * In case the event_qr_codes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<event_qr_codesUpdateInput, event_qr_codesUncheckedUpdateInput>
+  }
+
+  /**
+   * event_qr_codes delete
+   */
+  export type event_qr_codesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+    /**
+     * Filter which event_qr_codes to delete.
+     */
+    where: event_qr_codesWhereUniqueInput
+  }
+
+  /**
+   * event_qr_codes deleteMany
+   */
+  export type event_qr_codesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_qr_codes to delete
+     */
+    where?: event_qr_codesWhereInput
+    /**
+     * Limit how many event_qr_codes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_qr_codes.user
+   */
+  export type event_qr_codes$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * event_qr_codes without action
+   */
+  export type event_qr_codesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_qr_codes
+     */
+    select?: event_qr_codesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_qr_codes
+     */
+    omit?: event_qr_codesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_qr_codesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model event_checkins
+   */
+
+  export type AggregateEvent_checkins = {
+    _count: Event_checkinsCountAggregateOutputType | null
+    _avg: Event_checkinsAvgAggregateOutputType | null
+    _sum: Event_checkinsSumAggregateOutputType | null
+    _min: Event_checkinsMinAggregateOutputType | null
+    _max: Event_checkinsMaxAggregateOutputType | null
+  }
+
+  export type Event_checkinsAvgAggregateOutputType = {
+    guest_count: number | null
+  }
+
+  export type Event_checkinsSumAggregateOutputType = {
+    guest_count: number | null
+  }
+
+  export type Event_checkinsMinAggregateOutputType = {
+    id: string | null
+    event_id: string | null
+    invitation_id: string | null
+    user_id: string | null
+    checked_in_at: Date | null
+    guest_count: number | null
+    check_in_method: string | null
+    location_id: string | null
+    notes: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Event_checkinsMaxAggregateOutputType = {
+    id: string | null
+    event_id: string | null
+    invitation_id: string | null
+    user_id: string | null
+    checked_in_at: Date | null
+    guest_count: number | null
+    check_in_method: string | null
+    location_id: string | null
+    notes: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type Event_checkinsCountAggregateOutputType = {
+    id: number
+    event_id: number
+    invitation_id: number
+    user_id: number
+    checked_in_at: number
+    guest_count: number
+    check_in_method: number
+    location_id: number
+    notes: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Event_checkinsAvgAggregateInputType = {
+    guest_count?: true
+  }
+
+  export type Event_checkinsSumAggregateInputType = {
+    guest_count?: true
+  }
+
+  export type Event_checkinsMinAggregateInputType = {
+    id?: true
+    event_id?: true
+    invitation_id?: true
+    user_id?: true
+    checked_in_at?: true
+    guest_count?: true
+    check_in_method?: true
+    location_id?: true
+    notes?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Event_checkinsMaxAggregateInputType = {
+    id?: true
+    event_id?: true
+    invitation_id?: true
+    user_id?: true
+    checked_in_at?: true
+    guest_count?: true
+    check_in_method?: true
+    location_id?: true
+    notes?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type Event_checkinsCountAggregateInputType = {
+    id?: true
+    event_id?: true
+    invitation_id?: true
+    user_id?: true
+    checked_in_at?: true
+    guest_count?: true
+    check_in_method?: true
+    location_id?: true
+    notes?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Event_checkinsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_checkins to aggregate.
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_checkins to fetch.
+     */
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: event_checkinsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_checkins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_checkins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned event_checkins
+    **/
+    _count?: true | Event_checkinsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Event_checkinsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Event_checkinsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Event_checkinsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Event_checkinsMaxAggregateInputType
+  }
+
+  export type GetEvent_checkinsAggregateType<T extends Event_checkinsAggregateArgs> = {
+        [P in keyof T & keyof AggregateEvent_checkins]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEvent_checkins[P]>
+      : GetScalarType<T[P], AggregateEvent_checkins[P]>
+  }
+
+
+
+
+  export type event_checkinsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: event_checkinsWhereInput
+    orderBy?: event_checkinsOrderByWithAggregationInput | event_checkinsOrderByWithAggregationInput[]
+    by: Event_checkinsScalarFieldEnum[] | Event_checkinsScalarFieldEnum
+    having?: event_checkinsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Event_checkinsCountAggregateInputType | true
+    _avg?: Event_checkinsAvgAggregateInputType
+    _sum?: Event_checkinsSumAggregateInputType
+    _min?: Event_checkinsMinAggregateInputType
+    _max?: Event_checkinsMaxAggregateInputType
+  }
+
+  export type Event_checkinsGroupByOutputType = {
+    id: string
+    event_id: string
+    invitation_id: string
+    user_id: string | null
+    checked_in_at: Date
+    guest_count: number
+    check_in_method: string | null
+    location_id: string | null
+    notes: string | null
+    created_at: Date
+    updated_at: Date
+    _count: Event_checkinsCountAggregateOutputType | null
+    _avg: Event_checkinsAvgAggregateOutputType | null
+    _sum: Event_checkinsSumAggregateOutputType | null
+    _min: Event_checkinsMinAggregateOutputType | null
+    _max: Event_checkinsMaxAggregateOutputType | null
+  }
+
+  type GetEvent_checkinsGroupByPayload<T extends event_checkinsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Event_checkinsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Event_checkinsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Event_checkinsGroupByOutputType[P]>
+            : GetScalarType<T[P], Event_checkinsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type event_checkinsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    event_id?: boolean
+    invitation_id?: boolean
+    user_id?: boolean
+    checked_in_at?: boolean
+    guest_count?: boolean
+    check_in_method?: boolean
+    location_id?: boolean
+    notes?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_checkins"]>
+
+  export type event_checkinsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    event_id?: boolean
+    invitation_id?: boolean
+    user_id?: boolean
+    checked_in_at?: boolean
+    guest_count?: boolean
+    check_in_method?: boolean
+    location_id?: boolean
+    notes?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_checkins"]>
+
+  export type event_checkinsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    event_id?: boolean
+    invitation_id?: boolean
+    user_id?: boolean
+    checked_in_at?: boolean
+    guest_count?: boolean
+    check_in_method?: boolean
+    location_id?: boolean
+    notes?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }, ExtArgs["result"]["event_checkins"]>
+
+  export type event_checkinsSelectScalar = {
+    id?: boolean
+    event_id?: boolean
+    invitation_id?: boolean
+    user_id?: boolean
+    checked_in_at?: boolean
+    guest_count?: boolean
+    check_in_method?: boolean
+    location_id?: boolean
+    notes?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type event_checkinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "event_id" | "invitation_id" | "user_id" | "checked_in_at" | "guest_count" | "check_in_method" | "location_id" | "notes" | "created_at" | "updated_at", ExtArgs["result"]["event_checkins"]>
+  export type event_checkinsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }
+  export type event_checkinsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }
+  export type event_checkinsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | eventsDefaultArgs<ExtArgs>
+    invitation?: boolean | event_invitationsDefaultArgs<ExtArgs>
+    user?: boolean | event_checkins$userArgs<ExtArgs>
+  }
+
+  export type $event_checkinsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "event_checkins"
+    objects: {
+      event: Prisma.$eventsPayload<ExtArgs>
+      invitation: Prisma.$event_invitationsPayload<ExtArgs>
+      user: Prisma.$usersPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      event_id: string
+      invitation_id: string
+      user_id: string | null
+      checked_in_at: Date
+      guest_count: number
+      check_in_method: string | null
+      location_id: string | null
+      notes: string | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["event_checkins"]>
+    composites: {}
+  }
+
+  type event_checkinsGetPayload<S extends boolean | null | undefined | event_checkinsDefaultArgs> = $Result.GetResult<Prisma.$event_checkinsPayload, S>
+
+  type event_checkinsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<event_checkinsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Event_checkinsCountAggregateInputType | true
+    }
+
+  export interface event_checkinsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['event_checkins'], meta: { name: 'event_checkins' } }
+    /**
+     * Find zero or one Event_checkins that matches the filter.
+     * @param {event_checkinsFindUniqueArgs} args - Arguments to find a Event_checkins
+     * @example
+     * // Get one Event_checkins
+     * const event_checkins = await prisma.event_checkins.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends event_checkinsFindUniqueArgs>(args: SelectSubset<T, event_checkinsFindUniqueArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Event_checkins that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {event_checkinsFindUniqueOrThrowArgs} args - Arguments to find a Event_checkins
+     * @example
+     * // Get one Event_checkins
+     * const event_checkins = await prisma.event_checkins.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends event_checkinsFindUniqueOrThrowArgs>(args: SelectSubset<T, event_checkinsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_checkins that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsFindFirstArgs} args - Arguments to find a Event_checkins
+     * @example
+     * // Get one Event_checkins
+     * const event_checkins = await prisma.event_checkins.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends event_checkinsFindFirstArgs>(args?: SelectSubset<T, event_checkinsFindFirstArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Event_checkins that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsFindFirstOrThrowArgs} args - Arguments to find a Event_checkins
+     * @example
+     * // Get one Event_checkins
+     * const event_checkins = await prisma.event_checkins.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends event_checkinsFindFirstOrThrowArgs>(args?: SelectSubset<T, event_checkinsFindFirstOrThrowArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Event_checkins that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Event_checkins
+     * const event_checkins = await prisma.event_checkins.findMany()
+     * 
+     * // Get first 10 Event_checkins
+     * const event_checkins = await prisma.event_checkins.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const event_checkinsWithIdOnly = await prisma.event_checkins.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends event_checkinsFindManyArgs>(args?: SelectSubset<T, event_checkinsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Event_checkins.
+     * @param {event_checkinsCreateArgs} args - Arguments to create a Event_checkins.
+     * @example
+     * // Create one Event_checkins
+     * const Event_checkins = await prisma.event_checkins.create({
+     *   data: {
+     *     // ... data to create a Event_checkins
+     *   }
+     * })
+     * 
+     */
+    create<T extends event_checkinsCreateArgs>(args: SelectSubset<T, event_checkinsCreateArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Event_checkins.
+     * @param {event_checkinsCreateManyArgs} args - Arguments to create many Event_checkins.
+     * @example
+     * // Create many Event_checkins
+     * const event_checkins = await prisma.event_checkins.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends event_checkinsCreateManyArgs>(args?: SelectSubset<T, event_checkinsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Event_checkins and returns the data saved in the database.
+     * @param {event_checkinsCreateManyAndReturnArgs} args - Arguments to create many Event_checkins.
+     * @example
+     * // Create many Event_checkins
+     * const event_checkins = await prisma.event_checkins.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Event_checkins and only return the `id`
+     * const event_checkinsWithIdOnly = await prisma.event_checkins.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends event_checkinsCreateManyAndReturnArgs>(args?: SelectSubset<T, event_checkinsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Event_checkins.
+     * @param {event_checkinsDeleteArgs} args - Arguments to delete one Event_checkins.
+     * @example
+     * // Delete one Event_checkins
+     * const Event_checkins = await prisma.event_checkins.delete({
+     *   where: {
+     *     // ... filter to delete one Event_checkins
+     *   }
+     * })
+     * 
+     */
+    delete<T extends event_checkinsDeleteArgs>(args: SelectSubset<T, event_checkinsDeleteArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Event_checkins.
+     * @param {event_checkinsUpdateArgs} args - Arguments to update one Event_checkins.
+     * @example
+     * // Update one Event_checkins
+     * const event_checkins = await prisma.event_checkins.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends event_checkinsUpdateArgs>(args: SelectSubset<T, event_checkinsUpdateArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Event_checkins.
+     * @param {event_checkinsDeleteManyArgs} args - Arguments to filter Event_checkins to delete.
+     * @example
+     * // Delete a few Event_checkins
+     * const { count } = await prisma.event_checkins.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends event_checkinsDeleteManyArgs>(args?: SelectSubset<T, event_checkinsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_checkins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Event_checkins
+     * const event_checkins = await prisma.event_checkins.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends event_checkinsUpdateManyArgs>(args: SelectSubset<T, event_checkinsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Event_checkins and returns the data updated in the database.
+     * @param {event_checkinsUpdateManyAndReturnArgs} args - Arguments to update many Event_checkins.
+     * @example
+     * // Update many Event_checkins
+     * const event_checkins = await prisma.event_checkins.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Event_checkins and only return the `id`
+     * const event_checkinsWithIdOnly = await prisma.event_checkins.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends event_checkinsUpdateManyAndReturnArgs>(args: SelectSubset<T, event_checkinsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Event_checkins.
+     * @param {event_checkinsUpsertArgs} args - Arguments to update or create a Event_checkins.
+     * @example
+     * // Update or create a Event_checkins
+     * const event_checkins = await prisma.event_checkins.upsert({
+     *   create: {
+     *     // ... data to create a Event_checkins
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Event_checkins we want to update
+     *   }
+     * })
+     */
+    upsert<T extends event_checkinsUpsertArgs>(args: SelectSubset<T, event_checkinsUpsertArgs<ExtArgs>>): Prisma__event_checkinsClient<$Result.GetResult<Prisma.$event_checkinsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Event_checkins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsCountArgs} args - Arguments to filter Event_checkins to count.
+     * @example
+     * // Count the number of Event_checkins
+     * const count = await prisma.event_checkins.count({
+     *   where: {
+     *     // ... the filter for the Event_checkins we want to count
+     *   }
+     * })
+    **/
+    count<T extends event_checkinsCountArgs>(
+      args?: Subset<T, event_checkinsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Event_checkinsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Event_checkins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Event_checkinsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Event_checkinsAggregateArgs>(args: Subset<T, Event_checkinsAggregateArgs>): Prisma.PrismaPromise<GetEvent_checkinsAggregateType<T>>
+
+    /**
+     * Group by Event_checkins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {event_checkinsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends event_checkinsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: event_checkinsGroupByArgs['orderBy'] }
+        : { orderBy?: event_checkinsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, event_checkinsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvent_checkinsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the event_checkins model
+   */
+  readonly fields: event_checkinsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for event_checkins.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__event_checkinsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    event<T extends eventsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, eventsDefaultArgs<ExtArgs>>): Prisma__eventsClient<$Result.GetResult<Prisma.$eventsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    invitation<T extends event_invitationsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, event_invitationsDefaultArgs<ExtArgs>>): Prisma__event_invitationsClient<$Result.GetResult<Prisma.$event_invitationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends event_checkins$userArgs<ExtArgs> = {}>(args?: Subset<T, event_checkins$userArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the event_checkins model
+   */
+  interface event_checkinsFieldRefs {
+    readonly id: FieldRef<"event_checkins", 'String'>
+    readonly event_id: FieldRef<"event_checkins", 'String'>
+    readonly invitation_id: FieldRef<"event_checkins", 'String'>
+    readonly user_id: FieldRef<"event_checkins", 'String'>
+    readonly checked_in_at: FieldRef<"event_checkins", 'DateTime'>
+    readonly guest_count: FieldRef<"event_checkins", 'Int'>
+    readonly check_in_method: FieldRef<"event_checkins", 'String'>
+    readonly location_id: FieldRef<"event_checkins", 'String'>
+    readonly notes: FieldRef<"event_checkins", 'String'>
+    readonly created_at: FieldRef<"event_checkins", 'DateTime'>
+    readonly updated_at: FieldRef<"event_checkins", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * event_checkins findUnique
+   */
+  export type event_checkinsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_checkins to fetch.
+     */
+    where: event_checkinsWhereUniqueInput
+  }
+
+  /**
+   * event_checkins findUniqueOrThrow
+   */
+  export type event_checkinsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_checkins to fetch.
+     */
+    where: event_checkinsWhereUniqueInput
+  }
+
+  /**
+   * event_checkins findFirst
+   */
+  export type event_checkinsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_checkins to fetch.
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_checkins to fetch.
+     */
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_checkins.
+     */
+    cursor?: event_checkinsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_checkins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_checkins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_checkins.
+     */
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
+  }
+
+  /**
+   * event_checkins findFirstOrThrow
+   */
+  export type event_checkinsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_checkins to fetch.
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_checkins to fetch.
+     */
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for event_checkins.
+     */
+    cursor?: event_checkinsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_checkins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_checkins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of event_checkins.
+     */
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
+  }
+
+  /**
+   * event_checkins findMany
+   */
+  export type event_checkinsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter, which event_checkins to fetch.
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of event_checkins to fetch.
+     */
+    orderBy?: event_checkinsOrderByWithRelationInput | event_checkinsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing event_checkins.
+     */
+    cursor?: event_checkinsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` event_checkins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` event_checkins.
+     */
+    skip?: number
+    distinct?: Event_checkinsScalarFieldEnum | Event_checkinsScalarFieldEnum[]
+  }
+
+  /**
+   * event_checkins create
+   */
+  export type event_checkinsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a event_checkins.
+     */
+    data: XOR<event_checkinsCreateInput, event_checkinsUncheckedCreateInput>
+  }
+
+  /**
+   * event_checkins createMany
+   */
+  export type event_checkinsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many event_checkins.
+     */
+    data: event_checkinsCreateManyInput | event_checkinsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * event_checkins createManyAndReturn
+   */
+  export type event_checkinsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * The data used to create many event_checkins.
+     */
+    data: event_checkinsCreateManyInput | event_checkinsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_checkins update
+   */
+  export type event_checkinsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a event_checkins.
+     */
+    data: XOR<event_checkinsUpdateInput, event_checkinsUncheckedUpdateInput>
+    /**
+     * Choose, which event_checkins to update.
+     */
+    where: event_checkinsWhereUniqueInput
+  }
+
+  /**
+   * event_checkins updateMany
+   */
+  export type event_checkinsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update event_checkins.
+     */
+    data: XOR<event_checkinsUpdateManyMutationInput, event_checkinsUncheckedUpdateManyInput>
+    /**
+     * Filter which event_checkins to update
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * Limit how many event_checkins to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_checkins updateManyAndReturn
+   */
+  export type event_checkinsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * The data used to update event_checkins.
+     */
+    data: XOR<event_checkinsUpdateManyMutationInput, event_checkinsUncheckedUpdateManyInput>
+    /**
+     * Filter which event_checkins to update
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * Limit how many event_checkins to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * event_checkins upsert
+   */
+  export type event_checkinsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the event_checkins to update in case it exists.
+     */
+    where: event_checkinsWhereUniqueInput
+    /**
+     * In case the event_checkins found by the `where` argument doesn't exist, create a new event_checkins with this data.
+     */
+    create: XOR<event_checkinsCreateInput, event_checkinsUncheckedCreateInput>
+    /**
+     * In case the event_checkins was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<event_checkinsUpdateInput, event_checkinsUncheckedUpdateInput>
+  }
+
+  /**
+   * event_checkins delete
+   */
+  export type event_checkinsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
+    /**
+     * Filter which event_checkins to delete.
+     */
+    where: event_checkinsWhereUniqueInput
+  }
+
+  /**
+   * event_checkins deleteMany
+   */
+  export type event_checkinsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which event_checkins to delete
+     */
+    where?: event_checkinsWhereInput
+    /**
+     * Limit how many event_checkins to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * event_checkins.user
+   */
+  export type event_checkins$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+  }
+
+  /**
+   * event_checkins without action
+   */
+  export type event_checkinsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the event_checkins
+     */
+    select?: event_checkinsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the event_checkins
+     */
+    omit?: event_checkinsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: event_checkinsInclude<ExtArgs> | null
   }
 
 
@@ -24894,6 +27648,38 @@ export namespace Prisma {
   export type Event_invitationsScalarFieldEnum = (typeof Event_invitationsScalarFieldEnum)[keyof typeof Event_invitationsScalarFieldEnum]
 
 
+  export const Event_qr_codesScalarFieldEnum: {
+    id: 'id',
+    invitation_id: 'invitation_id',
+    event_id: 'event_id',
+    user_id: 'user_id',
+    qr_data: 'qr_data',
+    is_active: 'is_active',
+    expires_at: 'expires_at',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type Event_qr_codesScalarFieldEnum = (typeof Event_qr_codesScalarFieldEnum)[keyof typeof Event_qr_codesScalarFieldEnum]
+
+
+  export const Event_checkinsScalarFieldEnum: {
+    id: 'id',
+    event_id: 'event_id',
+    invitation_id: 'invitation_id',
+    user_id: 'user_id',
+    checked_in_at: 'checked_in_at',
+    guest_count: 'guest_count',
+    check_in_method: 'check_in_method',
+    location_id: 'location_id',
+    notes: 'notes',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type Event_checkinsScalarFieldEnum = (typeof Event_checkinsScalarFieldEnum)[keyof typeof Event_checkinsScalarFieldEnum]
+
+
   export const Oauth_accountsScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
@@ -25111,6 +27897,8 @@ export namespace Prisma {
     profile_visits_made?: User_profile_visitsListRelationFilter
     profile_visits_received?: User_profile_visitsListRelationFilter
     event_visits_made?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -25154,6 +27942,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsOrderByRelationAggregateInput
     profile_visits_received?: user_profile_visitsOrderByRelationAggregateInput
     event_visits_made?: event_page_visitsOrderByRelationAggregateInput
+    event_qr_codes?: event_qr_codesOrderByRelationAggregateInput
+    event_checkins?: event_checkinsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -25200,6 +27990,8 @@ export namespace Prisma {
     profile_visits_made?: User_profile_visitsListRelationFilter
     profile_visits_received?: User_profile_visitsListRelationFilter
     event_visits_made?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }, "id" | "email" | "username">
 
   export type usersOrderByWithAggregationInput = {
@@ -26305,6 +29097,8 @@ export namespace Prisma {
     event_attachments?: Event_attachmentsListRelationFilter
     event_invitations?: Event_invitationsListRelationFilter
     event_page_visits?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }
 
   export type eventsOrderByWithRelationInput = {
@@ -26340,6 +29134,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsOrderByRelationAggregateInput
     event_invitations?: event_invitationsOrderByRelationAggregateInput
     event_page_visits?: event_page_visitsOrderByRelationAggregateInput
+    event_qr_codes?: event_qr_codesOrderByRelationAggregateInput
+    event_checkins?: event_checkinsOrderByRelationAggregateInput
   }
 
   export type eventsWhereUniqueInput = Prisma.AtLeast<{
@@ -26378,6 +29174,8 @@ export namespace Prisma {
     event_attachments?: Event_attachmentsListRelationFilter
     event_invitations?: Event_invitationsListRelationFilter
     event_page_visits?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }, "id" | "slug">
 
   export type eventsOrderByWithAggregationInput = {
@@ -26835,6 +29633,8 @@ export namespace Prisma {
     parent_invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
     plus_one_invitations?: Event_invitationsListRelationFilter
     event_page_visits?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }
 
   export type event_invitationsOrderByWithRelationInput = {
@@ -26868,6 +29668,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsOrderByWithRelationInput
     plus_one_invitations?: event_invitationsOrderByRelationAggregateInput
     event_page_visits?: event_page_visitsOrderByRelationAggregateInput
+    event_qr_codes?: event_qr_codesOrderByRelationAggregateInput
+    event_checkins?: event_checkinsOrderByRelationAggregateInput
   }
 
   export type event_invitationsWhereUniqueInput = Prisma.AtLeast<{
@@ -26905,6 +29707,8 @@ export namespace Prisma {
     parent_invitation?: XOR<Event_invitationsNullableScalarRelationFilter, event_invitationsWhereInput> | null
     plus_one_invitations?: Event_invitationsListRelationFilter
     event_page_visits?: Event_page_visitsListRelationFilter
+    event_qr_codes?: Event_qr_codesListRelationFilter
+    event_checkins?: Event_checkinsListRelationFilter
   }, "id" | "event_id_invited_user_id">
 
   export type event_invitationsOrderByWithAggregationInput = {
@@ -26967,6 +29771,180 @@ export namespace Prisma {
     reminder_count?: IntWithAggregatesFilter<"event_invitations"> | number
     created_at?: DateTimeWithAggregatesFilter<"event_invitations"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"event_invitations"> | Date | string
+  }
+
+  export type event_qr_codesWhereInput = {
+    AND?: event_qr_codesWhereInput | event_qr_codesWhereInput[]
+    OR?: event_qr_codesWhereInput[]
+    NOT?: event_qr_codesWhereInput | event_qr_codesWhereInput[]
+    id?: StringFilter<"event_qr_codes"> | string
+    invitation_id?: StringFilter<"event_qr_codes"> | string
+    event_id?: StringFilter<"event_qr_codes"> | string
+    user_id?: StringNullableFilter<"event_qr_codes"> | string | null
+    qr_data?: StringFilter<"event_qr_codes"> | string
+    is_active?: BoolFilter<"event_qr_codes"> | boolean
+    expires_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    created_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    updated_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    invitation?: XOR<Event_invitationsScalarRelationFilter, event_invitationsWhereInput>
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    user?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }
+
+  export type event_qr_codesOrderByWithRelationInput = {
+    id?: SortOrder
+    invitation_id?: SortOrder
+    event_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    qr_data?: SortOrder
+    is_active?: SortOrder
+    expires_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    invitation?: event_invitationsOrderByWithRelationInput
+    event?: eventsOrderByWithRelationInput
+    user?: usersOrderByWithRelationInput
+  }
+
+  export type event_qr_codesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: event_qr_codesWhereInput | event_qr_codesWhereInput[]
+    OR?: event_qr_codesWhereInput[]
+    NOT?: event_qr_codesWhereInput | event_qr_codesWhereInput[]
+    invitation_id?: StringFilter<"event_qr_codes"> | string
+    event_id?: StringFilter<"event_qr_codes"> | string
+    user_id?: StringNullableFilter<"event_qr_codes"> | string | null
+    qr_data?: StringFilter<"event_qr_codes"> | string
+    is_active?: BoolFilter<"event_qr_codes"> | boolean
+    expires_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    created_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    updated_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    invitation?: XOR<Event_invitationsScalarRelationFilter, event_invitationsWhereInput>
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    user?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }, "id">
+
+  export type event_qr_codesOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitation_id?: SortOrder
+    event_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    qr_data?: SortOrder
+    is_active?: SortOrder
+    expires_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: event_qr_codesCountOrderByAggregateInput
+    _max?: event_qr_codesMaxOrderByAggregateInput
+    _min?: event_qr_codesMinOrderByAggregateInput
+  }
+
+  export type event_qr_codesScalarWhereWithAggregatesInput = {
+    AND?: event_qr_codesScalarWhereWithAggregatesInput | event_qr_codesScalarWhereWithAggregatesInput[]
+    OR?: event_qr_codesScalarWhereWithAggregatesInput[]
+    NOT?: event_qr_codesScalarWhereWithAggregatesInput | event_qr_codesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"event_qr_codes"> | string
+    invitation_id?: StringWithAggregatesFilter<"event_qr_codes"> | string
+    event_id?: StringWithAggregatesFilter<"event_qr_codes"> | string
+    user_id?: StringNullableWithAggregatesFilter<"event_qr_codes"> | string | null
+    qr_data?: StringWithAggregatesFilter<"event_qr_codes"> | string
+    is_active?: BoolWithAggregatesFilter<"event_qr_codes"> | boolean
+    expires_at?: DateTimeWithAggregatesFilter<"event_qr_codes"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"event_qr_codes"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"event_qr_codes"> | Date | string
+  }
+
+  export type event_checkinsWhereInput = {
+    AND?: event_checkinsWhereInput | event_checkinsWhereInput[]
+    OR?: event_checkinsWhereInput[]
+    NOT?: event_checkinsWhereInput | event_checkinsWhereInput[]
+    id?: StringFilter<"event_checkins"> | string
+    event_id?: StringFilter<"event_checkins"> | string
+    invitation_id?: StringFilter<"event_checkins"> | string
+    user_id?: StringNullableFilter<"event_checkins"> | string | null
+    checked_in_at?: DateTimeFilter<"event_checkins"> | Date | string
+    guest_count?: IntFilter<"event_checkins"> | number
+    check_in_method?: StringNullableFilter<"event_checkins"> | string | null
+    location_id?: StringNullableFilter<"event_checkins"> | string | null
+    notes?: StringNullableFilter<"event_checkins"> | string | null
+    created_at?: DateTimeFilter<"event_checkins"> | Date | string
+    updated_at?: DateTimeFilter<"event_checkins"> | Date | string
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    invitation?: XOR<Event_invitationsScalarRelationFilter, event_invitationsWhereInput>
+    user?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }
+
+  export type event_checkinsOrderByWithRelationInput = {
+    id?: SortOrder
+    event_id?: SortOrder
+    invitation_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    checked_in_at?: SortOrder
+    guest_count?: SortOrder
+    check_in_method?: SortOrderInput | SortOrder
+    location_id?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    event?: eventsOrderByWithRelationInput
+    invitation?: event_invitationsOrderByWithRelationInput
+    user?: usersOrderByWithRelationInput
+  }
+
+  export type event_checkinsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    invitation_id?: string
+    AND?: event_checkinsWhereInput | event_checkinsWhereInput[]
+    OR?: event_checkinsWhereInput[]
+    NOT?: event_checkinsWhereInput | event_checkinsWhereInput[]
+    event_id?: StringFilter<"event_checkins"> | string
+    user_id?: StringNullableFilter<"event_checkins"> | string | null
+    checked_in_at?: DateTimeFilter<"event_checkins"> | Date | string
+    guest_count?: IntFilter<"event_checkins"> | number
+    check_in_method?: StringNullableFilter<"event_checkins"> | string | null
+    location_id?: StringNullableFilter<"event_checkins"> | string | null
+    notes?: StringNullableFilter<"event_checkins"> | string | null
+    created_at?: DateTimeFilter<"event_checkins"> | Date | string
+    updated_at?: DateTimeFilter<"event_checkins"> | Date | string
+    event?: XOR<EventsScalarRelationFilter, eventsWhereInput>
+    invitation?: XOR<Event_invitationsScalarRelationFilter, event_invitationsWhereInput>
+    user?: XOR<UsersNullableScalarRelationFilter, usersWhereInput> | null
+  }, "id" | "invitation_id">
+
+  export type event_checkinsOrderByWithAggregationInput = {
+    id?: SortOrder
+    event_id?: SortOrder
+    invitation_id?: SortOrder
+    user_id?: SortOrderInput | SortOrder
+    checked_in_at?: SortOrder
+    guest_count?: SortOrder
+    check_in_method?: SortOrderInput | SortOrder
+    location_id?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: event_checkinsCountOrderByAggregateInput
+    _avg?: event_checkinsAvgOrderByAggregateInput
+    _max?: event_checkinsMaxOrderByAggregateInput
+    _min?: event_checkinsMinOrderByAggregateInput
+    _sum?: event_checkinsSumOrderByAggregateInput
+  }
+
+  export type event_checkinsScalarWhereWithAggregatesInput = {
+    AND?: event_checkinsScalarWhereWithAggregatesInput | event_checkinsScalarWhereWithAggregatesInput[]
+    OR?: event_checkinsScalarWhereWithAggregatesInput[]
+    NOT?: event_checkinsScalarWhereWithAggregatesInput | event_checkinsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"event_checkins"> | string
+    event_id?: StringWithAggregatesFilter<"event_checkins"> | string
+    invitation_id?: StringWithAggregatesFilter<"event_checkins"> | string
+    user_id?: StringNullableWithAggregatesFilter<"event_checkins"> | string | null
+    checked_in_at?: DateTimeWithAggregatesFilter<"event_checkins"> | Date | string
+    guest_count?: IntWithAggregatesFilter<"event_checkins"> | number
+    check_in_method?: StringNullableWithAggregatesFilter<"event_checkins"> | string | null
+    location_id?: StringNullableWithAggregatesFilter<"event_checkins"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"event_checkins"> | string | null
+    created_at?: DateTimeWithAggregatesFilter<"event_checkins"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"event_checkins"> | Date | string
   }
 
   export type oauth_accountsWhereInput = {
@@ -27106,6 +30084,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -27149,6 +30129,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersUpdateInput = {
@@ -27192,6 +30174,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -27235,6 +30219,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -28482,6 +31468,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateInput = {
@@ -28516,6 +31504,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsUpdateInput = {
@@ -28550,6 +31540,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateInput = {
@@ -28584,6 +31576,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsCreateManyInput = {
@@ -29106,6 +32100,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateInput = {
@@ -29135,6 +32131,8 @@ export namespace Prisma {
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUpdateInput = {
@@ -29164,6 +32162,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateInput = {
@@ -29193,6 +32193,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsCreateManyInput = {
@@ -29268,6 +32270,182 @@ export namespace Prisma {
     parent_invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
     reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesCreateInput = {
+    id?: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    invitation: event_invitationsCreateNestedOneWithoutEvent_qr_codesInput
+    event: eventsCreateNestedOneWithoutEvent_qr_codesInput
+    user?: usersCreateNestedOneWithoutEvent_qr_codesInput
+  }
+
+  export type event_qr_codesUncheckedCreateInput = {
+    id?: string
+    invitation_id: string
+    event_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_qr_codesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+    event?: eventsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+    user?: usersUpdateOneWithoutEvent_qr_codesNestedInput
+  }
+
+  export type event_qr_codesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesCreateManyInput = {
+    id?: string
+    invitation_id: string
+    event_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_qr_codesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsCreateInput = {
+    id?: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_checkinsInput
+    invitation: event_invitationsCreateNestedOneWithoutEvent_checkinsInput
+    user?: usersCreateNestedOneWithoutEvent_checkinsInput
+  }
+
+  export type event_checkinsUncheckedCreateInput = {
+    id?: string
+    event_id: string
+    invitation_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+    user?: usersUpdateOneWithoutEvent_checkinsNestedInput
+  }
+
+  export type event_checkinsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsCreateManyInput = {
+    id?: string
+    event_id: string
+    invitation_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29540,6 +32718,18 @@ export namespace Prisma {
     none?: event_page_visitsWhereInput
   }
 
+  export type Event_qr_codesListRelationFilter = {
+    every?: event_qr_codesWhereInput
+    some?: event_qr_codesWhereInput
+    none?: event_qr_codesWhereInput
+  }
+
+  export type Event_checkinsListRelationFilter = {
+    every?: event_checkinsWhereInput
+    some?: event_checkinsWhereInput
+    none?: event_checkinsWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -29586,6 +32776,14 @@ export namespace Prisma {
   }
 
   export type event_page_visitsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type event_qr_codesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type event_checkinsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -30952,6 +34150,97 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type Event_invitationsScalarRelationFilter = {
+    is?: event_invitationsWhereInput
+    isNot?: event_invitationsWhereInput
+  }
+
+  export type event_qr_codesCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitation_id?: SortOrder
+    event_id?: SortOrder
+    user_id?: SortOrder
+    qr_data?: SortOrder
+    is_active?: SortOrder
+    expires_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_qr_codesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitation_id?: SortOrder
+    event_id?: SortOrder
+    user_id?: SortOrder
+    qr_data?: SortOrder
+    is_active?: SortOrder
+    expires_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_qr_codesMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitation_id?: SortOrder
+    event_id?: SortOrder
+    user_id?: SortOrder
+    qr_data?: SortOrder
+    is_active?: SortOrder
+    expires_at?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_checkinsCountOrderByAggregateInput = {
+    id?: SortOrder
+    event_id?: SortOrder
+    invitation_id?: SortOrder
+    user_id?: SortOrder
+    checked_in_at?: SortOrder
+    guest_count?: SortOrder
+    check_in_method?: SortOrder
+    location_id?: SortOrder
+    notes?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_checkinsAvgOrderByAggregateInput = {
+    guest_count?: SortOrder
+  }
+
+  export type event_checkinsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    event_id?: SortOrder
+    invitation_id?: SortOrder
+    user_id?: SortOrder
+    checked_in_at?: SortOrder
+    guest_count?: SortOrder
+    check_in_method?: SortOrder
+    location_id?: SortOrder
+    notes?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_checkinsMinOrderByAggregateInput = {
+    id?: SortOrder
+    event_id?: SortOrder
+    invitation_id?: SortOrder
+    user_id?: SortOrder
+    checked_in_at?: SortOrder
+    guest_count?: SortOrder
+    check_in_method?: SortOrder
+    location_id?: SortOrder
+    notes?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type event_checkinsSumOrderByAggregateInput = {
+    guest_count?: SortOrder
+  }
+
   export type oauth_accountsProviderProvider_idCompoundUniqueInput = {
     provider: string
     provider_id: string
@@ -31110,6 +34399,20 @@ export namespace Prisma {
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
+  export type event_qr_codesCreateNestedManyWithoutUserInput = {
+    create?: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput> | event_qr_codesCreateWithoutUserInput[] | event_qr_codesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutUserInput | event_qr_codesCreateOrConnectWithoutUserInput[]
+    createMany?: event_qr_codesCreateManyUserInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsCreateNestedManyWithoutUserInput = {
+    create?: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput> | event_checkinsCreateWithoutUserInput[] | event_checkinsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutUserInput | event_checkinsCreateOrConnectWithoutUserInput[]
+    createMany?: event_checkinsCreateManyUserInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+  }
+
   export type oauth_accountsUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<oauth_accountsCreateWithoutUserInput, oauth_accountsUncheckedCreateWithoutUserInput> | oauth_accountsCreateWithoutUserInput[] | oauth_accountsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: oauth_accountsCreateOrConnectWithoutUserInput | oauth_accountsCreateOrConnectWithoutUserInput[]
@@ -31213,6 +34516,20 @@ export namespace Prisma {
     connectOrCreate?: event_page_visitsCreateOrConnectWithoutVisitorInput | event_page_visitsCreateOrConnectWithoutVisitorInput[]
     createMany?: event_page_visitsCreateManyVisitorInputEnvelope
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
+  export type event_qr_codesUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput> | event_qr_codesCreateWithoutUserInput[] | event_qr_codesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutUserInput | event_qr_codesCreateOrConnectWithoutUserInput[]
+    createMany?: event_qr_codesCreateManyUserInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput> | event_checkinsCreateWithoutUserInput[] | event_checkinsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutUserInput | event_checkinsCreateOrConnectWithoutUserInput[]
+    createMany?: event_checkinsCreateManyUserInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -31453,6 +34770,34 @@ export namespace Prisma {
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
   }
 
+  export type event_qr_codesUpdateManyWithoutUserNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput> | event_qr_codesCreateWithoutUserInput[] | event_qr_codesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutUserInput | event_qr_codesCreateOrConnectWithoutUserInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutUserInput | event_qr_codesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: event_qr_codesCreateManyUserInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutUserInput | event_qr_codesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutUserInput | event_qr_codesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput> | event_checkinsCreateWithoutUserInput[] | event_checkinsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutUserInput | event_checkinsCreateOrConnectWithoutUserInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutUserInput | event_checkinsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: event_checkinsCreateManyUserInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutUserInput | event_checkinsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutUserInput | event_checkinsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+  }
+
   export type oauth_accountsUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<oauth_accountsCreateWithoutUserInput, oauth_accountsUncheckedCreateWithoutUserInput> | oauth_accountsCreateWithoutUserInput[] | oauth_accountsUncheckedCreateWithoutUserInput[]
     connectOrCreate?: oauth_accountsCreateOrConnectWithoutUserInput | oauth_accountsCreateOrConnectWithoutUserInput[]
@@ -31661,6 +35006,34 @@ export namespace Prisma {
     update?: event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput | event_page_visitsUpdateWithWhereUniqueWithoutVisitorInput[]
     updateMany?: event_page_visitsUpdateManyWithWhereWithoutVisitorInput | event_page_visitsUpdateManyWithWhereWithoutVisitorInput[]
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput> | event_qr_codesCreateWithoutUserInput[] | event_qr_codesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutUserInput | event_qr_codesCreateOrConnectWithoutUserInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutUserInput | event_qr_codesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: event_qr_codesCreateManyUserInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutUserInput | event_qr_codesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutUserInput | event_qr_codesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput> | event_checkinsCreateWithoutUserInput[] | event_checkinsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutUserInput | event_checkinsCreateOrConnectWithoutUserInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutUserInput | event_checkinsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: event_checkinsCreateManyUserInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutUserInput | event_checkinsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutUserInput | event_checkinsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
   }
 
   export type usersCreateNestedOneWithoutConnections_initiatedInput = {
@@ -32103,6 +35476,20 @@ export namespace Prisma {
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
+  export type event_qr_codesCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput> | event_qr_codesCreateWithoutEventInput[] | event_qr_codesUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutEventInput | event_qr_codesCreateOrConnectWithoutEventInput[]
+    createMany?: event_qr_codesCreateManyEventInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput> | event_checkinsCreateWithoutEventInput[] | event_checkinsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutEventInput | event_checkinsCreateOrConnectWithoutEventInput[]
+    createMany?: event_checkinsCreateManyEventInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+  }
+
   export type event_rolesUncheckedCreateNestedManyWithoutEventInput = {
     create?: XOR<event_rolesCreateWithoutEventInput, event_rolesUncheckedCreateWithoutEventInput> | event_rolesCreateWithoutEventInput[] | event_rolesUncheckedCreateWithoutEventInput[]
     connectOrCreate?: event_rolesCreateOrConnectWithoutEventInput | event_rolesCreateOrConnectWithoutEventInput[]
@@ -32136,6 +35523,20 @@ export namespace Prisma {
     connectOrCreate?: event_page_visitsCreateOrConnectWithoutEventInput | event_page_visitsCreateOrConnectWithoutEventInput[]
     createMany?: event_page_visitsCreateManyEventInputEnvelope
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
+  export type event_qr_codesUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput> | event_qr_codesCreateWithoutEventInput[] | event_qr_codesUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutEventInput | event_qr_codesCreateOrConnectWithoutEventInput[]
+    createMany?: event_qr_codesCreateManyEventInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput> | event_checkinsCreateWithoutEventInput[] | event_checkinsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutEventInput | event_checkinsCreateOrConnectWithoutEventInput[]
+    createMany?: event_checkinsCreateManyEventInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -32229,6 +35630,34 @@ export namespace Prisma {
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
   }
 
+  export type event_qr_codesUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput> | event_qr_codesCreateWithoutEventInput[] | event_qr_codesUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutEventInput | event_qr_codesCreateOrConnectWithoutEventInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutEventInput | event_qr_codesUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_qr_codesCreateManyEventInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutEventInput | event_qr_codesUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutEventInput | event_qr_codesUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput> | event_checkinsCreateWithoutEventInput[] | event_checkinsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutEventInput | event_checkinsCreateOrConnectWithoutEventInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutEventInput | event_checkinsUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_checkinsCreateManyEventInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutEventInput | event_checkinsUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutEventInput | event_checkinsUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+  }
+
   export type event_rolesUncheckedUpdateManyWithoutEventNestedInput = {
     create?: XOR<event_rolesCreateWithoutEventInput, event_rolesUncheckedCreateWithoutEventInput> | event_rolesCreateWithoutEventInput[] | event_rolesUncheckedCreateWithoutEventInput[]
     connectOrCreate?: event_rolesCreateOrConnectWithoutEventInput | event_rolesCreateOrConnectWithoutEventInput[]
@@ -32297,6 +35726,34 @@ export namespace Prisma {
     update?: event_page_visitsUpdateWithWhereUniqueWithoutEventInput | event_page_visitsUpdateWithWhereUniqueWithoutEventInput[]
     updateMany?: event_page_visitsUpdateManyWithWhereWithoutEventInput | event_page_visitsUpdateManyWithWhereWithoutEventInput[]
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput> | event_qr_codesCreateWithoutEventInput[] | event_qr_codesUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutEventInput | event_qr_codesCreateOrConnectWithoutEventInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutEventInput | event_qr_codesUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_qr_codesCreateManyEventInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutEventInput | event_qr_codesUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutEventInput | event_qr_codesUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput> | event_checkinsCreateWithoutEventInput[] | event_checkinsUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutEventInput | event_checkinsCreateOrConnectWithoutEventInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutEventInput | event_checkinsUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: event_checkinsCreateManyEventInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutEventInput | event_checkinsUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutEventInput | event_checkinsUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
   }
 
   export type eventsCreateNestedOneWithoutEvent_rolesInput = {
@@ -32427,6 +35884,20 @@ export namespace Prisma {
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
   }
 
+  export type event_qr_codesCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput> | event_qr_codesCreateWithoutInvitationInput[] | event_qr_codesUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutInvitationInput | event_qr_codesCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_qr_codesCreateManyInvitationInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput> | event_checkinsCreateWithoutInvitationInput[] | event_checkinsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutInvitationInput | event_checkinsCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_checkinsCreateManyInvitationInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+  }
+
   export type event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput = {
     create?: XOR<event_invitationsCreateWithoutParent_invitationInput, event_invitationsUncheckedCreateWithoutParent_invitationInput> | event_invitationsCreateWithoutParent_invitationInput[] | event_invitationsUncheckedCreateWithoutParent_invitationInput[]
     connectOrCreate?: event_invitationsCreateOrConnectWithoutParent_invitationInput | event_invitationsCreateOrConnectWithoutParent_invitationInput[]
@@ -32439,6 +35910,20 @@ export namespace Prisma {
     connectOrCreate?: event_page_visitsCreateOrConnectWithoutInvitationInput | event_page_visitsCreateOrConnectWithoutInvitationInput[]
     createMany?: event_page_visitsCreateManyInvitationInputEnvelope
     connect?: event_page_visitsWhereUniqueInput | event_page_visitsWhereUniqueInput[]
+  }
+
+  export type event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput> | event_qr_codesCreateWithoutInvitationInput[] | event_qr_codesUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutInvitationInput | event_qr_codesCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_qr_codesCreateManyInvitationInputEnvelope
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+  }
+
+  export type event_checkinsUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput> | event_checkinsCreateWithoutInvitationInput[] | event_checkinsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutInvitationInput | event_checkinsCreateOrConnectWithoutInvitationInput[]
+    createMany?: event_checkinsCreateManyInvitationInputEnvelope
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
   }
 
   export type NullableBoolFieldUpdateOperationsInput = {
@@ -32514,6 +35999,34 @@ export namespace Prisma {
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
   }
 
+  export type event_qr_codesUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput> | event_qr_codesCreateWithoutInvitationInput[] | event_qr_codesUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutInvitationInput | event_qr_codesCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutInvitationInput | event_qr_codesUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_qr_codesCreateManyInvitationInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutInvitationInput | event_qr_codesUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutInvitationInput | event_qr_codesUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput> | event_checkinsCreateWithoutInvitationInput[] | event_checkinsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutInvitationInput | event_checkinsCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutInvitationInput | event_checkinsUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_checkinsCreateManyInvitationInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutInvitationInput | event_checkinsUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutInvitationInput | event_checkinsUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+  }
+
   export type event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput = {
     create?: XOR<event_invitationsCreateWithoutParent_invitationInput, event_invitationsUncheckedCreateWithoutParent_invitationInput> | event_invitationsCreateWithoutParent_invitationInput[] | event_invitationsUncheckedCreateWithoutParent_invitationInput[]
     connectOrCreate?: event_invitationsCreateOrConnectWithoutParent_invitationInput | event_invitationsCreateOrConnectWithoutParent_invitationInput[]
@@ -32540,6 +36053,122 @@ export namespace Prisma {
     update?: event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput | event_page_visitsUpdateWithWhereUniqueWithoutInvitationInput[]
     updateMany?: event_page_visitsUpdateManyWithWhereWithoutInvitationInput | event_page_visitsUpdateManyWithWhereWithoutInvitationInput[]
     deleteMany?: event_page_visitsScalarWhereInput | event_page_visitsScalarWhereInput[]
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput> | event_qr_codesCreateWithoutInvitationInput[] | event_qr_codesUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_qr_codesCreateOrConnectWithoutInvitationInput | event_qr_codesCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_qr_codesUpsertWithWhereUniqueWithoutInvitationInput | event_qr_codesUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_qr_codesCreateManyInvitationInputEnvelope
+    set?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    disconnect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    delete?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    connect?: event_qr_codesWhereUniqueInput | event_qr_codesWhereUniqueInput[]
+    update?: event_qr_codesUpdateWithWhereUniqueWithoutInvitationInput | event_qr_codesUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_qr_codesUpdateManyWithWhereWithoutInvitationInput | event_qr_codesUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput> | event_checkinsCreateWithoutInvitationInput[] | event_checkinsUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: event_checkinsCreateOrConnectWithoutInvitationInput | event_checkinsCreateOrConnectWithoutInvitationInput[]
+    upsert?: event_checkinsUpsertWithWhereUniqueWithoutInvitationInput | event_checkinsUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: event_checkinsCreateManyInvitationInputEnvelope
+    set?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    disconnect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    delete?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    connect?: event_checkinsWhereUniqueInput | event_checkinsWhereUniqueInput[]
+    update?: event_checkinsUpdateWithWhereUniqueWithoutInvitationInput | event_checkinsUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: event_checkinsUpdateManyWithWhereWithoutInvitationInput | event_checkinsUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+  }
+
+  export type event_invitationsCreateNestedOneWithoutEvent_qr_codesInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_qr_codesInput, event_invitationsUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_qr_codesInput
+    connect?: event_invitationsWhereUniqueInput
+  }
+
+  export type eventsCreateNestedOneWithoutEvent_qr_codesInput = {
+    create?: XOR<eventsCreateWithoutEvent_qr_codesInput, eventsUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_qr_codesInput
+    connect?: eventsWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutEvent_qr_codesInput = {
+    create?: XOR<usersCreateWithoutEvent_qr_codesInput, usersUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_qr_codesInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type event_invitationsUpdateOneRequiredWithoutEvent_qr_codesNestedInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_qr_codesInput, event_invitationsUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_qr_codesInput
+    upsert?: event_invitationsUpsertWithoutEvent_qr_codesInput
+    connect?: event_invitationsWhereUniqueInput
+    update?: XOR<XOR<event_invitationsUpdateToOneWithWhereWithoutEvent_qr_codesInput, event_invitationsUpdateWithoutEvent_qr_codesInput>, event_invitationsUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type eventsUpdateOneRequiredWithoutEvent_qr_codesNestedInput = {
+    create?: XOR<eventsCreateWithoutEvent_qr_codesInput, eventsUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_qr_codesInput
+    upsert?: eventsUpsertWithoutEvent_qr_codesInput
+    connect?: eventsWhereUniqueInput
+    update?: XOR<XOR<eventsUpdateToOneWithWhereWithoutEvent_qr_codesInput, eventsUpdateWithoutEvent_qr_codesInput>, eventsUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type usersUpdateOneWithoutEvent_qr_codesNestedInput = {
+    create?: XOR<usersCreateWithoutEvent_qr_codesInput, usersUncheckedCreateWithoutEvent_qr_codesInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_qr_codesInput
+    upsert?: usersUpsertWithoutEvent_qr_codesInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutEvent_qr_codesInput, usersUpdateWithoutEvent_qr_codesInput>, usersUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type eventsCreateNestedOneWithoutEvent_checkinsInput = {
+    create?: XOR<eventsCreateWithoutEvent_checkinsInput, eventsUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_checkinsInput
+    connect?: eventsWhereUniqueInput
+  }
+
+  export type event_invitationsCreateNestedOneWithoutEvent_checkinsInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_checkinsInput, event_invitationsUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_checkinsInput
+    connect?: event_invitationsWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutEvent_checkinsInput = {
+    create?: XOR<usersCreateWithoutEvent_checkinsInput, usersUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_checkinsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type eventsUpdateOneRequiredWithoutEvent_checkinsNestedInput = {
+    create?: XOR<eventsCreateWithoutEvent_checkinsInput, eventsUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: eventsCreateOrConnectWithoutEvent_checkinsInput
+    upsert?: eventsUpsertWithoutEvent_checkinsInput
+    connect?: eventsWhereUniqueInput
+    update?: XOR<XOR<eventsUpdateToOneWithWhereWithoutEvent_checkinsInput, eventsUpdateWithoutEvent_checkinsInput>, eventsUncheckedUpdateWithoutEvent_checkinsInput>
+  }
+
+  export type event_invitationsUpdateOneRequiredWithoutEvent_checkinsNestedInput = {
+    create?: XOR<event_invitationsCreateWithoutEvent_checkinsInput, event_invitationsUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: event_invitationsCreateOrConnectWithoutEvent_checkinsInput
+    upsert?: event_invitationsUpsertWithoutEvent_checkinsInput
+    connect?: event_invitationsWhereUniqueInput
+    update?: XOR<XOR<event_invitationsUpdateToOneWithWhereWithoutEvent_checkinsInput, event_invitationsUpdateWithoutEvent_checkinsInput>, event_invitationsUncheckedUpdateWithoutEvent_checkinsInput>
+  }
+
+  export type usersUpdateOneWithoutEvent_checkinsNestedInput = {
+    create?: XOR<usersCreateWithoutEvent_checkinsInput, usersUncheckedCreateWithoutEvent_checkinsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutEvent_checkinsInput
+    upsert?: usersUpsertWithoutEvent_checkinsInput
+    disconnect?: usersWhereInput | boolean
+    delete?: usersWhereInput | boolean
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutEvent_checkinsInput, usersUpdateWithoutEvent_checkinsInput>, usersUncheckedUpdateWithoutEvent_checkinsInput>
   }
 
   export type usersCreateNestedOneWithoutOauth_accountsInput = {
@@ -33074,6 +36703,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutCreatorInput = {
@@ -33107,6 +36738,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutCreatorInput = {
@@ -33229,6 +36862,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutInviterInput = {
@@ -33257,6 +36892,8 @@ export namespace Prisma {
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutInviterInput = {
@@ -33295,6 +36932,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutInvited_userInput = {
@@ -33323,6 +36962,8 @@ export namespace Prisma {
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutInvited_userInput = {
@@ -33566,6 +37207,74 @@ export namespace Prisma {
 
   export type event_page_visitsCreateManyVisitorInputEnvelope = {
     data: event_page_visitsCreateManyVisitorInput | event_page_visitsCreateManyVisitorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_qr_codesCreateWithoutUserInput = {
+    id?: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    invitation: event_invitationsCreateNestedOneWithoutEvent_qr_codesInput
+    event: eventsCreateNestedOneWithoutEvent_qr_codesInput
+  }
+
+  export type event_qr_codesUncheckedCreateWithoutUserInput = {
+    id?: string
+    invitation_id: string
+    event_id: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_qr_codesCreateOrConnectWithoutUserInput = {
+    where: event_qr_codesWhereUniqueInput
+    create: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput>
+  }
+
+  export type event_qr_codesCreateManyUserInputEnvelope = {
+    data: event_qr_codesCreateManyUserInput | event_qr_codesCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_checkinsCreateWithoutUserInput = {
+    id?: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_checkinsInput
+    invitation: event_invitationsCreateNestedOneWithoutEvent_checkinsInput
+  }
+
+  export type event_checkinsUncheckedCreateWithoutUserInput = {
+    id?: string
+    event_id: string
+    invitation_id: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateOrConnectWithoutUserInput = {
+    where: event_checkinsWhereUniqueInput
+    create: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput>
+  }
+
+  export type event_checkinsCreateManyUserInputEnvelope = {
+    data: event_checkinsCreateManyUserInput | event_checkinsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -34053,6 +37762,70 @@ export namespace Prisma {
     city?: StringNullableFilter<"event_page_visits"> | string | null
   }
 
+  export type event_qr_codesUpsertWithWhereUniqueWithoutUserInput = {
+    where: event_qr_codesWhereUniqueInput
+    update: XOR<event_qr_codesUpdateWithoutUserInput, event_qr_codesUncheckedUpdateWithoutUserInput>
+    create: XOR<event_qr_codesCreateWithoutUserInput, event_qr_codesUncheckedCreateWithoutUserInput>
+  }
+
+  export type event_qr_codesUpdateWithWhereUniqueWithoutUserInput = {
+    where: event_qr_codesWhereUniqueInput
+    data: XOR<event_qr_codesUpdateWithoutUserInput, event_qr_codesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type event_qr_codesUpdateManyWithWhereWithoutUserInput = {
+    where: event_qr_codesScalarWhereInput
+    data: XOR<event_qr_codesUpdateManyMutationInput, event_qr_codesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type event_qr_codesScalarWhereInput = {
+    AND?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+    OR?: event_qr_codesScalarWhereInput[]
+    NOT?: event_qr_codesScalarWhereInput | event_qr_codesScalarWhereInput[]
+    id?: StringFilter<"event_qr_codes"> | string
+    invitation_id?: StringFilter<"event_qr_codes"> | string
+    event_id?: StringFilter<"event_qr_codes"> | string
+    user_id?: StringNullableFilter<"event_qr_codes"> | string | null
+    qr_data?: StringFilter<"event_qr_codes"> | string
+    is_active?: BoolFilter<"event_qr_codes"> | boolean
+    expires_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    created_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+    updated_at?: DateTimeFilter<"event_qr_codes"> | Date | string
+  }
+
+  export type event_checkinsUpsertWithWhereUniqueWithoutUserInput = {
+    where: event_checkinsWhereUniqueInput
+    update: XOR<event_checkinsUpdateWithoutUserInput, event_checkinsUncheckedUpdateWithoutUserInput>
+    create: XOR<event_checkinsCreateWithoutUserInput, event_checkinsUncheckedCreateWithoutUserInput>
+  }
+
+  export type event_checkinsUpdateWithWhereUniqueWithoutUserInput = {
+    where: event_checkinsWhereUniqueInput
+    data: XOR<event_checkinsUpdateWithoutUserInput, event_checkinsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type event_checkinsUpdateManyWithWhereWithoutUserInput = {
+    where: event_checkinsScalarWhereInput
+    data: XOR<event_checkinsUpdateManyMutationInput, event_checkinsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type event_checkinsScalarWhereInput = {
+    AND?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+    OR?: event_checkinsScalarWhereInput[]
+    NOT?: event_checkinsScalarWhereInput | event_checkinsScalarWhereInput[]
+    id?: StringFilter<"event_checkins"> | string
+    event_id?: StringFilter<"event_checkins"> | string
+    invitation_id?: StringFilter<"event_checkins"> | string
+    user_id?: StringNullableFilter<"event_checkins"> | string | null
+    checked_in_at?: DateTimeFilter<"event_checkins"> | Date | string
+    guest_count?: IntFilter<"event_checkins"> | number
+    check_in_method?: StringNullableFilter<"event_checkins"> | string | null
+    location_id?: StringNullableFilter<"event_checkins"> | string | null
+    notes?: StringNullableFilter<"event_checkins"> | string | null
+    created_at?: DateTimeFilter<"event_checkins"> | Date | string
+    updated_at?: DateTimeFilter<"event_checkins"> | Date | string
+  }
+
   export type usersCreateWithoutConnections_initiatedInput = {
     id?: string
     email: string
@@ -34093,6 +37866,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutConnections_initiatedInput = {
@@ -34135,6 +37910,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutConnections_initiatedInput = {
@@ -34182,6 +37959,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutConnections_receivedInput = {
@@ -34224,6 +38003,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutConnections_receivedInput = {
@@ -34282,6 +38063,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutConnections_initiatedInput = {
@@ -34324,6 +38107,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUpsertWithoutConnections_receivedInput = {
@@ -34377,6 +38162,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutConnections_receivedInput = {
@@ -34419,6 +38206,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateWithoutProfile_visits_madeInput = {
@@ -34461,6 +38250,8 @@ export namespace Prisma {
     connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutProfile_visits_madeInput = {
@@ -34503,6 +38294,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutProfile_visits_madeInput = {
@@ -34550,6 +38343,8 @@ export namespace Prisma {
     connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutProfile_visits_receivedInput = {
@@ -34592,6 +38387,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutProfile_visits_receivedInput = {
@@ -34650,6 +38447,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutProfile_visits_madeInput = {
@@ -34692,6 +38491,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUpsertWithoutProfile_visits_receivedInput = {
@@ -34745,6 +38546,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutProfile_visits_receivedInput = {
@@ -34787,6 +38590,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateWithoutEvent_visits_madeInput = {
@@ -34829,6 +38634,8 @@ export namespace Prisma {
     connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutEvent_visits_madeInput = {
@@ -34871,6 +38678,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutEvent_visits_madeInput = {
@@ -34909,6 +38718,8 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_page_visitsInput = {
@@ -34942,6 +38753,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_page_visitsInput = {
@@ -34975,6 +38788,8 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutEvent_page_visitsInput = {
@@ -35003,6 +38818,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutEvent_page_visitsInput = {
@@ -35061,6 +38878,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutEvent_visits_madeInput = {
@@ -35103,6 +38922,8 @@ export namespace Prisma {
     connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type eventsUpsertWithoutEvent_page_visitsInput = {
@@ -35147,6 +38968,8 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_page_visitsInput = {
@@ -35180,6 +39003,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type event_invitationsUpsertWithoutEvent_page_visitsInput = {
@@ -35219,6 +39044,8 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutEvent_page_visitsInput = {
@@ -35247,6 +39074,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type usersCreateWithoutAttachmentsInput = {
@@ -35289,6 +39118,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutAttachmentsInput = {
@@ -35331,6 +39162,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutAttachmentsInput = {
@@ -35417,6 +39250,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutAttachmentsInput = {
@@ -35459,6 +39294,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type event_attachmentsUpsertWithWhereUniqueWithoutAttachmentInput = {
@@ -35578,6 +39415,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutUser_hobbiesInput = {
@@ -35620,6 +39459,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutUser_hobbiesInput = {
@@ -35709,6 +39550,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_hobbiesInput = {
@@ -35751,6 +39594,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type hobbiesUpsertWithoutUser_hobbiesInput = {
@@ -35878,6 +39723,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutUser_activitiesInput = {
@@ -35920,6 +39767,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutUser_activitiesInput = {
@@ -36009,6 +39858,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_activitiesInput = {
@@ -36051,6 +39902,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type activitiesUpsertWithoutUser_activitiesInput = {
@@ -36178,6 +40031,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutUser_entertainmentsInput = {
@@ -36220,6 +40075,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutUser_entertainmentsInput = {
@@ -36309,6 +40166,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutUser_entertainmentsInput = {
@@ -36351,6 +40210,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type entertainmentsUpsertWithoutUser_entertainmentsInput = {
@@ -36430,6 +40291,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutEvents_createdInput = {
@@ -36472,6 +40335,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutEvents_createdInput = {
@@ -36647,6 +40512,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutEventInput = {
@@ -36675,6 +40542,8 @@ export namespace Prisma {
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutEventInput = {
@@ -36745,6 +40614,74 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type event_qr_codesCreateWithoutEventInput = {
+    id?: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    invitation: event_invitationsCreateNestedOneWithoutEvent_qr_codesInput
+    user?: usersCreateNestedOneWithoutEvent_qr_codesInput
+  }
+
+  export type event_qr_codesUncheckedCreateWithoutEventInput = {
+    id?: string
+    invitation_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_qr_codesCreateOrConnectWithoutEventInput = {
+    where: event_qr_codesWhereUniqueInput
+    create: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_qr_codesCreateManyEventInputEnvelope = {
+    data: event_qr_codesCreateManyEventInput | event_qr_codesCreateManyEventInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_checkinsCreateWithoutEventInput = {
+    id?: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    invitation: event_invitationsCreateNestedOneWithoutEvent_checkinsInput
+    user?: usersCreateNestedOneWithoutEvent_checkinsInput
+  }
+
+  export type event_checkinsUncheckedCreateWithoutEventInput = {
+    id?: string
+    invitation_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateOrConnectWithoutEventInput = {
+    where: event_checkinsWhereUniqueInput
+    create: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_checkinsCreateManyEventInputEnvelope = {
+    data: event_checkinsCreateManyEventInput | event_checkinsCreateManyEventInput[]
+    skipDuplicates?: boolean
+  }
+
   export type usersUpsertWithoutEvents_createdInput = {
     update: XOR<usersUpdateWithoutEvents_createdInput, usersUncheckedUpdateWithoutEvents_createdInput>
     create: XOR<usersCreateWithoutEvents_createdInput, usersUncheckedCreateWithoutEvents_createdInput>
@@ -36796,6 +40733,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutEvents_createdInput = {
@@ -36838,6 +40777,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type event_rolesUpsertWithWhereUniqueWithoutEventInput = {
@@ -36955,6 +40896,38 @@ export namespace Prisma {
     data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyWithoutEventInput>
   }
 
+  export type event_qr_codesUpsertWithWhereUniqueWithoutEventInput = {
+    where: event_qr_codesWhereUniqueInput
+    update: XOR<event_qr_codesUpdateWithoutEventInput, event_qr_codesUncheckedUpdateWithoutEventInput>
+    create: XOR<event_qr_codesCreateWithoutEventInput, event_qr_codesUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_qr_codesUpdateWithWhereUniqueWithoutEventInput = {
+    where: event_qr_codesWhereUniqueInput
+    data: XOR<event_qr_codesUpdateWithoutEventInput, event_qr_codesUncheckedUpdateWithoutEventInput>
+  }
+
+  export type event_qr_codesUpdateManyWithWhereWithoutEventInput = {
+    where: event_qr_codesScalarWhereInput
+    data: XOR<event_qr_codesUpdateManyMutationInput, event_qr_codesUncheckedUpdateManyWithoutEventInput>
+  }
+
+  export type event_checkinsUpsertWithWhereUniqueWithoutEventInput = {
+    where: event_checkinsWhereUniqueInput
+    update: XOR<event_checkinsUpdateWithoutEventInput, event_checkinsUncheckedUpdateWithoutEventInput>
+    create: XOR<event_checkinsCreateWithoutEventInput, event_checkinsUncheckedCreateWithoutEventInput>
+  }
+
+  export type event_checkinsUpdateWithWhereUniqueWithoutEventInput = {
+    where: event_checkinsWhereUniqueInput
+    data: XOR<event_checkinsUpdateWithoutEventInput, event_checkinsUncheckedUpdateWithoutEventInput>
+  }
+
+  export type event_checkinsUpdateManyWithWhereWithoutEventInput = {
+    where: event_checkinsScalarWhereInput
+    data: XOR<event_checkinsUpdateManyMutationInput, event_checkinsUncheckedUpdateManyWithoutEventInput>
+  }
+
   export type eventsCreateWithoutEvent_rolesInput = {
     id?: string
     title: string
@@ -36986,6 +40959,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_rolesInput = {
@@ -37019,6 +40994,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_rolesInput = {
@@ -37066,6 +41043,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutEvent_rolesInput = {
@@ -37108,6 +41087,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutEvent_rolesInput = {
@@ -37155,6 +41136,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutRole_assignmentsInput = {
@@ -37197,6 +41180,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutRole_assignmentsInput = {
@@ -37246,6 +41231,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_rolesInput = {
@@ -37279,6 +41266,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type usersUpsertWithoutEvent_rolesInput = {
@@ -37332,6 +41321,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutEvent_rolesInput = {
@@ -37374,6 +41365,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUpsertWithoutRole_assignmentsInput = {
@@ -37427,6 +41420,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutRole_assignmentsInput = {
@@ -37469,6 +41464,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type eventsCreateWithoutEvent_locationsInput = {
@@ -37502,6 +41499,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_locationsInput = {
@@ -37535,6 +41534,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_locationsInput = {
@@ -37584,6 +41585,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_locationsInput = {
@@ -37617,6 +41620,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsCreateWithoutEvent_attachmentsInput = {
@@ -37650,6 +41655,8 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_attachmentsInput = {
@@ -37683,6 +41690,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_attachmentsInput = {
@@ -37787,6 +41796,8 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_attachmentsInput = {
@@ -37820,6 +41831,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type attachmentsUpsertWithoutEvent_attachmentsInput = {
@@ -37914,6 +41927,8 @@ export namespace Prisma {
     event_locations?: event_locationsCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
   }
 
   export type eventsUncheckedCreateWithoutEvent_invitationsInput = {
@@ -37947,6 +41962,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
     event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type eventsCreateOrConnectWithoutEvent_invitationsInput = {
@@ -37994,6 +42011,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutInvitations_receivedInput = {
@@ -38036,6 +42055,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutInvitations_receivedInput = {
@@ -38083,6 +42104,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutInvitations_sentInput = {
@@ -38125,6 +42148,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutInvitations_sentInput = {
@@ -38158,6 +42183,8 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutPlus_one_invitationsInput = {
@@ -38186,6 +42213,8 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutPlus_one_invitationsInput = {
@@ -38219,6 +42248,8 @@ export namespace Prisma {
     inviter: usersCreateNestedOneWithoutInvitations_sentInput
     plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsUncheckedCreateWithoutParent_invitationInput = {
@@ -38247,6 +42278,8 @@ export namespace Prisma {
     updated_at?: Date | string
     plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
     event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
   }
 
   export type event_invitationsCreateOrConnectWithoutParent_invitationInput = {
@@ -38317,6 +42350,74 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type event_qr_codesCreateWithoutInvitationInput = {
+    id?: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_qr_codesInput
+    user?: usersCreateNestedOneWithoutEvent_qr_codesInput
+  }
+
+  export type event_qr_codesUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    event_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_qr_codesCreateOrConnectWithoutInvitationInput = {
+    where: event_qr_codesWhereUniqueInput
+    create: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_qr_codesCreateManyInvitationInputEnvelope = {
+    data: event_qr_codesCreateManyInvitationInput | event_qr_codesCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type event_checkinsCreateWithoutInvitationInput = {
+    id?: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_checkinsInput
+    user?: usersCreateNestedOneWithoutEvent_checkinsInput
+  }
+
+  export type event_checkinsUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    event_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateOrConnectWithoutInvitationInput = {
+    where: event_checkinsWhereUniqueInput
+    create: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_checkinsCreateManyInvitationInputEnvelope = {
+    data: event_checkinsCreateManyInvitationInput | event_checkinsCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type eventsUpsertWithoutEvent_invitationsInput = {
     update: XOR<eventsUpdateWithoutEvent_invitationsInput, eventsUncheckedUpdateWithoutEvent_invitationsInput>
     create: XOR<eventsCreateWithoutEvent_invitationsInput, eventsUncheckedCreateWithoutEvent_invitationsInput>
@@ -38359,6 +42460,8 @@ export namespace Prisma {
     event_locations?: event_locationsUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutEvent_invitationsInput = {
@@ -38392,6 +42495,8 @@ export namespace Prisma {
     event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type usersUpsertWithoutInvitations_receivedInput = {
@@ -38445,6 +42550,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutInvitations_receivedInput = {
@@ -38487,6 +42594,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersUpsertWithoutInvitations_sentInput = {
@@ -38540,6 +42649,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutInvitations_sentInput = {
@@ -38582,6 +42693,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type event_invitationsUpsertWithoutPlus_one_invitationsInput = {
@@ -38621,6 +42734,8 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutPlus_one_invitationsInput = {
@@ -38649,6 +42764,8 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUpsertWithWhereUniqueWithoutParent_invitationInput = {
@@ -38681,6 +42798,1006 @@ export namespace Prisma {
   export type event_page_visitsUpdateManyWithWhereWithoutInvitationInput = {
     where: event_page_visitsScalarWhereInput
     data: XOR<event_page_visitsUpdateManyMutationInput, event_page_visitsUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type event_qr_codesUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: event_qr_codesWhereUniqueInput
+    update: XOR<event_qr_codesUpdateWithoutInvitationInput, event_qr_codesUncheckedUpdateWithoutInvitationInput>
+    create: XOR<event_qr_codesCreateWithoutInvitationInput, event_qr_codesUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_qr_codesUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: event_qr_codesWhereUniqueInput
+    data: XOR<event_qr_codesUpdateWithoutInvitationInput, event_qr_codesUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type event_qr_codesUpdateManyWithWhereWithoutInvitationInput = {
+    where: event_qr_codesScalarWhereInput
+    data: XOR<event_qr_codesUpdateManyMutationInput, event_qr_codesUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type event_checkinsUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: event_checkinsWhereUniqueInput
+    update: XOR<event_checkinsUpdateWithoutInvitationInput, event_checkinsUncheckedUpdateWithoutInvitationInput>
+    create: XOR<event_checkinsCreateWithoutInvitationInput, event_checkinsUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type event_checkinsUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: event_checkinsWhereUniqueInput
+    data: XOR<event_checkinsUpdateWithoutInvitationInput, event_checkinsUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type event_checkinsUpdateManyWithWhereWithoutInvitationInput = {
+    where: event_checkinsScalarWhereInput
+    data: XOR<event_checkinsUpdateManyMutationInput, event_checkinsUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type event_invitationsCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    invited_email?: string | null
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_invitationsInput
+    invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
+    inviter: usersCreateNestedOneWithoutInvitations_sentInput
+    parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
+    plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutInvitationInput
+  }
+
+  export type event_invitationsUncheckedCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    event_id: string
+    invited_user_id?: string | null
+    invited_email?: string | null
+    invited_by: string
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    parent_invitation_id?: string | null
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type event_invitationsCreateOrConnectWithoutEvent_qr_codesInput = {
+    where: event_invitationsWhereUniqueInput
+    create: XOR<event_invitationsCreateWithoutEvent_qr_codesInput, event_invitationsUncheckedCreateWithoutEvent_qr_codesInput>
+  }
+
+  export type eventsCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    creator: usersCreateNestedOneWithoutEvents_createdInput
+    event_roles?: event_rolesCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsUncheckedCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    created_by: string
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsCreateOrConnectWithoutEvent_qr_codesInput = {
+    where: eventsWhereUniqueInput
+    create: XOR<eventsCreateWithoutEvent_qr_codesInput, eventsUncheckedCreateWithoutEvent_qr_codesInput>
+  }
+
+  export type usersCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutEvent_qr_codesInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutEvent_qr_codesInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutEvent_qr_codesInput, usersUncheckedCreateWithoutEvent_qr_codesInput>
+  }
+
+  export type event_invitationsUpsertWithoutEvent_qr_codesInput = {
+    update: XOR<event_invitationsUpdateWithoutEvent_qr_codesInput, event_invitationsUncheckedUpdateWithoutEvent_qr_codesInput>
+    create: XOR<event_invitationsCreateWithoutEvent_qr_codesInput, event_invitationsUncheckedCreateWithoutEvent_qr_codesInput>
+    where?: event_invitationsWhereInput
+  }
+
+  export type event_invitationsUpdateToOneWithWhereWithoutEvent_qr_codesInput = {
+    where?: event_invitationsWhereInput
+    data: XOR<event_invitationsUpdateWithoutEvent_qr_codesInput, event_invitationsUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type event_invitationsUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_invitationsNestedInput
+    invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
+    inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
+    parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
+    plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type event_invitationsUncheckedUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invited_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_by?: StringFieldUpdateOperationsInput | string
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    parent_invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type eventsUpsertWithoutEvent_qr_codesInput = {
+    update: XOR<eventsUpdateWithoutEvent_qr_codesInput, eventsUncheckedUpdateWithoutEvent_qr_codesInput>
+    create: XOR<eventsCreateWithoutEvent_qr_codesInput, eventsUncheckedCreateWithoutEvent_qr_codesInput>
+    where?: eventsWhereInput
+  }
+
+  export type eventsUpdateToOneWithWhereWithoutEvent_qr_codesInput = {
+    where?: eventsWhereInput
+    data: XOR<eventsUpdateWithoutEvent_qr_codesInput, eventsUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type eventsUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: usersUpdateOneRequiredWithoutEvents_createdNestedInput
+    event_roles?: event_rolesUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
+  }
+
+  export type eventsUncheckedUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
+  }
+
+  export type usersUpsertWithoutEvent_qr_codesInput = {
+    update: XOR<usersUpdateWithoutEvent_qr_codesInput, usersUncheckedUpdateWithoutEvent_qr_codesInput>
+    create: XOR<usersCreateWithoutEvent_qr_codesInput, usersUncheckedCreateWithoutEvent_qr_codesInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutEvent_qr_codesInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutEvent_qr_codesInput, usersUncheckedUpdateWithoutEvent_qr_codesInput>
+  }
+
+  export type usersUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutEvent_qr_codesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type eventsCreateWithoutEvent_checkinsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    creator: usersCreateNestedOneWithoutEvents_createdInput
+    event_roles?: event_rolesCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsUncheckedCreateWithoutEvent_checkinsInput = {
+    id?: string
+    title: string
+    slug: string
+    description?: string | null
+    type: string
+    status?: string
+    start_date: Date | string
+    end_date: Date | string
+    timezone?: string | null
+    is_public?: boolean
+    is_paid?: boolean
+    price?: Decimal | DecimalJsLike | number | string | null
+    currency?: string | null
+    max_participants?: number | null
+    min_participants?: number | null
+    auto_approve?: boolean
+    allow_guests?: boolean
+    require_approval?: boolean
+    category?: string | null
+    tags?: eventsCreatetagsInput | string[]
+    age_restriction?: string | null
+    dress_code?: string | null
+    created_by: string
+    admin_notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutEventInput
+    event_locations?: event_locationsUncheckedCreateNestedManyWithoutEventInput
+    event_attachments?: event_attachmentsUncheckedCreateNestedManyWithoutEventInput
+    event_invitations?: event_invitationsUncheckedCreateNestedManyWithoutEventInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutEventInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutEventInput
+  }
+
+  export type eventsCreateOrConnectWithoutEvent_checkinsInput = {
+    where: eventsWhereUniqueInput
+    create: XOR<eventsCreateWithoutEvent_checkinsInput, eventsUncheckedCreateWithoutEvent_checkinsInput>
+  }
+
+  export type event_invitationsCreateWithoutEvent_checkinsInput = {
+    id?: string
+    invited_email?: string | null
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    event: eventsCreateNestedOneWithoutEvent_invitationsInput
+    invited_user?: usersCreateNestedOneWithoutInvitations_receivedInput
+    inviter: usersCreateNestedOneWithoutInvitations_sentInput
+    parent_invitation?: event_invitationsCreateNestedOneWithoutPlus_one_invitationsInput
+    plus_one_invitations?: event_invitationsCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutInvitationInput
+  }
+
+  export type event_invitationsUncheckedCreateWithoutEvent_checkinsInput = {
+    id?: string
+    event_id: string
+    invited_user_id?: string | null
+    invited_email?: string | null
+    invited_by: string
+    invitation_type?: string
+    personal_message?: string | null
+    max_guests?: number
+    status?: string
+    response_date?: Date | string | null
+    decline_reason?: string | null
+    guest_count?: number
+    dietary_restrictions?: string | null
+    special_requests?: string | null
+    will_attend_all_locations?: boolean | null
+    attending_locations?: event_invitationsCreateattending_locationsInput | string[]
+    arrival_time?: Date | string | null
+    departure_time?: Date | string | null
+    is_plus_one?: boolean
+    parent_invitation_id?: string | null
+    reminder_sent_at?: Date | string | null
+    reminder_count?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    plus_one_invitations?: event_invitationsUncheckedCreateNestedManyWithoutParent_invitationInput
+    event_page_visits?: event_page_visitsUncheckedCreateNestedManyWithoutInvitationInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type event_invitationsCreateOrConnectWithoutEvent_checkinsInput = {
+    where: event_invitationsWhereUniqueInput
+    create: XOR<event_invitationsCreateWithoutEvent_checkinsInput, event_invitationsUncheckedCreateWithoutEvent_checkinsInput>
+  }
+
+  export type usersCreateWithoutEvent_checkinsInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsCreateNestedManyWithoutUserInput
+    attachments?: attachmentsCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsCreateNestedManyWithoutUserInput
+    events_created?: eventsCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutEvent_checkinsInput = {
+    id?: string
+    email: string
+    username: string
+    password_hash?: string | null
+    email_verified?: boolean
+    email_verified_at?: Date | string | null
+    first_name: string
+    last_name: string
+    date_of_birth?: Date | string | null
+    phone?: string | null
+    age?: number | null
+    bio?: string | null
+    country?: string | null
+    city?: string | null
+    state?: string | null
+    postal_code?: string | null
+    full_address?: string | null
+    location?: string | null
+    is_active?: boolean
+    is_verified?: boolean
+    profile_completed?: boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: Date | string
+    updated_at?: Date | string
+    last_login_at?: Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedCreateNestedManyWithoutUserInput
+    attachments?: attachmentsUncheckedCreateNestedManyWithoutUserInput
+    user_hobbies?: user_hobbiesUncheckedCreateNestedManyWithoutUserInput
+    user_activities?: user_activitiesUncheckedCreateNestedManyWithoutUserInput
+    user_entertainments?: user_entertainmentsUncheckedCreateNestedManyWithoutUserInput
+    events_created?: eventsUncheckedCreateNestedManyWithoutCreatorInput
+    event_roles?: event_rolesUncheckedCreateNestedManyWithoutUserInput
+    role_assignments?: event_rolesUncheckedCreateNestedManyWithoutAssigned_by_userInput
+    invitations_sent?: event_invitationsUncheckedCreateNestedManyWithoutInviterInput
+    invitations_received?: event_invitationsUncheckedCreateNestedManyWithoutInvited_userInput
+    connections_initiated?: user_connectionsUncheckedCreateNestedManyWithoutInitiatorInput
+    connections_received?: user_connectionsUncheckedCreateNestedManyWithoutReceiverInput
+    profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
+    event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutEvent_checkinsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutEvent_checkinsInput, usersUncheckedCreateWithoutEvent_checkinsInput>
+  }
+
+  export type eventsUpsertWithoutEvent_checkinsInput = {
+    update: XOR<eventsUpdateWithoutEvent_checkinsInput, eventsUncheckedUpdateWithoutEvent_checkinsInput>
+    create: XOR<eventsCreateWithoutEvent_checkinsInput, eventsUncheckedCreateWithoutEvent_checkinsInput>
+    where?: eventsWhereInput
+  }
+
+  export type eventsUpdateToOneWithWhereWithoutEvent_checkinsInput = {
+    where?: eventsWhereInput
+    data: XOR<eventsUpdateWithoutEvent_checkinsInput, eventsUncheckedUpdateWithoutEvent_checkinsInput>
+  }
+
+  export type eventsUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: usersUpdateOneRequiredWithoutEvents_createdNestedInput
+    event_roles?: event_rolesUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+  }
+
+  export type eventsUncheckedUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    is_public?: BoolFieldUpdateOperationsInput | boolean
+    is_paid?: BoolFieldUpdateOperationsInput | boolean
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    max_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    min_participants?: NullableIntFieldUpdateOperationsInput | number | null
+    auto_approve?: BoolFieldUpdateOperationsInput | boolean
+    allow_guests?: BoolFieldUpdateOperationsInput | boolean
+    require_approval?: BoolFieldUpdateOperationsInput | boolean
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: eventsUpdatetagsInput | string[]
+    age_restriction?: NullableStringFieldUpdateOperationsInput | string | null
+    dress_code?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    admin_notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event_roles?: event_rolesUncheckedUpdateManyWithoutEventNestedInput
+    event_locations?: event_locationsUncheckedUpdateManyWithoutEventNestedInput
+    event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
+    event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+  }
+
+  export type event_invitationsUpsertWithoutEvent_checkinsInput = {
+    update: XOR<event_invitationsUpdateWithoutEvent_checkinsInput, event_invitationsUncheckedUpdateWithoutEvent_checkinsInput>
+    create: XOR<event_invitationsCreateWithoutEvent_checkinsInput, event_invitationsUncheckedCreateWithoutEvent_checkinsInput>
+    where?: event_invitationsWhereInput
+  }
+
+  export type event_invitationsUpdateToOneWithWhereWithoutEvent_checkinsInput = {
+    where?: event_invitationsWhereInput
+    data: XOR<event_invitationsUpdateWithoutEvent_checkinsInput, event_invitationsUncheckedUpdateWithoutEvent_checkinsInput>
+  }
+
+  export type event_invitationsUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_invitationsNestedInput
+    invited_user?: usersUpdateOneWithoutInvitations_receivedNestedInput
+    inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
+    parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
+    plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type event_invitationsUncheckedUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invited_user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_email?: NullableStringFieldUpdateOperationsInput | string | null
+    invited_by?: StringFieldUpdateOperationsInput | string
+    invitation_type?: StringFieldUpdateOperationsInput | string
+    personal_message?: NullableStringFieldUpdateOperationsInput | string | null
+    max_guests?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    response_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    decline_reason?: NullableStringFieldUpdateOperationsInput | string | null
+    guest_count?: IntFieldUpdateOperationsInput | number
+    dietary_restrictions?: NullableStringFieldUpdateOperationsInput | string | null
+    special_requests?: NullableStringFieldUpdateOperationsInput | string | null
+    will_attend_all_locations?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    attending_locations?: event_invitationsUpdateattending_locationsInput | string[]
+    arrival_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    departure_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_plus_one?: BoolFieldUpdateOperationsInput | boolean
+    parent_invitation_id?: NullableStringFieldUpdateOperationsInput | string | null
+    reminder_sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    reminder_count?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
+    event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type usersUpsertWithoutEvent_checkinsInput = {
+    update: XOR<usersUpdateWithoutEvent_checkinsInput, usersUncheckedUpdateWithoutEvent_checkinsInput>
+    create: XOR<usersCreateWithoutEvent_checkinsInput, usersUncheckedCreateWithoutEvent_checkinsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutEvent_checkinsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutEvent_checkinsInput, usersUncheckedUpdateWithoutEvent_checkinsInput>
+  }
+
+  export type usersUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUpdateManyWithoutUserNestedInput
+    events_created?: eventsUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutEvent_checkinsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
+    email_verified?: BoolFieldUpdateOperationsInput | boolean
+    email_verified_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    age?: NullableIntFieldUpdateOperationsInput | number | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    full_address?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    is_verified?: BoolFieldUpdateOperationsInput | boolean
+    profile_completed?: BoolFieldUpdateOperationsInput | boolean
+    privacy_settings?: NullableJsonNullValueInput | InputJsonValue
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    last_login_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    oauth_accounts?: oauth_accountsUncheckedUpdateManyWithoutUserNestedInput
+    attachments?: attachmentsUncheckedUpdateManyWithoutUserNestedInput
+    user_hobbies?: user_hobbiesUncheckedUpdateManyWithoutUserNestedInput
+    user_activities?: user_activitiesUncheckedUpdateManyWithoutUserNestedInput
+    user_entertainments?: user_entertainmentsUncheckedUpdateManyWithoutUserNestedInput
+    events_created?: eventsUncheckedUpdateManyWithoutCreatorNestedInput
+    event_roles?: event_rolesUncheckedUpdateManyWithoutUserNestedInput
+    role_assignments?: event_rolesUncheckedUpdateManyWithoutAssigned_by_userNestedInput
+    invitations_sent?: event_invitationsUncheckedUpdateManyWithoutInviterNestedInput
+    invitations_received?: event_invitationsUncheckedUpdateManyWithoutInvited_userNestedInput
+    connections_initiated?: user_connectionsUncheckedUpdateManyWithoutInitiatorNestedInput
+    connections_received?: user_connectionsUncheckedUpdateManyWithoutReceiverNestedInput
+    profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
+    event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateWithoutOauth_accountsInput = {
@@ -38723,6 +43840,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutOauth_accountsInput = {
@@ -38765,6 +43884,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedCreateNestedManyWithoutVisitorInput
     profile_visits_received?: user_profile_visitsUncheckedCreateNestedManyWithoutProfile_userInput
     event_visits_made?: event_page_visitsUncheckedCreateNestedManyWithoutVisitorInput
+    event_qr_codes?: event_qr_codesUncheckedCreateNestedManyWithoutUserInput
+    event_checkins?: event_checkinsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutOauth_accountsInput = {
@@ -38823,6 +43944,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutOauth_accountsInput = {
@@ -38865,6 +43988,8 @@ export namespace Prisma {
     profile_visits_made?: user_profile_visitsUncheckedUpdateManyWithoutVisitorNestedInput
     profile_visits_received?: user_profile_visitsUncheckedUpdateManyWithoutProfile_userNestedInput
     event_visits_made?: event_page_visitsUncheckedUpdateManyWithoutVisitorNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutUserNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type oauth_accountsCreateManyUserInput = {
@@ -39143,6 +44268,30 @@ export namespace Prisma {
     city?: string | null
   }
 
+  export type event_qr_codesCreateManyUserInput = {
+    id?: string
+    invitation_id: string
+    event_id: string
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateManyUserInput = {
+    id?: string
+    event_id: string
+    invitation_id: string
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
   export type oauth_accountsUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
@@ -39392,6 +44541,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateWithoutCreatorInput = {
@@ -39425,6 +44576,8 @@ export namespace Prisma {
     event_attachments?: event_attachmentsUncheckedUpdateManyWithoutEventNestedInput
     event_invitations?: event_invitationsUncheckedUpdateManyWithoutEventNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutEventNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutEventNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type eventsUncheckedUpdateManyWithoutCreatorInput = {
@@ -39577,6 +44730,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutInviterInput = {
@@ -39605,6 +44760,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutInviterInput = {
@@ -39659,6 +44816,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutInvited_userInput = {
@@ -39687,6 +44846,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutInvited_userInput = {
@@ -39991,6 +45152,78 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type event_qr_codesUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+    event?: eventsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+  }
+
+  export type event_qr_codesUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+  }
+
+  export type event_checkinsUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type event_attachmentsCreateManyAttachmentInput = {
     id?: string
     event_id: string
@@ -40265,6 +45498,30 @@ export namespace Prisma {
     city?: string | null
   }
 
+  export type event_qr_codesCreateManyEventInput = {
+    id?: string
+    invitation_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateManyEventInput = {
+    id?: string
+    invitation_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
   export type event_rolesUpdateWithoutEventInput = {
     id?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
@@ -40459,6 +45716,8 @@ export namespace Prisma {
     parent_invitation?: event_invitationsUpdateOneWithoutPlus_one_invitationsNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutEventInput = {
@@ -40487,6 +45746,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutEventInput = {
@@ -40587,6 +45848,78 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type event_qr_codesUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+    user?: usersUpdateOneWithoutEvent_qr_codesNestedInput
+  }
+
+  export type event_qr_codesUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: event_invitationsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+    user?: usersUpdateOneWithoutEvent_checkinsNestedInput
+  }
+
+  export type event_checkinsUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitation_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type event_invitationsCreateManyParent_invitationInput = {
     id?: string
     event_id: string
@@ -40637,6 +45970,30 @@ export namespace Prisma {
     city?: string | null
   }
 
+  export type event_qr_codesCreateManyInvitationInput = {
+    id?: string
+    event_id: string
+    user_id?: string | null
+    qr_data: string
+    is_active?: boolean
+    expires_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type event_checkinsCreateManyInvitationInput = {
+    id?: string
+    event_id: string
+    user_id?: string | null
+    checked_in_at?: Date | string
+    guest_count?: number
+    check_in_method?: string | null
+    location_id?: string | null
+    notes?: string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
   export type event_invitationsUpdateWithoutParent_invitationInput = {
     id?: StringFieldUpdateOperationsInput | string
     invited_email?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40663,6 +46020,8 @@ export namespace Prisma {
     inviter?: usersUpdateOneRequiredWithoutInvitations_sentNestedInput
     plus_one_invitations?: event_invitationsUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateWithoutParent_invitationInput = {
@@ -40691,6 +46050,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     plus_one_invitations?: event_invitationsUncheckedUpdateManyWithoutParent_invitationNestedInput
     event_page_visits?: event_page_visitsUncheckedUpdateManyWithoutInvitationNestedInput
+    event_qr_codes?: event_qr_codesUncheckedUpdateManyWithoutInvitationNestedInput
+    event_checkins?: event_checkinsUncheckedUpdateManyWithoutInvitationNestedInput
   }
 
   export type event_invitationsUncheckedUpdateManyWithoutParent_invitationInput = {
@@ -40789,6 +46150,78 @@ export namespace Prisma {
     os?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
     city?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type event_qr_codesUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_qr_codesNestedInput
+    user?: usersUpdateOneWithoutEvent_qr_codesNestedInput
+  }
+
+  export type event_qr_codesUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_qr_codesUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    qr_data?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: eventsUpdateOneRequiredWithoutEvent_checkinsNestedInput
+    user?: usersUpdateOneWithoutEvent_checkinsNestedInput
+  }
+
+  export type event_checkinsUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type event_checkinsUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    event_id?: StringFieldUpdateOperationsInput | string
+    user_id?: NullableStringFieldUpdateOperationsInput | string | null
+    checked_in_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest_count?: IntFieldUpdateOperationsInput | number
+    check_in_method?: NullableStringFieldUpdateOperationsInput | string | null
+    location_id?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

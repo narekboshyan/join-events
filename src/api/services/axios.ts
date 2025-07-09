@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { signOut } from "@/lib/auth";
 
 const $apiClient = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_URL}/api`,
+  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
   withCredentials: true,
 });
 

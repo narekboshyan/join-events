@@ -71,6 +71,10 @@ model users {
   profile_visits_received user_profile_visits[] @relation("ProfileOwner")
   event_visits_made       event_page_visits[]   @relation("EventVisitor")
 
+  // QR Code and Check-in relations
+  event_qr_codes event_qr_codes[]
+  event_checkins event_checkins[]
+
   // Indexes for better performance
   @@index([email])
   @@index([username])
@@ -458,6 +462,8 @@ model events {
   event_attachments event_attachments[]
   event_invitations event_invitations[]
   event_page_visits event_page_visits[] // Track who visits event pages
+  event_qr_codes    event_qr_codes[] // QR codes for this event
+  event_checkins    event_checkins[] // Check-ins for this event
 
   // Indexes
   @@index([created_by])
@@ -630,6 +636,8 @@ model event_invitations {
   parent_invitation    event_invitations?  @relation("PlusOneInvitation", fields: [parent_invitation_id], references: [id])
   plus_one_invitations event_invitations[] @relation("PlusOneInvitation")
   event_page_visits    event_page_visits[] // Track visits through invitation links
+  event_qr_codes       event_qr_codes[] // QR codes for this invitation
+  event_checkins       event_checkins[] // Check-ins for this invitation
 
   // Constraints
   @@unique([event_id, invited_user_id]) // One invitation per user per event
@@ -639,6 +647,68 @@ model event_invitations {
   @@index([status])
   @@index([invited_email])
   @@map("event_invitations")
+}
+
+// Event QR codes - for check-in and verification
+model event_qr_codes {
+  id String @id @default(cuid())
+
+  invitation_id String
+  event_id      String
+  user_id       String?
+  qr_data       String   @db.Text // JSON string containing QR code data
+  is_active     Boolean  @default(true)
+  expires_at    DateTime
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  invitation event_invitations @relation(fields: [invitation_id], references: [id], onDelete: Cascade)
+  event      events            @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  user       users?            @relation(fields: [user_id], references: [id], onDelete: SetNull)
+
+  // Indexes
+  @@index([invitation_id])
+  @@index([event_id])
+  @@index([user_id])
+  @@index([expires_at])
+  @@index([is_active])
+  @@map("event_qr_codes")
+}
+
+// Event check-ins - track who actually attended
+model event_checkins {
+  id String @id @default(cuid())
+
+  event_id      String
+  invitation_id String
+  user_id       String?
+  checked_in_at DateTime @default(now())
+  guest_count   Int      @default(0)
+
+  // Check-in metadata
+  check_in_method String? // "qr_code", "manual", "auto", etc.
+  location_id     String? // Which location they checked in at
+  notes           String? @db.Text
+
+  // Timestamps
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationships
+  event      events            @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  invitation event_invitations @relation(fields: [invitation_id], references: [id], onDelete: Cascade)
+  user       users?            @relation(fields: [user_id], references: [id], onDelete: SetNull)
+
+  // Constraints
+  @@unique([invitation_id]) // One check-in per invitation
+  @@index([event_id])
+  @@index([user_id])
+  @@index([checked_in_at])
+  @@index([check_in_method])
+  @@map("event_checkins")
 }
 
 // OAuth accounts table for OAuth providers

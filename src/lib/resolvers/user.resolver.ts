@@ -1,8 +1,14 @@
 import prisma from "../db";
+import { NotFoundException } from "next-api-decorators";
 
 export class UserResolver {
-  static async getAllUsers() {
+  static async getAllUsers(currentUserId: string) {
     return prisma.users.findMany({
+      where: {
+        id: {
+          not: currentUserId,
+        },
+      },
       include: {
         user_hobbies: {
           include: {
@@ -14,6 +20,18 @@ export class UserResolver {
             activity: true,
           },
         },
+      },
+    });
+  }
+
+  static async getUserById(userId: string) {
+    return prisma.users.findUniqueOrThrow({
+      where: {
+        id: userId,
+      },
+      include: {
+        profile_visits_received: true,
+        events_created: true,
       },
     });
   }

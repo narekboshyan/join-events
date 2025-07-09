@@ -30,7 +30,8 @@ const SingleEventPage = async ({
   const event = await EventResolver.getEventById((await params).eventId);
   const session = await auth();
 
-  const currentUserId = session?.user.id; // Replace with actual current user ID
+
+  const currentUserId = session?.user.id;
 
   // Determine user permissions
   const isCreator = event?.created_by === currentUserId;

@@ -4,8 +4,7 @@ import { UserResolver } from "@/lib/resolvers/user.resolver";
 
 export async function GET() {
   const session = await auth();
-  console.log(session?.user.id);
-  const users = await UserResolver.getAllUsers();
+  const users = await UserResolver.getAllUsers(session?.user.id);
 
   return NextResponse.json(users);
 }

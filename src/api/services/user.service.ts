@@ -29,4 +29,8 @@ export class UserService {
   static declineConnectionRequest(connectionId: string) {
     return $apiClient.patch(`/users/connections/${connectionId}/decline`);
   }
+
+  static getUserById(userId: string) {
+    return $apiClient.get(`/users/${userId}`);
+  }
 }

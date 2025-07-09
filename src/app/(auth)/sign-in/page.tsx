@@ -193,7 +193,7 @@ export default function SignInPage() {
               </div>
               <Button
                 variant="link"
-                className="p-0 h-auto text-primary hover:text-primary-foreground font-medium"
+                className="p-0 h-auto text-primary  font-medium cursor-pointer"
               >
                 Forgot password?
               </Button>
@@ -203,7 +203,7 @@ export default function SignInPage() {
             <Button
               type="submit"
               disabled={!isValid || isSubmitting}
-              className={`w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-sm text-sm font-medium text-primary-foreground transition-all duration-200
+              className={`cursor-pointer w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-sm text-sm font-medium text-primary-foreground transition-all duration-200
                 bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform hover:scale-[1.02] active:scale-[0.98]
                 ${
                   !isValid || isSubmitting
@@ -229,9 +229,9 @@ export default function SignInPage() {
           Don&apos;t have an account?{" "}
           <Button
             variant="link"
-            className="p-0 h-auto text-primary hover:text-primary-foreground underline"
+            className="p-0 h-auto text-primary underline cursor-pointer"
           >
-            Sign up
+            <a href="/sign-up">Sign up</a>
           </Button>
         </p>
 

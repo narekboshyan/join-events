@@ -236,11 +236,11 @@ export default function SignUpPage() {
             <Button
               type="submit"
               disabled={!isValid || isSubmitting}
-              className={`w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-sm text-sm font-medium text-primary-foreground transition-all duration-200
+              className={`cursor-pointer w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-sm text-sm font-medium text-primary-foreground transition-all duration-200
                 bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform hover:scale-[1.02] active:scale-[0.98]
                 ${
                   !isValid || isSubmitting
-                    ? "opacity-50 cursor-not-allowed" // Tailwind's opacity for disabled state
+                    ? "opacity-50 cursor-not-allowed"
                     : ""
                 }
               `}
@@ -262,9 +262,9 @@ export default function SignUpPage() {
           Already have an account?{" "}
           <Button
             variant="link"
-            className="p-0 h-auto text-primary hover:text-primary-foreground underline"
+            className="p-0 h-auto text-primary cursor-pointer underline"
           >
-            Sign in
+            <a href="/sign-in">Sign in</a>
           </Button>
         </p>
       </div>

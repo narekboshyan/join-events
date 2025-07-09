@@ -1,34 +1,17 @@
-/* eslint-disable no-unused-vars */
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  Calendar,
-  Eye,
-  Filter,
-  Heart,
-  Loader2,
-  MapPin,
-  MessageCircle,
-  MoreVertical,
-  Search,
-  Star,
-  UserCheck,
-  UserPlus,
-  Users,
-  UserX,
-} from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Filter, Loader2, Search, UserPlus, Users } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { UserService } from "@/api/services/user.service";
-import { AllUserConnectionsType, AllUsersType } from "@/types/user";
+import ConnectionCard from "@/components/ConnectionCard";
+import UserCard from "@/components/UserCard";
 
 const UsersPage = () => {
   const session = useSession();
 
   const currentUser = session.data?.user;
-
-  const queryClient = useQueryClient();
 
   const [activeTab, setActiveTab] = useState<"browse" | "connections">(
     "browse"
@@ -59,41 +42,6 @@ const UsersPage = () => {
   //   enabled: activeTab === "browse",
   // });
 
-  const sendConnectionMutation = useMutation({
-    mutationFn: ({
-      targetUserId,
-      connectionType,
-      notes,
-    }: {
-      targetUserId: string;
-      connectionType?: string;
-      notes?: string;
-    }) =>
-      UserService.sendConnectionRequest(targetUserId, connectionType, notes),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["connectionStatuses"] });
-      queryClient.invalidateQueries({ queryKey: ["connections"] });
-    },
-  });
-
-  const acceptConnectionMutation = useMutation({
-    mutationFn: (connectionId: string) =>
-      UserService.acceptConnectionRequest(connectionId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["connections"] });
-      queryClient.invalidateQueries({ queryKey: ["connectionStatuses"] });
-    },
-  });
-
-  const declineConnectionMutation = useMutation({
-    mutationFn: (connectionId: string) =>
-      UserService.declineConnectionRequest(connectionId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["connections"] });
-      queryClient.invalidateQueries({ queryKey: ["connectionStatuses"] });
-    },
-  });
-
   const filteredConnections = useMemo(() => {
     if (!searchQuery) return connections;
 
@@ -112,227 +60,16 @@ const UsersPage = () => {
     });
   }, [connections, searchQuery, currentUser?.id]);
 
-  const handleConnectionAction = async (
-    connectionId: string,
-    action: "accept" | "decline"
-  ) => {
-    try {
-      if (action === "accept") {
-        await acceptConnectionMutation.mutateAsync(connectionId);
-      } else {
-        await declineConnectionMutation.mutateAsync(connectionId);
-      }
-    } catch (error) {
-      console.error("Error handling connection:", error);
-      alert(`Failed to ${action} connection`);
-    }
-  };
-
-  const UserCard = ({ user }: { user: AllUsersType[number] }) => {
-    const userInitials =
-      `${user.first_name[0]}${user.last_name[0]}`.toUpperCase();
-
-    return (
-      <div className="bg-card rounded-xl p-6 shadow-sm border hover:shadow-md transition-shadow">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-              {userInitials}
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold">
-                  {user.first_name} {user.last_name}
-                </h3>
-                {user.is_verified && (
-                  <div className="w-4 h-4 bg-accent rounded-full flex items-center justify-center">
-                    <Star
-                      className="w-2.5 h-2.5 text-primary"
-                      fill="currentColor"
-                    />
-                  </div>
-                )}
-              </div>
-              <p className="text-sm text-muted-foreground">@{user.username}</p>
-            </div>
-          </div>
-          <button className="p-2 hover:bg-accent rounded-lg transition-colors">
-            <MoreVertical className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Bio */}
-        {user.bio && (
-          <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-            {user.bio}
-          </p>
-        )}
-
-        {/* Info */}
-        <div className="space-y-2 mb-4">
-          {(user.city || user.country) && (
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>
-                {[user.city, user.country].filter(Boolean).join(", ")}
-              </span>
-            </div>
-          )}
-          {user.age && (
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <span>{user.age} years old</span>
-            </div>
-          )}
-        </div>
-
-        {/* Hobbies */}
-        {user.user_hobbies.length > 0 && (
-          <div className="mb-4">
-            <div className="flex flex-wrap gap-1">
-              {user.user_hobbies
-                .slice(0, 3)
-                .map((userHobby: any, index: number) => (
-                  <span
-                    key={index}
-                    className="px-2 py-1 bg-accent/20 text-primary text-xs rounded-full"
-                  >
-                    {userHobby.hobby.name}
-                  </span>
-                ))}
-              {user.user_hobbies.length > 3 && (
-                <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
-                  +{user.user_hobbies.length - 3} more
-                </span>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Stats */}
-        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-          <span>
-            {/* {user._count.connections_initiated +
-              user._count.connections_received}{" "} */}
-            connections
-          </span>
-          {/* <span>{user._count.events_created} events</span> */}
-        </div>
-
-        {/* Actions */}
-        <div className="flex gap-2">
-          {/* {"connectionStatus" === "none" && (
-            <button
-              onClick={() => handleConnect(user.id)}
-              disabled={sendConnectionMutation.isPending}
-              className="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-            >
-              {sendConnectionMutation.isPending ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : (
-                <UserPlus className="w-4 h-4" />
-              )}
-              Connect
-            </button>
-          )}
-          {"connectionStatus" === "pending" && (
-            <button className="flex-1 bg-accent/20 text-primary px-4 py-2 rounded-lg font-medium cursor-not-allowed flex items-center justify-center gap-2">
-              <Clock className="w-4 h-4" />
-              Pending
-            </button>
-          )}
-          {"connectionStatus" === "accepted" && (
-            <button className="flex-1 bg-green-100 text-green-700 px-4 py-2 rounded-lg font-medium cursor-not-allowed flex items-center justify-center gap-2">
-              <UserCheck className="w-4 h-4" />
-              Connected
-            </button>
-          )} */}
-          <button className="bg-destructive/10 text-destructive px-4 py-2 rounded-lg hover:bg-destructive/20 transition-colors">
-            <MessageCircle className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    );
-  };
-
-  const ConnectionCard = ({
-    connection,
-  }: {
-    connection: AllUserConnectionsType[number];
-  }) => {
-    if (!currentUser) return null;
-
-    const user =
-      connection.user_id === currentUser.id
-        ? connection.receiver
-        : connection.initiator;
-    const userInitials =
-      `${user.first_name[0]}${user.last_name[0]}`.toUpperCase();
-    const isPendingReceived =
-      connection.status === "pending" &&
-      connection.connected_id === currentUser.id;
-
-    return (
-      <div className="bg-card rounded-xl p-6 shadow-sm border">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-              {userInitials}
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold">
-                  {user.first_name} {user.last_name}
-                </h3>
-                {connection.is_favorite && (
-                  <Heart className="w-4 h-4 text-destructive fill-current" />
-                )}
-              </div>
-              <p className="text-sm text-muted-foreground">@{user.username}</p>
-              <p className="text-xs text-muted-foreground capitalize">
-                {connection.connection_type} • {connection.status}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {isPendingReceived && (
-          <div className="flex gap-2 mb-4">
-            <button
-              onClick={() => handleConnectionAction(connection.id, "accept")}
-              disabled={acceptConnectionMutation.isPending}
-              className="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
-            >
-              <UserCheck className="w-4 h-4" />
-              Accept
-            </button>
-            <button
-              onClick={() => handleConnectionAction(connection.id, "decline")}
-              disabled={declineConnectionMutation.isPending}
-              className="flex-1 bg-muted text-muted-foreground px-4 py-2 rounded-lg font-medium hover:bg-muted/80 transition-colors flex items-center justify-center gap-2"
-            >
-              <UserX className="w-4 h-4" />
-              Decline
-            </button>
-          </div>
-        )}
-
-        <div className="flex gap-2">
-          <button className="flex-1 bg-accent/20 text-primary px-4 py-2 rounded-lg hover:bg-accent/30 transition-colors flex items-center justify-center gap-2">
-            <MessageCircle className="w-4 h-4" />
-            Message
-          </button>
-          <button className="bg-destructive/10 text-destructive px-4 py-2 rounded-lg hover:bg-destructive/20 transition-colors">
-            <Eye className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    );
-  };
+  // const handleConnect = async (userId: string) => {
+  //   try {
+  //   } catch (error) {
+  //     console.error("Error connecting:", error);
+  //     alert("Failed to send connection request");
+  //   }
+  // };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -495,7 +232,7 @@ const UsersPage = () => {
               </select>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-wrap gap-6 justify-center 2xl:justify-start ">
               {users.map((user) => (
                 <UserCard key={user.id} user={user} />
               ))}

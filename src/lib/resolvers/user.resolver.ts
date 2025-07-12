@@ -1,5 +1,4 @@
 import prisma from "../db";
-import { NotFoundException } from "next-api-decorators";
 
 export class UserResolver {
   static async getAllUsers(currentUserId: string) {
@@ -9,6 +8,7 @@ export class UserResolver {
           not: currentUserId,
         },
       },
+
       include: {
         user_hobbies: {
           include: {

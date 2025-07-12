@@ -1,49 +1,101 @@
 "use client";
+
+import Image from "next/image";
 import { useTheme } from "next-themes";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-          <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-            Get started by editing&nbsp;
-          </p>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center flex-1 py-24 animate-fade-in">
+        <Badge className="mb-4 animate-slide-in-from-bottom">
+          Welcome to JoinEvents
+        </Badge>
+        <h1 className="text-5xl md:text-6xl font-bold text-center mb-4 animate-fade-in animate-delay-100">
+          Discover & Join Amazing Events
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground text-center mb-8 max-w-2xl animate-fade-in animate-delay-200">
+          Find, create, and connect with people through events that matter to
+          you. Whether it's tech meetups, hobby groups, or social gatherings,
+          JoinEvents brings people together.
+        </p>
+        <Button
+          size="lg"
+          className="animate-slide-in-from-bottom animate-delay-300 shadow-lg"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          Get Started
+        </Button>
+      </section>
 
-          <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white/0 dark:from-black dark:via-black/0 lg:static lg:h-auto lg:w-auto lg:bg-none">
-            <div className="flex flex-col space-y-4">
-              <div className="text-center mb-4">
-                <p className="text-sm text-muted-foreground">
-                  Current theme: {theme}
-                </p>
-              </div>
-
-              <button
-                onClick={() => setTheme("light")}
-                className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
-              >
-                Light Mode
-              </button>
-
-              <button
-                onClick={() => setTheme("dark")}
-                className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
-              >
-                Dark Mode
-              </button>
-
-              <button
-                onClick={() => setTheme("system")}
-                className="px-4 py-2 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors cursor-pointer"
-              >
-                System
-              </button>
-            </div>
-          </div>
-        </div>
-      </main>
+      {/* Features Section */}
+      <section className="container mx-auto py-16 grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in animate-delay-300">
+        <Card className="hover:scale-105 transition-transform duration-300 animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Discover Events</CardTitle>
+            <CardDescription>
+              Browse curated events tailored to your interests and location.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Image
+              src="/globe.svg"
+              alt="Discover"
+              width={48}
+              height={48}
+              className="mb-4"
+            />
+            <Badge variant="secondary">Personalized</Badge>
+          </CardContent>
+        </Card>
+        <Card className="hover:scale-105 transition-transform duration-300 animate-slide-in-from-bottom animate-delay-100">
+          <CardHeader>
+            <CardTitle>Create & Host</CardTitle>
+            <CardDescription>
+              Organize your own events and invite others with ease.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Image
+              src="/party.svg"
+              alt="Host"
+              width={48}
+              height={48}
+              className="mb-4"
+            />
+            <Badge variant="secondary">Easy Hosting</Badge>
+          </CardContent>
+        </Card>
+        <Card className="hover:scale-105 transition-transform duration-300 animate-slide-in-from-bottom animate-delay-200">
+          <CardHeader>
+            <CardTitle>Connect & RSVP</CardTitle>
+            <CardDescription>
+              RSVP, connect with attendees, and grow your network.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Image
+              src="/users.svg"
+              alt="Connect"
+              width={48}
+              height={48}
+              className="mb-4"
+            />
+            <Badge variant="secondary">Networking</Badge>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 }
